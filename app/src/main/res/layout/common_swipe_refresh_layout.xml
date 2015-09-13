@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swiperefresh_id"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.dreamspace.superman.UI.View.LoadMoreListView
+        android:id="@+id/load_more_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="15dp"
+        android:divider="@color/main_bg">
+
+    </com.dreamspace.superman.UI.View.LoadMoreListView>
+</android.support.v4.widget.SwipeRefreshLayout>

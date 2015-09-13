@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">UUCampus</string>
+    <string name="network_error_tips">请检查您的网络连接</string>
+    <string name="common_empty_msg">抱歉,暂未获取到数据!\n请点击屏幕重试~</string>
+    <string name="common_error_msg">抱歉,系统出错了!\n请点击屏幕重试~</string>
+    <string name="common_no_network_msg">暂未连接上网络!\n请连接后点击屏幕重试~</string>
+</resources>
