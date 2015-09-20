@@ -1,4 +1,4 @@
-package com.dreamspace.uucampus.ui;
+package com.dreamspace.uucampus.ui.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,11 +12,11 @@ import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 /**
  * Created by money on 2015/9/14.
  */
-public class MarketFragment extends BaseLazyFragment {
+public class PersonInfoFragment extends BaseLazyFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_third, container, false);
+        return inflater.inflate(R.layout.fragment_second, container, false);
     }
 
     @Override
