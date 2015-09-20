@@ -29,7 +29,7 @@ public class MyCollection extends AppCompatActivity {
     private int currIndex = 0;  //当前页卡编号
     private int bmpW;           //图片宽度
     private ImageView image;
-    private Toolbar toolbar;
+    private Toolbar toolbar;// it's a toolbar
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
