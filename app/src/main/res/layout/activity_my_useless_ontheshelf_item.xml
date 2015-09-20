@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content" >
+    <ImageView
+        android:id="@+id/my_useless_goods"
+        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/z_my_goods_img"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp" />
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toRightOf="@id/my_useless_goods">
+        <TextView
+            android:id="@+id/my_useless_name"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/background_gradient_start" />
+        <TextView
+            android:id="@+id/my_useless_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/navi_press_color"
+            android:layout_marginTop="32dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="18dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+        <Button
+            android:id="@+id/my_useless_edit_button"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:text="@string/edit"
+            android:textColor="@color/fastlane_background"
+            android:textSize="14sp"
+            android:background="@drawable/z_my_shape_button_frame"
+            android:layout_gravity="right" />
+        <Button
+            android:id="@+id/my_useless_ontheshelf_button"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:text="@string/outofshelf"
+            android:textColor="@color/fastlane_background"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/z_my_shape_button_frame"
+            android:layout_gravity="right" />
+    </LinearLayout>
+</RelativeLayout>

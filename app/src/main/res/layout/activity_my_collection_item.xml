@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent" >
+        <ImageView
+            android:id="@+id/good_img"
+            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:src="@drawable/z_my_goods_img"
+            android:scaleType="fitXY"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp" />
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_toRightOf="@id/good_img"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/good_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/background_gradient_start"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/market_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/fastlane_background"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp" />
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="12dp">
+                <LinearLayout
+                    android:id="@+id/linear1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_height="8dp"
+                        android:layout_width="12dp"
+                        android:src="@drawable/z_my_collection_look_num"
+                        android:scaleType="fitXY"
+                        android:layout_marginTop="5dp"/>
+                    <TextView
+                        android:id="@+id/look_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linear2"
+                    android:layout_toRightOf="@id/linear1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp">
+                    <ImageView
+                        android:id="@+id/my_collection"
+                        android:layout_height="8dp"
+                        android:layout_width="8dp"
+                        android:src="@drawable/z_my_collection_thumb_up"
+                        android:scaleType="fitXY"
+                        android:layout_marginTop="5dp"/>
+                    <TextView
+                        android:id="@+id/thumb_up"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/money"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/Indigo_colorPrimaryDark"
+            android:layout_alignBottom="@+id/linear"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="10dp">
+        <ImageView
+            android:layout_height="10dp"
+            android:layout_width="10dp"
+            android:src="@drawable/z_my_collection_coupons"
+            android:scaleType="fitXY"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:id="@+id/privilege"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>

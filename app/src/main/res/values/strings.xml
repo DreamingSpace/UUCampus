@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">UUCampus</string>
+    <string name="network_error_tips">请检查您的网络连接</string>
+    <string name="common_empty_msg">抱歉,暂未获取到数据!\n请点击屏幕重试~</string>
+    <string name="common_error_msg">抱歉,系统出错了!\n请点击屏幕重试~</string>
+    <string name="common_no_network_msg">暂未连接上网络!\n请连接后点击屏幕重试~</string>
+    <string name="common_loading_message">正在加载中...</string>
+
+    <string name="z_my_useless">我的闲置</string>
+    <string name="z_my_collection">我的收藏</string>
+    <string name="z_my_store">我的店铺</string>
+    <string name="z_my_setting">设置</string>
+    <string name="z_my_about">关于</string>
+
+    <string name="z_my_ontheshelf">上架中</string>
+    <string name="z_my_outofshelf">已下架</string>
+    <string name="edit">编辑</string>
+    <string name="outofshelf">下架</string>
+
+    <string name="apply_store">申请成为商家</string>
+    <string name="market_name">店铺名称</string>
+    <string name="storekeeper_name">店主姓名</string>
+    <string name="store_type">店铺类型</string>
+    <string name="phonenum">联系电话</string>
+    <string name="address">联系地址</string>
+    <string name="store_introduction">店铺简介</string>
+    <string name="commit_apply">提交申请</string>
+
+    <string name="main_store">店铺主页</string>
+    <string name="my_goods">我的商品</string>
+    <string name="uu_merchant_service">悠悠商家客服</string>
+</resources>

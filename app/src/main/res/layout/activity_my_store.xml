@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/custom_toolbar"></include>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/head_pic"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:src="@drawable/z_my_shape_circle"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="21dp"
+            android:layout_marginBottom="11dp" />
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/word_color"
+            android:textSize="16sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="18dp" />
+        <View
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:background="@color/dividingline_color" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+        <View
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:background="@color/dividingline_color" />
+        <RelativeLayout
+            android:layout_height="40dp"
+            android:layout_width="fill_parent">
+            <ImageView
+                android:id="@+id/my_goods"
+                android:layout_height="18dp"
+                android:layout_width="18dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/z_my_goods"
+                android:layout_marginLeft="30dp" />
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/my_goods"
+                android:textColor="@color/word_color"
+                android:textSize="16sp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/my_goods" />
+        </RelativeLayout>
+        <View
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:background="@color/dividingline_color"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+            <RelativeLayout
+                android:layout_height="40dp"
+                android:layout_width="fill_parent">
+                <ImageView
+                    android:id="@+id/uu_merchant_service"
+                    android:layout_height="18dp"
+                    android:layout_width="18dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/z_my_merchant_service"
+                    android:layout_marginLeft="30dp" />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/uu_merchant_service"
+                    android:textColor="@color/word_color"
+                    android:textSize="16sp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/uu_merchant_service" />
+            </RelativeLayout>
+        <View
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:background="@color/dividingline_color" />
+    </LinearLayout>
+
+</LinearLayout>
