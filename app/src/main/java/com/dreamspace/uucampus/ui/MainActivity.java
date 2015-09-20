@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.base.ChangeColorTabWithText;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  * Created by money on 2015/9/14.
  */
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+public class MainActivity extends AbsActivity implements View.OnClickListener {
 
     private List<Fragment> mFragments = new ArrayList<Fragment>();
     private ViewPager mViewPager;
@@ -27,10 +28,19 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private ChangeColorTabWithText threeChangeColorTabWithText;
     private List<ChangeColorTabWithText> mChangeColorTabWithTexts = new ArrayList<ChangeColorTabWithText>();
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getContentView() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void prepareDatas() {
+
+    }
+
+    @Override
+    protected void initViews() {
         initView();
         initDates();
         initListener();
