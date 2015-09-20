@@ -15,7 +15,7 @@ import java.util.List;
 public abstract class BasisAdapter<T, K> extends BaseAdapter {
     private List<T> mEntities;
     private Context mContext;
-    private Class<K> classType;
+    private Class<K> classType; ///njshajh s
 
 
     public void setmEntities(List<T> mEntities) {
