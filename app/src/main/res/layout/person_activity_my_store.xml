@@ -41,6 +41,7 @@
             android:layout_width="fill_parent"
             android:background="@color/dividingline_color" />
         <RelativeLayout
+            android:id="@+id/relative"
             android:layout_height="40dp"
             android:layout_width="fill_parent">
             <ImageView

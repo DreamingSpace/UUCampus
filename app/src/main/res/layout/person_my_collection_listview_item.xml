@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
     android:orientation="vertical" >
     <RelativeLayout
         android:layout_height="wrap_content"
@@ -26,15 +26,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/background_gradient_start"
-                android:textStyle="bold" />
+                android:textColor="@color/background_gradient_start" />
             <TextView
                 android:id="@+id/market_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
                 android:textColor="@color/fastlane_background"
-                android:textStyle="bold"
                 android:layout_marginTop="12dp" />
             <RelativeLayout
                 android:layout_height="wrap_content"
@@ -46,8 +44,8 @@
                     android:layout_width="wrap_content"
                     android:orientation="horizontal">
                     <ImageView
-                        android:layout_height="8dp"
-                        android:layout_width="12dp"
+                        android:layout_height="10dp"
+                        android:layout_width="14dp"
                         android:src="@drawable/z_my_collection_look_num"
                         android:scaleType="fitXY"
                         android:layout_marginTop="5dp"/>
@@ -55,6 +53,7 @@
                         android:id="@+id/look_num"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:padding="2dp"
                         android:textSize="12sp" />
                 </LinearLayout>
                 <LinearLayout
@@ -66,15 +65,16 @@
                     android:layout_marginLeft="20dp">
                     <ImageView
                         android:id="@+id/my_collection"
-                        android:layout_height="8dp"
-                        android:layout_width="8dp"
+                        android:layout_height="10dp"
+                        android:layout_width="10dp"
                         android:src="@drawable/z_my_collection_thumb_up"
                         android:scaleType="fitXY"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp" />
                     <TextView
                         android:id="@+id/thumb_up"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:padding="2dp"
                         android:textSize="12sp" />
                 </LinearLayout>
             </RelativeLayout>
@@ -107,7 +107,12 @@
             android:id="@+id/privilege"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:padding="2dp"
             android:textSize="12sp" />
     </LinearLayout>
+    <ExpandableListView
+        android:id="@+id/expandablelistview"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent" />
 
 </LinearLayout>

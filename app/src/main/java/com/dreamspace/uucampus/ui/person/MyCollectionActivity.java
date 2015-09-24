@@ -1,11 +1,8 @@
 package com.dreamspace.uucampus.ui.person;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,57 +12,43 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.ui.base.AbsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+
 /**
  * Created by zsh on 2015/9/16.
  */
-public class MyCollection extends AppCompatActivity {
+public class MyCollectionActivity extends AbsActivity {
     private List<Fragment> fragments=new ArrayList<Fragment>();
     private ViewPager mViewPager;
-    private TextView textView1, textView2;
     private int currIndex = 0;  //当前页卡编号
     private int bmpW;           //图片宽度
-    private ImageView image;
-    private Toolbar toolbar;// it's a toolbar
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_useless);
-        image = (ImageView)findViewById(R.id.scroll_bar);
+    @Bind(R.id.scroll_bar)
+    ImageView image;
+    @Bind(R.id.text1)
+    TextView textView1;
+    @Bind(R.id.text2)
+    TextView textView2;
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        initData();
-        initViewPager();
-    }
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId())
-        {
-            case android.R.id.home:
-                finish();
-                return true;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
+    protected int getContentView() {
+        return R.layout.person_activity_my_useless;
     }
-    private void initData() {
-        textView1 = (TextView) findViewById(R.id.text1);
-        textView2 = (TextView) findViewById(R.id.text2);
+
+    @Override
+    protected void prepareDatas() {
         textView1.setText("商品");
         textView2.setText("商家");
         textView1.setOnClickListener(new MyOnClickListener(0));
         textView2.setOnClickListener(new MyOnClickListener(1));
     }
-    private void initViewPager() {
+
+    @Override
+    protected void initViews() {
         fragments.add(new MyCollectionGoodsFragment());
         fragments.add(new MyCollectionMarketsFragment());
         FragmentPagerAdapter mAdapter=new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -91,6 +74,20 @@ public class MyCollection extends AppCompatActivity {
         public void onClick(View v) {
             mViewPager.setCurrentItem(index);
         }
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
     public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
         @Override

@@ -1,8 +1,8 @@
-package com.dreamspace.uucampus.ui.person;
+package com.dreamspace.uucampus.ui;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +10,22 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
+import com.dreamspace.uucampus.ui.person.ApplyStoreActivity;
+import com.dreamspace.uucampus.ui.person.MyCollectionActivity;
+import com.dreamspace.uucampus.ui.person.MyStoreActivity;
+import com.dreamspace.uucampus.ui.person.MyUselessActivity;
+import com.dreamspace.uucampus.ui.person.PersonMessageActivity;
+import com.dreamspace.uucampus.ui.person.SettingActivity;
 
 /**
  * Created by zsh on 2015/9/15.
  */
-public class PersonInfoFragment extends Fragment {
+public class PersonInfoFragment extends BaseLazyFragment {
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View resultView;
-        resultView = inflater.inflate(R.layout.activity_my_person_info, container, false);
+        resultView = inflater.inflate(R.layout.person_activity_my, container, false);
         ImageView imageView = (ImageView)resultView.findViewById(R.id.head_portrait);
         imageView.setOnClickListener(new MyOnClickListener(0));
         RelativeLayout relativeLayout1 = (RelativeLayout)resultView.findViewById(R.id.my_useless);
@@ -42,21 +48,54 @@ public class PersonInfoFragment extends Fragment {
         @Override
         public void onClick(View v){
             if(index==0){
-
+                readyGo(PersonMessageActivity.class);
             }
             if(index==1){
-                Intent intent1 = new Intent(getActivity(),MyUseless.class);
-                startActivity(intent1);
+                readyGo(MyUselessActivity.class);
             }
             if(index==2){
-                Intent intent2 = new Intent(getActivity(),MyCollection.class);
-                startActivity(intent2);
+                readyGo(MyCollectionActivity.class);
             }
             if(index==3){
-                Intent intent3 = new Intent(getActivity(),ApplyStore.class);
-                startActivity(intent3);
+                //readyGo(ApplyStoreActivity.class);
+                readyGo(MyStoreActivity.class);
+            }
+            if(index==4){
+                //Intent intent = new Intent(getActivity(),SettingActivity.class);
+                //startActivity(intent);
+                readyGo(SettingActivity.class);
             }
         }
 
+    }
+
+    @Override
+    protected void onFirstUserVisible() {
+
+    }
+
+    @Override
+    protected void onUserVisible() {
+
+    }
+
+    @Override
+    protected void onUserInvisible() {
+
+    }
+
+    @Override
+    protected void initViewsAndEvents() {
+
+    }
+
+    @Override
+    protected int getContentViewLayoutID() {
+        return 0;
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 }

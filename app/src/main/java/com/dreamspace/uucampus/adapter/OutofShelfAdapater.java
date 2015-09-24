@@ -1,6 +1,7 @@
 package com.dreamspace.uucampus.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.ui.person.EditGoodsInformationActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,14 +23,14 @@ import java.util.Map;
  */
 public class OutofShelfAdapater extends BaseAdapter {
     private LayoutInflater mInflater;
-    private Context context;
+    private Context mContext;
     private List<Map<String,Object>> mListItem;
     private String[] name = new String[]{"1111111","2222222"};
     private String[] price = new String[]{"30yuan","30yuan"};
 
     public OutofShelfAdapater(Context context) {
         this.mInflater = LayoutInflater.from(context);
-        this.context = context;
+        this.mContext = context;
         mListItem = getData();
     }
     private List<Map<String,Object>> getData() {
@@ -59,7 +61,7 @@ public class OutofShelfAdapater extends BaseAdapter {
         ViewHolder holder = null;
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = mInflater.inflate(R.layout.activity_my_useless_ontheshelf_item, null);
+            convertView = mInflater.inflate(R.layout.person_my_useless_ontheshelf_listview_item, null);
             holder.my_useless_name = (TextView) convertView.findViewById(R.id.my_useless_name);
             holder.my_useless_price = (TextView) convertView.findViewById(R.id.my_useless_price);
             holder.my_useless_img = (ImageView) convertView.findViewById(R.id.my_useless_goods);
@@ -79,7 +81,8 @@ public class OutofShelfAdapater extends BaseAdapter {
         holder.edit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(mContext,EditGoodsInformationActivity.class);
+                mContext.startActivity(intent);
             }
         });
         holder.ontheshelf_button.setTag(position);

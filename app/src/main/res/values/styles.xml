@@ -8,26 +8,20 @@
         <item name="colorAccent">@color/gender_man_bg</item>
     </style>
 
-    <!-- Base application theme. -->
-
-    <style name="AppTheme1" parent="AppBaseTheme">
-        <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-    </style>
-
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
-        <!-- customize the color palette -->
-        <item name="colorPrimary">@color/fastlane_background</item>
-        <!--colorPrimary 对应ActionBar的颜色。-->
-        <item name="colorPrimaryDark">@color/background_gradient_start</item>
-        <!--colorPrimaryDark对应状态栏的颜色,最上面一条-->
-        <item name="colorAccent">@color/gender_man_bg</item>
-        <!--colorAccent 对应EditText编辑时、RadioButton选中、CheckBox等选中时的颜色。-->
-    </style>
-
     <!--自定义edittext的样式-->
     <style name="my_edit_style" parent="@android:style/Widget.EditText">
         <item name="android:background">@drawable/z_my_edittext_style</item>
+    </style>
+
+    <!--自定义dialog主题-->
+    <style name="myDialogTheme" parent="android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@null</item><!--去除背景色-->
     </style>
 
 </resources>

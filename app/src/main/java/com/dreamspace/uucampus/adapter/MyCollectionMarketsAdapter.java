@@ -1,7 +1,6 @@
 package com.dreamspace.uucampus.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +64,7 @@ public class MyCollectionMarketsAdapter extends BaseAdapter {
         ViewHolder holder = null;
         if(convertView==null){
             holder = new ViewHolder();
-            convertView = mInflater.inflate(R.layout.activity_my_collection_item,null);
+            convertView = mInflater.inflate(R.layout.person_my_collection_listview_item,null);
             holder.my_good_name = (TextView)convertView.findViewById(R.id.good_name);
             holder.my_market_name = (TextView)convertView.findViewById(R.id.market_name);
             holder.my_look_num = (TextView)convertView.findViewById(R.id.look_num);

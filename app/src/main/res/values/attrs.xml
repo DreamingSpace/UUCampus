@@ -18,7 +18,6 @@
 * along with BlackLight.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources>
-
 	<declare-styleable name="TintImageView">
 		<attr name="tintColor" format="color" />
 	</declare-styleable>
@@ -58,5 +57,16 @@
 		<attr name="stl_customTabTextLayoutId" format="reference"/>
 		<attr name="stl_customTabTextViewId" format="reference"/>
 		<attr name="stl_distributeEvenly" format="boolean"/>
+	</declare-styleable>
+
+	<attr name="drawable" format="reference"></attr>
+	<attr name="text" format="string"></attr>
+	<attr name="textsize" format="dimension"></attr>
+	<attr name="maincolor" format="color"></attr>
+	<declare-styleable name="ChangeColorTabWithText">
+		<attr name="drawable"></attr>
+		<attr name="text" ></attr>
+		<attr name="textsize"></attr>
+		<attr name="maincolor"></attr>
 	</declare-styleable>
 </resources>

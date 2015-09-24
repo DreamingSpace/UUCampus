@@ -1,122 +1,117 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_height="wrap_content"
+    <include
+        layout="@layout/custom_toolbar"></include>
+    <ScrollView
         android:layout_width="match_parent"
-        android:minHeight="?attr/actionBarSize">
-    </android.support.v7.widget.Toolbar>
-    <RelativeLayout
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:background="@color/white">
-        <ImageView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:src="@drawable/z_my_apply_market_head"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_centerHorizontal="true"/>
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent"
-        android:background="@color/white"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
-        <TableLayout
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp">
-            <TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="80dp"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:paddingTop="10dp">
+
+            <ImageView
+                android:id="@+id/store_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/z_my_apply_market_head" />
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:orientation="horizontal">
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@string/market_name"
-                    android:layout_weight="0.1"
                     android:layout_marginTop="5dp"/>
                 <EditText
                     android:id="@+id/market_name"
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
-                    android:layout_weight="5.0"
                     android:singleLine="true"/>
-            </TableRow>
-            <TableRow>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:orientation="horizontal">
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@string/storekeeper_name"
-                    android:layout_weight="0.1"
                     android:layout_marginTop="5dp"/>
                 <EditText
                     android:id="@+id/storekeeper_name"
                     android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:layout_weight="5.0"/>
-            </TableRow>
-            <TableRow>
+                    android:layout_width="fill_parent"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:orientation="horizontal">
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@string/store_type"
-                    android:layout_weight="0.1"
                     android:layout_marginTop="5dp"/>
                 <EditText
                     android:id="@+id/store_type"
                     android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:layout_weight="5.0"/>
-            </TableRow>
-            <TableRow>
+                    android:layout_width="fill_parent"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:orientation="horizontal">
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@string/phonenum"
-                    android:layout_weight="0.1"
                     android:layout_marginTop="5dp"/>
                 <EditText
                     android:id="@+id/phonenum"
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
-                    android:layout_weight="5.0"
                     android:phoneNumber="true"/>
-            </TableRow>
-            <TableRow>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:orientation="horizontal">
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@string/address"
-                    android:layout_weight="0.1"
                     android:layout_marginTop="5dp"/>
                 <EditText
                     android:id="@+id/address"
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
-                    android:layout_weight="5.0"
                     android:singleLine="true"/>
-            </TableRow>
-            <TableRow>
+            </LinearLayout>
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="@string/store_introduction"
-                    android:layout_weight="0.1"
                     android:layout_marginTop="15dp"/>
-            </TableRow>
-            <TableRow>
                 <EditText
                     android:id="@+id/store_introduction"
                     android:layout_height="100dp"
                     android:layout_width="fill_parent"
                     style="@style/my_edit_style"
                     android:layout_marginTop="15dp"
+                    android:padding="10dp"
                     android:layout_weight="1.0"/>
-            </TableRow>
-            <TableRow>
                 <Button
                     android:id="@+id/commit_button"
                     android:layout_height="wrap_content"
@@ -126,8 +121,6 @@
                     android:background="@drawable/z_my_shape_button_commit"
                     android:layout_weight="1.0"
                     android:layout_marginTop="20dp" />
-            </TableRow>
-        </TableLayout>
-    </LinearLayout>
-
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
