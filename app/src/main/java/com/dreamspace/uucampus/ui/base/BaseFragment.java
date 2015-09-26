@@ -105,7 +105,10 @@ public abstract class BaseFragment extends Fragment {
     protected void showNetWorkError() {
         showToast(getResources().getString(R.string.network_error_tips));
     }
-
+    protected void showInnerError(RetrofitError error) {
+        if (error != null)
+            showToast(CommonUtils.getErrorInfo(error).getReason());
+    }
 
 
 }

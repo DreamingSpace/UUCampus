@@ -36,6 +36,7 @@ import com.dreamspace.uucampus.common.utils.CommonUtils;
 import java.lang.reflect.Field;
 
 import butterknife.ButterKnife;
+import retrofit.RetrofitError;
 
 /**
  * Author:  Tau.Chen
@@ -373,5 +374,8 @@ public abstract class BaseLazyFragment extends Fragment {
             mVaryViewHelperController.restore();
         }
     }
-
+    protected void showInnerError(RetrofitError error) {
+        if (error != null)
+            showToast(CommonUtils.getErrorInfo(error).getReason());
+    }
 }

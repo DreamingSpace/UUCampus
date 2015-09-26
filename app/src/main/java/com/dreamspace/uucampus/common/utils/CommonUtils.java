@@ -19,11 +19,15 @@ package com.dreamspace.uucampus.common.utils;
 import android.content.Context;
 import android.content.res.TypedArray;
 
+import com.dreamspace.uucampus.model.ErrorRes;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
+
+import retrofit.RetrofitError;
 
 
 public class CommonUtils {
@@ -40,6 +44,9 @@ public class CommonUtils {
         } else {
             return false;
         }
+    }
+    public static ErrorRes getErrorInfo(RetrofitError error){
+        return (ErrorRes) error.getBodyAs(ErrorRes.class);
     }
 
     /**
