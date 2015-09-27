@@ -19,6 +19,11 @@ package com.dreamspace.uucampus.common.utils;
 import android.content.Context;
 import android.content.res.TypedArray;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.model.ErrorRes;
 
 import java.net.HttpURLConnection;
@@ -27,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit.RetrofitError;
 
 
@@ -182,5 +188,17 @@ public class CommonUtils {
         styledAttributes.recycle();
 
         return toolbarHeight;
+    }
+    //使用Glide加载网络图片
+    public static void showImageWithGlide(Context context, final CircleImageView imageView,String url){
+        Glide.with(context)
+                .load(url)
+                .placeholder(R.drawable.login_pho)
+                .into(new SimpleTarget<GlideDrawable>() {
+                    @Override
+                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                        imageView.setImageDrawable(resource);
+                    }
+                });
     }
 }
