@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright (C) 2014 Peter Cai
+*
+* This file is part of BlackLight
+*
+* BlackLight is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* BlackLight is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with BlackLight.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+	<declare-styleable name="TintImageView">
+		<attr name="tintColor" format="color" />
+	</declare-styleable>
+	<!-- CircularProgressBar -->
+	<declare-styleable name="CircularProgressBar">
+		<attr name="cpbStyle" format="reference"/>
+		<attr name="cpb_color" format="color"/>
+		<attr name="cpb_colors" format="reference"/>
+		<attr name="cpb_stroke_width" format="dimension"/>
+		<attr name="cpb_min_sweep_angle" format="integer"/>
+		<attr name="cpb_max_sweep_angle" format="integer"/>
+		<attr name="cpb_sweep_speed" format="float"/>
+		<attr name="cpb_rotation_speed" format="float"/>
+	</declare-styleable>
+	<!--smarttab layout-->
+	<declare-styleable name="stl_SmartTabLayout">
+		<attr name="stl_indicatorAlwaysInCenter" format="boolean"/>
+		<attr name="stl_indicatorInFront" format="boolean"/>
+		<attr name="stl_indicatorInterpolation" format="enum">
+			<enum name="smart" value="0"/>
+			<enum name="linear" value="1"/>
+		</attr>
+		<attr name="stl_indicatorColor" format="color"/>
+		<attr name="stl_indicatorColors" format="reference"/>
+		<attr name="stl_indicatorThickness" format="dimension"/>
+		<attr name="stl_indicatorCornerRadius" format="dimension"/>
+		<attr name="stl_underlineColor" format="color"/>
+		<attr name="stl_underlineThickness" format="dimension"/>
+		<attr name="stl_dividerColor" format="color"/>
+		<attr name="stl_dividerColors" format="reference"/>
+		<attr name="stl_dividerThickness" format="dimension"/>
+		<attr name="stl_defaultTabTextAllCaps" format="boolean"/>
+		<attr name="stl_defaultTabTextColor" format="color"/>
+		<attr name="stl_defaultTabTextSize" format="dimension"/>
+		<attr name="stl_defaultTabTextHorizontalPadding" format="dimension"/>
+		<attr name="stl_defaultTabTextMinWidth" format="dimension"/>
+		<attr name="stl_customTabTextLayoutId" format="reference"/>
+		<attr name="stl_customTabTextViewId" format="reference"/>
+		<attr name="stl_distributeEvenly" format="boolean"/>
+	</declare-styleable>
+
+	<attr name="drawable" format="reference"></attr>
+	<attr name="text" format="string"></attr>
+	<attr name="textsize" format="dimension"></attr>
+	<attr name="maincolor" format="color"></attr>
+	<declare-styleable name="ChangeColorTabWithText">
+		<attr name="drawable"></attr>
+		<attr name="text" ></attr>
+		<attr name="textsize"></attr>
+		<attr name="maincolor"></attr>
+	</declare-styleable>
+</resources>

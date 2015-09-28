@@ -1,0 +1,47 @@
+<resources>
+    <color name="background_gradient_start">#000000</color>
+    <color name="background_gradient_end">#DDDDDD</color>
+    <color name="fastlane_background">#0096a6</color>
+    <color name="search_opaque">#ffaa3f</color>
+    <color name="detail_background">#0096a6</color>
+    <color name="soft_opaque">#30000000</color>
+    <color name="img_soft_opaque">#30FF0000</color>
+    <color name="img_full_opaque">#00000000</color>
+    <color name="black_opaque">#AA000000</color>
+    <color name="black">#59000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="orange_transparent">#AAFADCA7</color>
+    <color name="orange">#FADCA7</color>
+    <color name="yellow">#EEFF41</color>
+    <color name="default_background">#3d3d3d</color>
+    //color.xml的#5000000前两位是透明的效果参数从00--99（透明--不怎么透明），
+    //后6位是颜色的设置
+    <color name="Indigo_colorPrimaryDark">#EA5D49</color>
+    <color name="Indigo_colorPrimary">#E6E6E6</color>
+    <color name="Indigo_nav_color">#4675FF</color>
+    <color name="navi_color">#D4796A</color>
+    <color name="navi_press_color">#D95D49</color>
+    <color name="main_bg">#E6E6E6</color>
+    <color name="select_tab_color">#666666</color>
+    <color name="near_white">#f3f5f7</color>
+    <color name="edit_stroke">#75999999</color>
+    <color name="grey_line">#999999</color>
+    <color name="gender_man_bg">#579BDB</color>
+    <color name="near_black">#222222</color>
+    <color name="delete_bg">#f93f25</color>
+    <integer-array name="gplus_colors">
+        <item>@color/gplus_color_1</item>
+        <item>@color/gplus_color_2</item>
+        <item>@color/gplus_color_3</item>
+        <item>@color/gplus_color_4</item>
+    </integer-array>
+    <color name="gplus_color_1">#3e802f</color>
+    <color name="gplus_color_2">#f4b400</color>
+    <color name="gplus_color_3">#427fed</color>
+    <color name="gplus_color_4">#b23424</color>
+
+    <color name="word_color">#333333</color>
+    <color name="actionbar_color">#06c2ad</color>
+    <color name="dividingline_color">#999999</color>
+
+</resources>

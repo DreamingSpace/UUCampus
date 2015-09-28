@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/fastlane_background</item>
+        <item name="colorPrimaryDark">@color/background_gradient_start</item>
+        <item name="colorAccent">@color/gender_man_bg</item>
+    </style>
+
+    <!--自定义edittext的样式-->
+    <style name="my_edit_style" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/my_edittext_style</item>
+    </style>
+
+    <!--自定义dialog主题-->
+    <style name="myDialogTheme" parent="android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@null</item><!--去除背景色-->
+    </style>
+
+</resources>

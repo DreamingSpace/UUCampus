@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="fill_parent"
+    android:orientation="vertical">
+    <include
+        layout="@layout/custom_toolbar"></include>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_height="35dp"
+            android:layout_width="fill_parent"
+            android:orientation="horizontal"
+            android:background="@color/white">
+            <TextView
+                android:id="@+id/text1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/z_my_ontheshelf"
+                android:textSize="14dp"
+                android:textColor="@color/background_gradient_start"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_height="fill_parent"
+                android:layout_width="1dp"
+                android:background="@color/grey_line"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/text2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/z_my_outofshelf"
+                android:textSize="14dp"
+                android:textColor="@color/background_gradient_start"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="3dp"
+            android:layout_width="fill_parent"
+            android:orientation="horizontal"
+            android:background="@color/white">
+            <ImageView
+                android:id="@+id/scroll_bar"
+                android:layout_height="3dp"
+                android:layout_width="80dp"
+                android:layout_weight="1.0"
+                android:src="@drawable/my_splid" />
+            <ImageView
+                android:layout_height="3dp"
+                android:layout_width="80dp"
+                android:layout_weight="1.0"/>
+        </LinearLayout>
+        <TextView
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:background="@color/grey_line" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+</LinearLayout>

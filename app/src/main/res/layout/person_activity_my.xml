@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+        <ImageView
+        android:id="@+id/head_portrait"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/my_shape_circle"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp" />
+        <TextView
+            android:id="@+id/person_name"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="maiyi"
+            android:textSize="16sp"
+            android:textColor="@color/background_gradient_start"
+            android:layout_marginTop="18dp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:background="@color/grey_line"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"/>
+        <RelativeLayout
+            android:id="@+id/my_useless"
+            android:layout_height="39dp"
+            android:layout_width="fill_parent" >
+            <ImageView
+                android:id="@+id/z_my_useless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/my_center_button_idle_things"
+                android:layout_marginLeft="40dp"
+                android:layout_centerVertical="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/z_my_useless"
+                android:textSize="16sp"
+                android:textColor="@color/background_gradient_start"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/z_my_useless"
+                android:layout_marginLeft="15dp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:background="@color/grey_line"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+        <RelativeLayout
+            android:id="@+id/my_collection"
+            android:layout_height="39dp"
+            android:layout_width="fill_parent" >
+            <ImageView
+                android:id="@+id/z_my_collection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/my_center_button_my_collection"
+                android:layout_marginLeft="40dp"
+                android:layout_centerVertical="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/z_my_collection"
+                android:textSize="16sp"
+                android:textColor="@color/background_gradient_start"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/z_my_collection"
+                android:layout_marginLeft="15dp" />
+        </RelativeLayout>
+        <TextView
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:background="@color/grey_line"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+        <RelativeLayout
+            android:id="@+id/my_store"
+            android:layout_height="39dp"
+            android:layout_width="fill_parent" >
+            <ImageView
+                android:id="@+id/z_my_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/my_center_button_my_store"
+                android:layout_marginLeft="40dp"
+                android:layout_centerVertical="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/z_my_store"
+                android:textSize="16sp"
+                android:textColor="@color/background_gradient_start"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/z_my_store"
+                android:layout_marginLeft="15dp" />
+        </RelativeLayout>
+        <TextView
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:background="@color/grey_line" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginTop="60dp" >
+        <TextView
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:background="@color/grey_line"/>
+        <RelativeLayout
+            android:id="@+id/my_setting"
+            android:layout_height="39dp"
+            android:layout_width="fill_parent" >
+            <ImageView
+                android:id="@+id/z_my_set"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/my_center_button_set"
+                android:layout_marginLeft="40dp"
+                android:layout_centerVertical="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/z_my_setting"
+                android:textSize="16sp"
+                android:textColor="@color/background_gradient_start"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/z_my_set"
+                android:layout_marginLeft="15dp" />
+        </RelativeLayout>
+        <TextView
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:background="@color/grey_line"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+        <RelativeLayout
+            android:id="@+id/my_about"
+            android:layout_height="39dp"
+            android:layout_width="fill_parent" >
+            <ImageView
+                android:id="@+id/z_my_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/my_center_button_about"
+                android:layout_marginLeft="40dp"
+                android:layout_centerVertical="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/z_my_about"
+                android:textSize="16sp"
+                android:textColor="@color/background_gradient_start"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/z_my_about"
+                android:layout_marginLeft="15dp" />
+        </RelativeLayout>
+        <TextView
+            android:layout_height="0.5dp"
+            android:layout_width="fill_parent"
+            android:background="@color/grey_line" />
+
+    </LinearLayout>
+
+</LinearLayout>
