@@ -44,6 +44,9 @@
             android:name=".ui.person.FeedbackActivity"
             android:label="@string/feedback" />
 
+        <activity
+            android:name=".ui.person.UserRegisterActivity"
+            android:label="regist" />
     </application>
 
 </manifest>

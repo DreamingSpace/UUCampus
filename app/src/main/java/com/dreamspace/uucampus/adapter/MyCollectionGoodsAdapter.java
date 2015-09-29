@@ -90,7 +90,6 @@ public class MyCollectionGoodsAdapter extends BaseAdapter {
         holder.my_thumb_up.setText((String)mListItem.get(position).get("thumb_up"));
         holder.my_money.setText((String)mListItem.get(position).get("money"));
         holder.my_privilege.setText((String) mListItem.get(position).get("privilege"));
-
         return convertView;
     }
     public class ViewHolder {

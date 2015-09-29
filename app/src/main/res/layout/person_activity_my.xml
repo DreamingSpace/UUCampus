@@ -34,8 +34,7 @@
         <RelativeLayout
             android:id="@+id/my_useless"
             android:layout_height="39dp"
-            android:layout_width="fill_parent"
-            android:background="@drawable/my_shape_listview_press_state">
+            android:layout_width="fill_parent" >
             <ImageView
                 android:id="@+id/z_my_useless"
                 android:layout_width="wrap_content"
@@ -63,8 +62,7 @@
         <RelativeLayout
             android:id="@+id/my_collection"
             android:layout_height="39dp"
-            android:layout_width="fill_parent"
-            android:background="@drawable/my_shape_listview_press_state" >
+            android:layout_width="fill_parent" >
             <ImageView
                 android:id="@+id/z_my_collection"
                 android:layout_width="wrap_content"
@@ -91,8 +89,7 @@
         <RelativeLayout
             android:id="@+id/my_store"
             android:layout_height="39dp"
-            android:layout_width="fill_parent"
-            android:background="@drawable/my_shape_listview_press_state" >
+            android:layout_width="fill_parent" >
             <ImageView
                 android:id="@+id/z_my_store"
                 android:layout_width="wrap_content"
@@ -128,8 +125,7 @@
         <RelativeLayout
             android:id="@+id/my_setting"
             android:layout_height="39dp"
-            android:layout_width="fill_parent"
-            android:background="@drawable/my_shape_listview_press_state" >
+            android:layout_width="fill_parent" >
             <ImageView
                 android:id="@+id/z_my_set"
                 android:layout_width="wrap_content"
@@ -156,8 +152,7 @@
         <RelativeLayout
             android:id="@+id/my_about"
             android:layout_height="39dp"
-            android:layout_width="fill_parent"
-            android:background="@drawable/my_shape_listview_press_state" >
+            android:layout_width="fill_parent" >
             <ImageView
                 android:id="@+id/z_my_about"
                 android:layout_width="wrap_content"
@@ -179,26 +174,7 @@
             android:layout_height="0.5dp"
             android:layout_width="fill_parent"
             android:background="@color/grey_line" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="20dp"
-        android:layout_gravity="center_horizontal">
-        <Button
-            android:id="@+id/register"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="register"
-            android:background="@drawable/my_shape_listview_press_state"/>
-        <Button
-            android:id="@+id/login"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="login"
-            android:background="@drawable/my_shape_listview_press_state"
-            android:layout_marginLeft="20dp"/>
+
     </LinearLayout>
 
 </LinearLayout>

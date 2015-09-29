@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
+import com.dreamspace.uucampus.ui.person.ApplyStoreActivity;
 import com.dreamspace.uucampus.ui.person.MyCollectionActivity;
 import com.dreamspace.uucampus.ui.person.MyStoreActivity;
 import com.dreamspace.uucampus.ui.person.MyUselessActivity;
@@ -38,6 +39,7 @@ public class PersonInfoFragment extends BaseLazyFragment {
         relativeLayout4.setOnClickListener(new MyOnClickListener(4));
         RelativeLayout relativeLayout5 = (RelativeLayout)resultView.findViewById(R.id.my_about);
         relativeLayout5.setOnClickListener(new MyOnClickListener(5));
+
         Button button1 = (Button)resultView.findViewById(R.id.register);
         button1.setOnClickListener(new MyOnClickListener(6));
         Button button2 = (Button)resultView.findViewById(R.id.login);
