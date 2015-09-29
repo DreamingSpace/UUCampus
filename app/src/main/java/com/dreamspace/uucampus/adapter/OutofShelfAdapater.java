@@ -26,7 +26,7 @@ public class OutofShelfAdapater extends BaseAdapter {
     private Context mContext;
     private List<Map<String,Object>> mListItem;
     private String[] name = new String[]{"1111111","2222222"};
-    private String[] price = new String[]{"30yuan","30yuan"};
+    private String[] price = new String[]{"￥30","￥30"};
 
     public OutofShelfAdapater(Context context) {
         this.mInflater = LayoutInflater.from(context);

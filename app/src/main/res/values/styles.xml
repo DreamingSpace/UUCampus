@@ -10,7 +10,7 @@
 
     <!--自定义edittext的样式-->
     <style name="my_edit_style" parent="@android:style/Widget.EditText">
-        <item name="android:background">@drawable/z_my_edittext_style</item>
+        <item name="android:background">@drawable/my_edittext_style</item>
     </style>
 
     <!--自定义dialog主题-->

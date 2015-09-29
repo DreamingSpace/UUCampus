@@ -21,7 +21,7 @@ public class OutofShelfFragment extends BaseLazyFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContext = getActivity();
-        View resultView = inflater.inflate(R.layout.peerson_fragment_listview, container, false);
+        View resultView = inflater.inflate(R.layout.person_fragment_listview, container, false);
         listview = (ListView)resultView.findViewById(R.id.person_info_listview);
         outofShelfeAdapter = new OutofShelfAdapater(mContext);
         listview.setAdapter(outofShelfeAdapter);

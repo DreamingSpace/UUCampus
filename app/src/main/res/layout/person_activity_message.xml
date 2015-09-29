@@ -29,7 +29,7 @@
                     android:id="@+id/portrait"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:src="@drawable/z_my_shape_circle"
+                    android:src="@drawable/my_shape_circle"
                     android:layout_marginLeft="100dp"/>
                 <ImageView
                     android:layout_width="20dp"
@@ -229,7 +229,7 @@
                 <ImageView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:src="@drawable/z_my_weibo"/>
+                    android:src="@drawable/personal_information_icon_weibo"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -256,7 +256,7 @@
                 <ImageView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:src="@drawable/z_my_weichat"/>
+                    android:src="@drawable/personal_information_icon_weixin"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -11,7 +11,7 @@
         android:id="@+id/head_portrait"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:background="@drawable/z_my_shape_circle"
+        android:background="@drawable/my_shape_circle"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp" />
         <TextView
@@ -38,8 +38,8 @@
             <ImageView
                 android:id="@+id/z_my_useless"
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:src="@drawable/z_my_useless"
+                android:layout_height="wrap_content"
+                android:src="@drawable/my_center_button_idle_things"
                 android:layout_marginLeft="40dp"
                 android:layout_centerVertical="true" />
             <TextView
@@ -66,8 +66,8 @@
             <ImageView
                 android:id="@+id/z_my_collection"
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:src="@drawable/z_my_collection"
+                android:layout_height="wrap_content"
+                android:src="@drawable/my_center_button_my_collection"
                 android:layout_marginLeft="40dp"
                 android:layout_centerVertical="true" />
             <TextView
@@ -93,8 +93,8 @@
             <ImageView
                 android:id="@+id/z_my_store"
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:src="@drawable/z_my_store"
+                android:layout_height="wrap_content"
+                android:src="@drawable/my_center_button_my_store"
                 android:layout_marginLeft="40dp"
                 android:layout_centerVertical="true" />
             <TextView
@@ -129,8 +129,8 @@
             <ImageView
                 android:id="@+id/z_my_set"
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:src="@drawable/z_my_set"
+                android:layout_height="wrap_content"
+                android:src="@drawable/my_center_button_set"
                 android:layout_marginLeft="40dp"
                 android:layout_centerVertical="true" />
             <TextView
@@ -156,8 +156,8 @@
             <ImageView
                 android:id="@+id/z_my_about"
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:src="@drawable/z_my_about"
+                android:layout_height="wrap_content"
+                android:src="@drawable/my_center_button_about"
                 android:layout_marginLeft="40dp"
                 android:layout_centerVertical="true" />
             <TextView

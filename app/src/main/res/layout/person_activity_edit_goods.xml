@@ -9,7 +9,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/z_my_edittext_style"
+        android:background="@drawable/my_edittext_style"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="fill_parent"
@@ -20,7 +20,7 @@
             <ImageView
                 android:layout_height="20dp"
                 android:layout_width="20dp"
-                android:src="@drawable/z_my_goods_name"
+                android:src="@drawable/add_product_icon_name"
                 android:layout_gravity="center_vertical" />
             <EditText
                 android:id="@+id/edit1"
@@ -45,7 +45,7 @@
             <ImageView
                 android:layout_height="20dp"
                 android:layout_width="20dp"
-                android:src="@drawable/z_my_goods_price"
+                android:src="@drawable/add_product_icon_price"
                 android:layout_gravity="center_vertical" />
             <EditText
                 android:id="@+id/edit2"
@@ -70,7 +70,7 @@
             <ImageView
                 android:layout_height="20dp"
                 android:layout_width="20dp"
-                android:src="@drawable/z_my_goods_type"
+                android:src="@drawable/add_product_icon_classify"
                 android:layout_gravity="center_vertical" />
             <TextView
                 android:id="@+id/edit3"
@@ -95,7 +95,7 @@
             <ImageView
                 android:layout_height="20dp"
                 android:layout_width="20dp"
-                android:src="@drawable/z_my_goods_introduction"/>
+                android:src="@drawable/add_product_icon_depict"/>
             <EditText
                 android:id="@+id/edit4"
                 android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
         android:text="@string/ok"
         android:textSize="16sp"
         android:textColor="@color/white"
-        android:background="@drawable/z_my_shape_button_commit"
+        android:background="@drawable/my_shape_button_commit"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="60dp"
         android:layout_marginLeft="40dp"

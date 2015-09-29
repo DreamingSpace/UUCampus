@@ -22,7 +22,7 @@ public class MyCollectionMarketsFragment extends BaseLazyFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContext = getActivity();
-        View resultView = inflater.inflate(R.layout.peerson_fragment_listview,null);
+        View resultView = inflater.inflate(R.layout.person_fragment_listview,null);
         listView = (ListView)resultView.findViewById(R.id.person_info_listview);
         marketsAdapter = new MyCollectionMarketsAdapter(mContext);
         listView.setAdapter(marketsAdapter);

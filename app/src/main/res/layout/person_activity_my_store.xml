@@ -13,7 +13,7 @@
             android:id="@+id/head_pic"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
-            android:src="@drawable/z_my_shape_circle"
+            android:src="@drawable/my_shape_circle"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="21dp"
             android:layout_marginBottom="11dp" />
@@ -46,10 +46,10 @@
             android:layout_width="fill_parent">
             <ImageView
                 android:id="@+id/my_goods"
-                android:layout_height="18dp"
-                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/z_my_goods"
+                android:src="@drawable/shoppage_icon_goods"
                 android:layout_marginLeft="30dp" />
             <TextView
                 android:layout_height="wrap_content"
@@ -72,10 +72,10 @@
                 android:layout_width="fill_parent">
                 <ImageView
                     android:id="@+id/uu_merchant_service"
-                    android:layout_height="18dp"
-                    android:layout_width="18dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/z_my_merchant_service"
+                    android:src="@drawable/shoppage_icon_custom_service"
                     android:layout_marginLeft="30dp" />
                 <TextView
                     android:layout_height="wrap_content"

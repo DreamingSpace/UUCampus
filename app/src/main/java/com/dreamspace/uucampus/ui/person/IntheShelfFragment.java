@@ -21,7 +21,7 @@ public class IntheShelfFragment extends BaseLazyFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContext = getActivity();
-        View resultView = inflater.inflate(R.layout.peerson_fragment_listview, container, false);
+        View resultView = inflater.inflate(R.layout.person_fragment_listview, container, false);
         intheShelfAdapter = new IntheShelfAdapter(mContext);
         listview = (ListView)resultView.findViewById(R.id.person_info_listview);
         listview.setAdapter(intheShelfAdapter);

@@ -81,7 +81,7 @@ public class MyCollectionMarketsAdapter extends BaseAdapter {
         holder.my_market_name.setText((String)mListItem.get(position).get("market_name"));
         holder.my_look_num.setText((String)mListItem.get(position).get("look_num"));
         holder.my_thumb_up.setText((String)mListItem.get(position).get("thumb_up"));
-        holder.my_collection.setImageResource(R.drawable.z_my_collection);
+        holder.my_collection.setImageResource(R.drawable.gerenxiaodian_icon_collect);
         holder.my_money.setText((String)mListItem.get(position).get("money"));
         holder.my_privilege.setText((String)mListItem.get(position).get("privilege"));
         return convertView;

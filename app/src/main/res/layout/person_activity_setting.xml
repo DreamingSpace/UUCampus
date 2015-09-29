@@ -10,10 +10,10 @@
         android:background="@color/white">
         <ImageView
             android:id="@+id/my_goods"
-            android:layout_height="18dp"
-            android:layout_width="18dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@drawable/z_my_update"
+            android:src="@drawable/setting_icon_update"
             android:layout_marginLeft="30dp" />
         <TextView
             android:layout_height="wrap_content"
@@ -47,10 +47,10 @@
         android:background="@color/white">
         <ImageView
             android:id="@+id/uu_merchant_service"
-            android:layout_height="18dp"
-            android:layout_width="18dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@drawable/z_my_feedback"
+            android:src="@drawable/setting_icon_suggestion"
             android:layout_marginLeft="30dp" />
         <TextView
             android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
         android:text="@string/logout"
         android:textSize="16sp"
         android:textColor="@color/white"
-        android:background="@drawable/z_my_shape_button_commit"
+        android:background="@drawable/my_shape_button_commit"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="80dp"
         android:layout_marginLeft="40dp"

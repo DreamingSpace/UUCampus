@@ -6,7 +6,7 @@
         android:layout_height="80dp"
         android:layout_width="100dp"
         android:scaleType="fitXY"
-        android:src="@drawable/z_my_goods_img"
+        android:src="@drawable/commodity_editor_btn_picture"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp" />
@@ -24,7 +24,7 @@
             android:id="@+id/my_useless_name"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textColor="@color/background_gradient_start" />
         <TextView
             android:id="@+id/my_useless_price"
@@ -48,8 +48,8 @@
             android:layout_height="25dp"
             android:text="@string/edit"
             android:textColor="@color/fastlane_background"
-            android:textSize="12sp"
-            android:background="@drawable/z_my_shape_button_frame"
+            android:textSize="14sp"
+            android:background="@drawable/my_shape_button_frame"
             android:layout_gravity="right" />
         <Button
             android:id="@+id/my_useless_ontheshelf_button"
@@ -57,10 +57,10 @@
             android:layout_height="25dp"
             android:text="@string/outofshelf"
             android:textColor="@color/fastlane_background"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:gravity="center"
             android:layout_marginTop="10dp"
-            android:background="@drawable/z_my_shape_button_frame"
+            android:background="@drawable/my_shape_button_frame"
             android:layout_gravity="right" />
     </LinearLayout>
 </RelativeLayout>

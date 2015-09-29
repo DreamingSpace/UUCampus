@@ -51,7 +51,7 @@
                 android:layout_height="3dp"
                 android:layout_width="80dp"
                 android:layout_weight="1.0"
-                android:src="@drawable/z_my_splid" />
+                android:src="@drawable/my_splid" />
             <ImageView
                 android:layout_height="3dp"
                 android:layout_width="80dp"
