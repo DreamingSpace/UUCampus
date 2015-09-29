@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/custom_toolbar"></include>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="user_name" />
+        <EditText
+            android:id="@+id/phonenum"
+            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_marginLeft="10dp"/>
+        <Button
+            android:id="@+id/send"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="send"
+            android:background="@drawable/my_shape_listview_press_state"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="code" />
+        <EditText
+            android:id="@+id/code"
+            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_marginLeft="50dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="password" />
+        <EditText
+            android:id="@+id/password"
+            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_marginLeft="20dp"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/commit"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="commit"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/my_shape_listview_press_state"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

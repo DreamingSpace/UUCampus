@@ -179,7 +179,26 @@
             android:layout_height="0.5dp"
             android:layout_width="fill_parent"
             android:background="@color/grey_line" />
-
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="60dp"
+        android:layout_gravity="center_horizontal">
+        <Button
+            android:id="@+id/register"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="register"
+            android:background="@drawable/my_shape_listview_press_state"/>
+        <Button
+            android:id="@+id/login"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="login"
+            android:background="@drawable/my_shape_listview_press_state"
+            android:layout_marginLeft="20dp"/>
     </LinearLayout>
 
 </LinearLayout>
