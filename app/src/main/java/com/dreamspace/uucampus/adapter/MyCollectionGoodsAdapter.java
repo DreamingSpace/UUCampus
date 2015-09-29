@@ -93,7 +93,7 @@ public class MyCollectionGoodsAdapter extends BaseAdapter {
         holder.my_privilege.setText((String) mListItem.get(position).get("privilege"));
         //holder.listView.setGroupIndicator(null);
         final ExpandableListAdapter adapter = new BaseExpandableListAdapter() {
-            int[] group_logo_array = new int[]{R.drawable.gerenxiaodian_icon_collect};
+            int[] group_logo_array = new int[]{R.drawable.luyou_icon_discount};
             // 一级标签上的标题数据源
             private String[] group_title_arry = new String[]{"5-10人，每人45元；11-20人，每人40元；21人以上每人35元。"};
             // 子视图显示文字
