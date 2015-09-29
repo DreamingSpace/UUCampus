@@ -34,7 +34,8 @@
         <RelativeLayout
             android:id="@+id/my_useless"
             android:layout_height="39dp"
-            android:layout_width="fill_parent" >
+            android:layout_width="fill_parent"
+            android:background="@drawable/my_shape_listview_press_state">
             <ImageView
                 android:id="@+id/z_my_useless"
                 android:layout_width="wrap_content"
@@ -62,7 +63,8 @@
         <RelativeLayout
             android:id="@+id/my_collection"
             android:layout_height="39dp"
-            android:layout_width="fill_parent" >
+            android:layout_width="fill_parent"
+            android:background="@drawable/my_shape_listview_press_state" >
             <ImageView
                 android:id="@+id/z_my_collection"
                 android:layout_width="wrap_content"
@@ -89,7 +91,8 @@
         <RelativeLayout
             android:id="@+id/my_store"
             android:layout_height="39dp"
-            android:layout_width="fill_parent" >
+            android:layout_width="fill_parent"
+            android:background="@drawable/my_shape_listview_press_state" >
             <ImageView
                 android:id="@+id/z_my_store"
                 android:layout_width="wrap_content"
@@ -125,7 +128,8 @@
         <RelativeLayout
             android:id="@+id/my_setting"
             android:layout_height="39dp"
-            android:layout_width="fill_parent" >
+            android:layout_width="fill_parent"
+            android:background="@drawable/my_shape_listview_press_state" >
             <ImageView
                 android:id="@+id/z_my_set"
                 android:layout_width="wrap_content"
@@ -152,7 +156,8 @@
         <RelativeLayout
             android:id="@+id/my_about"
             android:layout_height="39dp"
-            android:layout_width="fill_parent" >
+            android:layout_width="fill_parent"
+            android:background="@drawable/my_shape_listview_press_state" >
             <ImageView
                 android:id="@+id/z_my_about"
                 android:layout_width="wrap_content"

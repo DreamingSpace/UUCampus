@@ -43,7 +43,8 @@
         <RelativeLayout
             android:id="@+id/relative"
             android:layout_height="40dp"
-            android:layout_width="fill_parent">
+            android:layout_width="fill_parent"
+            android:background="@drawable/my_shape_listview_press_state">
             <ImageView
                 android:id="@+id/my_goods"
                 android:layout_height="wrap_content"
@@ -69,7 +70,8 @@
             android:layout_marginRight="10dp" />
             <RelativeLayout
                 android:layout_height="40dp"
-                android:layout_width="fill_parent">
+                android:layout_width="fill_parent"
+                android:background="@drawable/my_shape_listview_press_state">
                 <ImageView
                     android:id="@+id/uu_merchant_service"
                     android:layout_height="wrap_content"

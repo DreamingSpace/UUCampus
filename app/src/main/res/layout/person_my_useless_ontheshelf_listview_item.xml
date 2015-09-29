@@ -49,7 +49,7 @@
             android:text="@string/edit"
             android:textColor="@color/fastlane_background"
             android:textSize="14sp"
-            android:background="@drawable/my_shape_button_frame"
+            android:background="@drawable/my_shape_button_press_state1"
             android:layout_gravity="right" />
         <Button
             android:id="@+id/my_useless_ontheshelf_button"
@@ -60,7 +60,7 @@
             android:textSize="14sp"
             android:gravity="center"
             android:layout_marginTop="10dp"
-            android:background="@drawable/my_shape_button_frame"
+            android:background="@drawable/my_shape_button_press_state1"
             android:layout_gravity="right" />
     </LinearLayout>
 </RelativeLayout>

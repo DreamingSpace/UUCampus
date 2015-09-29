@@ -118,7 +118,7 @@
                     android:layout_width="fill_parent"
                     android:text="@string/commit_apply"
                     android:textColor="@color/white"
-                    android:background="@drawable/my_shape_button_commit"
+                    android:background="@drawable/my_shape_button_press_state2"
                     android:layout_weight="1.0"
                     android:layout_marginTop="20dp" />
         </LinearLayout>
