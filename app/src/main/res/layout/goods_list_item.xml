@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/good_image_iv"
+        android:background="@color/search_opaque"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="87dp"
+        android:layout_height="65dp" />
+    <TextView
+        android:text="汤山温泉两天一夜游"
+        android:id="@+id/good_name_tv"
+        android:layout_alignTop="@id/good_image_iv"
+        android:layout_toRightOf="@id/good_image_iv"
+        android:layout_marginLeft="15dp"
+        android:textSize="16sp"
+        android:textColor="@color/good_name_text_color"
+        android:textStyle="bold"
+        android:singleLine="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="康辉旅行社"
+        android:id="@+id/good_shop_name_tv"
+        android:layout_below="@id/good_name_tv"
+        android:layout_marginTop="12dp"
+        android:layout_alignLeft="@id/good_name_tv"
+        android:textColor="@color/app_theme_color2"
+        android:textSize="11sp"
+        android:singleLine="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/good_browse_collect_ll"
+        android:gravity="center_vertical"
+        android:layout_marginTop="14dp"
+        android:layout_alignLeft="@id/good_name_tv"
+        android:layout_below="@id/good_shop_name_tv"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/xianzhi_icon_visitor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="65人已浏览"
+            android:id="@+id/good_browse_tv"
+            android:layout_marginLeft="5dp"
+            android:singleLine="true"
+            style="@style/browse_collect_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:src="@drawable/xianzhi_icon_like"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="15人赞"
+            android:id="@+id/good_like_tv"
+            android:layout_marginLeft="5dp"
+            android:singleLine="true"
+            style="@style/browse_collect_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:text="￥230"
+        android:id="@+id/good_price_tv"
+        android:layout_alignBottom="@id/good_browse_collect_ll"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/price_text_color"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/good_preferential_ll"
+        android:gravity="center_vertical"
+        android:layout_alignLeft="@id/good_name_tv"
+        android:layout_below="@id/good_browse_collect_ll"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/luyou_icon_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="满50减10，满100减20"
+            android:id="@+id/good_preferential_tv"
+            android:layout_marginLeft="5dp"
+            style="@style/preferential_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

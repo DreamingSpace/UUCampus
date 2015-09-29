@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.market.FastInAct">
+    <item
+        android:id="@+id/action_sort"
+        android:icon="@drawable/xianzhi_status_bar_sort"
+        android:title="sort"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/xianzhi_status_bar_search"
+        android:title="search"
+        app:showAsAction="always"/>
+</menu>

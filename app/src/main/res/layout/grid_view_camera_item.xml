@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <FrameLayout
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:background="#535353">
+        <TextView
+            android:drawableTop="@drawable/camera_icon"
+            android:layout_gravity="center"
+            android:drawablePadding="15dp"
+            android:text="相机拍照"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+</LinearLayout>

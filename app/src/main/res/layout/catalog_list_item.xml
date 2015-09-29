@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="41dp"
+    android:background="@color/white">
+    <LinearLayout
+        android:id="@+id/catalog_edit_delete_ll"
+        android:visibility="gone"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="22dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/catalog_edit_iv"
+            android:src="@drawable/my_goods_btn_edit"
+            android:layout_width="15dp"
+            android:layout_height="13dp" />
+        <View
+            android:background="@color/preferential_text_color"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="1dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/catalog_delete_iv"
+            android:src="@drawable/my_goods_btn_delete"
+            android:layout_width="15dp"
+            android:layout_height="13dp" />
+    </LinearLayout>
+    <TextView
+        android:text="一日游"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/catalog_info_tv"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_centerVertical="true"
+        android:singleLine="true"
+        android:layout_toLeftOf="@id/catalog_edit_delete_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="city">
+        <item>abcd</item>
+        <item>dddd</item>
+        <item>zzzz</item>
+        <item>xxxx</item>
+        <item>cccc</item>
+    </string-array>
+</resources>

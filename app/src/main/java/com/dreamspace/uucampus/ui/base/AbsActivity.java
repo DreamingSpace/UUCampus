@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
  * Created by Administrator on 2015/7/25 0025.
  */
 public abstract class AbsActivity extends AppCompatActivity {
-    private Toolbar mToolBar;
+    protected Toolbar mToolBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public abstract class AbsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void initToolBar() {
+    protected void initToolBar() {
         mToolBar = (Toolbar) findViewById(R.id.tl_custom);
         setSupportActionBar(mToolBar);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);

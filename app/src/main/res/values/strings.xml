@@ -9,4 +9,97 @@
     <string name="bottom_tab_two">商家</string>
     <string name="bottom_tab_three">个人</string>
     <string name="action_settings">Settings</string>
+    
+    <!-- market Strings used-->
+    <string name="travel">旅游</string>
+    <string name="study_abroad">留学</string>
+    <string name="driver_school">驾校</string>
+    <string name="class_uniform">班服</string>
+    <string name="personal_shop">个人小店</string>
+
+    <string name="items_other">其他</string>
+    <!-- travel item strings-->
+    <string name="travel_item_near">周边短线</string>
+    <string name="travel_item_ancient_town">水乡古镇</string>
+    <string name="travel_item_barbecue">露营烧烤</string>
+    <string name="travel_item_carnie">游乐场</string>
+    <string name="travel_item_long_distance">国内长线</string>
+    <string name="travel_item_beach">海滨沙滩</string>
+
+    <!-- language item strings-->
+    <string name="language_item_TOEFL">托福</string>
+    <string name="language_item_IETLS">雅思</string>
+    <string name="language_item_GRE">GRE</string>
+    <string name="language_item_minlang">小语种</string>
+    <string name="language_item_foradvice">留学咨询</string>
+
+    <!-- driver school item strings-->
+    <string name="driver_school_item_normal">普通班</string>
+    <string name="driver_school_item_vip">VIP班</string>
+
+    <!-- uniforms item strings-->
+    <string name="uniforms_class">班服定制</string>
+    <string name="uniforms_club">社团服装</string>
+    <string name="uniforms_stage">舞台服装</string>
+    <string name="uniforms_lease">服装租凭</string>
+    
+    <!-- shop management strings used-->
+    <string name="shop_host">店铺主页</string>
+    <string name="my_goods">我的商品</string>
+    <string name="yoyo_custom_service">悠悠商家客服</string>
+    
+    <string name="add">添加</string>
+    <string name="no_goods_at_present">暂时还没有商品,快去</string>
+    <string name="no_goods_ba">吧</string>
+    
+    <string name="catalog_list">分类列表</string>
+    <string name="preferential_list">优惠列表</string>
+    <string name="on_sale">出售中</string>
+    <string name="already_pull_off">已下架</string>
+
+    <string name="new_preferential">新建优惠</string>
+    <string name="edit_preferential">编辑优惠</string>
+    <string name="new_catalog">新建分类</string>
+    <string name="edit_catalog">编辑分类</string>
+    <string name="finish_edit">完成编辑</string>
+
+    <string name="pull_off">下架</string>
+    <string name="edit">编辑</string>
+    <string name="sale">上架</string>
+
+    <!-- add good strings used-->
+    <string name="good_add">商品添加</string>
+    <string name="click_to_add_image">点击添加商品图片</string>
+    <string name="good_name">商品名称</string>
+    <string name="good_price">商品价格</string>
+    <string name="good_preferential">商品优惠</string>
+    <string name="good_catalog">商品分类</string>
+    <string name="good_label">标签</string>
+    <string name="good_detail">详情描述(请在这里输入不少于10个字)</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
+
+
+    <string name="add_new_preferential">新建商品优惠</string>
+    <string name="add_new_catalog">新建商品分类</string>
+    <string name="good_label1">商品标签</string>
+    <string name="new_pre_cata_hint">输入文字</string>
+
+    <!-- sort strings used-->
+    <string name="most_popular">人气最高</string>
+    <string name="highest_appraise">评价最高</string>
+    <string name="recent_publish">最新发布</string>
+    <string name="cheapest">价格最低</string>
+    <string name="title_activity_test">Test</string>
+
+    <string name="hello_world">Hello world!</string>
+
+    <!-- select photo stings used-->
+    <string name="select_photo">选择图片</string>
+    <string name="all_photos">所有图片</string>
+    <string name="preview">预览</string>
+    <string name="no_camera">设备没有相机~</string>
+    <string name="plz_select_photo">请选择一张图片~</string>
+    <string name="preview_photo">图片预览</string>
+    <string name="finish">完成</string>
 </resources>

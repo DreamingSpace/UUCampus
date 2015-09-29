@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/gride_view_image_bg_iv"
+        android:background="@color/app_theme_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <ImageView
+        android:id="@+id/gride_view_image_iv"
+        android:background="@color/white"
+        android:scaleType="centerInside"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/default_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

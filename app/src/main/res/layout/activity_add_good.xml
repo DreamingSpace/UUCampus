@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title_center_custom_toolbar"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@drawable/add_good_info_bg"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginRight="34dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/add_good_image_iv"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/add_product_btn_picture"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <TextView
+            android:text="@string/click_to_add_image"
+            style="@style/add_good_hint_text_style"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_marginTop="16dp"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:id="@+id/add_good_name_ll"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="41dp">
+            <ImageView
+                android:src="@drawable/add_product_icon_name"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/add_good_name_et"
+                android:singleLine="true"
+                android:layout_marginLeft="10dp"
+                android:hint="@string/good_name"
+                android:textSize="13sp"
+                android:background="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:id="@+id/add_good_price_ll"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="41dp">
+            <ImageView
+                android:src="@drawable/add_product_icon_price"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/add_good_price_et"
+                android:inputType="numberDecimal"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:hint="@string/good_price"
+                android:textSize="13sp"
+                android:background="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:id="@+id/add_good_preferential_ll"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="41dp">
+            <ImageView
+                android:src="@drawable/add_product_icon_discount"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/add_good_preferential_tv"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:text="@string/good_preferential"
+                android:textSize="13sp"
+                android:background="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:id="@+id/add_good_catalog_ll"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="41dp">
+            <ImageView
+                android:src="@drawable/add_product_icon_classify"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/add_good_classify_tv"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:text="@string/good_catalog"
+                android:textSize="13sp"
+                android:background="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:id="@+id/add_good_label_ll"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="41dp">
+            <ImageView
+                android:src="@drawable/add_product_icon_label"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/add_good_label_tv"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:text="@string/good_label"
+                android:textSize="13sp"
+                android:background="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="114dp">
+            <ImageView
+                android:layout_marginTop="12dp"
+                android:src="@drawable/add_product_icon_depict"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/add_good_detail_et"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="start"
+                android:hint="@string/good_detail"
+                android:textSize="13sp"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:text="添 加"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:id="@+id/good_add_btn"
+        android:background="@drawable/shop_management_btn_bg"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginRight="37dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
+</LinearLayout>

@@ -39,4 +39,18 @@
     <color name="gplus_color_2">#f4b400</color>
     <color name="gplus_color_3">#427fed</color>
     <color name="gplus_color_4">#b23424</color>
+    
+    <!-- marketfragment color used-->
+    <color name="app_theme_color">#06c1ae</color>
+    <color name="app_theme_color2">#059183</color>
+    <color name="smart_tab_layout_default_text_color">#666666</color>
+    <color name="market_fragments_bg_color">#F0EFED</color>
+    <color name="divider_color">#999999</color>
+    <color name="good_name_text_color">#222222</color>
+    <color name="price_text_color">#f15353</color>
+    <color name="my_shop_text_color">#333333</color>
+    <color name="preferential_text_color">#b7b7b7</color>
+    <color name="dialog_center_color">#43aa9f</color>
+    <color name="new_title_text_color">#059181</color>
+    <color name="new_pre_cata_edittext_bottom_color">#06c2ad</color>
 </resources>

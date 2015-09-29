@@ -3,7 +3,70 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/gplus_color_1</item>
+        <item name="colorPrimary">@color/app_theme_color</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
+        <item name="actionMenuTextColor">@color/white</item>
     </style>
 
+    <!-- market style used-->
+    <style name="major_sale_text_style">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/divider_color</item>
+    </style>
+    
+    <style name="browse_collect_text_style">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/smart_tab_layout_default_text_color</item>
+    </style>
+
+    <style name="preferential_text_style">
+        <item name="android:textSize">9sp</item>
+        <item name="android:textColor">@color/smart_tab_layout_default_text_color</item>
+    </style>
+
+    <style name="my_shop_text_style">
+        <item name="android:textColor">@color/my_shop_text_color</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="add_text_style">
+        <item name="android:textColor">#f05452</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="tool_bar_text_style">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="sort_text_style">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@drawable/market_smart_tab_textcolor</item>
+    </style>
+
+    <style name="shop_management_btn_text_style">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="pull_off_sale_btn_style">
+        <item name="android:textColor">@color/app_theme_color2</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="add_good_hint_text_style">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/smart_tab_layout_default_text_color</item>
+    </style>
+
+    <style name="shop_management_dialog_text_style">
+        <item name="android:textColor">@color/smart_tab_layout_default_text_color</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="add_good_new_cata_pre_title_text_style">
+        <item name="android:textColor">@color/new_title_text_color</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>
