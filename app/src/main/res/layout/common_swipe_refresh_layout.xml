@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.dreamspace.superman.UI.View.LoadMoreListView
+    <com.dreamspace.uucampus.widget.LoadMoreListView
         android:id="@+id/load_more_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:dividerHeight="15dp">
+        android:layout_marginTop="8dp"
+        android:divider="@color/transparent" />
 
-    </com.dreamspace.superman.UI.View.LoadMoreListView>
 </android.support.v4.widget.SwipeRefreshLayout>

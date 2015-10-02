@@ -1,9 +1,9 @@
-package com.dreamspace.uucampus.model;
+package com.dreamspace.uucampus.model.api;
 
 /**
- * Created by Wells on 2015/9/27.
+ * Created by wufan on 2015/9/28.
  */
-public class LoginRes {
+public class RegisterRes {
     private String access_token;
     private String timelimit;
 

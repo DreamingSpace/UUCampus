@@ -15,6 +15,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.activity.FreeGoods.FreeGoodsActivity"
+            android:label="@string/free_goods">
+        </activity>
+        <activity
+            android:name=".ui.activity.FreeGoods.FreeGoodsDetailActivity"
+            android:label="@string/free_goods">
+        </activity>
+        <activity
+            android:name=".ui.activity.FreeGoods.FreeGoodsPublishFirstActivity"
+            android:label="@string/select_goods_photo">
+        </activity>
+        <activity
+            android:name=".ui.activity.FreeGoods.FreeGoodsPublishSecondActivity"
+            android:label="@string/write_goods_detail">
+        </activity>
+        <activity
+            android:name=".ui.activity.FreeGoods.FreeGoodsPublishSuccessActivity"
+            android:label="@string/publish_success">
+        </activity>
+        <activity android:name=".ui.SelectPhotoActivity"/>
+        <activity android:name=".ui.PhotoPreviewActivity"/>
     </application>
 
 </manifest>
