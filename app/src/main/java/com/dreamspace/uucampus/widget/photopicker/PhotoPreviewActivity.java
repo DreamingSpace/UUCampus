@@ -1,4 +1,4 @@
-package com.dreamspace.uucampus.ui;
+package com.dreamspace.uucampus.widget.photopicker;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;

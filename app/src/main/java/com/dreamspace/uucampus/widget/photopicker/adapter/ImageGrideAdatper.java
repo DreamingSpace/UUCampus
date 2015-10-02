@@ -1,4 +1,4 @@
-package com.dreamspace.uucampus.adapter;
+package com.dreamspace.uucampus.widget.photopicker.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

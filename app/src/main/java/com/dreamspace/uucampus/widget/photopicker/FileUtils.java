@@ -1,4 +1,4 @@
-package com.dreamspace.uucampus.common.utils;
+package com.dreamspace.uucampus.widget.photopicker;
 
 import android.content.Context;
 import android.os.Environment;

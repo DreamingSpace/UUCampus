@@ -1,4 +1,4 @@
-package com.dreamspace.uucampus.model.entity;
+package com.dreamspace.uucampus.widget.photopicker.entity;
 
 /**
  * Created by Lx on 2015/9/28.

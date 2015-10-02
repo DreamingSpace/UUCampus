@@ -1,4 +1,4 @@
-package com.dreamspace.uucampus.ui;
+package com.dreamspace.uucampus.widget.photopicker;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,8 +23,8 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.adapter.ImageFolderListAdapter;
-import com.dreamspace.uucampus.adapter.ImageGrideAdatper;
+import com.dreamspace.uucampus.widget.photopicker.adapter.ImageFolderListAdapter;
+import com.dreamspace.uucampus.widget.photopicker.adapter.ImageGrideAdatper;
 import com.dreamspace.uucampus.common.utils.FileUtils;
 import com.dreamspace.uucampus.model.entity.Folder;
 import com.dreamspace.uucampus.model.entity.Image;

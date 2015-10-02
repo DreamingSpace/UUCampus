@@ -1,4 +1,4 @@
-package com.dreamspace.uucampus.model.entity;
+package com.dreamspace.uucampus.widget.photopicker.entity;
 
 import java.util.List;
 
