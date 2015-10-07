@@ -10,11 +10,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,7 +20,12 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.dreamspace.uucampus.API.ApiManager;
+import com.dreamspace.uucampus.API.UUService;
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.model.person.ErrorRes;
+import com.dreamspace.uucampus.model.person.UpdateUserMessageReq;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
 import java.io.ByteArrayOutputStream;
@@ -30,6 +33,9 @@ import java.io.File;
 import java.util.Calendar;
 
 import butterknife.Bind;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Created by zsh on 2015/9/23.
@@ -42,7 +48,6 @@ public class PersonMessageActivity extends AbsActivity {
     private static final int PHOTO_RESOULT = 3;// 结果
     private static final String IMAGE_UNSPECIFIED = "image/*";
     private Context mContext;
-    private TextView text1,text2,text3;
     private String[] items = new String[] { "从手机相册选择", "拍照" };
     private String[] item1 = new String[] {"男", "女"};
     @Bind(R.id.portrait)
@@ -61,6 +66,8 @@ public class PersonMessageActivity extends AbsActivity {
     RelativeLayout weibo;
     @Bind(R.id.relative_weichat)
     RelativeLayout weichat;
+
+    private UUService mService;
     @Override
     protected int getContentView() {
         return R.layout.person_activity_message;
@@ -69,6 +76,7 @@ public class PersonMessageActivity extends AbsActivity {
     @Override
     protected void prepareDatas() {
         mContext = this;
+        mService = ApiManager.getService(mContext);
         portrait.setOnClickListener(new MyOnClickListener(0));
         sex.setOnClickListener(new MyOnClickListener(1));
         //school.setOnClickListener(new MyOnClickListener(2));
@@ -99,6 +107,7 @@ public class PersonMessageActivity extends AbsActivity {
 
     @Override
     protected void initViews() {
+        getUserMessage();
 
     }
     public class MyOnClickListener implements View.OnClickListener {
@@ -200,7 +209,6 @@ public class PersonMessageActivity extends AbsActivity {
                 photo = extras.getParcelable("data");
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 photo.compress(Bitmap.CompressFormat.JPEG, 75, stream);// (0-100)压缩文件
-                //此处可以把Bitmap保存到sd卡中，具体请看：http://www.cnblogs.com/linjiqin/archive/2011/12/28/2304940.html
 
                 portrait.setImageBitmap(photo); //把图片显示在ImageView控件上
             }
@@ -246,5 +254,28 @@ public class PersonMessageActivity extends AbsActivity {
                         dialog.dismiss();
                     }
                 }).show();
+    }
+    void getUserMessage(){
+        if (NetUtils.isNetworkConnected(mContext)){
+            mService.getUserMessage(new Callback<UpdateUserMessageReq>() {
+                @Override
+                public void success(UpdateUserMessageReq updateUserMessageReq, Response response) {
+                    if (response.getStatus() == 200){
+                        updateUserMessageReq.setImage("image");
+                        updateUserMessageReq.setBirthday("birthday");
+                        updateUserMessageReq.setSchool("school");
+
+
+                    }
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    ErrorRes res = (ErrorRes) error.getBodyAs(ErrorRes.class);
+                    Log.i("INFO", error.getMessage());
+                    Log.i("INFO", res.toString());
+                }
+            });
+        }
     }
 }
