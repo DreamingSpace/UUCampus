@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.adapter.IntheShelfAdapter;
+import com.dreamspace.uucampus.adapter.person.IntheShelfAdapter;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 
 /**

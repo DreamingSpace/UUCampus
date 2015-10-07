@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Parcel;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -18,17 +16,14 @@ import com.dreamspace.uucampus.API.ApiManager;
 import com.dreamspace.uucampus.API.UUService;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.common.utils.NetUtils;
-import com.dreamspace.uucampus.model.person.CheckUpdateRes;
-import com.dreamspace.uucampus.model.person.ErrorRes;
+import com.dreamspace.uucampus.model.ErrorRes;
+import com.dreamspace.uucampus.model.api.CheckUpdateRes;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
-
-import java.util.List;
 
 import butterknife.Bind;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
-import retrofit.http.Path;
 
 /**
  * Created by zsh on 2015/9/22.
@@ -117,7 +112,7 @@ public class SettingActivity extends AbsActivity {
                 public void failure(RetrofitError error) {
                     ErrorRes res = (ErrorRes) error.getBodyAs(ErrorRes.class);
                     Log.i("INFO", error.getMessage());
-                    Log.i("INFO", res.toString());
+                    //Log.i("INFO", res.toString());
                 }
             });
 

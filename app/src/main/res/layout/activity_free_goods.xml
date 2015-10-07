@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/custom_toolbar"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/free_goods_tab_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.melnykov.fab.FloatingActionButton xmlns:fab="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/free_goods_publish_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/xianzhi_btn_publish"
+            fab:fab_colorNormal="#fff"
+            fab:fab_colorPressed="#fff" />
+
+        <!--fab:fab_colorNormal="@color/accent"-->
+        <!--fab:fab_colorPressed="@color/accent_pressed"-->
+        <!--fab:fab_colorRipple="@color/ripple"-->
+
+    </RelativeLayout>
+</LinearLayout>

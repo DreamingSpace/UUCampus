@@ -13,8 +13,9 @@ import com.dreamspace.uucampus.API.ApiManager;
 import com.dreamspace.uucampus.API.UUService;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.common.utils.NetUtils;
-import com.dreamspace.uucampus.model.person.ErrorRes;
-import com.dreamspace.uucampus.model.person.FeedbackContentReq;
+import com.dreamspace.uucampus.model.ErrorRes;
+import com.dreamspace.uucampus.model.api.CommitSuggestionRes;
+import com.dreamspace.uucampus.model.api.ContentReq;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
 import butterknife.Bind;
@@ -76,11 +77,11 @@ public class FeedbackActivity extends AbsActivity {
     }
     void commitFeedback(){
         if (NetUtils.isNetworkConnected(mContext)) {
-            FeedbackContentReq req = new FeedbackContentReq();
+            ContentReq req = new ContentReq();
             req.setContent(text);
-            mService.commitFeedback(req, new Callback<Response>() {
+            mService.commitSuggestion(req, new Callback<CommitSuggestionRes>() {
                 @Override
-                public void success(Response response, Response response2) {
+                public void success(CommitSuggestionRes commitSuggestionRes, Response response) {
                     if (response.getStatus() == 200) {
                         Toast.makeText(mContext, "提交反馈成功", Toast.LENGTH_LONG).show();
                     }
@@ -90,7 +91,7 @@ public class FeedbackActivity extends AbsActivity {
                 public void failure(RetrofitError error) {
                     ErrorRes res = (ErrorRes) error.getBodyAs(ErrorRes.class);
                     Log.i("INFO", error.getMessage());
-                    Log.i("INFO", res.toString());
+                    //Log.i("INFO", res.toString());
                 }
             });
         }else{

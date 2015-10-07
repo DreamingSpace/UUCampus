@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/custom_toolbar" />
+
+    <GridView
+        android:id="@+id/photos_gv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_center_tl_custom"
+        android:clipToPadding="false"
+        android:horizontalSpacing="8dp"
+        android:numColumns="3"
+        android:paddingTop="5dp"
+        android:verticalSpacing="8dp" />
+
+    <RelativeLayout
+        android:id="@+id/select_photo_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#cc000000">
+
+        <Button
+            android:id="@+id/photo_folder_catalog_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/text_indicator"
+            android:paddingLeft="16dp"
+            android:text="@string/all_photos"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/photo_preview_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:enabled="false"
+            android:text="@string/preview"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/select_photo_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/select_photo_bottom_bar"
+        android:layout_below="@+id/title_center_tl_custom"
+        android:background="#bb000000"
+        android:visibility="invisible" />
+</LinearLayout>

@@ -1,12 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="12dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingBottom="12dp"
-    tools:context="com.dreamspace.superman.UI.Fragment.Index.HandpickFragment">
-    <include
-        layout="@layout/common_swipe_refresh_layout"></include>
+    android:paddingTop="12dp">
+
+    <include layout="@layout/common_swipe_refresh_layout"></include>
 </LinearLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/activity_margin"
+    android:background="@drawable/dialog_goods_info"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_margin"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/goods_classify"
+            android:textColor="@color/text_normal"
+            android:textSize="18sp" />
+
+        <com.dreamspace.uucampus.widget.WheelView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/goods_classify_wheel"
+            android:layout_marginTop="14dp"
+            android:background="#F0EFED"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="228dp"
+            android:layout_height="100dp"
+            app:itemNumber="3"
+            app:unitHight="40dp"
+            app:lineColor="#999999"
+            app:lineHeight="0.5dp"
+            app:normalTextColor="#666666"
+            app:normalTextSize="14sp"
+            app:selectedTextColor="#43aa9f"
+            app:selectedTextSize="18sp"/>
+        </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/main_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/goods_classify_ensure_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_background_selectable"
+            android:text="@string/ensure"
+            android:textSize="18sp"
+            android:textColor="@color/custom_text" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#dcdcdc" />
+
+        <Button
+            android:id="@+id/goods_classify_cancel_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:background="@drawable/button_background_selectable"
+            android:text="@string/cancel"
+            android:textColor="@color/custom_text" />
+    </LinearLayout>
+</LinearLayout>

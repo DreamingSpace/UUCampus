@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.adapter.MyCollectionGoodsAdapter;
+import com.dreamspace.uucampus.adapter.person.MyCollectionGoodsAdapter;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 
 /**

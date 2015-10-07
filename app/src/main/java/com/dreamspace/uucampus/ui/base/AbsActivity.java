@@ -12,6 +12,7 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 
 import butterknife.ButterKnife;
+import retrofit.RetrofitError;
 
 /**
  * Created by Administrator on 2015/7/25 0025.
@@ -27,6 +28,7 @@ public abstract class AbsActivity extends AppCompatActivity {
         prepareDatas();
         initViews();
     }
+
     protected abstract int getContentView();
 
     protected abstract void prepareDatas();
@@ -145,7 +147,12 @@ public abstract class AbsActivity extends AppCompatActivity {
     protected void showNetWorkError() {
         showToast(getResources().getString(R.string.network_error_tips));
     }
-
+/*
+    protected void showInnerError(RetrofitError error) {
+        if (error != null)
+            showToast(CommonUtils.getErrorInfo(error).getReason());
+    }
+*/
     @Override
     protected void onDestroy() {
         super.onDestroy();

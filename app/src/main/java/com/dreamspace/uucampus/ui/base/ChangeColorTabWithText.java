@@ -1,5 +1,9 @@
 package com.dreamspace.uucampus.ui.base;
 
+import android.view.View;
+/**
+ * Created by money on 2015/9/14.
+ */
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -12,14 +16,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-import android.view.View;
 
 import com.dreamspace.uucampus.R;
 
-
-/**
- * Created by Administrator on 2015/6/12 0012.
- */
 public class ChangeColorTabWithText extends View {
     private Bitmap mBitmap;
     private String text;
@@ -130,7 +129,6 @@ public class ChangeColorTabWithText extends View {
     public void setIconAlpha(float alpha){
         mAlpha=alpha;
         validateView();
-
     }
 
     private void validateView() {
@@ -140,6 +138,4 @@ public class ChangeColorTabWithText extends View {
             postInvalidate();
         }
     }
-
-
 }

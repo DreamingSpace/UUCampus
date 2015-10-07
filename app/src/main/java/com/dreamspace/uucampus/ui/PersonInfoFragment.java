@@ -27,52 +27,55 @@ public class PersonInfoFragment extends BaseLazyFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View resultView;
         resultView = inflater.inflate(R.layout.person_fragment_my, container, false);
-        ImageView imageView = (ImageView)resultView.findViewById(R.id.head_portrait);
+        ImageView imageView = (ImageView) resultView.findViewById(R.id.head_portrait);
         imageView.setOnClickListener(new MyOnClickListener(0));
-        RelativeLayout relativeLayout1 = (RelativeLayout)resultView.findViewById(R.id.my_useless);
+        RelativeLayout relativeLayout1 = (RelativeLayout) resultView.findViewById(R.id.my_useless);
         relativeLayout1.setOnClickListener(new MyOnClickListener(1));
-        RelativeLayout relativeLayout2 = (RelativeLayout)resultView.findViewById(R.id.my_collection);
+        RelativeLayout relativeLayout2 = (RelativeLayout) resultView.findViewById(R.id.my_collection);
         relativeLayout2.setOnClickListener(new MyOnClickListener(2));
-        RelativeLayout relativeLayout3 = (RelativeLayout)resultView.findViewById(R.id.my_store);
+        RelativeLayout relativeLayout3 = (RelativeLayout) resultView.findViewById(R.id.my_store);
         relativeLayout3.setOnClickListener(new MyOnClickListener(3));
-        RelativeLayout relativeLayout4 = (RelativeLayout)resultView.findViewById(R.id.my_setting);
+        RelativeLayout relativeLayout4 = (RelativeLayout) resultView.findViewById(R.id.my_setting);
         relativeLayout4.setOnClickListener(new MyOnClickListener(4));
-        RelativeLayout relativeLayout5 = (RelativeLayout)resultView.findViewById(R.id.my_about);
+        RelativeLayout relativeLayout5 = (RelativeLayout) resultView.findViewById(R.id.my_about);
         relativeLayout5.setOnClickListener(new MyOnClickListener(5));
 
-        Button button1 = (Button)resultView.findViewById(R.id.register);
+        Button button1 = (Button) resultView.findViewById(R.id.register);
         button1.setOnClickListener(new MyOnClickListener(6));
-        Button button2 = (Button)resultView.findViewById(R.id.login);
+        Button button2 = (Button) resultView.findViewById(R.id.login);
         button2.setOnClickListener(new MyOnClickListener(7));
         return resultView;
     }
+
     public class MyOnClickListener implements View.OnClickListener {
         private int index = 0;
+
         public MyOnClickListener(int i) {
             index = i;
         }
+
         @Override
-        public void onClick(View v){
-            if(index==0){
+        public void onClick(View v) {
+            if (index == 0) {
                 readyGo(PersonMessageActivity.class);
             }
-            if(index==1){
+            if (index == 1) {
                 readyGo(MyUselessActivity.class);
             }
-            if(index==2){
+            if (index == 2) {
                 readyGo(MyCollectionActivity.class);
             }
-            if(index==3){
+            if (index == 3) {
                 //readyGo(ApplyStoreActivity.class);
                 readyGo(MyStoreActivity.class);
             }
-            if(index==4){
+            if (index == 4) {
                 readyGo(SettingActivity.class);
             }
-            if (index == 6){
+            if (index == 6) {
                 readyGo(UserRegisterActivity.class);
             }
-            if (index == 7){
+            if (index == 7) {
                 //readyGo();
             }
         }

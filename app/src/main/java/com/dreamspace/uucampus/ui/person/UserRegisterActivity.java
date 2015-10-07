@@ -11,10 +11,10 @@ import com.dreamspace.uucampus.API.ApiManager;
 import com.dreamspace.uucampus.API.UUService;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.common.utils.NetUtils;
-import com.dreamspace.uucampus.model.person.ErrorRes;
-import com.dreamspace.uucampus.model.person.RegistertokenReq;
-import com.dreamspace.uucampus.model.person.RegistertokenRes;
-import com.dreamspace.uucampus.model.person.SendVerifyReq;
+import com.dreamspace.uucampus.model.ErrorRes;
+import com.dreamspace.uucampus.model.api.RegisterReq;
+import com.dreamspace.uucampus.model.api.RegisterRes;
+import com.dreamspace.uucampus.model.api.SendVerifyReq;
 import com.dreamspace.uucampus.ui.MainActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
@@ -44,8 +44,8 @@ public class UserRegisterActivity extends AbsActivity {
     private String code_txt;
     private String password_txt;
     private String access_token;
-    private UUService mService;
     private Handler mHandler;
+    private UUService mService;
     private Context mCOntext;
     @Override
     protected int getContentView() {
@@ -96,7 +96,7 @@ public class UserRegisterActivity extends AbsActivity {
     void sendCode(){
         if (NetUtils.isNetworkConnected(mCOntext)) {
             SendVerifyReq req = new SendVerifyReq();
-            req.setPhonenum(phonenum_txt);
+            req.setPhone_num(phonenum_txt);
             mService.sendVerifyCode(req, new Callback<Response>() {
                 @Override
                 public void success(Response response, Response response2) {
@@ -107,7 +107,7 @@ public class UserRegisterActivity extends AbsActivity {
                 public void failure(RetrofitError error) {
                     ErrorRes res = (ErrorRes) error.getBodyAs(ErrorRes.class);
                     Log.i("INFO", error.getMessage());
-                    Log.i("INFO", res.toString());
+                    //Log.i("INFO", res.toString());
                 }
             });
         } else {
@@ -116,15 +116,15 @@ public class UserRegisterActivity extends AbsActivity {
     }
     void regist() {
         if (NetUtils.isNetworkConnected(mCOntext)) {
-            RegistertokenReq req = new RegistertokenReq();
-            req.setPhonenum(phonenum_txt);
+            RegisterReq req = new RegisterReq();
+            req.setPhone_num(phonenum_txt);
             req.setCode(code_txt);
             req.setPassword(password_txt);
-            mService.createRegisterToken(req, new Callback<RegistertokenRes>() {
+            mService.register(req, new Callback<RegisterRes>() {
                 @Override
-                public void success(RegistertokenRes registertokenRes, Response response) {
+                public void success(RegisterRes registerRes, Response response) {
                     if (response.getStatus() == 200) {
-                        access_token = registertokenRes.getAccess_token();
+                        access_token = registerRes.getAccess_token();
                         System.out.println(access_token);
                         readyGo(MainActivity.class);
                     }
@@ -134,7 +134,7 @@ public class UserRegisterActivity extends AbsActivity {
                 public void failure(RetrofitError error) {
                     ErrorRes res = (ErrorRes) error.getBodyAs(ErrorRes.class);
                     Log.i("INFO", error.getMessage());
-                    Log.i("INFO", res.toString());
+                    //Log.i("INFO", res.toString());
                 }
             });
         }else {

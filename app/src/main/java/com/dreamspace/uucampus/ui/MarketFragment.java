@@ -1,5 +1,6 @@
 package com.dreamspace.uucampus.ui;
 
+import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -7,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 
 /**
  * Created by money on 2015/9/14.
@@ -41,7 +41,7 @@ public class MarketFragment extends BaseLazyFragment {
 
     @Override
     protected int getContentViewLayoutID() {
-        return 0;
+        return R.layout.fragment_third;
     }
 
     @Override

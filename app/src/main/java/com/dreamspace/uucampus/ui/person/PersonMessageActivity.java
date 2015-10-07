@@ -1,7 +1,6 @@
 package com.dreamspace.uucampus.ui.person;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,8 +23,8 @@ import com.dreamspace.uucampus.API.ApiManager;
 import com.dreamspace.uucampus.API.UUService;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.common.utils.NetUtils;
-import com.dreamspace.uucampus.model.person.ErrorRes;
-import com.dreamspace.uucampus.model.person.UpdateUserMessageReq;
+import com.dreamspace.uucampus.model.ErrorRes;
+import com.dreamspace.uucampus.model.api.UserInfoRes;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
 import java.io.ByteArrayOutputStream;
@@ -257,13 +256,13 @@ public class PersonMessageActivity extends AbsActivity {
     }
     void getUserMessage(){
         if (NetUtils.isNetworkConnected(mContext)){
-            mService.getUserMessage(new Callback<UpdateUserMessageReq>() {
+            mService.getUserInfo(new Callback<UserInfoRes>() {
                 @Override
-                public void success(UpdateUserMessageReq updateUserMessageReq, Response response) {
-                    if (response.getStatus() == 200){
-                        updateUserMessageReq.setImage("image");
-                        updateUserMessageReq.setBirthday("birthday");
-                        updateUserMessageReq.setSchool("school");
+                public void success(UserInfoRes userInfoRes, Response response) {
+                    if (response.getStatus() == 200) {
+                        userInfoRes.setImage("image");
+                        userInfoRes.setBirthday("birthday");
+                        userInfoRes.setSchool("school");
 
 
                     }
@@ -273,7 +272,7 @@ public class PersonMessageActivity extends AbsActivity {
                 public void failure(RetrofitError error) {
                     ErrorRes res = (ErrorRes) error.getBodyAs(ErrorRes.class);
                     Log.i("INFO", error.getMessage());
-                    Log.i("INFO", res.toString());
+                    //Log.i("INFO", res.toString());
                 }
             });
         }
