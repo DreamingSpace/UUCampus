@@ -7,12 +7,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/activity_padding"
-        android:paddingBottom="@dimen/activity_padding"
         android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_padding"
         android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:paddingRight="16dp"
+        android:paddingTop="@dimen/activity_padding">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -24,14 +24,14 @@
                 android:background="@color/orange" />
 
             <com.melnykov.fab.FloatingActionButton xmlns:fab="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/goods_detail_like_fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
                 android:layout_margin="8dp"
-                android:src="@drawable/xianzhi_btn_publish"
-                fab:fab_colorNormal="@color/accent"
-                fab:fab_colorPressed="@color/accent_pressed"
-                fab:fab_colorRipple="@color/ripple" />
+                android:src="@drawable/xiangqing_btn_dianzan_p"
+                fab:fab_shadow="false"
+                fab:fab_type="mini" />
         </FrameLayout>
 
         <TextView

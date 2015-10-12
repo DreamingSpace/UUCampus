@@ -14,10 +14,12 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsDetailBottomCommentFragment;
 import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsDetailBottomInfoFragment;
+import com.melnykov.fab.FloatingActionButton;
 
 import java.util.ArrayList;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * Created by wufan on 2015/9/20.
@@ -32,12 +34,17 @@ public class FreeGoodsDetailActivity extends AbsActivity {
     ImageView mLineTv;
     @Bind(R.id.goods_detail_bottom_view_pager)
     ViewPager mViewPager;
+    @Bind(R.id.goods_detail_like_fab)
+    FloatingActionButton mLikeFab;
 
     private ArrayList<Fragment> fragmentList;
     private int currIndex = 0;   //当前底部页卡编号
     private int bottomLineWidth;  //底部横线图片宽度
     private int bottomOffset = 0; //底部图片移动的偏移量
     private int bottomPosition;  //底部图片的位置
+
+
+    private int check=0;
 
     @Override
     protected int getContentView() {
@@ -70,6 +77,17 @@ public class FreeGoodsDetailActivity extends AbsActivity {
         @Override
         public void onClick(View v) {
             mViewPager.setCurrentItem(index);
+        }
+    }
+
+    @OnClick(R.id.goods_detail_like_fab)
+    void likeClick(){
+        if(check==0){
+            check=1;
+            mLikeFab.setImageResource(R.drawable.xiangqing_btn_dianzan);
+        }else {
+            check=0;
+            mLikeFab.setImageResource(R.drawable.xiangqing_btn_dianzan_p);
         }
     }
 

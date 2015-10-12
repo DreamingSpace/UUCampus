@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.ui.SelectPhotoActivity;
+import com.dreamspace.uucampus.widget.photopicker.SelectPhotoActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
 import butterknife.Bind;

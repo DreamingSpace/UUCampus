@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/free_goods_action_sort"
+        app:showAsAction="always"
+        android:icon="@drawable/xianzhi_status_bar_sortr"
+        android:title="sort" />
+    <item
+        android:id="@+id/free_goods_action_search"
+        app:showAsAction="always"
+        android:icon="@drawable/xianzhi_status_bar_search"
+        android:title="search" />
+</menu>

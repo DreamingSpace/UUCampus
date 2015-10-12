@@ -1,7 +1,10 @@
 package com.dreamspace.uucampus.ui.activity.FreeGoods;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupWindow;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
@@ -17,6 +20,8 @@ public class FreeGoodsActivity extends AbsActivity {
 
     @Bind(R.id.free_goods_publish_btn)
     FloatingActionButton mPublishBtn;
+
+    PopupWindow popupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,5 +52,25 @@ public class FreeGoodsActivity extends AbsActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_free_goods, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.free_goods_action_sort){
+            if(popupWindow!=null){
+                showPopupWindow();
+            }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showPopupWindow() {
+
+    }
 }

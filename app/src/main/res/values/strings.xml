@@ -20,6 +20,12 @@
     <string name="comment_hint">写评论...</string>
     <string name="back_home">返回主页</string>
 
+    <!-- sort strings used-->
+    <string name="most_popular">人气最高</string>
+    <string name="highest_appraise">评价最高</string>
+    <string name="recent_publish">最新发布</string>
+    <string name="cheapest">价格最低</string>
+
     <!-- Goods-->
     <string name="up_photo">请为您的宝贝上传一张靓照吧！</string>
     <string name="up_photo_first">第一步：上传照片</string>

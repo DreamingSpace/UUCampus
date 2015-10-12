@@ -25,9 +25,8 @@ import android.widget.RelativeLayout;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.widget.photopicker.adapter.ImageFolderListAdapter;
 import com.dreamspace.uucampus.widget.photopicker.adapter.ImageGrideAdatper;
-import com.dreamspace.uucampus.common.utils.FileUtils;
-import com.dreamspace.uucampus.model.entity.Folder;
-import com.dreamspace.uucampus.model.entity.Image;
+import com.dreamspace.uucampus.widget.photopicker.entity.Folder;
+import com.dreamspace.uucampus.widget.photopicker.entity.Image;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
 import java.io.File;

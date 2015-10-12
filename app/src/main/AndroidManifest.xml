@@ -35,8 +35,8 @@
             android:name=".ui.activity.FreeGoods.FreeGoodsPublishSuccessActivity"
             android:label="@string/publish_success">
         </activity>
-        <activity android:name=".ui.SelectPhotoActivity"/>
-        <activity android:name=".ui.PhotoPreviewActivity"/>
+        <activity android:name=".widget.photopicker.SelectPhotoActivity"/>
+        <activity android:name=".widget.photopicker.PhotoPreviewActivity"/>
     </application>
 
 </manifest>

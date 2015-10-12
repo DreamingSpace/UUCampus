@@ -81,7 +81,7 @@ public interface UUService {
 
 //用户
     //创建用户访问凭证(登陆)
-    @POST("/user")
+    @POST("/auth/login")
     void createAccessToken(@Body LoginReq req, Callback<LoginRes> cb);
 
     //删除用户访问凭证(注销)
@@ -89,11 +89,11 @@ public interface UUService {
     void deleteAccessToken(Callback<Response> cb);
 
     //用户创建
-    @POST("/user")
+    @POST("/user/")
     void register(@Body RegisterReq req, Callback<RegisterRes> cb);
 
     //用户信息更新
-    @PUT("/user")
+    @PUT("/user/")
     void updateUserInfo(@Body UpdateUserInfoReq req, Callback<Response> cb);
 
     //用户密码重置
@@ -101,7 +101,7 @@ public interface UUService {
     void resetPassword(@Body ResetReq req, Callback<Response> cb);
 
     //用户信息查看（自己）
-    @GET("/user")
+    @GET("/user/")
     void getUserInfo(Callback<UserInfoRes> cb);
 
     //用户信息查看（其他用户）
@@ -111,7 +111,7 @@ public interface UUService {
 
 //店铺
     //店铺创建
-    @POST("/shop")
+    @POST("/shop/")
     void createShop(@Body CreateShopReq req, Callback<CreateShopRes> cb);
 
     //店铺信息更新
@@ -127,11 +127,11 @@ public interface UUService {
     void getShopInfo(@Path("shop_id") String shop_id, Callback<ShopInfoRes> cb);
 
     //店铺搜索
-    @GET("/shop/search")
+    @GET("/shop/search/")
     void searchShop(@Query("keyword") String keyword, @Query("order") String order, @Query("category") String category, @Query("location") String location, Callback<SearchShopRes> cb);
 
     //店铺评论添加
-    @POST("/shop/{shop_id}/comment")
+    @POST("/shop/{shop_id}/comment/")
     void addComment(@Path("shop_id") String shop_id, @Body ContentReq req, Callback<AddShopCommentRes> cb);
 
     //店铺所有评论查看
@@ -143,7 +143,7 @@ public interface UUService {
     void deleteShopComment(@Path("shop_id") String shop_id, @Path("shop_comment_id") String shop_comment_id, Callback<Response> cb);
 
     //店铺收藏添加
-    @POST("/shop/{shop_id}/collection")
+    @POST("/shop/{shop_id}/collection/")
     void addCollection(@Path("shop_id") String shop_id, Callback<AddShopCollectionRes> cb);
 
     //个人店铺收藏查看
@@ -151,11 +151,11 @@ public interface UUService {
     void getPersonShopCollection(@Path("page") int page, Callback<ShopCollectionRes> cb);
 
     //店铺收藏删除
-    @DELETE("/shop/{shop_id}/collection")
+    @DELETE("/shop/{shop_id}/collection/")
     void deleteShopCollection(@Path("shop_id") String shop_id, Callback<Response> cb);
 
     //店内分类创建
-    @POST("/shop/{shop_id}/group")
+    @POST("/shop/{shop_id}/group/")
     void createShopCategory(@Path("shop_id") String shop_id, @Body NameReq req, Callback<CreateShopCategoryRes> cb);
 
     //店内分类修改
@@ -163,7 +163,7 @@ public interface UUService {
     void modifyShopCategory(@Path("shop_id") String shop_id, @Path("group_id") String group_id, @Body NameReq req, Callback<Response> cb);
 
     //获取店内所有分类
-    @GET("/shop/{shop_id}/group")
+    @GET("/shop/{shop_id}/group/")
     void getShopCategory(@Path("shop_id") String shop_id, Callback<ShopAllGroupRes> cb);
 
     //店内分类删除
@@ -171,7 +171,7 @@ public interface UUService {
     void deleteShopCategory(@Path("shop_id") String shop_id, @Path("group_id") String group_id, Callback<Response> cb);
 
     //店内优惠创建
-    @POST("/shop/{shop_id/discount}")
+    @POST("/shop/{shop_id/discount/")
     void createShopDiscount(@Path("shop_id") String shop_id, @Body ContentReq req, Callback<CreateShopDiscountRes> cb);
 
     //店内优惠修改
@@ -179,7 +179,7 @@ public interface UUService {
     void modifyShopDiscount(@Path("shop_id") String shop_id, @Body ContentReq req, Callback<Response> cb);
 
     //列出店内所有优惠
-    @GET("/shop/{shop_id}/discount")
+    @GET("/shop/{shop_id}/discount/")
     void getShopDiscount(@Path("shop_id") String shop_id, Callback<ShopDiscountRes> cb);
 
     //店内优惠删除
@@ -190,11 +190,11 @@ public interface UUService {
 
 //商品
     //商品创建
-    @POST("/goods")
+    @POST("/goods/")
     void createGoods(@Body CreateGoodsReq req,Callback<CreateGoodsRes> cb);
 
     //查看自己的商品
-    @GET("/goods/list")
+    @GET("/goods/list/")
     void getMyGoods(@Query("page")int page,@Query("is_active")String is_active,@Query("group")String group,Callback<MyGoodsRes>cb);
 
     //上信息更新
@@ -210,15 +210,15 @@ public interface UUService {
     void getGoodsInfo(@Path("goods_id")String goods_id,Callback<GoodsInfoRes> cb);
 
     //商品搜索
-    @GET("/goods/search")
+    @GET("/goods/search/")
     void searchGoods(@Query("keyword")String keyword,@Query("order")String order,@Query("category")String category,@Query("location")String location,@Query("shop")String shop,Callback<SearchGoodsRes>cb);
 
     //商品点赞
-    @POST("/goods/{goods_id}/like")
+    @POST("/goods/{goods_id}/like/")
     void likeGoods(@Path("goods_id")String goods_id,Callback<LikeGoodsRes>cb);
 
     //商品取消点赞
-    @DELETE("/goods/{goods_id}/like")
+    @DELETE("/goods/{goods_id}/like/")
     void unLikeGoods(@Path("goods_id")String goods_id,Callback<Response> cb);
 
     //商品评论添加
@@ -233,8 +233,16 @@ public interface UUService {
     @DELETE("/goods/{goods_id}/comment/{goods_comment_id}")
     void deleteGoodsComment(@Path("goods_id")String goods_id,@Path("goods_comment_id")String goods_comment_id,Callback<Response> cb);
 
+    //商品有用添加
+    @POST("/goods/{goods_id}/comment/{goods_comment_id}/useful")
+    void addGoodsUseful(@Path("goods_id")String goods_id,@Path("goods_comment_id")String goods_comment_id,Callback<Response> cb);
+
+    //商品有用取消
+    @PUT("/goods/{goods_id}/comment/{goods_comment_id}/useful")
+    void cancelGoodsUseful(@Path("goods_id")String goods_id,@Path("goods_comment_id")String goods_comment_id,Callback<Response> cb);
+
     //商品收藏添加
-    @POST("/goods/{goods_id}/collection")
+    @POST("/goods/{goods_id}/collection/")
     void addGoodsCollection(@Path("goods_id")String  goods_id,Callback<AddGoodsCollectionRes>cb);
 
     //个人商品收藏查看
@@ -242,18 +250,18 @@ public interface UUService {
     void getAllGoodsCollection(@Path("page")int page,Callback<AllGoodsCollectionRes> cb);
 
     //商品收藏删除
-    @DELETE("/goods/{goods_id}/collection")
+    @DELETE("/goods/{goods_id}/collection/")
     void deleteGoodsCollection(@Path("goods_id")String goods_id,Callback<Response>cb);
 
 
 
 //闲置
     //闲置创建
-    @POST("/idle")
+    @POST("/idle/")
     void createIdle(@Body CreateIdleReq req,Callback<CreateIdleRes>cb);
 
     //查看自己的闲置
-    @GET("/idle/list")
+    @GET("/idle/list/")
     void getIdleList(@Query("page")int page,@Query("is_active")String is_active,Callback<
             IdleInfoRes>cb);
 
@@ -270,19 +278,19 @@ public interface UUService {
     void getIdleInfo(@Path("idle_id")String idle_id,Callback<IdleInfoRes>cb);
 
     //闲置搜索
-    @GET("/idle/search")
+    @GET("/idle/search/")
     void searchIdle(@Query("keyword")String keyword,@Query("order")String order,@Query("category")String category,@Query("location")String location,@Query("user")String user,Callback<SearchIdleRes>cb);
 
     //闲置点赞
-    @POST("/idle/{idle_id}/like")
+    @POST("/idle/{idle_id}/like/")
     void likeIdle(@Path("idle_id")String idle_id,Callback<LikeIdleRes>cb);
 
     //闲置取消点赞
-    @DELETE("/idle/{idle_id}/like")
+    @DELETE("/idle/{idle_id}/like/")
     void unLikeIdle(@Path("idle_id")String idle_id,Callback<Response>cb);
 
     //闲置评论添加
-    @POST("/idle/{idle_id}/comment")
+    @POST("/idle/{idle_id}/comment/")
     void addIdleComment(@Path("idle_id")String idle_id,@Body ContentReq req,Callback<AddIdleCommentRes>cb);
 
     //闲置所有评论查看
@@ -293,11 +301,17 @@ public interface UUService {
     @DELETE("/idle/{idle_id}/comment/{idle_comment_id}")
     void deleteIdleComment(@Path("idle_id")String idle_id,@Path("idle_comment_id")String idle_comment_id,Callback<Response>cb);
 
+    //评论有用添加
+    @POST("/idle/{idle_id}/comment/{idle_comment_id}/useful")
+    void addIdleCommentUseful(@Path("idle_id")String idle_id,@Path("idle_comment_id")String idle_comment_id,Callback<Response> cb);
 
+    //评论有用取消
+    @PUT("/idle/{idle_id}/comment/{idle_comment_id}/useful")
+    void cancelIdleCommentUseful(@Path("idle_id")String idle_id,@Path("idle_comment_id")String idle_comment_id,Callback<Response> cb);
 
 //校区
     //校区创建
-    @POST("/location")
+    @POST("/location/")
     void createLocation(@Body NameReq req,Callback<CreateLocationRes>cb);
 
     //校区修改
@@ -305,7 +319,7 @@ public interface UUService {
     void modifyLocation(@Path("location_id")String location_id,@Body NameReq req,Callback<Response>cb);
 
     //获取所有校区
-    @GET("/location")
+    @GET("/location/")
     void getAllLocation(Callback<LocationAllRes>cb);
 
     //校区删除
@@ -316,7 +330,7 @@ public interface UUService {
 
 //分类
     //类目创建
-    @POST("/category")
+    @POST("/category/")
     void createCategory(@Body CategoryReq req,Callback<CreateCategoryRes>cb);
 
     //类目修改
@@ -324,11 +338,11 @@ public interface UUService {
     void modifyCategory(@Body CategoryReq req,Callback<Response>cb);
 
     //获取所有闲置类目
-    @GET("/category/idle")
+    @GET("/category/idle/")
     void getAllIdleCategory(Callback<AllCategoryRes>cb);
 
     //获取所有店铺类目
-    @GET("/category/shop")
+    @GET("/category/shop/")
     void getAllShopCategory(Callback<AllCategoryRes>cb);
 
     //类目删除
@@ -339,19 +353,19 @@ public interface UUService {
 
 //意见、报告、更新等
     //意见提交
-    @POST("/suggestion")
+    @POST("/suggestion/")
     void commitSuggestion(@Body ContentReq req,Callback<CommitSuggestionRes>cb);
 
     //查看所有意见
-    @GET("/suggestion")
+    @GET("/suggestion/")
     void getSuggestion(Callback<SuggestionRes>cb);
 
     //举报提交
-    @POST("/report")
+    @POST("/report/")
     void commitReport(@Body CommitReportReq req,Callback<Response>cb);
 
     //查看所有举报
-    @GET("/report")
+    @GET("/report/")
     void getAllReport(Callback<ReportRes>cb);
 
     //检查更新

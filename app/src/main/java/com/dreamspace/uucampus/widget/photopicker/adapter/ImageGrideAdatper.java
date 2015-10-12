@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.model.entity.Image;
+import com.dreamspace.uucampus.widget.photopicker.entity.Image;
 
 import java.io.File;
 import java.util.ArrayList;

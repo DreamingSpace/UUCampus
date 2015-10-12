@@ -26,7 +26,8 @@
                 名于江湖，而政治的复习让很多
                 的学院觉得枯燥无味，启航高端
                 辅导的老师们煞费苦
-                心练就一身快乐本领，将考研政治的各个
+                心练就一身快乐本领，
+                将考研政治的各个
                 考点微化,每个考点"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
@@ -41,9 +42,10 @@
         android:background="#F0EFED"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="4dp">
+        android:padding="8dp">
 
         <LinearLayout
+            android:id="@+id/free_goods_detail_collect_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -51,15 +53,17 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/free_goods_detail_bottom_collect_image_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/xiangqing_tab_bar_collect_n" />
 
             <TextView
+                android:id="@+id/free_goods_detail_bottom_collect_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/collect"
-                android:textColor="@color/custom_text" />
+                android:textColor="@color/text_normal" />
         </LinearLayout>
 
         <LinearLayout
