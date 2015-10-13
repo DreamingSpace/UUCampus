@@ -117,22 +117,4 @@ public class PreferenceUtils {
         editor.clear();
         editor.commit();
     }
-
-    public static List<String> getClassifyItems(Context context) {
-        String content = getDefaultSp(context).getString(Key.CLASSIFY, "EMPTY");
-        Gson gson = new Gson();
-        return gson.fromJson(content, new TypeToken<List<String>>() {
-        }.getType());
-    }
-
-    public static void writeClassifyIntoSp(Context context, List<String> items) {
-        Gson gson = new Gson();
-        items.add(0, "精选");
-        String content = gson.toJson(items);
-        putString(context, Key.CLASSIFY, content);
-    }
-
-    public static SharedPreferences getDefaultSp(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context);
-    }
 }

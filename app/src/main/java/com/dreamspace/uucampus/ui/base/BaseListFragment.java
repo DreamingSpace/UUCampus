@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.adapter.BasisAdapter;
+import com.dreamspace.uucampus.adapter.base.BasisAdapter;
 import com.dreamspace.uucampus.widget.LoadMoreListView;
 
 import java.lang.reflect.Constructor;

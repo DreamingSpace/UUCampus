@@ -6,14 +6,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.adapter.BasisAdapter;
+import com.dreamspace.uucampus.adapter.base.BasisAdapter;
 
 import java.util.List;
 
 /**
  * Created by Lx on 2015/9/22.
  */
-public class MarketListViewAdapter extends BasisAdapter<String,MarketListViewAdapter.ViewHolder>{
+public class MarketListViewAdapter extends BasisAdapter<String,MarketListViewAdapter.ViewHolder> {
 
     public MarketListViewAdapter(Context mContext, List mEntities, Class classType) {
         super(mContext, mEntities, classType);

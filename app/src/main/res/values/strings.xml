@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UUCampus</string>
+    <string name="app_name">悠悠校园</string>
     <string name="network_error_tips">请检查您的网络连接</string>
     <string name="common_empty_msg">抱歉,暂未获取到数据!\n请点击屏幕重试~</string>
     <string name="common_error_msg">抱歉,系统出错了!\n请点击屏幕重试~</string>
@@ -9,7 +9,7 @@
     <string name="bottom_tab_two">商家</string>
     <string name="bottom_tab_three">个人</string>
     <string name="action_settings">Settings</string>
-    
+
     <!-- market Strings used-->
     <string name="travel">旅游</string>
     <string name="study_abroad">留学</string>
@@ -18,6 +18,13 @@
     <string name="personal_shop">个人小店</string>
 
     <string name="items_other">其他</string>
+
+    <!-- free item strings used-->
+    <string name="electronics">数码电子</string>
+    <string name="book_magazine">书籍杂志</string>
+    <string name="transport">代步工具</string>
+    <string name="daily_used">生活用品</string>
+
     <!-- travel item strings-->
     <string name="travel_item_near">周边短线</string>
     <string name="travel_item_ancient_town">水乡古镇</string>
@@ -85,14 +92,37 @@
     <string name="good_label1">商品标签</string>
     <string name="new_pre_cata_hint">输入文字</string>
 
+    <string name="free_goods">闲置</string>
+    <string name="ensure">确定</string>
+    <string name="publish">发表</string>
+    <string name="next_step">下一步</string>
+    <string name="consult">咨询</string>
+    <string name="collect">收藏</string>
+    <string name="comment_hint">写评论...</string>
+    <string name="back_home">返回主页</string>
+
     <!-- sort strings used-->
     <string name="most_popular">人气最高</string>
     <string name="highest_appraise">评价最高</string>
     <string name="recent_publish">最新发布</string>
     <string name="cheapest">价格最低</string>
-    <string name="title_activity_test">Test</string>
 
-    <string name="hello_world">Hello world!</string>
+    <!-- Goods-->
+    <string name="up_photo">请为您的宝贝上传一张靓照吧！</string>
+    <string name="up_photo_first">第一步：上传照片</string>
+    <string name="write_detail_second">第二步：填写信息</string>
+    <string name="goods_detail_bottom_info">商品详情</string>
+    <string name="goods_detail_bottom_comment">商品评论</string>
+    <string name="goods_name">商品名称</string>
+    <string name="goods_price">商品价格</string>
+    <string name="goods_detail_describe">详情描述（请在这里输入不少于10个字）</string>
+    <string name="publish_success">发布成功</string>
+    <string name="publish_success_hint">商品售出后请及时下架哦</string>
+    <string name="look_goods_detail">查看商品详情</string>
+    <string name="select_goods_photo">请选择商品照片</string>
+    <string name="write_goods_detail">填写商品详情</string>
+    <string name="goods_describe">信息描述</string>
+    <string name="goods_classify">商品分类</string>
 
     <!-- select photo stings used-->
     <string name="select_photo">选择图片</string>

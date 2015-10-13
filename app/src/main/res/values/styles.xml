@@ -4,9 +4,26 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/app_theme_color</item>
-        <item name="android:textColorPrimary">@color/black</item>
         <item name="android:actionMenuTextColor">@color/white</item>
         <item name="actionMenuTextColor">@color/white</item>
+        <!-- 状态栏颜色-->
+        <item name="colorPrimaryDark">#059183</item>
+        <!-- toolbar（actionbar）颜色-->
+        <item name="android:textColorPrimary">@color/near_black</item>
+        <item name="colorAccent">#EF9A9A</item>
+        <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowToggle</item>
+        <!-- 窗口背景-->
+        <item name="android:windowBackground">@color/main_bg</item>
+    </style>
+
+    <style name="AppTheme.DrawerArrowToggle" parent="Base.Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@android:color/white</item>
+    </style>
+
+    <style name="UpDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
     <!-- market style used-->

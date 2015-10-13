@@ -63,14 +63,6 @@ public class SelectPhotoAct extends AbsActivity {
     private int gvWidth,gvHeight;
     private File mTmpFile;
 
-    protected void initToolBar(){
-        mToolBar = (Toolbar) findViewById(R.id.title_center_tl_custom);
-        setSupportActionBar(mToolBar);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ButterKnife.bind(this);
-    }
-
     @Override
     protected int getContentView() {
         return R.layout.activity_select_photo;

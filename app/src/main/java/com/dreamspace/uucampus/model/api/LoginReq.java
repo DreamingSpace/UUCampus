@@ -1,11 +1,10 @@
-package com.dreamspace.uucampus.model;
+package com.dreamspace.uucampus.model.api;
 
 /**
  * Created by Wells on 2015/9/27.
  */
 public class LoginReq {
     private String phone_num;
-    private String code;
     private String password;
 
     public String getPhone_num() {
@@ -14,14 +13,6 @@ public class LoginReq {
 
     public void setPhone_num(String phone_num) {
         this.phone_num = phone_num;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public String getPassword() {

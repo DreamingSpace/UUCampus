@@ -1,4 +1,4 @@
-package com.dreamspace.uucampus.adapter;
+package com.dreamspace.uucampus.adapter.base;
 
 import android.content.Context;
 import android.util.Log;
@@ -88,5 +88,9 @@ public abstract class BasisAdapter<T, K> extends BaseAdapter {
 //                notifyDataSetChanged();
 //            }
 //        },2000);
+    }
+
+    public Context getmContext() {
+        return mContext;
     }
 }

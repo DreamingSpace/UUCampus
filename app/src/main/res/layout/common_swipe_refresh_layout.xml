@@ -12,6 +12,5 @@
         android:background="@color/white"
         android:divider="@drawable/market_listview_divider"
         android:dividerHeight="0.5dp">
-
     </com.dreamspace.uucampus.widget.LoadMoreListView>
 </android.support.v4.widget.SwipeRefreshLayout>

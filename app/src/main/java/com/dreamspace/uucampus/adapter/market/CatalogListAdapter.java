@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.adapter.BasisAdapter;
+import com.dreamspace.uucampus.adapter.base.BasisAdapter;
 
 import java.util.List;
 
