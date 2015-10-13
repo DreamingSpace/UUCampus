@@ -102,4 +102,19 @@
     <string name="plz_select_photo">请选择一张图片~</string>
     <string name="preview_photo">图片预览</string>
     <string name="finish">完成</string>
+    
+    <!-- good detail strings used-->
+    <string name="collect">收藏</string>
+    <string name="shop">店铺</string>
+    <string name="consult">咨询</string>
+    <string name="go_buy_it">去下单</string>
+    <string name="detial">详情</string>
+    <string name="comment">评论</string>
+    
+    <!-- shop detail strings used-->
+    <string name="sale_range">经营范围</string>
+    <string name="connect_address">联系地址</string>
+    <string name="campus_team">校园执行团队</string>
+    <string name="shop_resume">店铺简介</string>
+    <string name="report_shop">举 报 商 家</string>
 </resources>

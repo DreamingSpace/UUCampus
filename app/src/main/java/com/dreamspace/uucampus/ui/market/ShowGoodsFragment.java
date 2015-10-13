@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.market.GoodsListAdapter;
@@ -69,7 +70,12 @@ public class ShowGoodsFragment extends BaseLazyFragment {
 
     @Override
     protected void initViewsAndEvents() {
-
+        loadMoreListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                readyGo(GoodDetailAct.class);
+            }
+        });
     }
 
     @Override

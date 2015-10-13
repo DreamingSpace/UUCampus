@@ -35,6 +35,9 @@
 
         <activity android:name=".ui.market.SelectPhotoAct"/>
         <activity android:name=".ui.market.PhotoPreviewAct"/>
+        <activity android:name=".ui.market.GoodDetailAct"/>
+        <activity android:name=".ui.market.ShopShowGoodsAct"/>
+        <activity android:name=".ui.market.ShopDetailAct"/>
     </application>
 
 </manifest>
