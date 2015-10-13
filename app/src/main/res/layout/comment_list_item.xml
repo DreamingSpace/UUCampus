@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/user_avatar_civ"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:src="@color/search_opaque"
+        android:layout_width="35dp"
+        android:layout_height="35dp"/>
+    <TextView
+        android:text="大板儿"
+        android:textSize="16sp"
+        android:id="@+id/user_name_tv"
+        android:textStyle="bold"
+        android:layout_alignTop="@id/user_avatar_civ"
+        android:layout_toRightOf="@id/user_avatar_civ"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="2016-01-19"
+        android:id="@+id/publis_time_tv"
+        android:textSize="12sp"
+        android:layout_marginTop="5dp"
+        android:layout_alignLeft="@id/user_name_tv"
+        android:layout_below="@id/user_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RatingBar
+        android:id="@+id/comment_rating_bar"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/user_avatar_civ"
+        android:layout_marginRight="40dp"
+        style="?android:ratingBarStyleSmall"
+        android:rating="5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="很不错的购买体验，全班人一起坐车去，玩的贼嗨，回来大家都睡着了"
+        android:id="@+id/comment_content_tv"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textSize="12sp"
+        android:layout_alignLeft="@id/user_name_tv"
+        android:layout_alignRight="@id/comment_rating_bar"
+        android:layout_below="@id/publis_time_tv"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_below="@id/comment_content_tv"
+        android:layout_alignRight="@id/comment_rating_bar"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/xianzhi_icon_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="有用 (12)"
+            android:id="@+id/userful_tv"
+            android:textSize="12sp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

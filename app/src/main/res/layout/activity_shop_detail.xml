@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/custom_toolbar"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/shop_detail_image_civ"
+        android:layout_gravity="center_horizontal"
+        android:src="@color/search_opaque"
+        android:layout_marginTop="25dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+
+    <RelativeLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/sale_range"
+            android:layout_marginLeft="40dp"
+            android:text="@string/sale_range"
+            android:textSize="14sp"
+            android:textColor="@color/smart_tab_layout_default_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/sale_range_tv"
+            android:singleLine="true"
+            android:layout_marginRight="40dp"
+            android:text="旅游，周边游，远足"
+            android:textSize="14sp"
+            android:textColor="@color/smart_tab_layout_default_text_color"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/sale_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="40dp"
+            android:layout_toRightOf="@id/sale_range"
+            android:layout_below="@id/sale_range_tv"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="22dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/connect_address"
+            android:layout_marginLeft="40dp"
+            android:text="@string/connect_address"
+            android:textSize="14sp"
+            android:textColor="@color/smart_tab_layout_default_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/connect_address_tv"
+            android:singleLine="true"
+            android:layout_marginRight="40dp"
+            android:text="东大东门对面"
+            android:textSize="14sp"
+            android:textColor="@color/smart_tab_layout_default_text_color"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/connect_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="40dp"
+            android:layout_toRightOf="@id/connect_address"
+            android:layout_below="@id/connect_address_tv"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="22dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/campus_team"
+            android:layout_marginLeft="40dp"
+            android:text="@string/campus_team"
+            android:textSize="14sp"
+            android:textColor="@color/smart_tab_layout_default_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/campus_team_tv"
+            android:singleLine="true"
+            android:layout_marginRight="40dp"
+            android:text="东大旅游吧校园团"
+            android:textSize="14sp"
+            android:textColor="@color/smart_tab_layout_default_text_color"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/campus_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="40dp"
+            android:layout_toRightOf="@id/campus_team"
+            android:layout_below="@id/campus_team_tv"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:text="@string/shop_resume"
+        android:textSize="14sp"
+        android:textColor="@color/smart_tab_layout_default_text_color"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="22dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:background="@drawable/shop_detail_resume_bg"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="match_parent"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_height="110dp">
+        <TextView
+            android:text="这是东南大学旅游爱好者聚集地"
+            android:id="@+id/resume_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    
+    <Button
+        android:text="@string/report_shop"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:background="@drawable/shop_report_btn_bg"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:layout_width="110dp"
+        android:layout_height="30dp" />
+</LinearLayout>
