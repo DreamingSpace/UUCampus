@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,8 @@ import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.base.ChangeColorTabWithText;
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by money on 2015/9/14.
@@ -28,6 +31,12 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
     private ChangeColorTabWithText threeChangeColorTabWithText;
     private List<ChangeColorTabWithText> mChangeColorTabWithTexts = new ArrayList<ChangeColorTabWithText>();
 
+    @Override
+    protected void initToolBar() {
+        mToolBar = (Toolbar) findViewById(R.id.tl_custom);
+        setSupportActionBar(mToolBar);
+        ButterKnife.bind(this);
+    }
 
     @Override
     protected int getContentView() {

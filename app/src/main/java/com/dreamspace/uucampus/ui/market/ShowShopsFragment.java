@@ -7,6 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
@@ -70,7 +71,12 @@ public class ShowShopsFragment extends BaseLazyFragment {
 
     @Override
     protected void initViewsAndEvents() {
-
+        loadMoreListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                readyGo(ShopShowGoodsAct.class);
+            }
+        });
     }
 
     @Override

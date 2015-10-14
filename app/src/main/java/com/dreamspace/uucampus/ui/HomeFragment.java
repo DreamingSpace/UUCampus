@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsActivity;
@@ -22,18 +23,28 @@ import butterknife.Bind;
  */
 
 public class HomeFragment extends BaseLazyFragment {
-    @Bind(R.id.button1)
-    Button travel;
-    @Bind(R.id.button2)
-    Button driver;
-    @Bind(R.id.button3)
-    Button uniform;
-    @Bind(R.id.button4)
-    Button abroad;
-    @Bind(R.id.button5)
-    Button shop;
-    @Bind(R.id.free_goods_linear_layout)
-    LinearLayout mFreeGoods;
+    @Bind(R.id.free_goods_ll)
+    LinearLayout freeGoodsLl;
+    @Bind(R.id.travel_ll)
+    LinearLayout travelLl;
+    @Bind(R.id.driver_school_ll)
+    LinearLayout driverSchoolLl;
+    @Bind(R.id.class_uniform_ll)
+    LinearLayout classUniformLl;
+    @Bind(R.id.studying_abroad_ll)
+    LinearLayout studyAbroadLl;
+    @Bind(R.id.personal_shop_ll)
+    LinearLayout personalShopLl;
+    @Bind(R.id.study_abroad_rl)
+    RelativeLayout studyAbroadRl;
+    @Bind(R.id.free_goods_rl)
+    RelativeLayout freeGoodsRl;
+    @Bind(R.id.travel_rl)
+    RelativeLayout travelRl;
+    @Bind(R.id.driver_school_rl)
+    RelativeLayout driverSchoolRl;
+    @Bind(R.id.personal_shop_rl)
+    RelativeLayout personalShopRl;
 
     @Override
     protected void onFirstUserVisible() {
@@ -52,7 +63,7 @@ public class HomeFragment extends BaseLazyFragment {
 
     @Override
     protected void initViewsAndEvents() {
-        travel.setOnClickListener(new View.OnClickListener() {
+        travelLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
@@ -61,7 +72,7 @@ public class HomeFragment extends BaseLazyFragment {
             }
         });
 
-        uniform.setOnClickListener(new View.OnClickListener() {
+        classUniformLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
@@ -70,7 +81,7 @@ public class HomeFragment extends BaseLazyFragment {
             }
         });
 
-        driver.setOnClickListener(new View.OnClickListener() {
+        driverSchoolLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
@@ -79,7 +90,7 @@ public class HomeFragment extends BaseLazyFragment {
             }
         });
 
-        abroad.setOnClickListener(new View.OnClickListener() {
+        studyAbroadLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
@@ -88,7 +99,7 @@ public class HomeFragment extends BaseLazyFragment {
             }
         });
 
-        shop.setOnClickListener(new View.OnClickListener() {
+        personalShopLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
@@ -97,10 +108,53 @@ public class HomeFragment extends BaseLazyFragment {
             }
         });
 
-        mFreeGoods.setOnClickListener(new View.OnClickListener() {
+        freeGoodsLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {     //快捷方式进入闲置页面
                readyGo(FreeGoodsActivity.class);
+            }
+        });
+
+        travelRl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString(FastInAct.CLASSIFICATION_TYPE,getResources().getString(R.string.travel));
+                readyGo(FastInAct.class,bundle);
+            }
+        });
+
+        driverSchoolRl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString(FastInAct.CLASSIFICATION_TYPE,getResources().getString(R.string.driver_school));
+                readyGo(FastInAct.class,bundle);
+            }
+        });
+
+        studyAbroadRl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString(FastInAct.CLASSIFICATION_TYPE,getResources().getString(R.string.study_abroad));
+                readyGo(FastInAct.class,bundle);
+            }
+        });
+
+        personalShopRl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString(FastInAct.CLASSIFICATION_TYPE,getResources().getString(R.string.personal_shop));
+                readyGo(FastInAct.class,bundle);
+            }
+        });
+
+        freeGoodsRl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {     //快捷方式进入闲置页面
+                readyGo(FreeGoodsActivity.class);
             }
         });
     }

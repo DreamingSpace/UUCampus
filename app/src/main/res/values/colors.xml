@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    //color.xml的#5000000前两位是透明的效果参数从00--99（透明--不怎么透明），
-    //后6位是颜色的设置
+    <!--color.xml的#5000000前两位是透明的效果参数从00&#45;&#45;99（透明&#45;&#45;不怎么透明），-->
+    <!--后6位是颜色的设置-->
     <!-- basis color-->
     <color name="orange">#FADCA7</color>
     <color name="yellow">#EEFF41</color>
@@ -48,6 +49,7 @@
     <color name="img_soft_opaque">#30FF0000</color>
     <color name="img_full_opaque">#00000000</color>
     <color name="default_background">#3d3d3d</color>
+
     <color name="Indigo_colorPrimaryDark">#EA5D49</color>
     <color name="Indigo_colorPrimary">#E6E6E6</color>
     <color name="Indigo_nav_color">#4675FF</color>
@@ -57,7 +59,7 @@
     <color name="edit_stroke">#75999999</color>
     <color name="gender_man_bg">#579BDB</color>
     <color name="delete_bg">#f93f25</color>
-    
+
     <!-- marketfragment color used-->
     <color name="app_theme_color">#06c1ae</color>
     <color name="app_theme_color2">#059183</color>
@@ -71,4 +73,5 @@
     <color name="dialog_center_color">#43aa9f</color>
     <color name="new_title_text_color">#059181</color>
     <color name="new_pre_cata_edittext_bottom_color">#06c2ad</color>
+    <color name="consult_shadow">#66000000</color>
 </resources>

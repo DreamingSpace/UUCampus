@@ -95,10 +95,10 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
         return R.layout.base_list_fragment;
     }
     public void onPullUpFinished(){
-        moreListView.setLoading(false);
+//        moreListView.setLoading(false);
     }
     public void onPullDownFinished(){
-        mSwipeRefreshLayout.setRefreshing(false);
+//        mSwipeRefreshLayout.setRefreshing(false);
     }
     public void refreshDate(List<T> mEntities) {
         mAdapter.setmEntities(mEntities);

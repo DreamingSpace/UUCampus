@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true" android:color="@color/app_theme_color"/>
+    <item android:state_selected="false" android:color="@color/smart_tab_layout_default_text_color"/>
+</selector>
