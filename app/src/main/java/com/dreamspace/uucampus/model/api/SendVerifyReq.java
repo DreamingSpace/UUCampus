@@ -1,7 +1,7 @@
 package com.dreamspace.uucampus.model.api;
 
 /**
- * Created by wufan on 2015/9/28.
+ * Created by Lx on 2015/10/14.
  */
 public class SendVerifyReq {
     private String phone_num;
