@@ -145,4 +145,15 @@
     <string name="campus_team">校园执行团队</string>
     <string name="shop_resume">店铺简介</string>
     <string name="report_shop">举 报 商 家</string>
+
+    <!-- mine strings used-->
+    <string name="my_free_goods">我的闲置</string>
+    <string name="my_collection">我的收藏</string>
+    <string name="my_shop">我的店铺</string>
+    <string name="setting">设置</string>
+    <string name="about">关于</string>
+    
+    <!-- my collection act strings used-->
+    <string name="goods">商品</string>
+    <string name="seller">商家</string>
 </resources>
