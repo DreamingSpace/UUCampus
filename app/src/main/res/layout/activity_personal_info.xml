@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/custom_toolbar"/>
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/avater_rl"
+            android:paddingBottom="10dp"
+            android:background="@drawable/personal_center_item_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="@string/avatar"
+                android:textSize="16sp"
+                android:textColor="@color/black_40"
+                android:layout_marginLeft="28dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/avater_right_arrow"
+                android:src="@drawable/right_arrow"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="32dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/personal_info_avater"
+                android:src="@color/search_opaque"
+                android:layout_toLeftOf="@id/avater_right_arrow"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+
+        <RelativeLayout
+            android:id="@+id/nickname_rl"
+            android:background="@drawable/personal_center_item_bg"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:text="@string/nickname"
+                android:textSize="16sp"
+                android:textColor="@color/black_40"
+                android:layout_marginLeft="28dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/nickname_right_arrow"
+                android:src="@drawable/right_arrow"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="32dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="呼呼哈哈"
+                android:textSize="16sp"
+                android:textColor="@color/black_40"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/nickname_right_arrow"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <View
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+
+        <RelativeLayout
+            android:id="@+id/sex_rl"
+            android:background="@drawable/personal_center_item_bg"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:text="@string/sex"
+                android:textSize="16sp"
+                android:textColor="@color/black_40"
+                android:layout_marginLeft="28dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/sex_right_arrow"
+                android:src="@drawable/right_arrow"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="32dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="男"
+                android:textSize="16sp"
+                android:textColor="@color/black_40"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/sex_right_arrow"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <View
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <RelativeLayout
+            android:id="@+id/bundling_phone_rl"
+            android:background="@drawable/personal_center_item_bg"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:text="@string/bundling_phone"
+                android:textSize="16sp"
+                android:textColor="@color/black_40"
+                android:layout_marginLeft="28dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/phone_right_arrow"
+                android:src="@drawable/right_arrow"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="32dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="13365208080（已绑定)"
+                android:textSize="16sp"
+                android:textColor="@color/black_40"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/phone_right_arrow"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <View
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+
+        <RelativeLayout
+            android:id="@+id/school_rl"
+            android:background="@drawable/personal_center_item_bg"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:text="@string/school"
+                android:textSize="16sp"
+                android:textColor="@color/black_40"
+                android:layout_marginLeft="28dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/school_right_arrow"
+                android:src="@drawable/right_arrow"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="32dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="东南大学九龙湖校区"
+                android:textSize="16sp"
+                android:textColor="@color/black_40"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/school_right_arrow"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <View
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+
+        <RelativeLayout
+            android:id="@+id/year_rl"
+            android:background="@drawable/personal_center_item_bg"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:text="@string/in_school_year"
+                android:textSize="16sp"
+                android:textColor="@color/black_40"
+                android:layout_marginLeft="28dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/year_right_arrow"
+                android:src="@drawable/right_arrow"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="32dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="2015"
+                android:textSize="16sp"
+                android:textColor="@color/black_40"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/year_right_arrow"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <View
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/weibo_rl"
+            android:background="@drawable/personal_center_item_bg"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+            <ImageView
+                android:src="@drawable/register_button_sina"
+                android:layout_marginLeft="28dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/weibo_right_arrow"
+                android:src="@drawable/right_arrow"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="32dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="@string/bundling"
+                android:id="@+id/weibo_bundling"
+                android:textColor="@color/black_40"
+                android:layout_toLeftOf="@id/weibo_right_arrow"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <View
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+
+        <RelativeLayout
+            android:id="@+id/wechat_rl"
+            android:background="@drawable/personal_center_item_bg"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+            <ImageView
+                android:src="@drawable/register_button_wechat"
+                android:layout_marginLeft="28dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/wechat_right_arrow"
+                android:src="@drawable/right_arrow"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="32dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="@string/bundling"
+                android:textColor="@color/black_40"
+                android:id="@+id/wechat_bundling"
+                android:layout_toLeftOf="@id/wechat_right_arrow"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <View
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/logout_btn"
+        android:text="@string/logout"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/button_round"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+</LinearLayout>

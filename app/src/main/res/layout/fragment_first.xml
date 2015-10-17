@@ -10,10 +10,10 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView
-                android:src="@drawable/banner1"
+            <com.bigkoo.convenientbanner.ConvenientBanner
+                android:id="@+id/home_page_banner"
                 android:layout_width="match_parent"
-                android:layout_height="160dp" />
+                android:layout_height="160dp"/>
 
             <LinearLayout
                 android:paddingBottom="10dp"

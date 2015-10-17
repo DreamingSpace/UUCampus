@@ -44,6 +44,7 @@ public class MyCollectionAct extends AbsActivity {
 
     @Override
     protected void initViews() {
+        getSupportActionBar().setTitle(getResources().getString(R.string.my_collection));
         initListeners();
     }
 

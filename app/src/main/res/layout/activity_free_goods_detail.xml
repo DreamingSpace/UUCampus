@@ -1,13 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/good_detail_bottom_bar"
+        android:background="@color/market_fragments_bg_color"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
 
-    <include layout="@layout/custom_toolbar"></include>
+        <LinearLayout
+            android:id="@+id/consult_ll"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/xiangqing_tab_bar_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="@string/consult"
+                android:textSize="12sp"
+                android:layout_marginTop="0dp"
+                android:textColor="@color/app_theme_color2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
-    <include layout="@layout/view_in_goods_detail_top"></include>
+        <LinearLayout
+            android:id="@+id/collect_ll"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/xiangqing_tab_bar_collect_n"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="@string/collect"
+                android:textSize="12sp"
+                android:layout_marginTop="0dp"
+                android:textColor="@color/app_theme_color2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
-    <include layout="@layout/view_in_bottom_goods_detail"></include>
+        <LinearLayout
+            android:layout_weight="1"
+            android:background="@color/price_text_color"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/go_buy_it"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
 
-</LinearLayout>
+    <View
+        android:id="@+id/divider_above_bottom_bar"
+        android:layout_above="@id/good_detail_bottom_bar"
+        android:background="@color/divider_color"
+        android:layout_width="match_parent"
+        android:layout_height="2px"/>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/divider_above_bottom_bar"
+        layout="@layout/view_top_good_detail"/>
+</RelativeLayout>

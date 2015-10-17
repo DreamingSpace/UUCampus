@@ -57,15 +57,6 @@ public class PhotoPreviewActivity extends AbsActivity {
         title.setText(getResources().getString(R.string.preview_photo));
     }
 
-    @Override
-    protected void initToolBar() {
-        mToolBar = (Toolbar) findViewById(R.id.title_center_tl_custom);
-        setSupportActionBar(mToolBar);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ButterKnife.bind(this);
-    }
-
     private void showImage(String imagePath){
         int showHeight,showWidth;
         BitmapFactory.Options opts = new BitmapFactory.Options();

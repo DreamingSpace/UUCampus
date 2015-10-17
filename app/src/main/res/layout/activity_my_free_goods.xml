@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/custom_toolbar"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="38dp">
+        <RelativeLayout
+            android:id="@+id/on_sale_rl"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/on_sale"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@drawable/market_smart_tab_textcolor"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/sale_tab_bottom_iv"
+                android:background="@color/app_theme_color"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_width="55dp"
+                android:layout_height="3dp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_gravity="center_vertical"
+            android:background="@color/divider_color"
+            android:layout_width="1dp"
+            android:layout_height="15dp"/>
+        <RelativeLayout
+            android:id="@+id/pull_off_rl"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/already_pull_off"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@drawable/market_smart_tab_textcolor"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/pull_off_tab_bottom_iv"
+                android:background="@color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_width="55dp"
+                android:layout_height="3dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:background="@color/divider_color"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:background="@color/divider_color"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+</LinearLayout>

@@ -3,11 +3,11 @@
     android:layout_height="match_parent"
     tools:context="com.stormlearn.xunfengmarket.SelectImageAcitivity">
 
-    <include layout="@layout/title_center_custom_toolbar"/>
+    <include layout="@layout/custom_toolbar"/>
 
     <GridView
         android:id="@+id/photos_gv"
-        android:layout_below="@+id/title_center_tl_custom"
+        android:layout_below="@+id/tl_custom"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="5dp"

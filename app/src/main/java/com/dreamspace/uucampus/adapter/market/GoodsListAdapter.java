@@ -31,9 +31,9 @@ public class GoodsListAdapter extends BasisAdapter<String,GoodsListAdapter.ViewH
         holder.image = (ImageView) convertView.findViewById(R.id.good_image_iv);
         holder.goodName = (TextView) convertView.findViewById(R.id.good_name_tv);
         holder.shopName = (TextView) convertView.findViewById(R.id.shop_name_tv);
-        holder.browseNum = (TextView) convertView.findViewById(R.id.good_browse_tv);
         holder.likeNum = (TextView) convertView.findViewById(R.id.good_like_tv);
         holder.perferential = (TextView) convertView.findViewById(R.id.good_preferential_tv);
+        holder.orgPrice = (TextView) convertView.findViewById(R.id.goods_org_price);
         holder.price = (TextView) convertView.findViewById(R.id.good_price_tv);
     }
 
@@ -47,9 +47,9 @@ public class GoodsListAdapter extends BasisAdapter<String,GoodsListAdapter.ViewH
         public ImageView image;
         public TextView goodName;
         public TextView shopName;
-        public TextView browseNum;
         public TextView likeNum;
         public TextView perferential;
+        public TextView orgPrice;
         public TextView price;
     }
 }

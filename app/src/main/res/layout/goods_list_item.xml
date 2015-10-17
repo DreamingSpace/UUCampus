@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:paddingBottom="10dp"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <ImageView
@@ -48,20 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:text="65人已浏览"
-            android:id="@+id/good_browse_tv"
-            android:layout_marginLeft="5dp"
-            android:singleLine="true"
-            style="@style/browse_collect_text_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:src="@drawable/xianzhi_icon_like"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:text="15人赞"
+            android:text="65人感兴趣"
             android:id="@+id/good_like_tv"
             android:layout_marginLeft="5dp"
             android:singleLine="true"
@@ -80,6 +68,24 @@
         android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@id/good_price_tv"
+        android:layout_alignBottom="@id/good_price_tv"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/goods_org_price"
+            android:text="￥260"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_centerVertical="true"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/good_preferential_ll"
@@ -94,7 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:text="满50减10，满100减20"
+            android:text="凭借悠悠万能优惠卡减免10元"
             android:id="@+id/good_preferential_tv"
             android:layout_marginLeft="5dp"
             style="@style/preferential_text_style"

@@ -9,6 +9,7 @@ import android.widget.PopupWindow;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsFragment;
+import com.dreamspace.uucampus.ui.popupwindow.GoodsSortPopupWindow;
 import com.melnykov.fab.FloatingActionButton;
 
 import butterknife.Bind;
@@ -21,12 +22,11 @@ public class FreeGoodsActivity extends AbsActivity {
     @Bind(R.id.free_goods_publish_btn)
     FloatingActionButton mPublishBtn;
 
-    PopupWindow popupWindow;
+    GoodsSortPopupWindow popupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -52,6 +52,36 @@ public class FreeGoodsActivity extends AbsActivity {
         });
     }
 
+    private void initListeners(){
+        popupWindow.setMostPopularOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.popupItemSetSelect(0);
+            }
+        });
+
+        popupWindow.setHighestAppraiesOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.popupItemSetSelect(1);
+            }
+        });
+
+        popupWindow.setRecentPublishOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.popupItemSetSelect(2);
+            }
+        });
+
+        popupWindow.setCheapestOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.popupItemSetSelect(3);
+            }
+        });
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_free_goods, menu);
@@ -61,16 +91,21 @@ public class FreeGoodsActivity extends AbsActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id==R.id.free_goods_action_sort){
-            if(popupWindow!=null){
-                showPopupWindow();
+        if (id == R.id.free_goods_action_sort) {
+            if (popupWindow != null) {
+                popupWindow.showAsDropDown(mToolBar);
             }
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private void showPopupWindow() {
-
+    @Override
+    public void onBackPressed() {
+        if(popupWindow != null && popupWindow.isShowing()){
+            popupWindow.dismiss();
+        }else{
+            super.onBackPressed();
+        }
     }
 }

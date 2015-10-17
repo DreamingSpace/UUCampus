@@ -1,14 +1,12 @@
 package com.dreamspace.uucampus.ui;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
-import com.dreamspace.uucampus.ui.market.ShowShopsFragment;
+import com.dreamspace.uucampus.ui.fragment.Market.ShowShopsFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;

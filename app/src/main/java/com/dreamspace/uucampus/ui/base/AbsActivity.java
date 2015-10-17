@@ -50,7 +50,7 @@ public abstract class AbsActivity extends AppCompatActivity {
     }
 
     protected void initToolBar() {
-        mToolBar = (Toolbar) findViewById(R.id.title_center_tl_custom);
+        mToolBar = (Toolbar) findViewById(R.id.tl_custom);
         setSupportActionBar(mToolBar);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

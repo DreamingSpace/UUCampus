@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        layout="@layout/custom_toolbar"></include>
+    <RelativeLayout
+        android:id="@+id/rl_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/iv_user_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/merchant_btn_picture" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/register_personinfo_username"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/inputview"
+            android:hint="@string/register_input_user_name_hint"
+            android:paddingLeft="50dp"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@id/register_personinfo_username"
+            android:layout_centerVertical="true"
+            android:paddingLeft="6dp"
+            android:src="@drawable/usericon" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/register_personinfo_school"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/inputview"
+            android:gravity="center_vertical"
+            android:hint="@string/register_input_school"
+            android:paddingLeft="50dp"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@id/register_personinfo_school"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:src="@drawable/schoolicon" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/register_personinfo_schooltimeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <Spinner
+            android:id="@+id/register_personinfo_spinner_enrolledtime"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/inputview"
+            android:gravity="center_vertical"
+            android:hint="@string/register_input_entertime"
+            android:paddingLeft="50dp"
+            android:singleLine="true"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@id/register_personinfo_spinner_enrolledtime"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:src="@drawable/schooltimeicon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/register_personinfo_spinner_enrolledtime"
+            android:text="年入学" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/personinfo_button"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_round"
+        android:gravity="center"
+        android:text="@string/next_step"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</LinearLayout>

@@ -1,50 +1,44 @@
 package com.dreamspace.uucampus.ui.activity.FreeGoods;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.util.DisplayMetrics;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.ui.activity.Market.ShopShowGoodsAct;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
-import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsDetailBottomCommentFragment;
-import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsDetailBottomInfoFragment;
-import com.melnykov.fab.FloatingActionButton;
-
-import java.util.ArrayList;
+import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
+import com.dreamspace.uucampus.ui.fragment.Market.GoodDetailPagerFragment;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
 import butterknife.Bind;
-import butterknife.OnClick;
 
 /**
  * Created by wufan on 2015/9/20.
  */
 public class FreeGoodsDetailActivity extends AbsActivity {
+    @Bind(R.id.detail_comment_stl)
+    SmartTabLayout tabLayout;
+    @Bind(R.id.detail_comment_view_pager)
+    ViewPager detailViewPager;
+    @Bind(R.id.consult_ll)
+    LinearLayout consultLl;
+    @Bind(R.id.collect_ll)
+    LinearLayout collect_ll;
+    @Bind(R.id.shop_name_ll)
+    LinearLayout shopNameLl;
 
-    @Bind(R.id.goods_detail_bottom_info_tv)
-    TextView mInfoTv;
-    @Bind(R.id.goods_detail_bottom_comment_tv)
-    TextView mCommentTv;
-    @Bind(R.id.goods_detail_bottom_line_iv)
-    ImageView mLineTv;
-    @Bind(R.id.goods_detail_bottom_view_pager)
-    ViewPager mViewPager;
-    @Bind(R.id.goods_detail_like_fab)
-    FloatingActionButton mLikeFab;
-
-    private ArrayList<Fragment> fragmentList;
-    private int currIndex = 0;   //当前底部页卡编号
-    private int bottomLineWidth;  //底部横线图片宽度
-    private int bottomOffset = 0; //底部图片移动的偏移量
-    private int bottomPosition;  //底部图片的位置
-
-
-    private int check=0;
+    public static final String TYPE = "type";
+    public static final String DETAIL = "detail";
+    public static final String COMMENT= "comment";
 
     @Override
     protected int getContentView() {
@@ -53,102 +47,76 @@ public class FreeGoodsDetailActivity extends AbsActivity {
 
     @Override
     protected void prepareDatas() {
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int screenW = dm.widthPixels;
-        bottomLineWidth = mLineTv.getLayoutParams().width;
-        bottomOffset = (int) ((screenW / 2 - bottomLineWidth) / 2);
-        bottomPosition = (int) (screenW / 2 - bottomLineWidth / 3);
+        initStl();
     }
 
     @Override
     protected void initViews() {
-        mInfoTv.setOnClickListener(new textListener(0));
-        mCommentTv.setOnClickListener(new textListener(1));
-        initViewPager();
+        initListeners();
     }
 
-    private class textListener implements View.OnClickListener {
-        private int index = 0;
-
-        public textListener(int i) {
-            index = i;
-        }
-        @Override
-        public void onClick(View v) {
-            mViewPager.setCurrentItem(index);
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.good_detial_act_menu, menu);
+        return true;
     }
 
-    @OnClick(R.id.goods_detail_like_fab)
-    void likeClick(){
-        if(check==0){
-            check=1;
-            mLikeFab.setImageResource(R.drawable.xiangqing_btn_dianzan);
-        }else {
-            check=0;
-            mLikeFab.setImageResource(R.drawable.xiangqing_btn_dianzan_p);
-        }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
-    private void initViewPager() {
-        fragmentList = new ArrayList<Fragment>();
-
-        //详情页面需要分别往商品详细与评论fragment中 传入 详情text与从后台获取评论需要的参数
-        Fragment infoFragment = FreeGoodsDetailBottomInfoFragment.newInstance();  //商品详细直接传入
-        Fragment commentFragment = FreeGoodsDetailBottomCommentFragment.newInstance();    //评论可以跳转后再次从后台获取数据
-
-        fragmentList.add(infoFragment);
-        fragmentList.add(commentFragment);
-
-        mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {  //为pager设置fragment的适配器
+    private void initListeners(){
+        consultLl.setOnClickListener(new View.OnClickListener() {
             @Override
-            public Fragment getItem(int position) {
-                return fragmentList.get(position);
-            }
-
-            @Override
-            public int getCount() {
-                return fragmentList.size();
+            public void onClick(View v) {
+                ConnectSellerDialog dialog = dialog = new ConnectSellerDialog(FreeGoodsDetailActivity.this,
+                        R.style.UpDialog, "good name", "phone number");
+                Window window = dialog.getWindow();
+                WindowManager.LayoutParams layoutParams = window.getAttributes();
+                layoutParams.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
+                layoutParams.y = (int)(80*getResources().getDisplayMetrics().density);
+                window.setAttributes(layoutParams);
+                dialog.show();
             }
         });
-        mViewPager.setCurrentItem(0);
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {     //监听动态切换fragment
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
 
+        collect_ll.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onPageScrollStateChanged(int state) {
-            }
+            public void onClick(View v) {
 
+            }
+        });
+
+        shopNameLl.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onPageSelected(int position) {
-                Animation animation = null;
-                switch (position) {
-                    case 0:
-                        if (currIndex == 1) {
-                            animation = new TranslateAnimation(bottomPosition, 0, 0, 0);
-                            mCommentTv.setTextColor(getResources().getColor(R.color.text_pressed));
-                        }
-                        mInfoTv.setTextColor(getResources().getColor(R.color.text_normal));
-                        break;
-                    case 1:
-                        if (currIndex == 0) {
-                            animation = new TranslateAnimation(bottomOffset, bottomPosition, 0, 0);
-                            mInfoTv.setTextColor(getResources().getColor(R.color.text_pressed));
-                        }
-                        mCommentTv.setTextColor(getResources().getColor(R.color.text_normal));
-                        break;
-                    default:
-                        break;
-                }
-                currIndex = position;
-                animation.setFillAfter(true);
-                animation.setDuration(300);
-                mLineTv.startAnimation(animation);
+            public void onClick(View v) {
+                readyGo(ShopShowGoodsAct.class);
             }
         });
     }
 
+    private void initStl(){
+        getSupportActionBar().setTitle(getResources().getString(R.string.detial));
+        FragmentPagerItemAdapter pagerAdapter = new FragmentPagerItemAdapter(getSupportFragmentManager(), FragmentPagerItems.with(this)
+                .add(R.string.detial, GoodDetailPagerFragment.class, getBundles(0))
+                .add(R.string.comment, GoodDetailPagerFragment.class, getBundles(1))
+                .create()
+        );
+        tabLayout.setCustomTabView(R.layout.good_detail_stl_title_tab, R.id.detail_stl_title_tv);
+        detailViewPager.setAdapter(pagerAdapter);
+        tabLayout.setViewPager(detailViewPager);
+    }
+
+    private Bundle getBundles(int index){
+        Bundle bundle = new Bundle();
+        if(index < 2){
+            if(index == 0){
+                bundle.putString(TYPE,DETAIL);
+            }else{
+                bundle.putString(TYPE,COMMENT);
+            }
+        }
+        return bundle;
+    }
 }

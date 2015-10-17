@@ -86,4 +86,9 @@
         <item name="android:textColor">@color/new_title_text_color</item>
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="popupwindow_anim">
+        <item name="android:windowEnterAnimation">@anim/popupwindow_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/popupwindow_fade_out</item>
+    </style>
 </resources>

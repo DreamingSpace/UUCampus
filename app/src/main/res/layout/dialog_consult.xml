@@ -10,15 +10,15 @@
 
         <ImageView
             android:id="@+id/connect_dialog_msg"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/xiangqing_btn_message" />
 
         <ImageView
             android:id="@+id/connect_dialog_phone"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
             android:src="@drawable/xiangqing_btn_call" />
 
     </LinearLayout>

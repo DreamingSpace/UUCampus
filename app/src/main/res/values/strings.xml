@@ -70,9 +70,9 @@
     <string name="edit_catalog">编辑分类</string>
     <string name="finish_edit">完成编辑</string>
 
-    <string name="pull_off">下架</string>
-    <string name="edit">编辑</string>
-    <string name="sale">上架</string>
+    <string name="pull_off">下 架</string>
+    <string name="edit">编 辑</string>
+    <string name="sale">上 架</string>
 
     <!-- add good strings used-->
     <string name="good_add">商品添加</string>
@@ -147,13 +147,45 @@
     <string name="report_shop">举 报 商 家</string>
 
     <!-- mine strings used-->
+    <string name="personal_center">个人中心</string>
     <string name="my_free_goods">我的闲置</string>
     <string name="my_collection">我的收藏</string>
-    <string name="my_shop">我的店铺</string>
+    <string name="my_orders">我的订单</string>
+    <string name="apply_shop">申请开店</string>
+    <string name="my_coupon_card">我的万能优惠卡</string>
     <string name="setting">设置</string>
     <string name="about">关于</string>
-    
-    <!-- my collection act strings used-->
+    <string name="check_update">检查更新</string>
+    <string name="feedback">意见反馈</string>
+    <string name="logout">退 出 登 录</string>
+    <string name="feedback_hint">请输入您遇到的问题或是对我们的意见或建议</string>
+    <string name="commit">提 交</string>
     <string name="goods">商品</string>
     <string name="seller">商家</string>
+    <string name="avatar">头像</string>
+    <string name="nickname">昵称</string>
+    <string name="bundling_phone">绑定手机</string>
+    <string name="sex">性别</string>
+    <string name="school">学校</string>
+    <string name="in_school_year">入学年份</string>
+    <string name="bundling">绑定</string>
+    <string name="personal_info">个人信息</string>
+
+    <!-- login strings used-->
+    <string name="login_username_hint">请输入您的手机号</string>
+    <string name="login_pwd_hint">请输入您的密码</string>
+    <string name="login_button">登录</string>
+    <string name="text_forget_pwd">忘记密码</string>
+    <string name="text_register_im">马上注册</string>
+    <string name="text_login_fast">快速登录</string>
+    <string name="text_weichat_login">微信登录</string>
+    <string name="text_weibo_login">微博登录</string>
+    <string name="text_verify_code">请输入验证码</string>
+    <string name="text_pwd_confirm">请再次输入密码</string>
+    <string name="register_button">注册</string>
+    <string name="text_get_code">获取验证码</string>
+    <string name="bound_button">完成</string>
+    <string name="register_input_user_name_hint">请填写昵称</string>
+    <string name="register_input_school">请选择你的学校</string>
+    <string name="register_input_entertime">2015</string>
 </resources>

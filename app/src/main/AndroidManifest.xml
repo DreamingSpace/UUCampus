@@ -12,20 +12,15 @@
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".ui.market.FastInAct" >
+        <activity android:name=".ui.activity.Market.FastInAct" >
         </activity>
-        <activity android:name=".ui.market.ShopHostActivity" >
+        <activity android:name=".ui.activity.Market.ShopHostActivity" >
         </activity>
-        <activity android:name=".ui.market.ShopManagmentAct" >
+        <activity android:name=".ui.activity.Market.ShopManagmentAct" >
         </activity>
         <activity
-            android:name=".ui.market.AddGoodAct"
+            android:name=".ui.activity.Market.AddGoodAct"
             android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <activity
@@ -35,8 +30,6 @@
             android:name="me.iwf.photopicker.PhotoPagerActivity"
             android:theme="@style/AppTheme" />
 
-        <activity android:name=".ui.market.SelectPhotoAct"/>
-        <activity android:name=".ui.market.PhotoPreviewAct"/>
         <activity
             android:name=".ui.activity.FreeGoods.FreeGoodsActivity"
             android:label="@string/free_goods">
@@ -59,10 +52,25 @@
         </activity>
         <activity android:name=".widget.photopicker.SelectPhotoActivity"/>
         <activity android:name=".widget.photopicker.PhotoPreviewActivity"/>
-        <activity android:name=".ui.market.GoodDetailAct"/>
-        <activity android:name=".ui.market.ShopShowGoodsAct"/>
-        <activity android:name=".ui.market.ShopDetailAct"/>
+        <activity android:name=".ui.activity.Market.GoodDetailAct"/>
+        <activity android:name=".ui.activity.Market.ShopShowGoodsAct"/>
+        <activity android:name=".ui.activity.Market.ShopDetailAct"/>
         <activity android:name=".ui.activity.Personal.MyCollectionAct"/>
+        <activity android:name=".ui.activity.Personal.SettingAct"/>
+        <activity android:name=".ui.activity.Login.RegisterActivity"/>
+        <activity android:name=".ui.activity.Login.BoundActvity"/>
+        <activity android:name=".ui.activity.Login.FindBackActivity"/>
+        <activity android:name=".ui.activity.Login.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.Login.RegisterInfoActivity"/>
+        <activity android:name=".ui.activity.Personal.FeedbackAct"/>
+        <activity android:name=".ui.activity.Personal.PersonalInfoAct"/>
+        <activity android:name=".ui.activity.Personal.MyFreeGoodsAct"/>
     </application>
 
 </manifest>

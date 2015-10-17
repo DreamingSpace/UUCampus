@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/title_center_custom_toolbar"/>
+    <include layout="@layout/custom_toolbar"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -197,7 +197,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:id="@+id/good_add_btn"
-        android:background="@drawable/shop_management_btn_bg"
+        android:background="@drawable/button_round"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="37dp"
         android:layout_marginRight="37dp"
