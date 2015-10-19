@@ -78,6 +78,7 @@
                 android:layout_height="20dp" />
             <TextView
                 android:text="东大旅游吧"
+                android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/shop_name_image_iv"
                 android:layout_centerVertical="true"
@@ -90,7 +91,8 @@
         <TextView
             android:text="￥4330"
             android:id="@+id/good_detail_price_tv"
-            android:textSize="14sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:textColor="@color/price_text_color"
             android:layout_marginRight="24dp"
             android:layout_alignParentRight="true"
@@ -107,7 +109,7 @@
                 android:text="￥4330"
                 android:layout_centerHorizontal="true"
                 android:singleLine="true"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <View
@@ -134,13 +136,15 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/xianzhi_icon_visitor"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/xiangqing_icon_interesting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/people_like_tv"
                 android:text="65人感兴趣"
                 android:textSize="10sp"
+                android:layout_gravity="center_vertical"
                 android:textColor="@color/smart_tab_layout_default_text_color"
                 android:layout_marginLeft="6dp"
                 android:layout_width="wrap_content"
@@ -154,12 +158,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:src="@drawable/xianzhi_icon_like"
+                android:src="@drawable/xiangqing_icon_buy"
+                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/sale_num_tv"
-                android:text="已售10"
+                android:layout_gravity="center_vertical"
+                android:text="10人已购买"
                 android:textSize="10sp"
                 android:textColor="@color/smart_tab_layout_default_text_color"
                 android:layout_marginLeft="6dp"
@@ -167,21 +173,28 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_weight="1"
             android:orientation="horizontal"
             android:gravity="right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/xiangqing_icon_time"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/good_create_time_tv"
                 android:layout_marginRight="20dp"
+                android:layout_gravity="center_vertical"
                 android:text="2015-03-09"
                 android:textSize="10sp"
+                android:layout_marginLeft="10dp"
                 android:textColor="@color/smart_tab_layout_default_text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </RelativeLayout>
+        </LinearLayout>
 
     </LinearLayout>
 

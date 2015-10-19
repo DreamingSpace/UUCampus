@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
-import com.dreamspace.uucampus.ui.dialog.GoodsClassifyDialog;
+import com.dreamspace.uucampus.ui.dialog.WheelViewDialog;
 import com.dreamspace.uucampus.ui.dialog.VerifyGoodsInfoDialog;
 
 import java.util.ArrayList;
@@ -83,8 +83,8 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
         mClassifyEt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final GoodsClassifyDialog dialog = new GoodsClassifyDialog(
-                        FreeGoodsPublishSecondActivity.this,getClassifys());
+                final WheelViewDialog dialog = new WheelViewDialog(
+                        FreeGoodsPublishSecondActivity.this,getClassifys(),getString(R.string.goods_classify));
                 dialog.setPositiveButton("取消", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -94,8 +94,7 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
                 dialog.setNegativeButton("确认", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dialog.setClassifyName();
-                        mClassifyEt.setText(dialog.classifyName);
+                        mClassifyEt.setText(dialog.getSelected());
                         dialog.dismiss();
                     }
                 });

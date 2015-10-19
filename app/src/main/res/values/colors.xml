@@ -16,6 +16,7 @@
     <color name="grey">#E0E0E0</color>
     <color name="transparent">#00000000</color>
 
+    <color name="t">#ff555555</color>
     <!-- defined color-->
     <color name="detail_background">#0096a6</color>
     <color name="main_bg">#E6E6E6</color>

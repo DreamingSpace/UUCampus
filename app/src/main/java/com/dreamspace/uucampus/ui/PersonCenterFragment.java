@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.ui.activity.Personal.FeedbackAct;
 import com.dreamspace.uucampus.ui.activity.Personal.MyCollectionAct;
 import com.dreamspace.uucampus.ui.activity.Personal.MyFreeGoodsAct;
 import com.dreamspace.uucampus.ui.activity.Personal.PersonalInfoAct;
@@ -31,8 +32,8 @@ public class PersonCenterFragment extends BaseLazyFragment {
     LinearLayout couponCardLl;
     @Bind(R.id.setting_ll)
     LinearLayout settingLl;
-    @Bind(R.id.about_ll)
-    LinearLayout aboutLl;
+    @Bind(R.id.feedback_ll)
+    LinearLayout feedbackLl;
 
     @Override
     protected void onFirstUserVisible() {
@@ -100,10 +101,10 @@ public class PersonCenterFragment extends BaseLazyFragment {
             }
         });
 
-        aboutLl.setOnClickListener(new View.OnClickListener() {
+        feedbackLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                readyGo(FeedbackAct.class);
             }
         });
     }

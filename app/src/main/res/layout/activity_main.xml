@@ -15,47 +15,169 @@
 
     </android.support.v4.view.ViewPager>
 
+    <View
+        android:background="@color/divider_color"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="54dp"
         android:background="@drawable/bottom_bg"
         android:orientation="horizontal">
-
-        <com.dreamspace.uucampus.ui.base.ChangeColorTabWithText
-            android:id="@+id/id_tab1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
+        <RelativeLayout
+            android:id="@+id/home_page_rl"
             android:layout_weight="1"
-            android:padding="5dp"
-            wdd:drawable="@drawable/home"
-            wdd:maincolor="@color/detail_background"
-            wdd:text="@string/bottom_tab_one"
-            wdd:textsize="12sp" />
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/home_unselect_ll"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:src="@drawable/my_center_button_home_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="@string/bottom_tab_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
-        <com.dreamspace.uucampus.ui.base.ChangeColorTabWithText
-            android:id="@+id/id_tab2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:padding="5dp"
-            wdd:drawable="@drawable/market"
-            wdd:maincolor="@color/detail_background"
-            wdd:text="@string/bottom_tab_two"
-            wdd:textsize="12sp" />
+            <LinearLayout
+                android:id="@+id/home_select_ll"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:src="@drawable/homepage_btn_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="@string/bottom_tab_one"
+                    android:textColor="@color/app_theme_color2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </RelativeLayout>
 
-        <com.dreamspace.uucampus.ui.base.ChangeColorTabWithText
-            android:id="@+id/id_tab3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
+        <RelativeLayout
+            android:id="@+id/shop_rl"
             android:layout_weight="1"
-            android:padding="5dp"
-            wdd:drawable="@drawable/person"
-            wdd:maincolor="@color/detail_background"
-            wdd:text="@string/bottom_tab_three"
-            wdd:textsize="12sp" />
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/shop_unselect_ll"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:src="@drawable/homepage_btn_shop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="@string/bottom_tab_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shop_select_ll"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:src="@drawable/homepage_btn_shop_h"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="@string/bottom_tab_two"
+                    android:textColor="@color/app_theme_color2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/personal_rl"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/personal_unselect_ll"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:src="@drawable/homepage_btn_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="@string/bottom_tab_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/personal_select_ll"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:src="@drawable/my_center_button_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="@string/bottom_tab_three"
+                    android:textColor="@color/app_theme_color2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </RelativeLayout>
+        <!--<com.dreamspace.uucampus.ui.base.ChangeColorTabWithText-->
+            <!--android:id="@+id/id_tab1"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_weight="1"-->
+            <!--android:padding="5dp"-->
+            <!--wdd:drawable="@drawable/home"-->
+            <!--wdd:maincolor="@color/detail_background"-->
+            <!--wdd:text="@string/bottom_tab_one"-->
+            <!--wdd:textsize="12sp" />-->
+
+        <!--<com.dreamspace.uucampus.ui.base.ChangeColorTabWithText-->
+            <!--android:id="@+id/id_tab2"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_weight="1"-->
+            <!--android:padding="5dp"-->
+            <!--wdd:drawable="@drawable/market"-->
+            <!--wdd:maincolor="@color/detail_background"-->
+            <!--wdd:text="@string/bottom_tab_two"-->
+            <!--wdd:textsize="12sp" />-->
+
+        <!--<com.dreamspace.uucampus.ui.base.ChangeColorTabWithText-->
+            <!--android:id="@+id/id_tab3"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_weight="1"-->
+            <!--android:padding="5dp"-->
+            <!--wdd:drawable="@drawable/person"-->
+            <!--wdd:maincolor="@color/detail_background"-->
+            <!--wdd:text="@string/bottom_tab_three"-->
+            <!--wdd:textsize="12sp" />-->
 
     </LinearLayout>
 

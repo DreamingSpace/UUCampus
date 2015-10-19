@@ -33,7 +33,6 @@ public class ChangeColorTabWithText extends View {
     private Rect mTextRect;
     private Paint mTextPaint;
     public ChangeColorTabWithText(Context context, AttributeSet attrs) {
-
         this(context, attrs, 0);
     }
 
@@ -43,7 +42,7 @@ public class ChangeColorTabWithText extends View {
 
     public ChangeColorTabWithText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        System.out.println("CONSTRUCT IN VIEW");
+//        System.out.println("CONSTRUCT IN VIEW");
         TypedArray mArray=context.obtainStyledAttributes(attrs, R.styleable.ChangeColorTabWithText);
         for(int i=0;i<mArray.getIndexCount();i++){
             int attr=mArray.getIndex(i);
@@ -69,7 +68,6 @@ public class ChangeColorTabWithText extends View {
         mTextPaint.setTextSize(textSize);
         mTextPaint.setColor(0xff555555);
         mTextPaint.getTextBounds(text, 0, text.length(), mTextRect);
-
     }
 
     @Override
@@ -79,7 +77,6 @@ public class ChangeColorTabWithText extends View {
         int left=getMeasuredWidth()/2-iconwidth/2;
         int top=getMeasuredHeight()/2-(iconwidth+mTextRect.height())/2;
         mIconRect=new Rect(left,top,left+iconwidth,top+iconwidth);
-
     }
 
     @Override
@@ -94,7 +91,6 @@ public class ChangeColorTabWithText extends View {
         canvas.drawBitmap(mBitmapInMem, 0, 0, null);
         drawSourceText(canvas, alpha);
         drawTargetText(canvas, alpha);
-
     }
 
     private void drawTargetText(Canvas canvas, int alpha) {

@@ -7,26 +7,49 @@ import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.base.ChangeColorTabWithText;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.Bind;
 
 /**
  * Created by money on 2015/9/14.
  */
 public class MainActivity extends AbsActivity implements View.OnClickListener {
+    @Bind(R.id.home_page_rl)
+    RelativeLayout homeRl;
+    @Bind(R.id.shop_rl)
+    RelativeLayout shopRl;
+    @Bind(R.id.personal_rl)
+    RelativeLayout personalRl;
+    @Bind(R.id.home_select_ll)
+    LinearLayout homeSelectLl;
+    @Bind(R.id.home_unselect_ll)
+    LinearLayout homeUnselectLl;
+    @Bind(R.id.shop_select_ll)
+    LinearLayout shopSelectLl;
+    @Bind(R.id.shop_unselect_ll)
+    LinearLayout shopUnselectLl;
+    @Bind(R.id.personal_select_ll)
+    LinearLayout personalSelectLl;
+    @Bind(R.id.personal_unselect_ll)
+    LinearLayout personalUnselectLl;
 
+    private List<LinearLayout> mBottomTabs = new ArrayList<LinearLayout>();
     private List<Fragment> mFragments = new ArrayList<Fragment>();
     private ViewPager mViewPager;
     private FragmentPagerAdapter mAdapter;
-    private ChangeColorTabWithText oneChangeColorTabWithText;
-    private ChangeColorTabWithText twoChangeColorTabWithText;
-    private ChangeColorTabWithText threeChangeColorTabWithText;
-    private List<ChangeColorTabWithText> mChangeColorTabWithTexts = new ArrayList<ChangeColorTabWithText>();
     private TextView centerTitleTv;
     //当前所在的fragment标号
     private int currentIndex = 0;
@@ -48,9 +71,9 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
     }
 
     private void initListener() {
-        oneChangeColorTabWithText.setOnClickListener(this);
-        twoChangeColorTabWithText.setOnClickListener(this);
-        threeChangeColorTabWithText.setOnClickListener(this);
+        homeRl.setOnClickListener(this);
+        shopRl.setOnClickListener(this);
+        personalRl.setOnClickListener(this);
     }
 
     private void initDates() {
@@ -75,11 +98,14 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if (position < mChangeColorTabWithTexts.size() - 1) {
-                    ChangeColorTabWithText left = mChangeColorTabWithTexts.get(position);
-                    ChangeColorTabWithText right = mChangeColorTabWithTexts.get(position + 1);
-                    left.setIconAlpha(1 - positionOffset);
-                    right.setIconAlpha(positionOffset);
+                if (position < 2) {
+                    if (position == 0) {
+                        homePageIconSetAlpha(1 - positionOffset);
+                        shopPageIconSetAlpha(positionOffset);
+                    } else if (position == 1) {
+                        shopPageIconSetAlpha(1 - positionOffset);
+                        personalPageIconSetAlpha(positionOffset);
+                    }
                 }
             }
 
@@ -112,15 +138,10 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
     private void initView() {
         centerTitleTv = (TextView) mToolBar.findViewById(R.id.custom_title_tv);
         mViewPager = (ViewPager) findViewById(R.id.id_viewpager);
-        oneChangeColorTabWithText = (ChangeColorTabWithText) findViewById(R.id.id_tab1);
-        twoChangeColorTabWithText = (ChangeColorTabWithText) findViewById(R.id.id_tab2);
-        threeChangeColorTabWithText = (ChangeColorTabWithText) findViewById(R.id.id_tab3);
-        mChangeColorTabWithTexts.add(oneChangeColorTabWithText);
-        mChangeColorTabWithTexts.add(twoChangeColorTabWithText);
-        mChangeColorTabWithTexts.add(threeChangeColorTabWithText);
 
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        initBottomBar();
     }
 
     @Override
@@ -171,26 +192,46 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        resetTabColor();
         switch (v.getId()) {
-            case R.id.id_tab1:
-                mChangeColorTabWithTexts.get(0).setIconAlpha(1.0f);
+            case R.id.home_page_rl:
+                homePageIconSetAlpha(1);
+                shopPageIconSetAlpha(0);
+                personalPageIconSetAlpha(0);
                 mViewPager.setCurrentItem(0, false);
                 break;
-            case R.id.id_tab2:
-                mChangeColorTabWithTexts.get(1).setIconAlpha(1.0f);
+            case R.id.shop_rl:
+                homePageIconSetAlpha(0);
+                shopPageIconSetAlpha(1);
+                personalPageIconSetAlpha(0);
                 mViewPager.setCurrentItem(1, false);
                 break;
-            case R.id.id_tab3:
-                mChangeColorTabWithTexts.get(2).setIconAlpha(1.0f);
+            case R.id.personal_rl:
+                homePageIconSetAlpha(0);
+                shopPageIconSetAlpha(0);
+                personalPageIconSetAlpha(1);
                 mViewPager.setCurrentItem(2, false);
                 break;
         }
     }
 
-    private void resetTabColor() {
-        for (int i = 0; i < mChangeColorTabWithTexts.size(); i++) {
-            mChangeColorTabWithTexts.get(i).setIconAlpha(0.0f);
-        }
+    private void initBottomBar(){
+        homeUnselectLl.setAlpha(0);
+        shopSelectLl.setAlpha(0);
+        personalSelectLl.setAlpha(0);
+    }
+
+    private void homePageIconSetAlpha(float alpha){
+        homeSelectLl.setAlpha(alpha);
+        homeUnselectLl.setAlpha(1 - alpha);
+    }
+
+    private void shopPageIconSetAlpha(float alpha){
+        shopSelectLl.setAlpha(alpha);
+        shopUnselectLl.setAlpha(1 - alpha);
+    }
+
+    private void personalPageIconSetAlpha(float alpha){
+        personalSelectLl.setAlpha(alpha);
+        personalUnselectLl.setAlpha(1 - alpha);
     }
 }

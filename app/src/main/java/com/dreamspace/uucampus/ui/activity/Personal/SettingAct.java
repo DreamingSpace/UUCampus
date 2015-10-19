@@ -15,8 +15,6 @@ import butterknife.Bind;
 public class SettingAct extends AbsActivity {
     @Bind(R.id.check_update_rl)
     RelativeLayout updateRl;
-    @Bind(R.id.feedback_rl)
-    RelativeLayout feedbackRl;
     @Bind(R.id.logout_btn)
     Button logoutBtn;
     @Override
@@ -40,13 +38,6 @@ public class SettingAct extends AbsActivity {
             @Override
             public void onClick(View v) {
 
-            }
-        });
-
-        feedbackRl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readyGo(FeedbackAct.class);
             }
         });
     }

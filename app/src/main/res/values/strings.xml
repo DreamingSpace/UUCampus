@@ -170,6 +170,7 @@
     <string name="in_school_year">入学年份</string>
     <string name="bundling">绑定</string>
     <string name="personal_info">个人信息</string>
+    <string name="select_in_school_year">选择入学年份</string>
 
     <!-- login strings used-->
     <string name="login_username_hint">请输入您的手机号</string>

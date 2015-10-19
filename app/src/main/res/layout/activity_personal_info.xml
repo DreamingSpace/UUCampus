@@ -329,16 +329,4 @@
             android:layout_width="match_parent"
             android:layout_height="1px"/>
     </LinearLayout>
-
-    <Button
-        android:id="@+id/logout_btn"
-        android:text="@string/logout"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/button_round"
-        android:layout_width="match_parent"
-        android:layout_height="45dp" />
 </LinearLayout>

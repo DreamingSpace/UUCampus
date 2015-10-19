@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:src="@drawable/my_center_button_idle_things"
+                    android:src="@drawable/mycenter_button_idlethings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:src="@drawable/my_center_button_my_collection"
+                    android:src="@drawable/mycenter_button_mycollection"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
@@ -108,12 +108,39 @@
             android:layout_width="match_parent"
             android:layout_height="38dp">
             <ImageView
-                android:src="@drawable/my_center_button_set"
+                android:src="@drawable/mycenter_button_myorder"
                 android:layout_marginLeft="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="@string/my_orders"
+                android:textSize="16sp"
+                android:textColor="@color/black_40"
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View
+            android:background="@color/divider_color"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+
+        <LinearLayout
+            android:id="@+id/my_coupon_card_ll"
+            android:gravity="center_vertical"
+            android:background="@drawable/personal_center_item_bg"
+            android:layout_width="match_parent"
+            android:layout_height="38dp">
+            <ImageView
+                android:src="@drawable/mycenter_button_account"
+                android:layout_marginLeft="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="@string/my_coupon_card"
                 android:textSize="16sp"
                 android:textColor="@color/black_40"
                 android:layout_marginLeft="15dp"
@@ -136,7 +163,7 @@
             android:layout_width="match_parent"
             android:layout_height="38dp">
             <ImageView
-                android:src="@drawable/my_center_button_about"
+                android:src="@drawable/mycenter_button_myshop"
                 android:layout_marginLeft="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -152,32 +179,6 @@
             android:background="@color/divider_color"
             android:layout_width="match_parent"
             android:layout_height="1px"/>
-    </LinearLayout>
-
-    <View
-        android:layout_marginTop="10dp"
-        android:background="@color/divider_color"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-
-    <LinearLayout
-        android:id="@+id/my_coupon_card_ll"
-        android:gravity="center_vertical"
-        android:background="@drawable/personal_center_item_bg"
-        android:layout_width="match_parent"
-        android:layout_height="38dp">
-        <ImageView
-            android:src="@drawable/my_center_button_about"
-            android:layout_marginLeft="40dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:text="@string/my_coupon_card"
-            android:textSize="16sp"
-            android:textColor="@color/black_40"
-            android:layout_marginLeft="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <View
@@ -224,19 +225,19 @@
             android:layout_height="1px"/>
 
         <LinearLayout
-            android:id="@+id/about_ll"
+            android:id="@+id/feedback_ll"
             android:background="@drawable/personal_center_item_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="38dp">
             <ImageView
-                android:src="@drawable/my_center_button_about"
+                android:src="@drawable/setting_icon_suggestion"
                 android:layout_marginLeft="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:text="@string/about"
+                android:text="@string/feedback"
                 android:textSize="16sp"
                 android:textColor="@color/black_40"
                 android:layout_marginLeft="15dp"

@@ -6,7 +6,10 @@ import android.widget.RelativeLayout;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
+import com.dreamspace.uucampus.ui.dialog.WheelViewDialog;
 import com.dreamspace.uucampus.widget.photopicker.SelectPhotoActivity;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 
@@ -30,8 +33,6 @@ public class PersonalInfoAct extends AbsActivity {
     RelativeLayout weiboRl;
     @Bind(R.id.wechat_rl)
     RelativeLayout wechatRl;
-    @Bind(R.id.logout_btn)
-    Button logoutBtn;
 
     public static final int AVATER = 1;
 
@@ -90,7 +91,7 @@ public class PersonalInfoAct extends AbsActivity {
         yearRl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                showYearDialog();
             }
         });
 
@@ -107,8 +108,23 @@ public class PersonalInfoAct extends AbsActivity {
 
             }
         });
+    }
 
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
+    private void showYearDialog(){
+        ArrayList<String> years = new ArrayList<>();
+        for(int i = 2010;i < 2020;i++){
+            years.add(i + "");
+        }
+        WheelViewDialog inSchoolYeardialog = new WheelViewDialog(this,years,getString(R.string.select_in_school_year));;
+
+        inSchoolYeardialog.setNegativeButton(getString(R.string.cancel), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        inSchoolYeardialog.setPositiveButton(getString(R.string.confirm), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
