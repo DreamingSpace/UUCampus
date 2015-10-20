@@ -71,20 +71,20 @@ import retrofit.http.Query;
 public interface UUService {
 
     //创建七牛上传凭证
-    @POST("/static/token")
+    @POST("/static/token/")
     void createQiNiuToken(Callback<QnRes> cb);
 
     //给指定手机发送短信验证码
-    @POST("/auth/code")
+    @POST("/auth/code/")
     void sendVerifyCode(@Body SendVerifyReq req, Callback<Response> cb);
 
 //用户
     //创建用户访问凭证(登陆)
-    @POST("/auth/login")
+    @POST("/auth/login/")
     void createAccessToken(@Body LoginReq req, Callback<LoginRes> cb);
 
     //删除用户访问凭证(注销)
-    @DELETE("/auth/logout")
+    @DELETE("/auth/logout/")
     void deleteAccessToken(Callback<Response> cb);
 
     //用户创建

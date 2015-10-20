@@ -78,8 +78,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
-        <Spinner
-            android:id="@+id/register_personinfo_spinner_enrolledtime"
+        <TextView
+            android:id="@+id/register_personinfo_enrolledtime"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_centerVertical="true"
@@ -95,7 +95,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignLeft="@id/register_personinfo_spinner_enrolledtime"
+            android:layout_alignLeft="@id/register_personinfo_enrolledtime"
             android:layout_centerVertical="true"
             android:paddingLeft="10dp"
             android:src="@drawable/schooltimeicon" />
@@ -104,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/register_personinfo_spinner_enrolledtime"
+            android:layout_toRightOf="@id/register_personinfo_enrolledtime"
             android:text="年入学" />
     </RelativeLayout>
 

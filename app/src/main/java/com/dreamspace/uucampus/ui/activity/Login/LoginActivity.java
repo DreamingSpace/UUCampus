@@ -73,7 +73,8 @@ public class LoginActivity extends AbsActivity {
                     LoginReq req = new LoginReq();
                     req.setPhone_num(phoneNum);
                     req.setPassword(password);
-                    login(req);
+                    readyGo(MainActivity.class);
+                    //login(req);
                 }
             }
         });

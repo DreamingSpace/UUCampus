@@ -2,6 +2,7 @@ package com.dreamspace.uucampus.ui.activity.Login;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +13,10 @@ import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.api.UUService;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
+import com.dreamspace.uucampus.model.ErrorRes;
 import com.dreamspace.uucampus.model.api.RegisterReq;
+import com.dreamspace.uucampus.model.api.RegisterRes;
 import com.dreamspace.uucampus.model.api.SendVerifyReq;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
@@ -39,10 +43,10 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
     @Bind(R.id.register_button)
     Button registerButton;
 
-    private String phoneNum = null;
-    private String code = null;
-    private String password = null;
-    private String passwordConfirm = null;
+    private String phoneNum;
+    private String code;
+    private String password;
+    private String passwordConfirm;
     private UUService mService;
     private int timer = 60;
     private Handler mHandler;
@@ -75,10 +79,11 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.register_get_code:
-                    sendVerifyCode();
+                sendVerifyCode();
                 break;
             case R.id.register_button:
-
+                readyGo(RegisterInfoActivity.class);
+                //register();
                 break;
         }
     }
@@ -88,7 +93,7 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
         if(isPhoneValid()){
             if (NetUtils.isNetworkConnected(this)) {
                 SendVerifyReq req = new SendVerifyReq();
-                req.setPhoneNum(phoneNum);
+                req.setPhone_num(phoneNum);
                 mService.sendVerifyCode(req, new Callback<Response>() {
                     @Override
                     public void success(Response o, Response response) {
@@ -109,11 +114,33 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
 
     //注册
     private void register(){
-        if(isPhoneValid()&&isVerifyCodeValid()){
+        if(isPhoneValid()&&isRestValid()){
             final RegisterReq registerReq = new RegisterReq();
+            registerReq.setPhone_num(phoneNum);
+            registerReq.setCode(code);
+            registerReq.setPassword(password);
+            mService.register(registerReq, new Callback<RegisterRes>() {
+                @Override
+                public void success(RegisterRes registerRes, Response response) {
+                    if(response.getStatus()==200){
+                        //保存user_id,access_token,timelimit
+                        PreferenceUtils.putString(RegisterActivity.this.getApplicationContext(),
+                                PreferenceUtils.Key.ACCESS, registerRes.getAccess_token());
+                        readyGo(RegisterInfoActivity.class);
+                        mHandler.removeMessages(BEGIN_TIMER);
+                        finish();
+                    }
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    ErrorRes errorRes = (ErrorRes) error.getBodyAs(ErrorRes.class);
+                    Log.i("INFO", error.getMessage());
+                    Log.i("INFO", errorRes.toString());
+                }
+            });
         }
     }
-
 
     //检查手机号码是否输入正确
     private boolean isPhoneValid(){
@@ -129,8 +156,9 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
         }
         return true;
     }
+
     //检查验证码密码是否输入正确
-    private boolean isVerifyCodeValid(){
+    private boolean isRestValid(){
         code = registerVerifyCode.getText().toString();
         password = registerPwd.getText().toString();
         passwordConfirm = registerPwdConfirm.getText().toString();
@@ -161,7 +189,6 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
     @Override
     //获取验证码的间隔限制
     public boolean handleMessage(Message message) {
-
         if(message.what == BEGIN_TIMER){
             if(timer==0){
                 if(registerGetCode!=null){
@@ -171,7 +198,7 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
                 }
             }else{
                 if(registerGetCode!=null){
-                    registerGetCode.setText(timer + "秒");
+                    registerGetCode.setText(timer + "秒后重新发送");
                     timer--;
                     mHandler.sendEmptyMessageDelayed(BEGIN_TIMER, 1000);
                 }

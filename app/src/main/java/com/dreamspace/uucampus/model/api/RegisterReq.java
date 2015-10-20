@@ -6,6 +6,15 @@ package com.dreamspace.uucampus.model.api;
 public class RegisterReq {
     private String password;
     private String code;
+
+    public String getPhone_num() {
+        return phone_num;
+    }
+
+    public void setPhone_num(String phone_num) {
+        this.phone_num = phone_num;
+    }
+
     private String phone_num;
 
     public String getPassword() {
@@ -22,13 +31,5 @@ public class RegisterReq {
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public String getPhone_num() {
-        return phone_num;
-    }
-
-    public void setPhone_num(String phone_num) {
-        this.phone_num = phone_num;
     }
 }
