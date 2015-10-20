@@ -78,7 +78,6 @@ public interface UUService {
     @POST("/auth/code")
     void sendVerifyCode(@Body SendVerifyReq req, Callback<Response> cb);
 
-
 //用户
     //创建用户访问凭证(登陆)
     @POST("/auth/login")

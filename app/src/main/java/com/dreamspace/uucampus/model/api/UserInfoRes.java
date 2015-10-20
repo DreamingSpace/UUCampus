@@ -7,6 +7,8 @@ public class UserInfoRes {
     private String image;
     private String birthday;
     private String school;
+    private String nickname;
+    private String name;
     private String enroll_year;
     private String sex;
     private String location;
@@ -66,5 +68,21 @@ public class UserInfoRes {
 
     public void setReg_data(String reg_data) {
         this.reg_data = reg_data;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
