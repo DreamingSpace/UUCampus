@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.ui.activity.Order.MyOrderAct;
 import com.dreamspace.uucampus.ui.activity.Personal.FeedbackAct;
 import com.dreamspace.uucampus.ui.activity.Personal.MyCollectionAct;
 import com.dreamspace.uucampus.ui.activity.Personal.MyFreeGoodsAct;
@@ -76,7 +77,7 @@ public class PersonCenterFragment extends BaseLazyFragment {
         orderLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                readyGo(MyOrderAct.class);
             }
         });
 

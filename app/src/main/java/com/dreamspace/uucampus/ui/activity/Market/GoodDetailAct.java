@@ -8,10 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.ui.activity.Order.OrderConfirmAct;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
 import com.dreamspace.uucampus.ui.fragment.Market.GoodDetailPagerFragment;
@@ -37,6 +39,8 @@ public class GoodDetailAct extends AbsActivity {
     LinearLayout collect_ll;
     @Bind(R.id.shop_name_ll)
     LinearLayout shopNameLl;
+    @Bind(R.id.buy_btn)
+    Button buyBtn;
     public static final String TYPE = "type";
     public static final String DETAIL="detail";
     public static final String COMMENT="comment";
@@ -101,6 +105,13 @@ public class GoodDetailAct extends AbsActivity {
             @Override
             public void onClick(View v) {
                 readyGo(ShopShowGoodsAct.class);
+            }
+        });
+
+        buyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readyGo(OrderConfirmAct.class);
             }
         });
     }

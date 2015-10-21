@@ -189,4 +189,23 @@
     <string name="register_input_user_name_hint">请填写昵称</string>
     <string name="register_input_school">请选择你的学校</string>
     <string name="register_input_entertime">2015</string>
+    
+    <!-- order confirm-->
+    <string name="number">数量</string>
+    <string name="use_coupon_card">使用万能优惠卡</string>
+    <string name="total">合计</string>
+    <string name="campus_in">所在校区</string>
+    <string name="remark">备注</string>
+    <string name="remark_hint">填写您的要求，让商家提供更好的服务</string>
+    <string name="get">获取</string>
+    <string name="submit_order">提 交 订 单</string>
+    <string name="order_confirm">订单确认</string>
+    <string name="pay">付款</string>
+    <string name="password">密码</string>
+    <string name="pay_code">付款码 :</string>
+    <string name="order_id">订单编号</string>
+    <string name="paid_time">下单时间</string>
+    <string name="phone_num">电话号码</string>
+    <string name="discount">优惠</string>
+    <string name="apply_refund">申请退款</string>
 </resources>

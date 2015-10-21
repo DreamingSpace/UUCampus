@@ -14,6 +14,7 @@ import com.dreamspace.uucampus.ui.MarketFragment;
 import com.dreamspace.uucampus.ui.activity.Market.ShopShowGoodsAct;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.widget.LoadMoreListView;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 
 import java.util.ArrayList;
 import java.util.List;

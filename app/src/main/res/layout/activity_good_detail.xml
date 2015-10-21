@@ -71,20 +71,15 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <LinearLayout
+        <Button
+            android:id="@+id/buy_btn"
             android:layout_weight="1"
-            android:background="@color/price_text_color"
-            android:gravity="center"
-            android:orientation="vertical"
+            android:text="@string/go_buy_it"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:background="@drawable/buy_btn_bg"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:text="@string/go_buy_it"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <View
