@@ -6,7 +6,7 @@
     <include
         layout="@layout/custom_toolbar"></include>
     <RelativeLayout
-        android:id="@+id/rl_icon"
+        android:id="@+id/register_info_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
