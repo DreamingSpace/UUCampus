@@ -189,7 +189,6 @@ public class CommonUtils {
 
         return toolbarHeight;
     }
-
     //使用Glide加载网络图片
     public static void showImageWithGlide(Context context, final CircleImageView imageView,String url){
         Glide.with(context)

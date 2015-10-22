@@ -104,6 +104,7 @@ public class FindBackActivity extends AbsActivity implements View.OnClickListene
                         findBackGetCode.setEnabled(false);
                         mHandler.sendEmptyMessage(BEGIN_TIMER);
                     }
+
                     @Override
                     public void failure(RetrofitError error) {
                         showInnerError(error);

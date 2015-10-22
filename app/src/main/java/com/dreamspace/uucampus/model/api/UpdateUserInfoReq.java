@@ -4,22 +4,12 @@ package com.dreamspace.uucampus.model.api;
  * Created by wufan on 2015/9/28.
  */
 public class UpdateUserInfoReq {
-    private String name;
     private String image;
     private String birthday;
     private String school;
     private String enroll_year;
     private String sex;
     private String location;
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getImage() {
         return image;

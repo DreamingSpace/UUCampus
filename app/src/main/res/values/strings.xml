@@ -189,5 +189,4 @@
     <string name="register_input_user_name_hint">请填写昵称</string>
     <string name="register_input_school">请选择你的学校</string>
     <string name="register_input_entertime">2015</string>
-    <string name="register_succeed">返回登录界面</string>
 </resources>

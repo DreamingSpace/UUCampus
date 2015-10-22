@@ -53,7 +53,6 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
     private TextView centerTitleTv;
     //当前所在的fragment标号
     private int currentIndex = 0;
-    
     @Override
     protected int getContentView() {
         return R.layout.activity_main;
