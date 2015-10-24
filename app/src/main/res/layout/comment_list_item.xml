@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:hedgehog="http://schemas.android.com/apk/res-auto">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/user_avatar_civ"
         android:layout_marginTop="10dp"
@@ -28,15 +29,18 @@
         android:layout_below="@id/user_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <RatingBar
+    <com.hedgehog.ratingbar.RatingBar
         android:id="@+id/comment_rating_bar"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@id/user_avatar_civ"
         android:layout_marginRight="40dp"
-        style="?android:ratingBarStyleSmall"
-        android:rating="5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        hedgehog:starCount="5"
+        hedgehog:starEmpty="@drawable/xiangqing_comment_icon_star2"
+        hedgehog:starFill="@drawable/xiangqing_comment_icon_star"
+        hedgehog:starImageSize="12dp"/>
     <TextView
         android:text="很不错的购买体验，全班人一起坐车去，玩的贼嗨，回来大家都睡着了"
         android:id="@+id/comment_content_tv"

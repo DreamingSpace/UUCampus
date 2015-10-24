@@ -1,6 +1,9 @@
 package com.dreamspace.uucampus.ui.activity.Order;
 
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.View;
+import android.widget.AdapterView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.Order.MyOrderListAdapter;
@@ -44,6 +47,42 @@ public class MyOrderAct extends AbsActivity{
     }
 
     private void initListeners(){
+        loadMoreLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundle = new Bundle();
+                switch (position){
+                    case 0:
+                        bundle.putInt(OrderDetailAct.ORDER_STATE,OrderDetailAct.UNPAID);
+                        readyGo(OrderDetailAct.class,bundle);
+                        break;
 
+                    case 1:
+                        bundle.putInt(OrderDetailAct.ORDER_STATE,OrderDetailAct.UNCONSUME);
+                        readyGo(OrderDetailAct.class,bundle);
+                        break;
+
+                    case 2:
+                        bundle.putInt(OrderDetailAct.ORDER_STATE,OrderDetailAct.UNCOMMENT);
+                        readyGo(OrderDetailAct.class,bundle);
+                        break;
+
+                    case 3:
+                        bundle.putInt(OrderDetailAct.ORDER_STATE,OrderDetailAct.IN_REFUND);
+                        readyGo(OrderDetailAct.class,bundle);
+                        break;
+
+                    case 4:
+                        bundle.putInt(OrderDetailAct.ORDER_STATE,OrderDetailAct.ALREADY_REFUND);
+                        readyGo(OrderDetailAct.class,bundle);
+                        break;
+
+                    case 5:
+                        bundle.putInt(OrderDetailAct.ORDER_STATE,OrderDetailAct.ALREADY_COMMENT);
+                        readyGo(OrderDetailAct.class,bundle);
+                        break;
+                }
+            }
+        });
     }
 }

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="10dp"
-    android:background="@color/white">
+    android:background="@drawable/personal_center_item_bg">
     <ImageView
         android:id="@+id/shop_image_iv"
         android:layout_marginTop="10dp"

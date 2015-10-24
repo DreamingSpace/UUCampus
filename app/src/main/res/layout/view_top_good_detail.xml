@@ -91,33 +91,23 @@
         <TextView
             android:text="￥4330"
             android:id="@+id/good_detail_price_tv"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textSize="20sp"
             android:textColor="@color/price_text_color"
             android:layout_marginRight="24dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <RelativeLayout
-            android:layout_marginRight="10dp"
+        <TextView
+            android:id="@+id/price_before_reduce_tv"
+            android:text="￥4530"
             android:layout_toLeftOf="@id/good_detail_price_tv"
             android:layout_alignBottom="@id/good_detail_price_tv"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content">
-            <TextView
-                android:text="￥4330"
-                android:layout_centerHorizontal="true"
-                android:singleLine="true"
-                android:textSize="14sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <View
-                android:layout_centerVertical="true"
-                android:background="@color/divider_color"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-        </RelativeLayout>
+            android:layout_marginRight="10dp"
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 
     <LinearLayout
@@ -222,6 +212,7 @@
             app:stl_indicatorThickness="2dp"
             app:stl_indicatorCornerRadius="0dp"
             app:stl_indicatorAlwaysInCenter="false"
+            app:stl_indicatorWithoutPadding="true"
             app:stl_defaultTabTextColor="@drawable/good_detail_tablayout_text_color"
             app:stl_defaultTabTextSize="14sp"
             app:stl_distributeEvenly="true"

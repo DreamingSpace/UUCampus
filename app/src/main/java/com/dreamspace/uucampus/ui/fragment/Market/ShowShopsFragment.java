@@ -36,6 +36,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         type = getArguments() == null? "null":getArguments().getString(MarketFragment.TYPE_NAME);
+//        System.out.println(type + " " + FragmentPagerItem.getPosition(getArguments()));
     }
 
     @Override
@@ -52,6 +53,8 @@ public class ShowShopsFragment extends BaseLazyFragment {
         }
         adapter = new ShopListAdapter(mContext,list,ShopListAdapter.ViewHolder.class);
         loadMoreListView.setAdapter(adapter);
+        System.out.println("fi" + type);
+
     }
 
     @Override
@@ -75,6 +78,13 @@ public class ShowShopsFragment extends BaseLazyFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 readyGo(ShopShowGoodsAct.class);
+            }
+        });
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }

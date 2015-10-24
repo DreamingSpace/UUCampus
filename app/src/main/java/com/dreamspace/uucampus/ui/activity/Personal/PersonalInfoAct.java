@@ -1,17 +1,24 @@
 package com.dreamspace.uucampus.ui.activity.Personal;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.WheelViewDialog;
 import com.dreamspace.uucampus.widget.photopicker.SelectPhotoActivity;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.Bind;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Lx on 2015/10/17.
@@ -21,8 +28,6 @@ public class PersonalInfoAct extends AbsActivity {
     RelativeLayout avaterRl;
     @Bind(R.id.nickname_rl)
     RelativeLayout nicknameRl;
-    @Bind(R.id.sex_rl)
-    RelativeLayout sexRl;
     @Bind(R.id.bundling_phone_rl)
     RelativeLayout phoneRl;
     @Bind(R.id.school_rl)
@@ -33,6 +38,14 @@ public class PersonalInfoAct extends AbsActivity {
     RelativeLayout weiboRl;
     @Bind(R.id.wechat_rl)
     RelativeLayout wechatRl;
+    @Bind(R.id.personal_info_avater)
+    CircleImageView avaterCiv;
+    @Bind(R.id.nickname_tv)
+    TextView nickNameTv;
+    @Bind(R.id.bundling_phone_tv)
+    TextView phoneTv;
+    @Bind(R.id.in_school_year_tv)
+    TextView yearTv;
 
     public static final int AVATER = 1;
 
@@ -61,13 +74,6 @@ public class PersonalInfoAct extends AbsActivity {
         });
 
         nicknameRl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        sexRl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -115,20 +121,34 @@ public class PersonalInfoAct extends AbsActivity {
         for(int i = 2010;i < 2020;i++){
             years.add(i + "");
         }
-        WheelViewDialog inSchoolYeardialog = new WheelViewDialog(this,years,getString(R.string.select_in_school_year));;
+        final WheelViewDialog inSchoolYeardialog = new WheelViewDialog(this,years,getString(R.string.select_in_school_year));;
 
         inSchoolYeardialog.setNegativeButton(getString(R.string.cancel), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                inSchoolYeardialog.dismiss();
             }
         });
 
         inSchoolYeardialog.setPositiveButton(getString(R.string.confirm), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                yearTv.setText(inSchoolYeardialog.getSelected());
+                inSchoolYeardialog.dismiss();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == AVATER && resultCode == RESULT_OK){
+            String path = data.getStringExtra(SelectPhotoActivity.PHOTO_PATH);
+            Glide.with(PersonalInfoAct.this)
+                    .load(path)
+                    .error(R.drawable.default_error)
+                    .centerCrop()
+                    .into(avaterCiv);
+//            CommonUtils.showImageWithGlide(this,avaterCiv,path);
+        }
     }
 }

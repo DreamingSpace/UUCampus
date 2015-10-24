@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/refund_rl"
+    android:background="@drawable/personal_center_item_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <View
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/black_40"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <TextView
+        android:id="@+id/in_refund_tv"
+        android:text="@string/in_refund"
+        android:textSize="16sp"
+        android:textColor="@color/app_theme_color2"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/already_refund_tv"
+        android:visibility="invisible"
+        android:text="@string/already_refund"
+        android:textSize="16sp"
+        android:textColor="@color/text_normal"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
