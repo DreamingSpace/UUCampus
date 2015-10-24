@@ -115,7 +115,7 @@ public class PersonalInfoAct extends AbsActivity {
         for(int i = 2010;i < 2020;i++){
             years.add(i + "");
         }
-        WheelViewDialog inSchoolYeardialog = new WheelViewDialog(this,years,getString(R.string.select_in_school_year));;
+        WheelViewDialog inSchoolYeardialog = new WheelViewDialog(this,years,getString(R.string.select_in_school_year));
 
         inSchoolYeardialog.setNegativeButton(getString(R.string.cancel), new View.OnClickListener() {
             @Override
