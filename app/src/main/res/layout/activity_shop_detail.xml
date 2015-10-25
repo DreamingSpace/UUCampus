@@ -52,6 +52,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/connect_phone"
+            android:layout_marginLeft="40dp"
+            android:text="@string/connect_phone"
+            android:textSize="14sp"
+            android:textColor="@color/smart_tab_layout_default_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/connect_phone_tv"
+            android:singleLine="true"
+            android:layout_marginRight="40dp"
+            android:text="13335656559"
+            android:textSize="14sp"
+            android:textColor="@color/smart_tab_layout_default_text_color"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/connect_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="40dp"
+            android:layout_toRightOf="@id/connect_phone"
+            android:layout_below="@id/connect_phone_tv"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="22dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
             android:id="@+id/connect_address"
             android:layout_marginLeft="40dp"
             android:text="@string/connect_address"
@@ -63,7 +96,7 @@
             android:id="@+id/connect_address_tv"
             android:singleLine="true"
             android:layout_marginRight="40dp"
-            android:text="东大东门对面"
+            android:text="东大旅游吧校园团"
             android:textSize="14sp"
             android:textColor="@color/smart_tab_layout_default_text_color"
             android:layout_marginLeft="10dp"
@@ -75,39 +108,6 @@
             android:layout_marginRight="40dp"
             android:layout_toRightOf="@id/connect_address"
             android:layout_below="@id/connect_address_tv"
-            android:background="@color/divider_color"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_marginTop="22dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/campus_team"
-            android:layout_marginLeft="40dp"
-            android:text="@string/campus_team"
-            android:textSize="14sp"
-            android:textColor="@color/smart_tab_layout_default_text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/campus_team_tv"
-            android:singleLine="true"
-            android:layout_marginRight="40dp"
-            android:text="东大旅游吧校园团"
-            android:textSize="14sp"
-            android:textColor="@color/smart_tab_layout_default_text_color"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/campus_team"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <View
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="40dp"
-            android:layout_toRightOf="@id/campus_team"
-            android:layout_below="@id/campus_team_tv"
             android:background="@color/divider_color"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"/>
@@ -141,12 +141,15 @@
     </LinearLayout>
     
     <Button
+        android:id="@+id/report_seller_btn"
         android:text="@string/report_shop"
         android:textColor="@color/white"
-        android:textSize="14sp"
-        android:background="@drawable/shop_report_btn_bg"
+        android:textSize="18sp"
+        android:background="@drawable/button_round"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:layout_width="110dp"
-        android:layout_height="30dp" />
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
 </LinearLayout>

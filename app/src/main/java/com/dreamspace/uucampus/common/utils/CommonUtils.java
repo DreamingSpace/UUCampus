@@ -194,6 +194,7 @@ public class CommonUtils {
         Glide.with(context)
                 .load(url)
                 .placeholder(R.drawable.login_pho)
+                .centerCrop()
                 .into(new SimpleTarget<GlideDrawable>() {
                     @Override
                     public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {

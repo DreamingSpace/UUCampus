@@ -26,18 +26,12 @@ public class ClassifyPreferentialListFragment extends BaseLazyFragment{
     ListView listView;
     @Bind(R.id.new_edit_catalog_ll)
     LinearLayout newEditCataLl;
-    @Bind(R.id.new_edit_preferential_ll)
-    LinearLayout newEditPreLl;
     @Bind(R.id.finish_edit_btn)
     Button finishEditBtn;
     @Bind(R.id.new_catalog_btn)
     Button newCatalogBtn;
     @Bind(R.id.edit_catalog_btn)
     Button editCatalogBtn;
-    @Bind(R.id.new_preferential_btn)
-    Button newPreBtn;
-    @Bind(R.id.edit_preferential_btn)
-    Button editPreBtn;
 
     private PreferentialListAdapter preAdapter;
     private CatalogListAdapter catalogAdapter;
@@ -94,7 +88,6 @@ public class ClassifyPreferentialListFragment extends BaseLazyFragment{
         catalogAdapter = new CatalogListAdapter(mContext,list,CatalogListAdapter.ViewHolder.class);
         listView.setAdapter(catalogAdapter);
         newEditCataLl.setVisibility(View.VISIBLE);
-        newEditPreLl.setVisibility(View.INVISIBLE);
         finishEditBtn.setVisibility(View.INVISIBLE);
     }
 
@@ -105,7 +98,6 @@ public class ClassifyPreferentialListFragment extends BaseLazyFragment{
         }
         preAdapter = new PreferentialListAdapter(mContext,list,PreferentialListAdapter.ViewHolder.class);
         listView.setAdapter(preAdapter);
-        newEditPreLl.setVisibility(View.VISIBLE);
         newEditCataLl.setVisibility(View.INVISIBLE);
         finishEditBtn.setVisibility(View.INVISIBLE);
     }
@@ -127,19 +119,7 @@ public class ClassifyPreferentialListFragment extends BaseLazyFragment{
     }
 
     private void initPreferentialListeners(){
-        editPreBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                preAdapter.showEdit(true);
-            }
-        });
 
-        newPreBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createShowNewDisDialog();
-            }
-        });
     }
 
     private void createShowNewDisDialog(){

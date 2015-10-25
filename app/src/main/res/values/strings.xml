@@ -138,13 +138,16 @@
     <string name="go_buy_it">去下单</string>
     <string name="detial">详情</string>
     <string name="comment">评论</string>
+    <string name="comment1">评价</string>
     
     <!-- shop detail strings used-->
     <string name="sale_range">经营范围</string>
     <string name="connect_address">联系地址</string>
-    <string name="campus_team">校园执行团队</string>
+    <string name="connect_phone">联系电话</string>
     <string name="shop_resume">店铺简介</string>
     <string name="report_shop">举 报 商 家</string>
+    <string name="report_shop1">举报商家</string>
+    <string name="report_shop_hint">我们会根据您的反馈及时处理，保证您的权益</string>
 
     <!-- mine strings used-->
     <string name="personal_center">个人中心</string>
@@ -165,12 +168,16 @@
     <string name="avatar">头像</string>
     <string name="nickname">昵称</string>
     <string name="bundling_phone">绑定手机</string>
-    <string name="sex">性别</string>
     <string name="school">学校</string>
     <string name="in_school_year">入学年份</string>
     <string name="bundling">绑定</string>
     <string name="personal_info">个人信息</string>
     <string name="select_in_school_year">选择入学年份</string>
+    <string name="own">已拥有</string>
+    <string name="not_have">未拥有</string>
+    <string name="yoyo_coupon">悠悠万能优惠卡</string>
+    <string name="use_direction">使用说明 :</string>
+    <string name="share">分享</string>
 
     <!-- login strings used-->
     <string name="login_username_hint">请输入您的手机号</string>
@@ -189,4 +196,41 @@
     <string name="register_input_user_name_hint">请填写昵称</string>
     <string name="register_input_school">请选择你的学校</string>
     <string name="register_input_entertime">2015</string>
+    
+    <!-- order-->
+    <string name="number">数量</string>
+    <string name="use_coupon_card">使用万能优惠卡</string>
+    <string name="total">合计</string>
+    <string name="campus_in">所在校区</string>
+    <string name="remark">备注</string>
+    <string name="remark_hint">填写您的要求，让商家提供更好的服务</string>
+    <string name="get">获取</string>
+    <string name="submit_order">提 交 订 单</string>
+    <string name="order_confirm">订单确认</string>
+    <string name="pay">付款</string>
+    <string name="password">密码</string>
+    <string name="pay_code">付款码 :</string>
+    <string name="order_id">订单编号 :</string>
+    <string name="paid_time">下单时间 :</string>
+    <string name="phone_num">手机号码 :</string>
+    <string name="discount">优惠 :</string>
+    <string name="campus_in1">所在校区 :</string>
+    <string name="remark1">备注 :</string>
+    <string name="apply_refund">申请退款</string>
+    <string name="in_refund">退款中</string>
+    <string name="already_refund">已退款</string>
+    <string name="order_detail">订单详情</string>
+    <string name="my_comment">我的评价</string>
+    <string name="overall_comment">总体评价</string>
+    <string name="submit_comment">提交评价</string>
+    <string name="very_unsatisfied">很不满意</string>
+    <string name="unsatisfied">不满意</string>
+    <string name="soso">一般</string>
+    <string name="satisfied">满意</string>
+    <string name="very_satisfied">很满意</string>
+    <string name="submit_apply">提交申请</string>
+    <string name="yoyo_handle_finish">悠悠校园完成处理</string>
+    <string name="pay_platform_handle_finish">支付平台处理完成</string>
+    <string name="refund_success">退款成功</string>
+    <string name="refund_detail">退款详情</string>
 </resources>

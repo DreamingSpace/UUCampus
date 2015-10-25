@@ -1,14 +1,18 @@
 package com.dreamspace.uucampus.ui.activity.Market;
 
 import android.support.v4.view.ViewPager;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
+import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
 import com.dreamspace.uucampus.ui.fragment.Market.ShowGoodsFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
@@ -28,8 +32,8 @@ public class ShopShowGoodsAct extends AbsActivity {
     LinearLayout collectLl;
     @Bind(R.id.shop_consult_ll)
     LinearLayout consultLl;
-    @Bind(R.id.shop_consult_shadow_rl)
-    RelativeLayout consultShadowRl;
+
+    private ConnectSellerDialog consultDialog;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,7 +69,14 @@ public class ShopShowGoodsAct extends AbsActivity {
         consultLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                consultShadowRl.setVisibility(View.VISIBLE);
+                ConnectSellerDialog dialog = dialog = new ConnectSellerDialog(ShopShowGoodsAct.this,
+                        R.style.UpDialog, "good name", "phone number");
+                Window window = dialog.getWindow();
+                WindowManager.LayoutParams layoutParams = window.getAttributes();
+                layoutParams.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
+                layoutParams.y = (int) (80 * getResources().getDisplayMetrics().density);
+                window.setAttributes(layoutParams);
+                dialog.show();
             }
         });
 
@@ -73,13 +84,6 @@ public class ShopShowGoodsAct extends AbsActivity {
             @Override
             public void onClick(View v) {
 
-            }
-        });
-
-        consultShadowRl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                consultShadowRl.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -96,14 +100,5 @@ public class ShopShowGoodsAct extends AbsActivity {
         );
         viewPager.setAdapter(pagerAdapter);
         smartTabLayout.setViewPager(viewPager);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if(consultShadowRl.getVisibility() == View.VISIBLE){
-            consultShadowRl.setVisibility(View.INVISIBLE);
-        }else{
-            super.onBackPressed();
-        }
     }
 }

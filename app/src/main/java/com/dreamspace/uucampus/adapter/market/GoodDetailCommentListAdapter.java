@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.base.BasisAdapter;
+import com.hedgehog.ratingbar.RatingBar;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class GoodDetailCommentListAdapter extends BasisAdapter<String,GoodDetail
 
     @Override
     protected void setDataIntoView(ViewHolder holder, String entity) {
-
+        holder.commentRating.setStar(3);
     }
 
     @Override
@@ -35,6 +36,7 @@ public class GoodDetailCommentListAdapter extends BasisAdapter<String,GoodDetail
         holder.publishTime = (TextView) convertView.findViewById(R.id.publis_time_tv);
         holder.commentContent = (TextView) convertView.findViewById(R.id.comment_content_tv);
         holder.userful = (TextView) convertView.findViewById(R.id.userful_tv);
+        holder.commentRating = (RatingBar) convertView.findViewById(R.id.comment_rating_bar);
     }
 
     @Override
@@ -48,5 +50,6 @@ public class GoodDetailCommentListAdapter extends BasisAdapter<String,GoodDetail
         TextView publishTime;
         TextView commentContent;
         TextView userful;
+        RatingBar commentRating;
     }
 }

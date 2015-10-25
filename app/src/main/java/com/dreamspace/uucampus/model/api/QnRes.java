@@ -5,6 +5,7 @@ package com.dreamspace.uucampus.model.api;
  */
 public class QnRes {
     private String token;
+    private String key;
 
     public String getToken() {
         return token;
@@ -12,5 +13,13 @@ public class QnRes {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

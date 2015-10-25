@@ -100,29 +100,4 @@
         android:layout_below="@id/divider_above_shop_sg_act_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
-    <RelativeLayout
-        android:visibility="invisible"
-        android:id="@+id/shop_consult_shadow_rl"
-        android:background="@color/consult_shadow"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            android:layout_marginBottom="80dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:src="@drawable/xiangqing_btn_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:src="@drawable/xiangqing_btn_call"
-                android:layout_marginLeft="40dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </RelativeLayout>
 </RelativeLayout>

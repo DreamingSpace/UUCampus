@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/custom_toolbar"/>
+
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <View
+            android:layout_alignParentTop="true"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <TextView
+            android:id="@+id/refund_money_tv"
+            android:text="退款金额 : ￥1000"
+            android:textSize="16sp"
+            android:textColor="@color/black_40"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/refund_way_tv"
+            android:text="原路退回"
+            android:textSize="16sp"
+            android:textColor="@color/search_opaque"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:text="悠悠校园处理中"
+                android:textSize="18sp"
+                android:textColor="@color/black_40"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="（预计7个工作日完成退款）"
+                android:textSize="16sp"
+                android:textColor="@color/text_normal"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/submit_apply_icon_circle_iv"
+                android:layout_marginLeft="35dp"
+                android:src="@drawable/refund_icon_h"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/submit_apply_tv"
+                android:text="@string/submit_apply"
+                android:textColor="@color/black_40"
+                android:textSize="16sp"
+                android:layout_toRightOf="@id/submit_apply_icon_circle_iv"
+                android:layout_alignBottom="@id/submit_apply_icon_circle_iv"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/submit_apply_icon_line_iv"
+            android:src="@drawable/refund_icon_h2"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/yoyo_icon_circle_iv"
+                android:layout_marginLeft="35dp"
+                android:src="@drawable/refund_icon_h"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/yoyo_tv"
+                android:text="@string/yoyo_handle_finish"
+                android:textColor="@color/black_40"
+                android:textSize="16sp"
+                android:layout_toRightOf="@id/submit_apply_icon_circle_iv"
+                android:layout_alignBottom="@id/submit_apply_icon_circle_iv"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/yoyo_icon_line_iv"
+            android:src="@drawable/refund_icon_h2"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/pay_platform_icon_circle_iv"
+                android:layout_marginLeft="35dp"
+                android:src="@drawable/refund_icon_h"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/pay_platform_tv"
+                android:text="@string/pay_platform_handle_finish"
+                android:textColor="@color/black_40"
+                android:textSize="16sp"
+                android:layout_toRightOf="@id/submit_apply_icon_circle_iv"
+                android:layout_alignBottom="@id/submit_apply_icon_circle_iv"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/pay_platform_icon_line_iv"
+            android:src="@drawable/refund_icon_h2"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="40dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/refund_success_icon_circle_iv"
+                android:layout_marginLeft="35dp"
+                android:src="@drawable/refund_icon_h"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/refund_success_tv"
+                android:text="@string/refund_success"
+                android:textColor="@color/black_40"
+                android:textSize="16sp"
+                android:layout_toRightOf="@id/submit_apply_icon_circle_iv"
+                android:layout_alignBottom="@id/submit_apply_icon_circle_iv"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </LinearLayout>
+</LinearLayout>
