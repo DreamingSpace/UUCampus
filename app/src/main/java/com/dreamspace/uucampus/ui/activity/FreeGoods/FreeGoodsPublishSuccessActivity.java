@@ -48,4 +48,9 @@ public class FreeGoodsPublishSuccessActivity extends AbsActivity {
             }
         });
     }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
 }

@@ -51,4 +51,5 @@ dependencies {
     compile 'com.bigkoo:convenientbanner:1.0.8'
     compile 'com.hedgehog.ratingbar:app:1.0.2'
     compile 'net.glxn.qrgen:android:2.0'
+    compile 'com.pnikosis:materialish-progress:1.7'
 }

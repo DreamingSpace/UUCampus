@@ -1,5 +1,6 @@
 package com.dreamspace.uucampus.ui.activity.Market;
 
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -31,6 +32,11 @@ public class ReportSellerAct extends AbsActivity{
     protected void initViews() {
         getSupportActionBar().setTitle(getString(R.string.report_shop1));
         initListeners();
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 
     private void initListeners(){

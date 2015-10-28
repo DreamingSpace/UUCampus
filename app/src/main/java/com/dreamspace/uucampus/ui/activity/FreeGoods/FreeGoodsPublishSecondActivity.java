@@ -103,6 +103,11 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
 
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     public boolean isGoodsInfoCorrect() {
         mGoodsInfoWrong = "";   //校验填写信息
         isInfoCorrect = true;

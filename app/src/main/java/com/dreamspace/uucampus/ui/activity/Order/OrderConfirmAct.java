@@ -62,6 +62,11 @@ public class OrderConfirmAct extends AbsActivity{
         initListeners();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListeners(){
         numAddLl.setOnClickListener(new View.OnClickListener() {
             @Override

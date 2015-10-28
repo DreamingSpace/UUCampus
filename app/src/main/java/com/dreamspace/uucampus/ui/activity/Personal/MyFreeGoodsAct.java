@@ -48,6 +48,11 @@ public class MyFreeGoodsAct extends AbsActivity{
         initListeners();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListeners(){
         saleRl.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -48,6 +48,11 @@ public class MyCollectionAct extends AbsActivity {
         initListeners();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListeners(){
         goodsRl.setOnClickListener(new View.OnClickListener() {
             @Override

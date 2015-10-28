@@ -56,4 +56,9 @@ public class BoundActvity extends AbsActivity {
         });
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
 }

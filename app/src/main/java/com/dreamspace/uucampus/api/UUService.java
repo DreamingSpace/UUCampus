@@ -1,6 +1,7 @@
 package com.dreamspace.uucampus.api;
 
 
+import com.dreamspace.uucampus.model.Labels;
 import com.dreamspace.uucampus.model.api.AddGoodsCollectionRes;
 import com.dreamspace.uucampus.model.api.AddGoodsCommentRes;
 import com.dreamspace.uucampus.model.api.AddIdleCommentRes;
@@ -12,6 +13,7 @@ import com.dreamspace.uucampus.model.api.CategoryReq;
 import com.dreamspace.uucampus.model.api.CheckUpdateRes;
 import com.dreamspace.uucampus.model.api.CommitReportReq;
 import com.dreamspace.uucampus.model.api.CommitSuggestionRes;
+import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.ContentReq;
 import com.dreamspace.uucampus.model.api.CreateCategoryRes;
 import com.dreamspace.uucampus.model.api.CreateGoodsReq;
@@ -71,17 +73,16 @@ import retrofit.http.Query;
 public interface UUService {
 
     //创建七牛上传凭证
-    @POST("/static/token")
+    @POST("/static/token/")
     void createQiNiuToken(Callback<QnRes> cb);
 
     //给指定手机发送短信验证码
     @POST("/auth/code")
     void sendVerifyCode(@Body SendVerifyReq req, Callback<Response> cb);
 
-
 //用户
     //创建用户访问凭证(登陆)
-    @POST("/auth/login")
+    @POST("/auth/login/")
     void createAccessToken(@Body LoginReq req, Callback<LoginRes> cb);
 
     //删除用户访问凭证(注销)
@@ -94,7 +95,7 @@ public interface UUService {
 
     //用户信息更新
     @PUT("/user/")
-    void updateUserInfo(@Body UpdateUserInfoReq req, Callback<Response> cb);
+    void updateUserInfo(@Body UpdateUserInfoReq req, Callback<CommonStatusRes> cb);
 
     //用户密码重置
     @PUT("/user/reset_password")
@@ -128,7 +129,7 @@ public interface UUService {
 
     //店铺搜索
     @GET("/shop/search/")
-    void searchShop(@Query("keyword") String keyword, @Query("order") String order, @Query("category") String category, @Query("location") String location, Callback<SearchShopRes> cb);
+    void searchShop(@Query("keyword") String keyword, @Query("order") String order, @Query("category") String category, @Query("page") int page, Callback<SearchShopRes> cb);
 
     //店铺评论添加
     @POST("/shop/{shop_id}/comment/")
@@ -372,4 +373,6 @@ public interface UUService {
     @GET("/check_update/{version}")
     void checkUpdate(@Path("version")float version,Callback<CheckUpdateRes>cb);
 
+    @GET("/label/")
+    void getLabels(@Query("category") String category,Callback<Labels> cb);
 }

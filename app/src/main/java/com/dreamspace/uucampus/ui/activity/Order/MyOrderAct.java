@@ -46,6 +46,11 @@ public class MyOrderAct extends AbsActivity{
         initListeners();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListeners(){
         loadMoreLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

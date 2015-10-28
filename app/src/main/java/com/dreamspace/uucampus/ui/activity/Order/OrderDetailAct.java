@@ -101,6 +101,11 @@ public class OrderDetailAct extends AbsActivity{
         initListeners();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListeners(){
 
     }

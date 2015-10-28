@@ -92,6 +92,11 @@ public class GoodDetailAct extends AbsActivity {
         initListeners();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListeners(){
         shopLl.setOnClickListener(new View.OnClickListener() {
             @Override

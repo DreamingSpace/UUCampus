@@ -10,8 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.api.ApiManager;
+import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.model.Labels;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.fragment.Market.ShowGoodsFragment;
 import com.dreamspace.uucampus.ui.popupwindow.GoodsSortPopupWindow;
@@ -23,6 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Created by Lx on 2015/9/22.
@@ -36,8 +43,12 @@ public class FastInAct extends AbsActivity {
     View dividerBelowSTL;
     @Bind(R.id.shadow_view)
     View shadowView;
+    @Bind(R.id.content_rl)
+    RelativeLayout contentRl;
 
-    GoodsSortPopupWindow popupWindow;
+    private GoodsSortPopupWindow popupWindow;
+    private boolean actDestory = false;
+    private ArrayList<String> mLabels;
 
     private FragmentStatePagerItemAdapter pagerAdpater;
     public static String TYPE_NAME = "type";
@@ -76,24 +87,31 @@ public class FastInAct extends AbsActivity {
 
     @Override
     protected void prepareDatas() {
-        //根据type加载初始化相应的界面
-        if(type.equals(getResources().getString(R.string.travel))){
-            initTravelViews();
-        }else if(type.equals(getResources().getString(R.string.driver_school))){
-            initDriverSchoolViews();
-        }else if(type.equals(getResources().getString(R.string.class_uniform))){
-            initUniformsViews();
-        }else if(type.equals(getResources().getString(R.string.study_abroad))){
-            initLanguageViews();
-        }else if(type.equals(getResources().getString(R.string.personal_shop))){
-            initPersonalShopViews();
-        }
+        getLabels();
+//        //根据type加载初始化相应的界面
+//        if(type.equals(getResources().getString(R.string.travel))){
+//            initTravelViews();
+//        }else if(type.equals(getResources().getString(R.string.driver_school))){
+//            initDriverSchoolViews();
+//        }else if(type.equals(getResources().getString(R.string.class_uniform))){
+//            initUniformsViews();
+//        }else if(type.equals(getResources().getString(R.string.study_abroad))){
+//            initLanguageViews();
+//        }else if(type.equals(getResources().getString(R.string.personal_shop))){
+//            initPersonalShopViews();
+//        }
     }
 
     @Override
     protected void initViews() {
         popupWindow = new GoodsSortPopupWindow(this,shadowView);
+
         initListeners();
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return contentRl;
     }
 
     private void initListeners(){
@@ -130,12 +148,12 @@ public class FastInAct extends AbsActivity {
         getSupportActionBar().setTitle(getResources().getString(R.string.travel));
         pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(), FragmentPagerItems.with(this)
                         .add(R.string.travel_item_near, ShowGoodsFragment.class, getTravelBundle(0))
-                        .add(R.string.travel_item_ancient_town,ShowGoodsFragment.class,getTravelBundle(1))
+                        .add(R.string.travel_item_ancient_town, ShowGoodsFragment.class, getTravelBundle(1))
                         .add(R.string.travel_item_barbecue, ShowGoodsFragment.class, getTravelBundle(2))
-                        .add(R.string.travel_item_carnie,ShowGoodsFragment.class,getTravelBundle(3))
-                        .add(R.string.travel_item_long_distance,ShowGoodsFragment.class,getTravelBundle(4))
-                        .add(R.string.travel_item_beach,ShowGoodsFragment.class,getTravelBundle(5))
-                        .add(R.string.items_other,ShowGoodsFragment.class,getTravelBundle(6))
+                        .add(R.string.travel_item_carnie, ShowGoodsFragment.class, getTravelBundle(3))
+                        .add(R.string.travel_item_long_distance, ShowGoodsFragment.class, getTravelBundle(4))
+                        .add(R.string.travel_item_beach, ShowGoodsFragment.class, getTravelBundle(5))
+                        .add(R.string.items_other, ShowGoodsFragment.class, getTravelBundle(6))
                         .create()
         );
 //        smartTabLayout.setCustomTabView(R.layout.market_smart_tab_title_tab,R.id.title_tv);
@@ -334,5 +352,57 @@ public class FastInAct extends AbsActivity {
         }else{
             super.onBackPressed();
         }
+    }
+
+    private void initSTL(){
+        if(mLabels != null){
+            FragmentPagerItems.Creator creator = FragmentPagerItems.with(this);
+            for(String label:mLabels){
+                Bundle bundle = new Bundle();
+                bundle.putString(TYPE_NAME,label);
+                creator.add(label,ShowGoodsFragment.class,bundle);
+            }
+            pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(),creator.create());
+            smartTabLayout.setDistributeEvenly(false);
+            pager.setAdapter(pagerAdpater);
+            smartTabLayout.setViewPager(pager);
+        }
+    }
+
+    private void getLabels(){
+        toggleShowLoading(true,null);
+        if(!NetUtils.isNetworkConnected(this)){
+            showNetWorkError();
+            toggleNetworkError(true,getLabelsClickListener);
+        }
+
+        ApiManager.getService(this).getLabels(type, new Callback<Labels>() {
+            @Override
+            public void success(Labels labels, Response response) {
+                if(labels != null && !actDestory){
+                    mLabels = labels.getLabel();
+                    initSTL();
+                    toggleRestore();
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                toggleShowEmpty(true,null,getLabelsClickListener);
+            }
+        });
+    }
+
+    private View.OnClickListener getLabelsClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            getLabels();
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        actDestory = true;
     }
 }

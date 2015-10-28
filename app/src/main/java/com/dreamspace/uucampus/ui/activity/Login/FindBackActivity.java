@@ -52,6 +52,11 @@ public class FindBackActivity extends AbsActivity implements View.OnClickListene
     }
 
     @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.findback_get_code:

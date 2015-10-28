@@ -56,6 +56,11 @@ public class FreeGoodsDetailActivity extends AbsActivity {
     }
 
     @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.good_detial_act_menu, menu);
         return true;

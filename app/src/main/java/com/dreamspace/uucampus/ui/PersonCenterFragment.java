@@ -1,9 +1,17 @@
 package com.dreamspace.uucampus.ui;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.api.ApiManager;
+import com.dreamspace.uucampus.common.utils.CommonUtils;
+import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.model.ErrorRes;
+import com.dreamspace.uucampus.model.api.UserInfoRes;
 import com.dreamspace.uucampus.ui.activity.Order.MyOrderAct;
 import com.dreamspace.uucampus.ui.activity.Personal.CouponCardAct;
 import com.dreamspace.uucampus.ui.activity.Personal.FeedbackAct;
@@ -14,7 +22,11 @@ import com.dreamspace.uucampus.ui.activity.Personal.SettingAct;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Created by money on 2015/9/14.
@@ -36,10 +48,18 @@ public class PersonCenterFragment extends BaseLazyFragment {
     LinearLayout settingLl;
     @Bind(R.id.feedback_ll)
     LinearLayout feedbackLl;
+    @Bind(R.id.personal_nickname_tv)
+    TextView nicnNameTv;
+
+    private UserInfoRes userInfo;
+    private boolean fragmentDestory = false;
+
+    public static final String USER_INFO = "user_info";
+    public static final int AVATAR_OR_NAME_CHANGE = 1;
 
     @Override
     protected void onFirstUserVisible() {
-
+        getUserInfo();
     }
 
     @Override
@@ -57,7 +77,10 @@ public class PersonCenterFragment extends BaseLazyFragment {
         avatarCiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGo(PersonalInfoAct.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(USER_INFO,userInfo);
+                //若用户改变头像则返回时也要将此页面头像改变
+                readyGoForResult(PersonalInfoAct.class,AVATAR_OR_NAME_CHANGE,bundle);
             }
         });
 
@@ -118,7 +141,54 @@ public class PersonCenterFragment extends BaseLazyFragment {
 
     @Override
     protected View getLoadingTargetView() {
-        return null;
+        return ButterKnife.findById(getActivity(),R.id.personal_center_content_ll);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == AVATAR_OR_NAME_CHANGE && resultCode == getActivity().RESULT_OK){
+            Bundle changeData = data.getExtras();
+            
+        }
+    }
+
+    private void getUserInfo(){
+        toggleShowLoading(true,"");
+        if(!NetUtils.isNetworkConnected(mContext)){
+            showNetWorkError();
+            toggleNetworkError(true,getInfoClickListeners);
+            return;
+        }
+
+        ApiManager.getService(mContext).getUserInfo(new Callback<UserInfoRes>() {
+            @Override
+            public void success(UserInfoRes userInfoRes, Response response) {
+                if(userInfoRes != null && !fragmentDestory){
+                    CommonUtils.showImageWithGlideInCiv(mContext, avatarCiv, userInfoRes.getImage());
+                    nicnNameTv.setText(userInfoRes.getName());
+                    userInfo = userInfoRes;
+                    toggleRestore();
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                showInnerError(error);
+                toggleShowEmpty(true, null, getInfoClickListeners);
+            }
+        });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        fragmentDestory = true;
+    }
+
+    private View.OnClickListener getInfoClickListeners = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            getUserInfo();
+        }
+    };
 }

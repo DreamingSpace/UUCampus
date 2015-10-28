@@ -26,6 +26,10 @@ import com.dreamspace.uucampus.common.utils.CommonUtils;
 public class VaryViewHelperController {
 
     private IVaryViewHelper helper;
+    private View msgView;
+    private View loadingView;
+    private TextView msgTv;
+    private TextView loadingTv;
 
     public VaryViewHelperController(View view) {
         this(new VaryViewHelper(view));
@@ -37,68 +41,88 @@ public class VaryViewHelperController {
     }
 
     public void showNetworkError(View.OnClickListener onClickListener) {
-        View layout = helper.inflate(R.layout.message);
-        TextView textView = (TextView) layout.findViewById(R.id.message_info);
-        textView.setText(helper.getContext().getResources().getString(R.string.common_no_network_msg));
+        initMsgView();
+//        View layout = helper.inflate(R.layout.message);
+//        TextView textView = (TextView) layout.findViewById(R.id.message_info);
+        msgTv.setText(helper.getContext().getResources().getString(R.string.common_no_network_msg));
 
-        ImageView imageView = (ImageView) layout.findViewById(R.id.message_icon);
-        imageView.setImageResource(R.drawable.ic_exception);
+//        ImageView imageView = (ImageView) layout.findViewById(R.id.message_icon);
+//        imageView.setImageResource(R.drawable.ic_exception);
 
         if (null != onClickListener) {
-            layout.setOnClickListener(onClickListener);
+            msgView.setOnClickListener(onClickListener);
         }
 
-        helper.showLayout(layout);
+        helper.showLayout(msgView);
     }
 
     public void showError(String errorMsg, View.OnClickListener onClickListener) {
-        View layout = helper.inflate(R.layout.message);
-        TextView textView = (TextView) layout.findViewById(R.id.message_info);
+        initMsgView();
+//        View layout = helper.inflate(R.layout.message);
+//        TextView textView = (TextView) layout.findViewById(R.id.message_info);
         if (!CommonUtils.isEmpty(errorMsg)) {
-            textView.setText(errorMsg);
+            msgTv.setText(errorMsg);
         } else {
-            textView.setText(helper.getContext().getResources().getString(R.string.common_error_msg));
+            msgTv.setText(helper.getContext().getResources().getString(R.string.common_error_msg));
         }
 
-        ImageView imageView = (ImageView) layout.findViewById(R.id.message_icon);
+        ImageView imageView = (ImageView) msgView.findViewById(R.id.message_icon);
         imageView.setImageResource(R.drawable.ic_error);
 
         if (null != onClickListener) {
-            layout.setOnClickListener(onClickListener);
+            msgView.setOnClickListener(onClickListener);
         }
 
-        helper.showLayout(layout);
+        helper.showLayout(msgView);
     }
 
     public void showEmpty(String emptyMsg, View.OnClickListener onClickListener) {
-        View layout = helper.inflate(R.layout.message);
-        TextView textView = (TextView) layout.findViewById(R.id.message_info);
+        initMsgView();
+//        View layout = helper.inflate(R.layout.message);
+//        TextView textView = (TextView) layout.findViewById(R.id.message_info);
         if (!CommonUtils.isEmpty(emptyMsg)) {
-            textView.setText(emptyMsg);
+            msgTv.setText(emptyMsg);
         } else {
-            textView.setText(helper.getContext().getResources().getString(R.string.common_empty_msg));
+            msgTv.setText(helper.getContext().getResources().getString(R.string.common_empty_msg));
         }
 
-        ImageView imageView = (ImageView) layout.findViewById(R.id.message_icon);
-        imageView.setImageResource(R.drawable.ic_exception);
+//        ImageView imageView = (ImageView) layout.findViewById(R.id.message_icon);
+//        imageView.setImageResource(R.drawable.ic_exception);
 
         if (null != onClickListener) {
-            layout.setOnClickListener(onClickListener);
+            msgView.setOnClickListener(onClickListener);
         }
 
-        helper.showLayout(layout);
+        helper.showLayout(msgView);
     }
 
     public void showLoading(String msg) {
-        View layout = helper.inflate(R.layout.loading);
+        initLoadingView();
+//        View layout = helper.inflate(R.layout.loading);
         if (!CommonUtils.isEmpty(msg)) {
-            TextView textView = (TextView) layout.findViewById(R.id.loading_msg);
-            textView.setText(msg);
+//            TextView textView = (TextView) layout.findViewById(R.id.loading_msg);
+            loadingTv.setText(msg);
         }
-        helper.showLayout(layout);
+        helper.showLayout(loadingView);
     }
 
     public void restore() {
         helper.restoreView();
+    }
+
+    private void initMsgView(){
+        if(msgView != null){
+            return;
+        }
+        msgView = helper.inflate(R.layout.message);
+        msgTv = (TextView) msgView.findViewById(R.id.message_info);
+    }
+
+    private void initLoadingView(){
+        if(loadingView != null){
+            return;
+        }
+        loadingView = helper.inflate(R.layout.loading);
+        loadingTv = (TextView) loadingView.findViewById(R.id.loading_msg);
     }
 }

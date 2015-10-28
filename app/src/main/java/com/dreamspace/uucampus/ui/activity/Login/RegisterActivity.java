@@ -48,6 +48,11 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
         initListener();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListener(){
         registerGetCode.setOnClickListener(this);
         registerButton.setOnClickListener(this);

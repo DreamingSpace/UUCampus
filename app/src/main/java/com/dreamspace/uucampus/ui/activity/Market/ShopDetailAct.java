@@ -40,6 +40,11 @@ public class ShopDetailAct extends AbsActivity {
         initListeners();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListeners(){
         reportBtn.setOnClickListener(new View.OnClickListener() {
             @Override

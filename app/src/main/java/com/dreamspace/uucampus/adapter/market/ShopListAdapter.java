@@ -7,21 +7,26 @@ import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.base.BasisAdapter;
+import com.dreamspace.uucampus.common.utils.CommonUtils;
+import com.dreamspace.uucampus.model.ShopItem;
 
 import java.util.List;
 
 /**
  * Created by Lx on 2015/9/22.
  */
-public class ShopListAdapter extends BasisAdapter<String,ShopListAdapter.ViewHolder> {
+public class ShopListAdapter extends BasisAdapter<ShopItem,ShopListAdapter.ViewHolder> {
 
-    public ShopListAdapter(Context mContext, List mEntities, Class classType) {
+    public ShopListAdapter(Context mContext, List<ShopItem> mEntities, Class classType) {
         super(mContext, mEntities, classType);
     }
 
     @Override
-    protected void setDataIntoView(ViewHolder holder, String entity) {
-
+    protected void setDataIntoView(ViewHolder holder, ShopItem entity) {
+        CommonUtils.showImageWithGlide(getmContext(),holder.image,entity.getImage());
+        holder.shopName.setText(entity.getName());
+        holder.majorSale.setText(entity.getMain());
+        holder.address.setText(entity.getAddress());
     }
 
     @Override

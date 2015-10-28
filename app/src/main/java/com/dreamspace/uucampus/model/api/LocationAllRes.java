@@ -2,6 +2,7 @@ package com.dreamspace.uucampus.model.api;
 
 import com.dreamspace.uucampus.model.LocationItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,13 +10,13 @@ import java.util.List;
  */
 public class LocationAllRes {
 
-    private List<LocationItem> location;
+    private ArrayList<String> location;
 
-    public List<LocationItem> getLocation() {
+    public ArrayList<String> getLocation() {
         return location;
     }
 
-    public void setLocation(List<LocationItem> location) {
+    public void setLocation(ArrayList<String> location) {
         this.location = location;
     }
 }

@@ -38,12 +38,6 @@ public class ShowGoodsFragment extends BaseLazyFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_show_items, container, false);
-        return view;
-    }
-
-    @Override
     protected void onFirstUserVisible() {
         List<String> list = new ArrayList<>();
         for(int i = 0;i < 15;i++){
@@ -65,7 +59,7 @@ public class ShowGoodsFragment extends BaseLazyFragment {
 
     @Override
     protected View getLoadingTargetView() {
-        return null;
+        return swipeRefreshLayout;
     }
 
     @Override
@@ -80,6 +74,6 @@ public class ShowGoodsFragment extends BaseLazyFragment {
 
     @Override
     protected int getContentViewLayoutID() {
-        return 0;
+        return R.layout.fragment_show_items;
     }
 }

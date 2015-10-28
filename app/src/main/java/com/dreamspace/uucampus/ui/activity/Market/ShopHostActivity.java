@@ -40,4 +40,9 @@ public class ShopHostActivity extends AbsActivity{
             }
         });
     }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
 }

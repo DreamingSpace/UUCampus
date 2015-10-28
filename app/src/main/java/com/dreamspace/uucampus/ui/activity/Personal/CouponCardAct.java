@@ -44,6 +44,11 @@ public class CouponCardAct extends AbsActivity{
         initListeners();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListeners(){
         shareBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -52,6 +52,11 @@ public class FreeGoodsActivity extends AbsActivity {
         });
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListeners(){
         popupWindow.setMostPopularOnClickListener(new View.OnClickListener() {
             @Override

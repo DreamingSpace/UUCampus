@@ -3,6 +3,7 @@ package com.dreamspace.uucampus.widget.photopicker;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -55,6 +56,11 @@ public class PhotoPreviewActivity extends AbsActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         TextView title = (TextView) mToolBar.findViewById(R.id.custom_title_tv);
         title.setText(getResources().getString(R.string.preview_photo));
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 
     private void showImage(String imagePath){

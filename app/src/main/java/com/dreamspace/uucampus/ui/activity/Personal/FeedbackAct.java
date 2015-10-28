@@ -1,5 +1,7 @@
 package com.dreamspace.uucampus.ui.activity.Personal;
 
+import android.view.View;
+
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
@@ -21,6 +23,11 @@ public class FeedbackAct extends AbsActivity {
     protected void initViews() {
         getSupportActionBar().setTitle(getString(R.string.feedback));
         initListeners();
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 
     private void initListeners(){
