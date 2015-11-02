@@ -136,13 +136,13 @@ public class GoodDetailAct extends AbsActivity {
     }
 
     private void initStl(){
-        FragmentPagerItemAdapter pagerAdapter = new FragmentPagerItemAdapter(getSupportFragmentManager(), FragmentPagerItems.with(this)
-                                .add(R.string.detial, GoodDetailPagerFragment.class, getBundles(0))
-                                .add(R.string.comment, GoodDetailPagerFragment.class, getBundles(1))
-                                .create()
-        );
+//        FragmentPagerItemAdapter pagerAdapter = new FragmentPagerItemAdapter(getSupportFragmentManager(), FragmentPagerItems.with(this)
+//                                .add(R.string.detial, GoodDetailPagerFragment.class, getBundles(0))
+//                                .add(R.string.comment, GoodDetailPagerFragment.class, getBundles(1))
+//                                .create()
+//        );
         tabLayout.setCustomTabView(R.layout.good_detail_stl_title_tab, R.id.detail_stl_title_tv);
-        detailViewPager.setAdapter(pagerAdapter);
+        //detailViewPager.setAdapter(pagerAdapter);
         tabLayout.setViewPager(detailViewPager);
     }
 

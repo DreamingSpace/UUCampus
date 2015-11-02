@@ -75,7 +75,7 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 onItemPicked((T) mAdapter.getItem(position), position);
                 Log.i("INFO", "position:  " + position);
-                readyGo(FreeGoodsDetailActivity.class);
+                //readyGo(FreeGoodsDetailActivity.class);
             }
         });
 
