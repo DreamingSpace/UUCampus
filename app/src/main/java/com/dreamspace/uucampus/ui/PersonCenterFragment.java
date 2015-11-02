@@ -146,9 +146,11 @@ public class PersonCenterFragment extends BaseLazyFragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //个人信息编辑页面退出后将最新用户信息传递到此页面
         if(requestCode == AVATAR_OR_NAME_CHANGE && resultCode == getActivity().RESULT_OK){
             Bundle changeData = data.getExtras();
-            
+            UserInfoRes userInfo = changeData.getParcelable(USER_INFO);
+            showUserInfoIntoViews(userInfo);
         }
     }
 
@@ -164,9 +166,7 @@ public class PersonCenterFragment extends BaseLazyFragment {
             @Override
             public void success(UserInfoRes userInfoRes, Response response) {
                 if(userInfoRes != null && !fragmentDestory){
-                    CommonUtils.showImageWithGlideInCiv(mContext, avatarCiv, userInfoRes.getImage());
-                    nicnNameTv.setText(userInfoRes.getName());
-                    userInfo = userInfoRes;
+                    showUserInfoIntoViews(userInfoRes);
                     toggleRestore();
                 }
             }
@@ -191,4 +191,11 @@ public class PersonCenterFragment extends BaseLazyFragment {
             getUserInfo();
         }
     };
+
+    //将头像和昵称显示到视图中
+    private void showUserInfoIntoViews(UserInfoRes userInfo){
+        CommonUtils.showImageWithGlideInCiv(mContext, avatarCiv, userInfo.getImage());
+        nicnNameTv.setText(userInfo.getName());
+        this.userInfo = userInfo;
+    }
 }

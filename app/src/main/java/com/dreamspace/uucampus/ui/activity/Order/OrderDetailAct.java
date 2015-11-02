@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
-import com.hedgehog.ratingbar.RatingBar;
+//import com.hedgehog.ratingbar.RatingBar;
 
 import net.glxn.qrgen.android.QRCode;
 
@@ -206,8 +206,8 @@ public class OrderDetailAct extends AbsActivity{
     private void initAlreadyCommentViews(){
         commentLl.setVisibility(View.VISIBLE);
 
-        RatingBar ratingBar = (RatingBar) commentLl.findViewById(R.id.comment_rating_bar);
-        ratingBar.setmClickable(false);
+//        RatingBar ratingBar = (RatingBar) commentLl.findViewById(R.id.comment_rating_bar);
+//        ratingBar.setmClickable(false);
     }
 
     //返回要添加的view的位置

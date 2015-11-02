@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
-import com.hedgehog.ratingbar.RatingBar;
+import com.dreamspace.uucampus.widget.RatingBar;
 
 import butterknife.Bind;
 

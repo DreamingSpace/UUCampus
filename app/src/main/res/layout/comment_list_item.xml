@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingBottom="5dp"
     xmlns:hedgehog="http://schemas.android.com/apk/res-auto">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/user_avatar_civ"
@@ -29,7 +30,7 @@
         android:layout_below="@id/user_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <com.hedgehog.ratingbar.RatingBar
+    <com.dreamspace.uucampus.widget.RatingBar
         android:id="@+id/comment_rating_bar"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@id/user_avatar_civ"
@@ -55,6 +56,7 @@
         android:layout_height="wrap_content" />
 
     <LinearLayout
+        android:id="@+id/comment_useful_ll"
         android:layout_below="@id/comment_content_tv"
         android:layout_alignRight="@id/comment_rating_bar"
         android:layout_marginTop="5dp"
@@ -63,7 +65,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
-            android:src="@drawable/xianzhi_icon_like"
+            android:id="@+id/comment_like_iv"
+            android:src="@drawable/comment_like_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView

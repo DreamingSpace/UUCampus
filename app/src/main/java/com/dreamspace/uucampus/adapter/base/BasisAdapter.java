@@ -93,4 +93,12 @@ public abstract class BasisAdapter<T, K> extends BaseAdapter {
     public Context getmContext() {
         return mContext;
     }
+
+    public void addEntities(List<T> mEntities){
+        this.mEntities.addAll(mEntities);
+    }
+
+    public List<T> getmEntities(){
+        return  mEntities;
+    }
 }

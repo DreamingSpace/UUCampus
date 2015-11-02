@@ -8,7 +8,6 @@
         android:id="@+id/shop_image_iv"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:background="@color/search_opaque"
         android:layout_width="87dp"
         android:layout_height="65dp" />
     <TextView

@@ -19,7 +19,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.hedgehog.ratingbar.RatingBar
+        <com.dreamspace.uucampus.widget.RatingBar
             android:id="@+id/comment_rating_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

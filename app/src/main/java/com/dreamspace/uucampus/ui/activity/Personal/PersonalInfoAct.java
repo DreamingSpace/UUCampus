@@ -58,10 +58,10 @@ public class PersonalInfoAct extends AbsActivity {
     RelativeLayout schoolRl;
     @Bind(R.id.year_rl)
     RelativeLayout yearRl;
-    @Bind(R.id.weibo_rl)
-    RelativeLayout weiboRl;
-    @Bind(R.id.wechat_rl)
-    RelativeLayout wechatRl;
+//    @Bind(R.id.weibo_rl)
+//    RelativeLayout weiboRl;
+//    @Bind(R.id.wechat_rl)
+//    RelativeLayout wechatRl;
     @Bind(R.id.personal_info_avater)
     CircleImageView avaterCiv;
     @Bind(R.id.nickname_tv)
@@ -154,19 +154,19 @@ public class PersonalInfoAct extends AbsActivity {
             }
         });
 
-        weiboRl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        wechatRl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        weiboRl.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+//
+//        wechatRl.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
     }
 
     @Override
@@ -266,7 +266,7 @@ public class PersonalInfoAct extends AbsActivity {
                 //修改框隐藏，progressdialog显示
                 changNameDialog.dismiss();
                 progressDialog.show();
-                modifyUserInfo(userInfo.getImage(), changNameDialog.getText(), userInfo.getLocation(), userInfo.getEnroll_year());
+                modifyUserInfo(null, changNameDialog.getText(), null, null);
             }
         });
     }
@@ -327,7 +327,7 @@ public class PersonalInfoAct extends AbsActivity {
                 yearDialog.dismiss();
                 progressDialog.setContent(getString(R.string.modifing));
                 progressDialog.show();
-                modifyUserInfo(userInfo.getImage(), userInfo.getName(), userInfo.getLocation(), yearDialog.getSelectedText());
+                modifyUserInfo(null, null, null, yearDialog.getSelectedText());
             }
         });
     }
@@ -347,7 +347,7 @@ public class PersonalInfoAct extends AbsActivity {
                 loactionDialog.dismiss();
                 progressDialog.setContent(getString(R.string.modifing));
                 progressDialog.show();
-                modifyUserInfo(userInfo.getImage(), userInfo.getName(), loactionDialog.getSelectedText(), userInfo.getEnroll_year());
+                modifyUserInfo(null, null, loactionDialog.getSelectedText(), null);
             }
         });
 
@@ -411,5 +411,16 @@ public class PersonalInfoAct extends AbsActivity {
     protected void onDestroy() {
         super.onDestroy();
         actDestory = true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        //返回最新的用户数据
+        Intent data = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(PersonCenterFragment.USER_INFO,userInfo);
+        data.putExtras(bundle);
+        setResult(RESULT_OK,data);
+        super.onBackPressed();
     }
 }

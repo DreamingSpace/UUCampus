@@ -4,7 +4,8 @@
     android:layout_height="match_parent">
     <com.dreamspace.uucampus.widget.LoadMoreListView
         android:id="@+id/good_detail_pager_lv"
-        android:divider="@null"
+        android:divider="@color/divider_color"
+        android:dividerHeight="1px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>

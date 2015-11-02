@@ -34,6 +34,7 @@ public class MarketFragment extends BaseLazyFragment {
     @Bind(R.id.market_smarttablayout)
     SmartTabLayout smartTabLayout;
 
+    private boolean fragmentDestory = false;
     private FragmentStatePagerItemAdapter pagerAdpater;
     private ArrayList<CategoryItem> categories;
 
@@ -42,16 +43,6 @@ public class MarketFragment extends BaseLazyFragment {
     @Override
     protected void onFirstUserVisible() {
         getCategory();
-//        pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(), FragmentPagerItems.with(mContext)
-//                        .add(R.string.travel, ShowShopsFragment.class, getBundle(0))
-//                        .add(R.string.study_abroad,ShowShopsFragment.class,getBundle(1))
-//                        .add(R.string.driver_school,ShowShopsFragment.class,getBundle(2))
-//                        .add(R.string.class_uniform,ShowShopsFragment.class, getBundle(3))
-//                        .add(R.string.personal_shop,ShowShopsFragment.class, getBundle(4))
-//                        .create());
-//        smartTabLayout.setCustomTabView(R.layout.market_smart_tab_title_tab,R.id.title_tv);
-//        pager.setAdapter(pagerAdpater);
-//        smartTabLayout.setViewPager(pager);
     }
 
     @Override
@@ -92,39 +83,10 @@ public class MarketFragment extends BaseLazyFragment {
         smartTabLayout.setViewPager(pager);
     }
 
-    /*position 0=旅游 1=留学 2=驾校 3=班服 4=个人小店*/
-    private Bundle getBundle(int position){
-        Bundle bundle = new Bundle();
-        if(position < 5){
-            switch (position){
-                case 0:
-                    bundle.putString(TYPE_NAME,getResources().getString(R.string.travel));
-                    break;
-
-                case 1:
-                    bundle.putString(TYPE_NAME,getResources().getString(R.string.study_abroad));
-                    break;
-
-                case 2:
-                    bundle.putString(TYPE_NAME,getResources().getString(R.string.driver_school));
-                    break;
-
-                case 3:
-                    bundle.putString(TYPE_NAME,getResources().getString(R.string.class_uniform));
-                    break;
-
-                case 4:
-                    bundle.putString(TYPE_NAME,getResources().getString(R.string.personal_shop));
-                    break;
-            }
-        }
-        return bundle;
-    }
-
     private void getCategory(){
         toggleShowLoading(true,null);
         if(!NetUtils.isNetworkConnected(mContext)){
-            showToast(getString(R.string.network_error_tips));
+            showNetWorkError();
             toggleNetworkError(true,getCategoryClickListener);
             return;
         }
@@ -132,7 +94,7 @@ public class MarketFragment extends BaseLazyFragment {
         ApiManager.getService(mContext).getAllShopCategory(new Callback<AllCategoryRes>() {
             @Override
             public void success(AllCategoryRes allCategoryRes, Response response) {
-                if(allCategoryRes != null){
+                if(allCategoryRes != null && !fragmentDestory){
                     categories = allCategoryRes.getCategory();
                     loadViews();
                     toggleRestore();
@@ -153,4 +115,10 @@ public class MarketFragment extends BaseLazyFragment {
             getCategory();
         }
     };
+
+    @Override
+    public void onDestroy() {
+        fragmentDestory = true;
+        super.onDestroy();
+    }
 }

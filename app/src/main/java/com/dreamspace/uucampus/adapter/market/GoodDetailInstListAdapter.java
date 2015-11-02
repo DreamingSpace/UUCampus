@@ -6,20 +6,22 @@ import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.base.BasisAdapter;
+import com.dreamspace.uucampus.model.api.DescriptionItem;
 
 import java.util.List;
 
 /**
  * Created by Lx on 2015/10/12.
  */
-public class GoodDetailInstListAdapter extends BasisAdapter<String,GoodDetailInstListAdapter.ViewHolder> {
-    public GoodDetailInstListAdapter(Context mContext, List<String> mEntities, Class<ViewHolder> classType) {
+public class GoodDetailInstListAdapter extends BasisAdapter<DescriptionItem,GoodDetailInstListAdapter.ViewHolder> {
+    public GoodDetailInstListAdapter(Context mContext, List<DescriptionItem> mEntities, Class<ViewHolder> classType) {
         super(mContext, mEntities, classType);
     }
 
     @Override
-    protected void setDataIntoView(ViewHolder holder, String entity) {
-
+    protected void setDataIntoView(ViewHolder holder, DescriptionItem entity) {
+        holder.condition.setText(entity.getTitle());
+        holder.content.setText(entity.getContent());
     }
 
     @Override

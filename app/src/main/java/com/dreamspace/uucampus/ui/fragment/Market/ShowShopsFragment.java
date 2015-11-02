@@ -41,10 +41,10 @@ public class ShowShopsFragment extends BaseLazyFragment {
     LoadMoreListView loadMoreListView;
 
     private CategoryItem categoryItem;
-    private ArrayList<ShopItem> mShops = new ArrayList<>();
     private int shopPage = 1;
     private boolean fragmentDestroy = false;
-    private boolean alreadyGotData = false;
+    private boolean firstGetData = true;
+    private ShopListAdapter adapter;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +60,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
 
     @Override
     protected void onUserVisible() {
-        if(mShops.size() == 0){
-            toggleShowEmpty(true,getString(R.string.no_such_shop),null);
-            return;
-        }
-        ShopListAdapter adapter = new ShopListAdapter(mContext,mShops,ShopListAdapter.ViewHolder.class);
-        loadMoreListView.setAdapter(adapter);
+
     }
 
     @Override
@@ -83,7 +78,14 @@ public class ShowShopsFragment extends BaseLazyFragment {
         loadMoreListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                readyGo(ShopShowGoodsAct.class);
+                if(adapter != null){
+                    //启动商家页面，并传入对应商家的shopid,shopname
+                    ShopItem shopInfo = adapter.getItem(position);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(ShopShowGoodsAct.SHOP_ID,shopInfo.getShop_id());
+                    bundle.putString(ShopShowGoodsAct.SHOP_NAME,shopInfo.getName());
+                    readyGo(ShopShowGoodsAct.class, bundle);
+                }
             }
         });
 
@@ -100,8 +102,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
             @Override
             public void onRefresh() {
                 shopPage = 1;
-                alreadyGotData = false;
-                mShops.clear();
+                firstGetData = true;
                 getShops();
             }
         });
@@ -116,7 +117,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
         if(!NetUtils.isNetworkConnected(mContext)){
             showNetWorkError();
             //若还没有取得数据则显示网络错误界面
-            if(!alreadyGotData){
+            if(firstGetData){
                 toggleNetworkError(true, getShopsClickListener);
             }
             loadMoreListView.setLoading(false);
@@ -128,38 +129,40 @@ public class ShowShopsFragment extends BaseLazyFragment {
             @Override
             public void success(SearchShopRes searchShopRes, Response response) {
                 if(searchShopRes != null && !fragmentDestroy){
-                    mShops.addAll(searchShopRes.getResult());
-                    ShopListAdapter adapter = new ShopListAdapter(mContext,mShops,ShopListAdapter.ViewHolder.class);
-                    loadMoreListView.setAdapter(adapter);
-                    //若还没取得过数据则取消加载界面
-                    if(!alreadyGotData){
-                        toggleRestore();
-                    }
-                    //已取得了数据
-                    alreadyGotData = true;
                     loadMoreListView.setLoading(false);
                     swipeRefreshLayout.setRefreshing(false);
+                    //没有数据
+                    if(shopPage == 1 && searchShopRes.getResult().size() == 0){
+                        toggleShowEmpty(true,"没有相关商品",null);
+                        return;
+                    }
+
+                    //没有更多
+                    if(shopPage != 1 && searchShopRes.getResult().size() == 0){
+                        showToast(getString(R.string.no_more));
+                        return;
+                    }
+
+                    //若还没取得过数据则取消加载界面
+                    if(firstGetData){
+                        adapter = new ShopListAdapter(mContext,searchShopRes.getResult(),ShopListAdapter.ViewHolder.class);
+                        loadMoreListView.setAdapter(adapter);
+                        toggleRestore();
+                        //已取得了数据
+                        firstGetData = false;
+                    }else{
+                        adapter.addEntities(searchShopRes.getResult());
+                        adapter.notifyDataSetChanged();
+                    }
                 }
             }
 
             @Override
             public void failure(RetrofitError error) {
-                ErrorRes errorRes = (ErrorRes) error.getBodyAs(ErrorRes.class);
-                //没有商店提醒用户没有相关店家
-                if(errorRes.getCode() == 406){
-                    if(shopPage == 1){
-                        toggleShowEmpty(true,"没有相关商家",null);
-                    }else{
-                        //没有更多
-                        showToast(getString(R.string.no_more));
-                    }
+                if(shopPage == 1){
+                    toggleShowEmpty(true, null, getShopsClickListener);
                 }else{
-                    //非406的其他错误
-                    if(shopPage == 1){
-                        toggleShowEmpty(true, null, getShopsClickListener);
-                    }else{
-                        showInnerError(error);
-                    }
+                    showInnerError(error);
                 }
                 loadMoreListView.setLoading(false);
                 swipeRefreshLayout.setRefreshing(false);
@@ -171,7 +174,6 @@ public class ShowShopsFragment extends BaseLazyFragment {
         @Override
         public void onClick(View v) {
             getShops();
-//            System.out.println(categoryItem.getName() + "click");
         }
     };
 

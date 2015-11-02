@@ -1,6 +1,7 @@
 package com.dreamspace.uucampus.api;
 
 
+import com.dreamspace.uucampus.model.AllGoodsCommentRes;
 import com.dreamspace.uucampus.model.Labels;
 import com.dreamspace.uucampus.model.api.AddGoodsCollectionRes;
 import com.dreamspace.uucampus.model.api.AddGoodsCommentRes;
@@ -8,7 +9,7 @@ import com.dreamspace.uucampus.model.api.AddIdleCommentRes;
 import com.dreamspace.uucampus.model.api.AddShopCollectionRes;
 import com.dreamspace.uucampus.model.api.AddShopCommentRes;
 import com.dreamspace.uucampus.model.api.AllGoodsCollectionRes;
-import com.dreamspace.uucampus.model.api.AllGoodsCommentRes;
+import com.dreamspace.uucampus.model.api.AllGoodsCommentItemRes;
 import com.dreamspace.uucampus.model.api.CategoryReq;
 import com.dreamspace.uucampus.model.api.CheckUpdateRes;
 import com.dreamspace.uucampus.model.api.CommitReportReq;
@@ -57,20 +58,32 @@ import com.dreamspace.uucampus.model.api.UpdateShopReq;
 import com.dreamspace.uucampus.model.api.UpdateUserInfoReq;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 import retrofit.Callback;
 import retrofit.client.Response;
 import retrofit.http.Body;
-import retrofit.http.DELETE;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.PUT;
 import retrofit.http.Path;
 import retrofit.http.Query;
+import retrofit.http.RestMethod;
 
 /**
  * Created by Administrator on 2015/8/20 0020.
  */
 public interface UUService {
+    //DELETE方法默认不支持含body，自定义DELETE方法
+    @Target(ElementType.METHOD)
+    @Retention(RetentionPolicy.RUNTIME)
+    @RestMethod(value = "DELETE" , hasBody = true)
+    public @interface DELETE{
+        String value();
+    }
 
     //创建七牛上传凭证
     @POST("/static/token/")
@@ -144,7 +157,7 @@ public interface UUService {
     void deleteShopComment(@Path("shop_id") String shop_id, @Path("shop_comment_id") String shop_comment_id, Callback<Response> cb);
 
     //店铺收藏添加
-    @POST("/shop/{shop_id}/collection/")
+    @POST("/shop/collection/{shop_id}")
     void addCollection(@Path("shop_id") String shop_id, Callback<AddShopCollectionRes> cb);
 
     //个人店铺收藏查看
@@ -152,8 +165,8 @@ public interface UUService {
     void getPersonShopCollection(@Path("page") int page, Callback<ShopCollectionRes> cb);
 
     //店铺收藏删除
-    @DELETE("/shop/{shop_id}/collection/")
-    void deleteShopCollection(@Path("shop_id") String shop_id, Callback<Response> cb);
+    @DELETE("/shop/collection/{shop_id}")
+    void deleteShopCollection(@Path("shop_id") String shop_id, Callback<CommonStatusRes> cb);
 
     //店内分类创建
     @POST("/shop/{shop_id}/group/")
@@ -212,7 +225,10 @@ public interface UUService {
 
     //商品搜索
     @GET("/goods/search/")
-    void searchGoods(@Query("keyword")String keyword,@Query("order")String order,@Query("category")String category,@Query("location")String location,@Query("shop")String shop,Callback<SearchGoodsRes>cb);
+    void searchGoods(@Query("keyword")String keyword,@Query("order")String order,
+                     @Query("category")String category,@Query("label")String label,
+                     @Query("group")String group,@Query("shop_id") String shop_id,
+                     @Query("page") int page,Callback<SearchGoodsRes>cb);
 
     //商品点赞
     @POST("/goods/{goods_id}/like/")
@@ -235,15 +251,15 @@ public interface UUService {
     void deleteGoodsComment(@Path("goods_id")String goods_id,@Path("goods_comment_id")String goods_comment_id,Callback<Response> cb);
 
     //商品有用添加
-    @POST("/goods/{goods_id}/comment/{goods_comment_id}/useful")
-    void addGoodsUseful(@Path("goods_id")String goods_id,@Path("goods_comment_id")String goods_comment_id,Callback<Response> cb);
+    @POST("/goods/{goods_id}/comment/{goods_comment_id}/useful/")
+    void addGoodsUseful(@Path("goods_id")String goods_id,@Path("goods_comment_id")String goods_comment_id,Callback<CommonStatusRes> cb);
 
     //商品有用取消
-    @PUT("/goods/{goods_id}/comment/{goods_comment_id}/useful")
-    void cancelGoodsUseful(@Path("goods_id")String goods_id,@Path("goods_comment_id")String goods_comment_id,Callback<Response> cb);
+    @DELETE("/goods/{goods_id}/comment/{goods_comment_id}/useful/")
+    void cancelGoodsUseful(@Path("goods_id")String goods_id,@Path("goods_comment_id")String goods_comment_id,Callback<CommonStatusRes> cb);
 
     //商品收藏添加
-    @POST("/goods/{goods_id}/collection/")
+    @POST("/goods/collection/{goods_id}")
     void addGoodsCollection(@Path("goods_id")String  goods_id,Callback<AddGoodsCollectionRes>cb);
 
     //个人商品收藏查看
@@ -251,8 +267,8 @@ public interface UUService {
     void getAllGoodsCollection(@Path("page")int page,Callback<AllGoodsCollectionRes> cb);
 
     //商品收藏删除
-    @DELETE("/goods/{goods_id}/collection/")
-    void deleteGoodsCollection(@Path("goods_id")String goods_id,Callback<Response>cb);
+    @DELETE("/goods/collection/{goods_id}")
+    void deleteGoodsCollection(@Path("goods_id")String goods_id,Callback<CommonStatusRes>cb);
 
 
 

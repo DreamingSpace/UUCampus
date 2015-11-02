@@ -7,97 +7,104 @@
     <include
         layout="@layout/custom_toolbar"/>
 
-    <com.ogaclejapan.smarttablayout.SmartTabLayout
-        android:id="@+id/shop_show_goods_act_smarttablayout"
+    <RelativeLayout
+        android:id="@+id/content_rl"
         android:layout_below="@+id/tl_custom"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@color/white"
-        app:stl_indicatorGravity="bottom"
-        app:stl_indicatorInFront="false"
-        app:stl_indicatorColor="@color/app_theme_color"
-        app:stl_indicatorThickness="4dp"
-        app:stl_indicatorCornerRadius="5dp"
-        app:stl_indicatorAlwaysInCenter="false"
-        app:stl_defaultTabTextColor="@drawable/market_smart_tab_textcolor"
-        app:stl_defaultTabTextSize="16sp"
-        app:stl_distributeEvenly="true"
-        app:stl_dividerThickness="0dp"
-        app:stl_underlineColor="@color/white"
-        app:stl_underlineThickness="0dp"
-        app:stl_clickable="true"/>
-    <View
-        android:id="@+id/divider_below_shop_sg_act_smarttab"
-        android:layout_below="@id/shop_show_goods_act_smarttablayout"
-        android:background="@color/divider_color"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
-    <View
-        android:id="@+id/divider_above_shop_sg_act_viewpager"
-        android:layout_below="@id/shop_show_goods_act_smarttablayout"
-        android:background="@color/divider_color"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/shop_bottom_bar"
-        android:background="@color/market_fragments_bg_color"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="48dp">
-        <LinearLayout
-            android:id="@+id/shop_collect_ll"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_weight="1"
+        <com.ogaclejapan.smarttablayout.SmartTabLayout
+            android:id="@+id/shop_show_goods_act_smarttablayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:src="@drawable/xiangqing_tab_bar_collect_n"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="@string/collect"
-                android:textSize="12sp"
-                android:layout_marginTop="0dp"
-                android:textColor="@color/app_theme_color2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+            android:layout_height="35dp"
+            android:background="@color/white"
+            app:stl_indicatorGravity="bottom"
+            app:stl_indicatorInFront="false"
+            app:stl_indicatorColor="@color/app_theme_color"
+            app:stl_indicatorThickness="4dp"
+            app:stl_indicatorCornerRadius="5dp"
+            app:stl_indicatorAlwaysInCenter="false"
+            app:stl_defaultTabTextColor="@drawable/market_smart_tab_textcolor"
+            app:stl_defaultTabTextSize="16sp"
+            app:stl_distributeEvenly="true"
+            app:stl_dividerThickness="0dp"
+            app:stl_underlineColor="@color/white"
+            app:stl_underlineThickness="0dp"
+            app:stl_clickable="true"/>
+        <View
+            android:id="@+id/divider_below_shop_sg_act_smarttab"
+            android:layout_below="@id/shop_show_goods_act_smarttablayout"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+        <View
+            android:id="@+id/divider_above_shop_sg_act_viewpager"
+            android:layout_below="@id/shop_show_goods_act_smarttablayout"
+            android:background="@color/divider_color"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
 
         <LinearLayout
-            android:id="@+id/shop_consult_ll"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_weight="1"
+            android:id="@+id/shop_bottom_bar"
+            android:background="@color/market_fragments_bg_color"
+            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:src="@drawable/xiangqing_tab_bar_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="@string/consult"
-                android:textSize="12sp"
-                android:layout_marginTop="0dp"
-                android:textColor="@color/app_theme_color2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            android:layout_height="48dp">
+            <LinearLayout
+                android:id="@+id/shop_collect_ll"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/collect_iv"
+                    android:src="@drawable/xiangqing_tab_bar_collect_n"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="@string/collect"
+                    android:textSize="12sp"
+                    android:layout_marginTop="0dp"
+                    android:textColor="@color/app_theme_color2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shop_consult_ll"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:src="@drawable/xiangqing_tab_bar_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="@string/consult"
+                    android:textSize="12sp"
+                    android:layout_marginTop="0dp"
+                    android:textColor="@color/app_theme_color2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <View
-        android:id="@+id/divider_above_bottom_bar"
-        android:layout_above="@id/shop_bottom_bar"
-        android:background="@color/divider_color"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
+        <View
+            android:id="@+id/divider_above_bottom_bar"
+            android:layout_above="@id/shop_bottom_bar"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/shop_sg_act_view_pager"
-        android:layout_above="@id/divider_above_bottom_bar"
-        android:layout_below="@id/divider_above_shop_sg_act_viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/shop_sg_act_view_pager"
+            android:layout_above="@id/divider_above_bottom_bar"
+            android:layout_below="@id/divider_above_shop_sg_act_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
 </RelativeLayout>

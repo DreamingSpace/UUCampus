@@ -66,21 +66,33 @@ public class UserInfoRes implements Parcelable{
         location = in.readString();
     }
 
-    public static final Parcelable.Creator<UserInfoRes> CREATOR = new Parcelable.ClassLoaderCreator<UserInfoRes>(){
-        @Override
-        public UserInfoRes createFromParcel(Parcel source) {
-            return new UserInfoRes(source);
-        }
+   public static final Creator<UserInfoRes> CREATOR = new Parcelable.Creator<UserInfoRes>(){
 
-        @Override
-        public UserInfoRes[] newArray(int size) {
-            return new UserInfoRes[size];
-        }
+       @Override
+       public UserInfoRes createFromParcel(Parcel source) {
+           return new UserInfoRes(source);
+       }
 
-        @Override
-        public UserInfoRes createFromParcel(Parcel source, ClassLoader loader) {
-            return new UserInfoRes(source);
-        }
-    };
+       @Override
+       public UserInfoRes[] newArray(int size) {
+           return new UserInfoRes[size];
+       }
+   };
+//    public static final Parcelable.Creator<UserInfoRes> CREATOR = new Parcelable.ClassLoaderCreator<UserInfoRes>(){
+//        @Override
+//        public UserInfoRes createFromParcel(Parcel source) {
+//            return new UserInfoRes(source);
+//        }
+//
+//        @Override
+//        public UserInfoRes[] newArray(int size) {
+//            return new UserInfoRes[size];
+//        }
+//
+//        @Override
+//        public UserInfoRes createFromParcel(Parcel source, ClassLoader loader) {
+//            return new UserInfoRes(source);
+//        }
+//    };
 
 }

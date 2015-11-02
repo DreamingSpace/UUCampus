@@ -125,6 +125,16 @@
     <string name="write_goods_detail">填写商品详情</string>
     <string name="goods_describe">信息描述</string>
     <string name="goods_classify">商品分类</string>
+    <string name="RMB">￥</string>
+    <string name="x_people_like">人感兴趣</string>
+    <string name="yoyo_coupon_card_reduce">凭借悠悠万能优惠卡减免</string>
+    <string name="yuan">元</string>
+    <string name="x_people_bought">人已购买</string>
+    <string name="useful">有用(</string>
+    <string name="useful2">)</string>
+    <string name="no_such_good">没有相关商品</string>
+    <string name="collect_success">已收藏</string>
+    <string name="collect_cancel">已取消收藏</string>
 
     <!-- select photo stings used-->
     <string name="select_photo">选择图片</string>
