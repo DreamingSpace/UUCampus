@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.FreeGoods.FreeGoodsItemAdapter;
 import com.dreamspace.uucampus.adapter.base.BasisAdapter;
-import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsDetailActivity;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.widget.LoadMoreListView;
 

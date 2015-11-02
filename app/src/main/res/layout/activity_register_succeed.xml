@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        layout="@layout/custom_toolbar"></include>
+
+    <ImageView
+        android:id="@+id/register_succeed_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/register_icon_just_a_sign" />
+
+    <TextView
+        android:id="@+id/register_succeed_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="恭喜您，注册成功~"
+        android:layout_marginTop="31dp"
+        android:textColor="#069282"
+        android:textSize="18sp"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/register_succeed_btn"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="85dp"
+        android:background="@drawable/button_round"
+        android:gravity="center"
+        android:text="返回登录界面"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</LinearLayout>

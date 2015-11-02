@@ -3,6 +3,14 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -12,6 +20,10 @@
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".ui.activity.Market.FastInAct">
         </activity>
@@ -25,8 +37,6 @@
         <activity android:name="me.iwf.photopicker.PhotoPagerActivity" android:theme="@style/AppTheme"/>
 
         <activity android:label="@string/free_goods" android:name=".ui.activity.FreeGoods.FreeGoodsActivity">
-        </activity>
-        <activity android:label="@string/free_goods" android:name=".ui.activity.FreeGoods.FreeGoodsDetailActivity">
         </activity>
         <activity android:label="@string/select_goods_photo" android:name=".ui.activity.FreeGoods.FreeGoodsPublishFirstActivity">
         </activity>
@@ -43,17 +53,25 @@
         <activity android:name=".ui.activity.Personal.MyCollectionAct"/>
         <activity android:name=".ui.activity.Personal.SettingAct"/>
         <activity android:name=".ui.activity.Personal.CouponCardAct"/>
-        <activity android:name=".ui.activity.Login.RegisterActivity"/>
-        <activity android:name=".ui.activity.Login.BoundActvity"/>
-        <activity android:name=".ui.activity.Login.FindBackActivity"/>
-        <activity android:name=".ui.activity.Login.LoginActivity">
+        <activity android:name=".ui.activity.Login.RegisterActivity"
+            android:label="注册"/>
+        <activity android:name=".ui.activity.Login.BoundActvity"
+            android:label="绑定手机"/>
+        <activity android:name=".ui.activity.Login.FindBackActivity"
+            android:label="找回密码"/>
+        <activity android:name=".ui.activity.Login.LoginActivity"
+            android:label="登录">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.Login.RegisterInfoActivity"/>
+        <activity android:name=".ui.activity.Login.RegisterInfoActivity"
+            android:label="个人信息"/>
+        <activity android:name=".ui.activity.Login.WechatActivity"
+            android:label="微信授权"></activity>
+        <activity android:name=".ui.activity.Login.RegisterSucceedActivity"
+            android:label="注册成功"></activity>
         <activity android:name=".ui.activity.Personal.FeedbackAct"/>
         <activity android:name=".ui.activity.Personal.PersonalInfoAct"/>
         <activity android:name=".ui.activity.Personal.MyFreeGoodsAct"/>
@@ -61,9 +79,6 @@
         <!-- order-->
         <activity android:name=".ui.activity.Order.OrderConfirmAct" android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ui.activity.Order.MyOrderAct"/>
-        <activity android:name=".ui.activity.Order.OrderDetailAct"/>
-        <activity android:name=".ui.activity.Order.CommentAct"
-            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ui.activity.Order.RefundAct"/>
 
         <!-- umeng-->
@@ -75,12 +90,6 @@
             android:noHistory="true"
             android:theme="@style/Theme.UMDialog"
             android:windowSoftInputMode="stateVisible|adjustResize"/>
-        <!--<activity-->
-            <!--android:name=".wxapi.WXEntryActivity"-->
-            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
-            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
-            <!--android:exported="true"-->
-            <!--android:screenOrientation="portrait" />-->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
@@ -106,12 +115,4 @@
             android:screenOrientation="portrait" />
     </application>
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 </manifest>

@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/register_icon_just_a_sign" />
 
     <LinearLayout
@@ -80,6 +80,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="47dp"
                 android:layout_marginTop="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/green_circle_bg"
                 android:gravity="center"
                 android:text="@string/text_get_code"
                 android:textSize="10sp" />

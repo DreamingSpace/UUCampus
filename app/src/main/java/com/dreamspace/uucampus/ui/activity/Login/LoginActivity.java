@@ -1,6 +1,9 @@
 package com.dreamspace.uucampus.ui.activity.Login;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +21,16 @@ import com.dreamspace.uucampus.model.api.LoginRes;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
 import com.dreamspace.uucampus.ui.MainActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.controller.UMServiceFactory;
+import com.umeng.socialize.controller.UMSocialService;
+import com.umeng.socialize.controller.listener.SocializeListeners;
+import com.umeng.socialize.exception.SocializeException;
+import com.umeng.socialize.sso.SinaSsoHandler;
+import com.umeng.socialize.sso.UMSsoHandler;
+
+import java.util.Map;
+import java.util.Set;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -46,6 +59,7 @@ public class LoginActivity extends AbsActivity {
     ImageView loginPageWeiboImg;
 
     ProgressDialog progressDialog;
+    UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.login");
 
     @Override
     protected int getContentView() {
@@ -60,6 +74,7 @@ public class LoginActivity extends AbsActivity {
     @Override
     protected void initViews() {
         initListener();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     //设置监听器
@@ -73,8 +88,7 @@ public class LoginActivity extends AbsActivity {
                     LoginReq req = new LoginReq();
                     req.setPhone_num(phoneNum);
                     req.setPassword(password);
-                    readyGo(MainActivity.class);
-                    //login(req);
+                    login(req);
                 }
             }
         });
@@ -90,13 +104,61 @@ public class LoginActivity extends AbsActivity {
                 readyGo(RegisterActivity.class);
             }
         });
-        loginPageWeichatImg.setOnClickListener(new View.OnClickListener() {
+        //微博登录
+        loginPageWeiboImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //ShareSDK
+                //授权接口
+                mController.doOauthVerify(LoginActivity.this, SHARE_MEDIA.SINA, new SocializeListeners.UMAuthListener() {
+                    @Override
+                    public void onStart(SHARE_MEDIA share_media) {
+
+                    }
+
+                    @Override
+                    public void onComplete(Bundle bundle, SHARE_MEDIA share_media) {
+                        if (bundle != null && TextUtils.isEmpty(bundle.getString("uid"))) {
+                            showToast("授权成功~");
+                        } else {
+                            showToast("授权失败！");
+                        }
+                    }
+
+                    @Override
+                    public void onError(SocializeException e, SHARE_MEDIA share_media) {
+
+                    }
+
+                    @Override
+                    public void onCancel(SHARE_MEDIA share_media) {
+
+                    }
+                });
+                //获取access_token及用户资料
+                mController.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.SINA, new SocializeListeners.UMDataListener() {
+                    @Override
+                    public void onStart() {
+                        showToast("获取平台数据开始~~~~");
+                    }
+
+                    @Override
+                    public void onComplete(int i, Map<String, Object> map) {
+                        if (i == 200 && map != null) {
+                            StringBuilder sb = new StringBuilder();
+                            Set<String> keys = map.keySet();
+                            for (String key : keys) {
+                                sb.append(key + "=" + map.get(key).toString() + "\r\n");
+                            }
+                            Log.d("TestData", sb.toString());
+                        } else {
+                            Log.d("TestData", "发生错误：" + i);
+                        }
+                    }
+                });
+                //readyGo(WechatActivity.class);
             }
         });
-        loginPageWeiboImg.setOnClickListener(new View.OnClickListener() {
+        loginPageWeichatImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -179,5 +241,15 @@ public class LoginActivity extends AbsActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /**使用SSO授权必须添加如下代码 */
+        UMSsoHandler ssoHandler = mController.getConfig().getSsoHandler(requestCode);
+        if(ssoHandler != null){
+            ssoHandler.authorizeCallBack(requestCode, resultCode, data);
+        }
     }
 }

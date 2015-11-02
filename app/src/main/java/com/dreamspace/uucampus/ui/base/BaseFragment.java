@@ -20,7 +20,6 @@ import retrofit.RetrofitError;
  */
 public abstract class BaseFragment extends Fragment {
 
-
     private String TAG="SUPER";
     public void setTAG(String TAG) {
         this.TAG = TAG;

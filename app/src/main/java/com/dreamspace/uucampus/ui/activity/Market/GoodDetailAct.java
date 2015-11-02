@@ -19,7 +19,6 @@ import com.dreamspace.uucampus.common.Share;
 import com.dreamspace.uucampus.ui.activity.Order.OrderConfirmAct;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
-import com.dreamspace.uucampus.ui.fragment.Market.GoodDetailPagerFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;

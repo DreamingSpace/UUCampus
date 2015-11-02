@@ -82,8 +82,7 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
                 sendVerifyCode();
                 break;
             case R.id.register_button:
-                readyGo(RegisterInfoActivity.class);
-                //register();
+                register();
                 break;
         }
     }
@@ -126,7 +125,7 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
                         //保存user_id,access_token,timelimit
                         PreferenceUtils.putString(RegisterActivity.this.getApplicationContext(),
                                 PreferenceUtils.Key.ACCESS, registerRes.getAccess_token());
-                        readyGo(RegisterInfoActivity.class);
+                        readyGoThenKill(RegisterInfoActivity.class);
                         mHandler.removeMessages(BEGIN_TIMER);
                         finish();
                     }
@@ -135,8 +134,9 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
                 @Override
                 public void failure(RetrofitError error) {
                     ErrorRes errorRes = (ErrorRes) error.getBodyAs(ErrorRes.class);
-                    Log.i("INFO", error.getMessage());
-                    Log.i("INFO", errorRes.toString());
+                    showInnerError(error);
+//                    Log.i("INFO", error.getMessage());
+//                    Log.i("INFO", errorRes.toString());
                 }
             });
         }

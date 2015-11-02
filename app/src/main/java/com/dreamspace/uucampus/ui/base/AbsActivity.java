@@ -143,7 +143,6 @@ public abstract class AbsActivity extends AppCompatActivity {
             Snackbar.make(getWindow().getDecorView(), msg, Snackbar.LENGTH_SHORT).show();
         }
     }
-
     protected void showNetWorkError() {
         showToast(getResources().getString(R.string.network_error_tips));
     }

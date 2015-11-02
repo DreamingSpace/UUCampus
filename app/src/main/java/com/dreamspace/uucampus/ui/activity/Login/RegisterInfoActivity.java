@@ -52,7 +52,7 @@ public class RegisterInfoActivity extends AbsActivity {
         personInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                readyGo(MainActivity.class);
+                readyGoThenKill(RegisterSucceedActivity.class);
             }
         });
         enrolledTime.setOnClickListener(new View.OnClickListener() {
@@ -62,13 +62,6 @@ public class RegisterInfoActivity extends AbsActivity {
             }
         });
 
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 
     //显示年份选择对话框
