@@ -1,123 +1,275 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.dreamspace.uucampus">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dreamspace.uucampus">
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+    <!-- 解决Android L上通知显示异常问题，targetSdkVersion需要设置成22 -->
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="22" />
+    <!-- 个推SDK权限配置开始 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <!-- ibeancon 需要蓝牙权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <!-- 支持个推3.0 电子围栏功能 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 浮动通知权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!-- 自定义权限 -->
+    <uses-permission android:name="getui.permission.GetuiService.第三方包名" />
+    <permission
+        android:name="getui.permission.GetuiService.应用包名"
+        android:protectionLevel="normal" >
+    </permission>
+    <!-- 个推SDK权限配置结束 -->
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
-            android:label="@string/app_name" >
-        </activity>
-        <activity android:name=".ui.activity.Market.FastInAct">
-        </activity>
-        <activity android:name=".ui.activity.Market.ShopHostActivity">
-        </activity>
-        <activity android:name=".ui.activity.Market.ShopManagmentAct">
-        </activity>
-        <activity android:name=".ui.activity.Market.AddGoodAct" android:windowSoftInputMode="adjustPan|stateHidden">
-        </activity>
-        <activity android:name="me.iwf.photopicker.PhotoPickerActivity" android:theme="@style/AppTheme"/>
-        <activity android:name="me.iwf.photopicker.PhotoPagerActivity" android:theme="@style/AppTheme"/>
+            android:label="@string/app_name"></activity>
+        <activity android:name=".ui.activity.Market.FastInAct"></activity>
+        <activity android:name=".ui.activity.Market.ShopHostActivity"></activity>
+        <activity android:name=".ui.activity.Market.ShopManagmentAct"></activity>
+        <activity
+            android:name=".ui.activity.Market.AddGoodAct"
+            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+        <activity
+            android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:theme="@style/AppTheme" />
 
-        <activity android:label="@string/free_goods" android:name=".ui.activity.FreeGoods.FreeGoodsActivity">
-        </activity>
-        <activity android:label="@string/select_goods_photo" android:name=".ui.activity.FreeGoods.FreeGoodsPublishFirstActivity">
-        </activity>
-        <activity android:label="@string/write_goods_detail" android:name=".ui.activity.FreeGoods.FreeGoodsPublishSecondActivity">
-        </activity>
-        <activity android:label="@string/publish_success" android:name=".ui.activity.FreeGoods.FreeGoodsPublishSuccessActivity">
-        </activity>
-        <activity android:name=".widget.photopicker.SelectPhotoActivity"/>
-        <activity android:name=".widget.photopicker.PhotoPreviewActivity"/>
-        <activity android:name=".ui.activity.Market.GoodDetailAct"/>
-        <activity android:name=".ui.activity.Market.ShopShowGoodsAct"/>
-        <activity android:name=".ui.activity.Market.ShopDetailAct"/>
-        <activity android:name=".ui.activity.Market.ReportSellerAct"/>
-        <activity android:name=".ui.activity.Personal.MyCollectionAct"/>
-        <activity android:name=".ui.activity.Personal.SettingAct"/>
-        <activity android:name=".ui.activity.Personal.CouponCardAct"/>
-        <activity android:name=".ui.activity.Login.RegisterActivity"
-            android:label="注册"/>
-        <activity android:name=".ui.activity.Login.BoundActvity"
-            android:label="绑定手机"/>
-        <activity android:name=".ui.activity.Login.FindBackActivity"
-            android:label="找回密码"/>
+        <activity
+            android:name=".ui.activity.FreeGoods.FreeGoodsActivity"
+            android:label="@string/free_goods"></activity>
+        <activity
+            android:name=".ui.activity.FreeGoods.FreeGoodsPublishFirstActivity"
+            android:label="@string/select_goods_photo"></activity>
+        <activity
+            android:name=".ui.activity.FreeGoods.FreeGoodsPublishSecondActivity"
+            android:label="@string/write_goods_detail"></activity>
+        <activity
+            android:name=".ui.activity.FreeGoods.FreeGoodsPublishSuccessActivity"
+            android:label="@string/publish_success"></activity>
+        <activity android:name=".widget.photopicker.SelectPhotoActivity" />
+        <activity android:name=".widget.photopicker.PhotoPreviewActivity" />
+        <activity android:name=".ui.activity.Market.GoodDetailAct" />
+        <activity android:name=".ui.activity.Market.ShopShowGoodsAct" />
+        <activity android:name=".ui.activity.Market.ShopDetailAct" />
+        <activity android:name=".ui.activity.Market.ReportSellerAct" />
+        <activity android:name=".ui.activity.Personal.MyCollectionAct" />
+        <activity android:name=".ui.activity.Personal.SettingAct" />
+        <activity android:name=".ui.activity.Personal.CouponCardAct" />
+        <activity
+            android:name=".ui.activity.Login.RegisterActivity"
+            android:label="注册" />
+        <activity
+            android:name=".ui.activity.Login.BoundActvity"
+            android:label="绑定手机" />
+        <activity
+            android:name=".ui.activity.Login.FindBackActivity"
+            android:label="找回密码" />
         <activity android:name=".ui.activity.Login.LoginActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.Login.RegisterInfoActivity"
-            android:label="个人信息"/>
-        <activity android:name=".ui.activity.Login.WechatActivity"
+        <activity
+            android:name=".ui.activity.Login.RegisterInfoActivity"
+            android:label="个人信息" />
+        <activity
+            android:name=".ui.activity.Login.WechatActivity"
             android:label="微信授权"></activity>
-        <activity android:name=".ui.activity.Login.RegisterSucceedActivity"
+        <activity
+            android:name=".ui.activity.Login.RegisterSucceedActivity"
             android:label="注册成功"></activity>
-        <activity android:name=".ui.activity.Personal.FeedbackAct"/>
-        <activity android:name=".ui.activity.Personal.PersonalInfoAct"/>
-        <activity android:name=".ui.activity.Personal.MyFreeGoodsAct"/>
+        <activity android:name=".ui.activity.Personal.FeedbackAct" />
+        <activity android:name=".ui.activity.Personal.PersonalInfoAct" />
+        <activity android:name=".ui.activity.Personal.MyFreeGoodsAct" />
 
         <!-- order-->
-        <activity android:name=".ui.activity.Order.OrderConfirmAct" android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".ui.activity.Order.MyOrderAct"/>
-        <activity android:name=".ui.activity.Order.RefundAct"/>
+        <activity
+            android:name=".ui.activity.Order.OrderConfirmAct"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ui.activity.Order.MyOrderAct" />
+        <activity android:name=".ui.activity.Order.RefundAct" />
 
         <!-- umeng-->
-        <meta-data android:name="UMENG_APPKEY" android:value="5625eac167e58e4e1f001985"/>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5625eac167e58e4e1f001985" />
         <activity
             android:name="com.umeng.socialize.view.ShareActivity"
             android:configChanges="orientation|keyboard"
             android:launchMode="singleTask"
             android:noHistory="true"
             android:theme="@style/Theme.UMDialog"
-            android:windowSoftInputMode="stateVisible|adjustResize"/>
+            android:windowSoftInputMode="stateVisible|adjustResize" />
 
         <!-- ############ QQ空间和QQ SSO授权的Activity注册 ############ -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- 100424468，如果你使用的公用账号，则不需要修改；否则修改成你在QQ开放平台申请的 APP ID-->
                 <data android:scheme="1104847133" />
             </intent-filter>
         </activity>
-        <activity android:name="com.tencent.connect.common.AssistActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
 
         <!--微信回调activity-->
         <activity
             android:name=".wxapi.WXEntryActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <activity
             android:name=".wxapi.WXEntryActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!--个推SDK配置开始-->
+        <!-- 配置的第三方参数属性 -->
+        <meta-data
+            android:name="PUSH_APPID"
+            android:value="fURb0NQ5YQ9njEnw7KHi29" />
+        <!--替换为应用的APPID-->
+        <meta-data
+            android:name="PUSH_APPKEY"
+            android:value="U92H7f6fsp8w8z6E444Xj" />
+        <!--替换为应用的APPKEY-->
+        <meta-data
+            android:name="PUSH_APPSECRET"
+            android:value="qMcDayF19w8HoIHvVr4WF2" />
+        <!--替换为应用的APPSECRET-->
+        <!-- 配置第三方Receiver 用来接收ClientId和透传消息 -->
+        <receiver
+            android:name="com.getui.demo.PushDemoReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.fURb0NQ5YQ9njEnw7KHi29" />
+            </intent-filter>
+        </receiver>
+        <!-- 配置SDK核心服务 -->
+        <service
+            android:name="com.igexin.sdk.PushService"
+            android:exported="true"
+            android:label="NotificationCenter"
+            android:process=":pushservice"></service>
+        <!-- SDK　2.6.1.0版本新增配置项 -->
+        <service
+            android:name="com.igexin.sdk.PushServiceUser"
+            android:exported="true"
+            android:label="NotificationCenterUser"></service>
+
+        <receiver android:name="com.igexin.sdk.PushReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="com.igexin.sdk.action.refreshls" />
+                <!-- 以下三项为可选的action声明，可大大提高service存活率和消息到达速度 -->
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.igexin.sdk.PushManagerReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.pushmanager" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.igexin.sdk.PushActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:process=":pushservice"
+            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+
+        <service
+            android:name="com.igexin.download.DownloadService"
+            android:process=":pushservice" />
+
+        <receiver android:name="com.igexin.download.DownloadReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="com.igexin.download.DownloadProvider"
+            android:authorities="downloads.应用包名"
+            android:exported="true"
+            android:process=":pushservice" />
+
+        <activity
+            android:name="com.igexin.getuiext.activity.GetuiExtActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:process=":pushservice"
+            android:taskAffinity="android.task.myServicetask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <receiver
+            android:name="com.igexin.getuiext.service.PayloadReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.7fjUl2Z3LH6xYy7NQK4ni4" />
+                <action android:name="com.igexin.sdk.action.fURb0NQ5YQ9njEnw7KHi29" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name="com.igexin.getuiext.service.GetuiExtService"
+            android:process=":pushservice" />
+        <!-- 个推SDK配置结束 -->
+
     </application>
 
 </manifest>

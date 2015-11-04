@@ -1,7 +1,6 @@
 package com.dreamspace.uucampus.ui.activity.Login;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
@@ -24,13 +22,13 @@ import com.dreamspace.uucampus.model.api.LoginRes;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
 import com.dreamspace.uucampus.ui.MainActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
+import com.igexin.sdk.PushManager;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.listener.SocializeListeners;
 import com.umeng.socialize.exception.SocializeException;
 import com.umeng.socialize.sso.SinaSsoHandler;
-import com.umeng.socialize.sso.UMQQSsoHandler;
 import com.umeng.socialize.sso.UMSsoHandler;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
 
@@ -74,6 +72,7 @@ public class LoginActivity extends AbsActivity {
     @Override
     protected void prepareDatas() {
         ButterKnife.bind(this);
+        PushManager.getInstance().initialize(this.getApplicationContext());
     }
 
     @Override
@@ -133,6 +132,28 @@ public class LoginActivity extends AbsActivity {
                     public void onComplete(Bundle bundle, SHARE_MEDIA share_media) {
                         if (bundle != null && !TextUtils.isEmpty(bundle.getString("uid"))) {
                             showToast("授权成功~");
+                            showToast("获取用户数据----");
+                            //获取access_token及用户资料
+                            mController.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.SINA, new SocializeListeners.UMDataListener() {
+                                @Override
+                                public void onStart() {
+                                    showToast("获取平台数据开始~~~~");
+                                }
+
+                                @Override
+                                public void onComplete(int i, Map<String, Object> map) {
+                                    if (i == 200 && map != null) {
+                                        StringBuilder sb = new StringBuilder();
+                                        Set<String> keys = map.keySet();
+                                        for (String key : keys) {
+                                            sb.append(key + "=" + map.get(key).toString() + "\r\n");
+                                        }
+                                        Log.d("TestData", sb.toString());
+                                    } else {
+                                        Log.d("TestData", "发生错误：" + i);
+                                    }
+                                }
+                            });
                         } else {
                             showToast("授权失败！");
                         }
@@ -148,31 +169,10 @@ public class LoginActivity extends AbsActivity {
 
                     }
                 });
-
-                showToast("获取用户数据----");
-                //获取access_token及用户资料
-                mController.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.SINA, new SocializeListeners.UMDataListener() {
-                    @Override
-                    public void onStart() {
-                        showToast("获取平台数据开始~~~~");
-                    }
-
-                    @Override
-                    public void onComplete(int i, Map<String, Object> map) {
-                        if (i == 200 && map != null) {
-                            StringBuilder sb = new StringBuilder();
-                            Set<String> keys = map.keySet();
-                            for (String key : keys) {
-                                sb.append(key + "=" + map.get(key).toString() + "\r\n");
-                            }
-                            Log.d("TestData", sb.toString());
-                        } else {
-                            Log.d("TestData", "发生错误：" + i);
-                        }
-                    }
-                });
             }
         });
+
+        //微信授权登录
         loginPageWeichatImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -181,10 +181,12 @@ public class LoginActivity extends AbsActivity {
                     @Override
                     public void onStart(SHARE_MEDIA share_media) {
                         showToast("授权开始");
+                        Log.d("TestData", "aaaa");
                     }
 
                     @Override
                     public void onComplete(Bundle bundle, SHARE_MEDIA share_media) {
+                        Log.d("TestData", "bbbb");
                         showToast("授权完成");
                         mController.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.WEIXIN, new SocializeListeners.UMDataListener() {
                             @Override
@@ -199,7 +201,7 @@ public class LoginActivity extends AbsActivity {
                                     StringBuilder sb = new StringBuilder();
                                     Set<String> keys = map.keySet();
                                     for(String key : keys){
-                                        sb.append(key+"="+map.get(key).toString()+"\r\n");
+                                        sb.append(key + "=" + map.get(key).toString() + "\r\n");
                                     }
                                     Log.d("TestData",sb.toString());
                                 }else{
