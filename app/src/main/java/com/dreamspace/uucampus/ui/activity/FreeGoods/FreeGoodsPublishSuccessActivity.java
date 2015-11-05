@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.ui.MainActivity;
+import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
 import butterknife.Bind;
@@ -20,6 +20,9 @@ public class FreeGoodsPublishSuccessActivity extends AbsActivity {
     @Bind(R.id.free_goods_publish_back_home_btn)
     Button mBackBtn;
 
+    public static final String EXTRA_IDLE_ID="idle_id";
+    private String idle_id;
+
     @Override
     protected int getContentView() {
         return R.layout.activity_free_goods_publish_success;
@@ -27,7 +30,8 @@ public class FreeGoodsPublishSuccessActivity extends AbsActivity {
 
     @Override
     protected void prepareDatas() {
-
+        idle_id = getIntent().getExtras().getString(EXTRA_IDLE_ID);
+        TLog.i("FreeGoodsPublishSuccessActivity:",idle_id);
     }
 
     @Override
@@ -36,16 +40,22 @@ public class FreeGoodsPublishSuccessActivity extends AbsActivity {
             @Override
             public void onClick(View v) {
                 Bundle bundle=new Bundle();
-                readyGo(FreeGoodsDetailActivity.class,bundle);
+                bundle.putString(FreeGoodsDetailActivity.EXTRA_IDLE_ID,idle_id);
+                readyGo(FreeGoodsDetailActivity.class, bundle);
             }
         });
 
         mBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGo(MainActivity.class);
+                readyGo(FreeGoodsActivity.class);
                 finish();
             }
         });
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 }

@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
@@ -65,6 +64,11 @@ public class GoodDetailAct extends AbsActivity {
     @Override
     protected void initViews() {
         initListeners();
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 
     private void initListeners(){

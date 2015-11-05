@@ -17,11 +17,12 @@ public abstract class BasisAdapter<T, K> extends BaseAdapter {
     private Context mContext;
     private Class<K> classType;
 
-
     public void setmEntities(List<T> mEntities) {
         this.mEntities = mEntities;
     }
-
+    public void addEntities(List<T> mEntities){
+        this.mEntities.addAll(mEntities);
+    }
     public BasisAdapter(Context mContext, List<T> mEntities, Class<K> classType) {
         this.mContext = mContext;
         this.mEntities = mEntities;

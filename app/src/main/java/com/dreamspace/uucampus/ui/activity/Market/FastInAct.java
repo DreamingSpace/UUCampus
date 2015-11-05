@@ -8,8 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
@@ -18,9 +16,6 @@ import com.dreamspace.uucampus.ui.popupwindow.GoodsSortPopupWindow;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 
@@ -94,6 +89,11 @@ public class FastInAct extends AbsActivity {
     protected void initViews() {
         popupWindow = new GoodsSortPopupWindow(this,shadowView);
         initListeners();
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 
     private void initListeners(){

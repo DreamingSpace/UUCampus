@@ -33,6 +33,11 @@ public class SettingAct extends AbsActivity {
         initListeners();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListeners(){
         updateRl.setOnClickListener(new View.OnClickListener() {
             @Override

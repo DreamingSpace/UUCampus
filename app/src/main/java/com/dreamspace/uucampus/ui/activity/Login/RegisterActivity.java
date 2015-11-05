@@ -14,6 +14,7 @@ import com.dreamspace.uucampus.api.UUService;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
+import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.ErrorRes;
 import com.dreamspace.uucampus.model.api.RegisterReq;
 import com.dreamspace.uucampus.model.api.RegisterRes;
@@ -70,6 +71,11 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
         initListener();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListener(){
         registerGetCode.setOnClickListener(this);
         registerButton.setOnClickListener(this);
@@ -83,7 +89,7 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
                 break;
             case R.id.register_button:
                 readyGo(RegisterInfoActivity.class);
-                //register();
+                register();
                 break;
         }
     }
@@ -122,10 +128,13 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
             mService.register(registerReq, new Callback<RegisterRes>() {
                 @Override
                 public void success(RegisterRes registerRes, Response response) {
-                    if(response.getStatus()==200){
-                        //保存user_id,access_token,timelimit
+                    if (response.getStatus() == 200) {
+                        //保存user_id,access_token,timelimit，设置is_active属性
                         PreferenceUtils.putString(RegisterActivity.this.getApplicationContext(),
                                 PreferenceUtils.Key.ACCESS, registerRes.getAccess_token());
+                        PreferenceUtils.putString(RegisterActivity.this.getApplicationContext(),
+                                PreferenceUtils.Key.IS_ACTIVE, "true");
+                        TLog.i("Access_token:", registerRes.getAccess_token());
                         readyGo(RegisterInfoActivity.class);
                         mHandler.removeMessages(BEGIN_TIMER);
                         finish();

@@ -24,9 +24,10 @@ import com.dreamspace.uucampus.model.api.CreateShopDiscountRes;
 import com.dreamspace.uucampus.model.api.CreateShopReq;
 import com.dreamspace.uucampus.model.api.CreateShopRes;
 import com.dreamspace.uucampus.model.api.AllCategoryRes;
+import com.dreamspace.uucampus.model.api.GetIdleInfoRes;
 import com.dreamspace.uucampus.model.api.GoodsInfoRes;
 import com.dreamspace.uucampus.model.api.IdleAllCommentRes;
-import com.dreamspace.uucampus.model.api.IdleInfoRes;
+import com.dreamspace.uucampus.model.api.GetMyIdleRes;
 import com.dreamspace.uucampus.model.api.LikeGoodsRes;
 import com.dreamspace.uucampus.model.api.LikeIdleRes;
 import com.dreamspace.uucampus.model.api.LocationAllRes;
@@ -241,7 +242,7 @@ public interface UUService {
     void cancelGoodsUseful(@Path("goods_id")String goods_id,@Path("goods_comment_id")String goods_comment_id,Callback<Response> cb);
 
     //商品收藏添加
-    @POST("/goods/{goods_id}/collection/")
+    @POST("/goods/collection/{goods_id}")
     void addGoodsCollection(@Path("goods_id")String  goods_id,Callback<AddGoodsCollectionRes>cb);
 
     //个人商品收藏查看
@@ -249,7 +250,7 @@ public interface UUService {
     void getAllGoodsCollection(@Path("page")int page,Callback<AllGoodsCollectionRes> cb);
 
     //商品收藏删除
-    @DELETE("/goods/{goods_id}/collection/")
+    @DELETE("/goods/collection/{goods_id}")
     void deleteGoodsCollection(@Path("goods_id")String goods_id,Callback<Response>cb);
 
 
@@ -262,7 +263,7 @@ public interface UUService {
     //查看自己的闲置
     @GET("/idle/list/")
     void getIdleList(@Query("page")int page,@Query("is_active")String is_active,Callback<
-            IdleInfoRes>cb);
+            GetMyIdleRes>cb);
 
     //闲置信息更新
     @PUT("/idle/{idle_id}")
@@ -274,11 +275,11 @@ public interface UUService {
 
     //闲置查看
     @GET("/idle/{idle_id}")
-    void getIdleInfo(@Path("idle_id")String idle_id,Callback<IdleInfoRes>cb);
+    void getIdleInfo(@Path("idle_id")String idle_id,Callback<GetIdleInfoRes>cb);
 
     //闲置搜索
     @GET("/idle/search/")
-    void searchIdle(@Query("keyword")String keyword,@Query("order")String order,@Query("category")String category,@Query("location")String location,@Query("user")String user,Callback<SearchIdleRes>cb);
+    void searchIdle(@Query("keyword")String keyword,@Query("order")String order,@Query("category")String category,@Query("page")int page,Callback<SearchIdleRes>cb);
 
     //闲置点赞
     @POST("/idle/{idle_id}/like/")
@@ -301,11 +302,11 @@ public interface UUService {
     void deleteIdleComment(@Path("idle_id")String idle_id,@Path("idle_comment_id")String idle_comment_id,Callback<Response>cb);
 
     //评论有用添加
-    @POST("/idle/{idle_id}/comment/{idle_comment_id}/useful")
+    @POST("/idle/{idle_id}/comment/{idle_comment_id}/useful/")
     void addIdleCommentUseful(@Path("idle_id")String idle_id,@Path("idle_comment_id")String idle_comment_id,Callback<Response> cb);
 
     //评论有用取消
-    @PUT("/idle/{idle_id}/comment/{idle_comment_id}/useful")
+    @DELETE("/idle/{idle_id}/comment/{idle_comment_id}/useful/")
     void cancelIdleCommentUseful(@Path("idle_id")String idle_id,@Path("idle_comment_id")String idle_comment_id,Callback<Response> cb);
 
 //校区

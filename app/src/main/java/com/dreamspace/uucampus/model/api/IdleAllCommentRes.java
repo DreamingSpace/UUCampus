@@ -1,37 +1,21 @@
 package com.dreamspace.uucampus.model.api;
 
+import com.dreamspace.uucampus.model.FreeGoodsCommentItem;
+
 import java.util.List;
 
 /**
  * Created by wufan on 2015/9/29.
  */
 public class IdleAllCommentRes {
-    private int total;
-    private int number;
-    private List<CommentItem> comment;
+    private List<FreeGoodsCommentItem> idle_comment;
 
-    public int getTotal() {
-        return total;
+    public List<FreeGoodsCommentItem> getIdle_comment() {
+        return idle_comment;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public List<CommentItem> getComment() {
-        return comment;
-    }
-
-    public void setComment(List<CommentItem> comment) {
-        this.comment = comment;
+    public void setIdle_comment(List<FreeGoodsCommentItem> idle_comment) {
+        this.idle_comment = idle_comment;
     }
 }
 

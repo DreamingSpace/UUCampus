@@ -1,5 +1,6 @@
 package com.dreamspace.uucampus.ui.fragment.FreeGoods;
 
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,9 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
     @Bind(R.id.swiperefresh_id)
     SwipeRefreshLayout mSwipeRefreshLayout;
 
+    public static final int ADD=2;
+    public static final int LOAD=1;
+
     @Override
     protected void onFirstUserVisible() {
         getInitData();
@@ -43,7 +47,7 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
 
     @Override
     protected View getLoadingTargetView() {
-        return null;
+        return mSwipeRefreshLayout;
     }
 
     @Override
@@ -63,8 +67,7 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
                 onPullUp();
             }
         });
-
-
+//        moreListView.onScroll();
         initDatas();
     }
     public void initDatas() {
@@ -74,9 +77,12 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
         moreListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                onItemPicked((T) mAdapter.getItem(position), position);
                 Log.i("INFO", "position:  " + position);
-                readyGo(FreeGoodsDetailActivity.class);
+
+                String idle_id = onItemPicked((T) mAdapter.getItem(position), position);
+                Bundle bundle = new Bundle();
+                bundle.putString(FreeGoodsDetailActivity.EXTRA_IDLE_ID,idle_id);
+                readyGo(FreeGoodsDetailActivity.class, bundle);
             }
         });
 
@@ -84,7 +90,7 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
 
     protected abstract void getInitData();
 
-    protected abstract void onItemPicked(T item, int position);
+    protected abstract String onItemPicked(T item, int position);
 
     protected abstract void onPullUp();
 
@@ -95,14 +101,21 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
         return R.layout.base_list_fragment;
     }
     public void onPullUpFinished(){
-//        moreListView.setLoading(false);
+        moreListView.setLoading(false);
     }
     public void onPullDownFinished(){
-//        mSwipeRefreshLayout.setRefreshing(false);
+        mSwipeRefreshLayout.setRefreshing(false);
     }
-    public void refreshDate(List<T> mEntities) {
-        mAdapter.setmEntities(mEntities);
+    public void refreshDate(List<T> mEntities,int type) {
+        switch (type){
+            case LOAD:
+                mAdapter.setmEntities(mEntities);
+                break;
+            case ADD:
+                mAdapter.addEntities(mEntities);
+                break;
+        }
         mAdapter.notifyDataSetChanged();
     }
-    
+
 }

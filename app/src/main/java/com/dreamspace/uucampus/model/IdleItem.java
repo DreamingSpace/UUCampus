@@ -9,8 +9,7 @@ public class IdleItem {
     private String image;
     private float price;
     private String user_name;  //only in idle search
-    private int view_number;
-    private int like_number;
+    private int view_number=0;
 
     public String getIdle_id() {
         return idle_id;
@@ -60,11 +59,4 @@ public class IdleItem {
         this.view_number = view_number;
     }
 
-    public int getLike_number() {
-        return like_number;
-    }
-
-    public void setLike_number(int like_number) {
-        this.like_number = like_number;
-    }
 }

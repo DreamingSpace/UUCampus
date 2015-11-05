@@ -1,6 +1,5 @@
 package com.dreamspace.uucampus.ui.activity.Login;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
@@ -71,6 +70,11 @@ public class BoundActvity extends AbsActivity implements Handler.Callback{
                 readyGo(MainActivity.class);
             }
         });
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 
     //获取手机验证码

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.PopupWindow;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
@@ -21,7 +20,8 @@ public class FreeGoodsActivity extends AbsActivity {
 
     @Bind(R.id.free_goods_publish_btn)
     FloatingActionButton mPublishBtn;
-
+    @Bind(R.id.free_goods_shadow_view)
+    View shadowView;
     GoodsSortPopupWindow popupWindow;
 
     @Override
@@ -44,12 +44,19 @@ public class FreeGoodsActivity extends AbsActivity {
 
     @Override
     protected void initViews() {
+        popupWindow = new GoodsSortPopupWindow(this,shadowView);
+        initListeners();
         mPublishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 readyGo(FreeGoodsPublishFirstActivity.class);
             }
         });
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 
     private void initListeners(){
@@ -108,4 +115,5 @@ public class FreeGoodsActivity extends AbsActivity {
             super.onBackPressed();
         }
     }
+
 }

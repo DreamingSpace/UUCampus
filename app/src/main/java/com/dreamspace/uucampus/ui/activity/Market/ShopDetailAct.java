@@ -1,5 +1,7 @@
 package com.dreamspace.uucampus.ui.activity.Market;
 
+import android.view.View;
+
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
@@ -20,5 +22,10 @@ public class ShopDetailAct extends AbsActivity {
     @Override
     protected void initViews() {
         getSupportActionBar().setTitle("东大旅游吧");
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 }

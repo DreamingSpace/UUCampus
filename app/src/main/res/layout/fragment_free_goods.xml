@@ -16,6 +16,7 @@
         app:stl_dividerThickness="0dp"
         app:stl_indicatorColor="#06C1AE"
         app:stl_indicatorCornerRadius="2dp"
+        app:stl_distributeEvenly="true"
         app:stl_indicatorInterpolation="smart"
         app:stl_indicatorThickness="3dp"
         app:stl_indicatorWithoutPadding="true"

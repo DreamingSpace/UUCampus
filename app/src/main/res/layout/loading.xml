@@ -23,7 +23,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.dreamspace.superman.UI.View.progress.CircularProgressBar
+    <com.dreamspace.uucampus.widget.progress.CircularProgressBar
         android:id="@+id/loading_progress"
         android:layout_width="35dp"
         android:layout_height="35dp"

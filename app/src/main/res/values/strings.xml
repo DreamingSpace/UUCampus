@@ -97,7 +97,7 @@
     <string name="publish">发表</string>
     <string name="next_step">下一步</string>
     <string name="comment_hint">写评论...</string>
-    <string name="back_home">返回主页</string>
+    <string name="back_idle_home">返回闲置主页</string>
 
     <!-- sort strings used-->
     <string name="most_popular">人气最高</string>
@@ -121,7 +121,9 @@
     <string name="write_goods_detail">填写商品详情</string>
     <string name="goods_describe">信息描述</string>
     <string name="goods_classify">商品分类</string>
-
+    <string name="interest">人感兴趣</string>
+    <string name="like">人赞</string>
+    <string name="yuan">￥</string>
     <!-- select photo stings used-->
     <string name="select_photo">选择图片</string>
     <string name="all_photos">所有图片</string>
@@ -190,4 +192,5 @@
     <string name="register_input_school">请选择你的学校</string>
     <string name="register_input_entertime">2015</string>
     <string name="register_succeed">返回登录界面</string>
+
 </resources>

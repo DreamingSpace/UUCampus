@@ -13,6 +13,7 @@ import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
+import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.api.LoginReq;
 import com.dreamspace.uucampus.model.api.LoginRes;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
@@ -62,6 +63,11 @@ public class LoginActivity extends AbsActivity {
         initListener();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     //设置监听器
     private void initListener(){
         loginPageLoginButton.setOnClickListener(new View.OnClickListener() {
@@ -69,13 +75,16 @@ public class LoginActivity extends AbsActivity {
             public void onClick(View view) {
                 String phoneNum = LoginUserName.getText().toString();
                 String password = LoginPwd.getText().toString();
-                if(isValid(phoneNum,password)){
+//                if(isValid(phoneNum,password)){
                     LoginReq req = new LoginReq();
                     req.setPhone_num(phoneNum);
                     req.setPassword(password);
-                    readyGo(MainActivity.class);
-                    //login(req);
-                }
+                String access_tocken=PreferenceUtils.getString(getApplicationContext(),
+                        PreferenceUtils.Key.ACCESS);
+
+                    login(req);
+//                readyGo(MainActivity.class);
+//                }
             }
         });
         loginPageForget.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +122,7 @@ public class LoginActivity extends AbsActivity {
                 public void success(LoginRes loginRes, Response response) {
                     PreferenceUtils.putString(LoginActivity.this.getApplicationContext(),
                             PreferenceUtils.Key.ACCESS,loginRes.getAccess_token());
+                    TLog.i("Access_token:", loginRes.getAccess_token());
                     ApiManager.clear();
                     getUserInfo();
                 }
@@ -159,6 +169,9 @@ public class LoginActivity extends AbsActivity {
         PreferenceUtils.putString(getApplicationContext(),PreferenceUtils.Key.ACCOUNT,userInfoRes.getName());
         //PreferenceUtils.putString(getApplicationContext(),PreferenceUtils.Key.SEX,userInfoRes.getSex());
         PreferenceUtils.putString(getApplicationContext(), PreferenceUtils.Key.PHONE, LoginUserName.getText().toString());
+        //缓存用户是否封禁状态
+        PreferenceUtils.putString(this.getApplicationContext(),
+                PreferenceUtils.Key.IS_ACTIVE, "true");
     }
 
     //输入有效性判断

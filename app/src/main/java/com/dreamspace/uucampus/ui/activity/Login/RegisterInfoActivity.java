@@ -74,6 +74,11 @@ public class RegisterInfoActivity extends AbsActivity {
         });
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     //显示年份选择对话框
     private void showYearDialog() {
         ArrayList<String> years = new ArrayList<>();

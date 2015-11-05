@@ -12,6 +12,7 @@
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/free_goods_detail_comment_user_iv"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@color/search_opaque" />
@@ -34,11 +35,13 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/free_goods_detail_comment_user_name_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="宇宙无敌小可爱" />
 
                     <TextView
+                        android:id="@+id/free_goods_detail_comment_data_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
@@ -46,20 +49,31 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/free_goods_detail_comment_useful_linear_layout"
+                    android:layout_marginTop="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_margin="8dp"
+                    <ImageView
+                        android:id="@+id/free_goods_detail_comment_useful_iv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="(15)" />
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/xiangqing_comment_btn_dianzan"/>
+
+                    <TextView
+                        android:id="@+id/free_goods_detail_comment_useful_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15" />
                 </LinearLayout>
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/free_goods_detail_comment_content_tv"
                 android:layout_marginTop="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

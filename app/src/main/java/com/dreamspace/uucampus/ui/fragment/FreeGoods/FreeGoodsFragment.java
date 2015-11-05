@@ -1,17 +1,14 @@
 package com.dreamspace.uucampus.ui.fragment.FreeGoods;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.adapter.FreeGoods.FreeGoodsPagerAdapter;
-import com.dreamspace.uucampus.common.utils.PreferenceUtils;
+import com.dreamspace.uucampus.common.ShareData;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.widget.smartlayout.SmartTabLayout;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,8 +24,6 @@ public class FreeGoodsFragment extends BaseLazyFragment {
     ViewPager mViewPager;
     @Bind(R.id.free_goods_smart_tab)
     SmartTabLayout mSmartTabLayout;
-
-    private FreeGoodsPagerAdapter mAdapter;
 
     @Override
     protected void onFirstUserVisible() {
@@ -52,33 +47,16 @@ public class FreeGoodsFragment extends BaseLazyFragment {
 
     @Override
     protected void initViewsAndEvents() {
-        String[] item = new String[]{
-                getResources().getString(R.string.electronics),
-                getResources().getString(R.string.book_magazine),
-                getResources().getString(R.string.transport),
-                getResources().getString(R.string.daily_used),
-                getResources().getString(R.string.items_other)
-        };
 
-        final List<String> items = Arrays.asList(item);
-        mAdapter=new FreeGoodsPagerAdapter(getChildFragmentManager(),items);
+        final List<String> items = Arrays.asList(ShareData.freeGoodsCategorys);
+        FragmentStatePagerItemAdapter mAdapter = new FragmentStatePagerItemAdapter(getActivity().getSupportFragmentManager(),
+                FragmentPagerItems.with(getActivity()).add(items.get(0), FreeGoodsLazyDataFragment.class)
+                        .add(items.get(1), FreeGoodsLazyDataFragment.class)
+                        .add(items.get(2), FreeGoodsLazyDataFragment.class)
+                        .add(items.get(3), FreeGoodsLazyDataFragment.class)
+                        .create());
         mViewPager.setAdapter(mAdapter);
-        mViewPager.setOffscreenPageLimit(items.size());
         mSmartTabLayout.setViewPager(mViewPager);
-        mSmartTabLayout.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
-
-            @Override
-            public void onPageSelected(int position) {
-                FreeGoodsLazyDataFragment fragment = (FreeGoodsLazyDataFragment) mViewPager.getAdapter().instantiateItem(mViewPager,position);
-                fragment.onPageSelected(position,items.get(position));
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {}
-        });
-
     }
 
     @Override

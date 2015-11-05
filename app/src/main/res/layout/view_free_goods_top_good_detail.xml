@@ -9,46 +9,41 @@
 
     <RelativeLayout
         android:layout_below="@+id/tl_custom"
-        android:id="@+id/good_image_rl"
+        android:id="@+id/free_good_detail_image_rl"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_width="match_parent"
         android:layout_height="210dp">
+
         <ImageView
-            android:id="@+id/good_detail_image_iv"
+            android:id="@+id/free_good_detail_image_iv"
             android:background="@color/search_opaque"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
         <ImageView
-            android:id="@+id/good_like_click_iv"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/xiangqing_btn_dianzan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:id="@+id/good_like_no_click_iv"
-            android:visibility="invisible"
+            android:id="@+id/free_good_detail_like_no_click_iv"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:src="@drawable/xiangqing_btn_dianzan_p"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="16dp"
+            android:layout_height="16dp" />
+
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/good_detail_good_name_ll"
+        android:id="@+id/free_good_detail_good_name_ll"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/good_image_rl"
+        android:layout_below="@id/free_good_detail_image_rl"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
+            android:id="@+id/free_goods_detail_name_tv"
             android:layout_marginLeft="20dp"
             android:text="考研英语"
             android:textColor="@color/black_40"
@@ -60,27 +55,27 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/good_shop_name_price_rl"
-        android:layout_below="@id/good_detail_good_name_ll"
+        android:id="@+id/free_good_detail_shop_name_price_rl"
+        android:layout_below="@id/free_good_detail_good_name_ll"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:id="@+id/shop_name_ll"
+            android:id="@+id/free_good_detail_shop_name_ll"
             android:layout_marginLeft="20dp"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/shop_name_image_iv"
+                android:id="@+id/free_goods_detail_shop_name_image_iv"
                 android:src="@color/app_theme_color2"
                 android:layout_width="20dp"
                 android:layout_height="20dp" />
             <TextView
+                android:id="@+id/free_goods_detail_user_name_tv"
                 android:text="东大旅游吧"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/shop_name_image_iv"
                 android:layout_centerVertical="true"
                 android:textColor="@color/app_theme_color"
                 android:textSize="12sp"
@@ -90,29 +85,20 @@
 
         <TextView
             android:text="￥4330"
-            android:id="@+id/good_detail_price_tv"
-            android:textSize="20sp"
+            android:id="@+id/free_good_detail_price_tv"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:textColor="@color/price_text_color"
             android:layout_marginRight="24dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/price_before_reduce_tv"
-            android:text="￥4530"
-            android:layout_toLeftOf="@id/good_detail_price_tv"
-            android:layout_alignBottom="@id/good_detail_price_tv"
-            android:layout_marginRight="10dp"
-            android:singleLine="true"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/like_visit_time_ll"
-        android:layout_below="@id/good_shop_name_price_rl"
+        android:id="@+id/free_goods_detail_like_visit_time_ll"
+        android:layout_below="@id/free_good_detail_shop_name_price_rl"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -131,7 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/people_like_tv"
+                android:id="@+id/free_goods_detail_people_view_tv"
                 android:text="65人感兴趣"
                 android:textSize="10sp"
                 android:layout_gravity="center_vertical"
@@ -148,14 +134,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:src="@drawable/xiangqing_icon_buy"
+                android:src="@drawable/xianzhi_icon_like"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/sale_num_tv"
+                android:id="@+id/free_goods_detail_like_tv"
                 android:layout_gravity="center_vertical"
-                android:text="10人已购买"
+                android:text="10人已赞"
                 android:textSize="10sp"
                 android:textColor="@color/smart_tab_layout_default_text_color"
                 android:layout_marginLeft="6dp"
@@ -175,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/good_create_time_tv"
+                android:id="@+id/free_goods_detail_create_time_tv"
                 android:layout_marginRight="20dp"
                 android:layout_gravity="center_vertical"
                 android:text="2015-03-09"
@@ -191,7 +177,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_marginTop="8dp"
-        android:layout_below="@id/like_visit_time_ll"
+        android:layout_below="@id/free_goods_detail_like_visit_time_ll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <View
@@ -201,7 +187,7 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"/>
         <com.ogaclejapan.smarttablayout.SmartTabLayout
-            android:id="@+id/detail_comment_stl"
+            android:id="@+id/free_good_detail_comment_stl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -212,7 +198,6 @@
             app:stl_indicatorThickness="2dp"
             app:stl_indicatorCornerRadius="0dp"
             app:stl_indicatorAlwaysInCenter="false"
-            app:stl_indicatorWithoutPadding="true"
             app:stl_defaultTabTextColor="@drawable/good_detail_tablayout_text_color"
             app:stl_defaultTabTextSize="14sp"
             app:stl_distributeEvenly="true"
@@ -227,9 +212,7 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"/>
         <android.support.v4.view.ViewPager
-            android:id="@+id/detail_comment_view_pager"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
+            android:id="@+id/free_good_detail_comment_view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

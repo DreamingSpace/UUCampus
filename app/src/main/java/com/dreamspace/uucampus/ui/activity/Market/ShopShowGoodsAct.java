@@ -61,6 +61,11 @@ public class ShopShowGoodsAct extends AbsActivity {
         initListeners();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListeners(){
         consultLl.setOnClickListener(new View.OnClickListener() {
             @Override

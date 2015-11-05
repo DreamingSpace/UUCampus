@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.dreamspace.uucampus.widget.progress;
 
 import android.content.Context;
@@ -68,11 +67,11 @@ public class CircularProgressBar extends ProgressBar {
 
     Drawable indeterminateDrawable;
     CircularProgressDrawable.Builder builder = new CircularProgressDrawable.Builder(context)
-        .sweepSpeed(sweepSpeed)
-        .rotationSpeed(rotationSpeed)
-        .strokeWidth(strokeWidth)
-        .minSweepAngle(minSweepAngle)
-        .maxSweepAngle(maxSweepAngle);
+            .sweepSpeed(sweepSpeed)
+            .rotationSpeed(rotationSpeed)
+            .strokeWidth(strokeWidth)
+            .minSweepAngle(minSweepAngle)
+            .maxSweepAngle(maxSweepAngle);
 
     if (colors != null && colors.length > 0)
       builder.colors(colors);
@@ -84,10 +83,10 @@ public class CircularProgressBar extends ProgressBar {
   }
 
   private CircularProgressDrawable checkIndeterminateDrawable() {
-     Drawable ret = getIndeterminateDrawable();
-     if (ret == null || !(ret instanceof CircularProgressDrawable))
-        throw new RuntimeException("The drawable is not a CircularProgressDrawable");
-     return (CircularProgressDrawable) ret;
+    Drawable ret = getIndeterminateDrawable();
+    if (ret == null || !(ret instanceof CircularProgressDrawable))
+      throw new RuntimeException("The drawable is not a CircularProgressDrawable");
+    return (CircularProgressDrawable) ret;
   }
 
   public void progressiveStop() {

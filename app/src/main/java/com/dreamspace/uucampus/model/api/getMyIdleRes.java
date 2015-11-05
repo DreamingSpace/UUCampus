@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by wufan on 2015/9/29.
  */
-public class IdleInfoRes {
+public class GetMyIdleRes {
     private int total;
     private int number;
     private List<IdleItem> result;

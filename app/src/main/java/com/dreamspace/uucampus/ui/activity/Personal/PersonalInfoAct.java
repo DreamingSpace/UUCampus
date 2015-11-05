@@ -1,7 +1,6 @@
 package com.dreamspace.uucampus.ui.activity.Personal;
 
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.dreamspace.uucampus.R;
@@ -50,6 +49,11 @@ public class PersonalInfoAct extends AbsActivity {
     protected void initViews() {
         getSupportActionBar().setTitle(getString(R.string.personal_info));
         initListeners();
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 
     private void initListeners(){
