@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:src="@drawable/my_center_button_home_page"
+                    android:src="@drawable/my_center_btn_shop_n"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:src="@drawable/homepage_btn_home"
+                    android:src="@drawable/my_center_btn_shop_p"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
@@ -77,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:src="@drawable/homepage_btn_shop"
+                    android:src="@drawable/homepage_btn_shop_n"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
@@ -93,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:src="@drawable/homepage_btn_shop_h"
+                    android:src="@drawable/homepage_btn_shop_p"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
@@ -117,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:src="@drawable/homepage_btn_me"
+                    android:src="@drawable/my_center_btn_me_n"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
@@ -133,7 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:src="@drawable/my_center_button_me"
+                    android:src="@drawable/my_center_btn_me_p"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView

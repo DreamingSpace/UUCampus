@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:paddingBottom="10dp"
-    android:background="@color/white"
+    android:background="@drawable/personal_center_item_bg"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/good_image_iv"
-        android:background="@color/search_opaque"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_width="87dp"
@@ -68,24 +67,15 @@
         android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <RelativeLayout
-        android:layout_marginRight="20dp"
+
+    <TextView
+        android:id="@+id/goods_org_price"
+        android:text="￥260"
+        android:layout_marginRight="10dp"
         android:layout_toLeftOf="@id/good_price_tv"
         android:layout_alignBottom="@id/good_price_tv"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/goods_org_price"
-            android:text="￥260"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <View
-            android:layout_centerVertical="true"
-            android:background="@color/divider_color"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"/>
-    </RelativeLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:id="@+id/good_preferential_ll"
@@ -101,9 +91,9 @@
             android:layout_height="wrap_content" />
         <TextView
             android:text="凭借悠悠万能优惠卡减免10元"
+            style="@style/browse_collect_text_style"
             android:id="@+id/good_preferential_tv"
             android:layout_marginLeft="5dp"
-            style="@style/preferential_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

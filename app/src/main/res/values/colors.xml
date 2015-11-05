@@ -69,6 +69,7 @@
     <color name="divider_color">#999999</color>
     <color name="good_name_text_color">#222222</color>
     <color name="price_text_color">#f15353</color>
+    <color name="buy_bg_press">#d15353</color>
     <color name="my_shop_text_color">#333333</color>
     <color name="preferential_text_color">#b7b7b7</color>
     <color name="dialog_center_color">#43aa9f</color>

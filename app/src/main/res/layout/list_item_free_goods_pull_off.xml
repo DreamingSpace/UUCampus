@@ -41,7 +41,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/pull_off_sale_btn_bg"
+        android:background="@drawable/green_stroke_btn_bg"
         android:layout_width="70dp"
         android:layout_height="30dp" />
     <Button
@@ -52,7 +52,7 @@
         android:layout_below="@id/edit_btn"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/pull_off_sale_btn_bg"
+        android:background="@drawable/green_stroke_btn_bg"
         android:layout_width="70dp"
         android:layout_height="30dp" />
 </RelativeLayout>

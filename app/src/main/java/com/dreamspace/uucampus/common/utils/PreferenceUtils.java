@@ -22,7 +22,7 @@ public class PreferenceUtils {
         public static final String ACCESS="access_token";
         public static final String PHONE="PHONE";
         public static final String IS_ACTIVE="IS_ACTIVE";
-
+        public static final String PASSWORD = "password";
     }
 
     public static final String DEFAULT_STRING = "";

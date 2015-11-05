@@ -70,6 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/nickname_tv"
                 android:text="呼呼哈哈"
                 android:textSize="16sp"
                 android:textColor="@color/black_40"
@@ -80,44 +81,6 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
 
-        <View
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/divider_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-
-        <RelativeLayout
-            android:id="@+id/sex_rl"
-            android:background="@drawable/personal_center_item_bg"
-            android:layout_width="match_parent"
-            android:layout_height="40dp">
-            <TextView
-                android:text="@string/sex"
-                android:textSize="16sp"
-                android:textColor="@color/black_40"
-                android:layout_marginLeft="28dp"
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/sex_right_arrow"
-                android:src="@drawable/right_arrow"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="32dp"
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="男"
-                android:textSize="16sp"
-                android:textColor="@color/black_40"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/sex_right_arrow"
-                android:layout_marginRight="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
         <View
             android:background="@color/divider_color"
             android:layout_width="match_parent"
@@ -149,6 +112,7 @@
                 android:layout_height="wrap_content" />
             <ImageView
                 android:id="@+id/phone_right_arrow"
+                android:visibility="invisible"
                 android:src="@drawable/right_arrow"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="32dp"
@@ -156,7 +120,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:text="13365208080（已绑定)"
+                android:id="@+id/bundling_phone_tv"
+                android:text="13365208080"
                 android:textSize="16sp"
                 android:textColor="@color/black_40"
                 android:layout_centerVertical="true"
@@ -195,6 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/loaction_tv"
                 android:text="东南大学九龙湖校区"
                 android:textSize="16sp"
                 android:textColor="@color/black_40"
@@ -234,6 +200,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/in_school_year_tv"
                 android:text="2015"
                 android:textSize="16sp"
                 android:textColor="@color/black_40"
@@ -250,83 +217,83 @@
             android:layout_height="1px"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_marginTop="15dp"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:id="@+id/weibo_rl"
-            android:background="@drawable/personal_center_item_bg"
-            android:layout_width="match_parent"
-            android:layout_height="45dp">
-            <ImageView
-                android:src="@drawable/register_button_sina"
-                android:layout_marginLeft="28dp"
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/weibo_right_arrow"
-                android:src="@drawable/right_arrow"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="32dp"
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="@string/bundling"
-                android:id="@+id/weibo_bundling"
-                android:textColor="@color/black_40"
-                android:layout_toLeftOf="@id/weibo_right_arrow"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                android:layout_marginRight="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/weibo_rl"-->
+            <!--android:background="@drawable/personal_center_item_bg"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="45dp">-->
+            <!--<ImageView-->
+                <!--android:src="@drawable/register_button_sina"-->
+                <!--android:layout_marginLeft="28dp"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+            <!--<ImageView-->
+                <!--android:id="@+id/weibo_right_arrow"-->
+                <!--android:src="@drawable/right_arrow"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginRight="32dp"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+            <!--<TextView-->
+                <!--android:text="@string/bundling"-->
+                <!--android:id="@+id/weibo_bundling"-->
+                <!--android:textColor="@color/black_40"-->
+                <!--android:layout_toLeftOf="@id/weibo_right_arrow"-->
+                <!--android:layout_marginTop="12dp"-->
+                <!--android:layout_marginBottom="12dp"-->
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</RelativeLayout>-->
 
-        <View
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/divider_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
+        <!--<View-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:background="@color/divider_color"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1px"/>-->
 
-        <RelativeLayout
-            android:id="@+id/wechat_rl"
-            android:background="@drawable/personal_center_item_bg"
-            android:layout_width="match_parent"
-            android:layout_height="45dp">
-            <ImageView
-                android:src="@drawable/register_button_wechat"
-                android:layout_marginLeft="28dp"
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/wechat_right_arrow"
-                android:src="@drawable/right_arrow"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="32dp"
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="@string/bundling"
-                android:textColor="@color/black_40"
-                android:id="@+id/wechat_bundling"
-                android:layout_toLeftOf="@id/wechat_right_arrow"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                android:layout_marginRight="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <View
-            android:background="@color/divider_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-    </LinearLayout>
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/wechat_rl"-->
+            <!--android:background="@drawable/personal_center_item_bg"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="45dp">-->
+            <!--<ImageView-->
+                <!--android:src="@drawable/register_button_wechat"-->
+                <!--android:layout_marginLeft="28dp"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+            <!--<ImageView-->
+                <!--android:id="@+id/wechat_right_arrow"-->
+                <!--android:src="@drawable/right_arrow"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginRight="32dp"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+            <!--<TextView-->
+                <!--android:text="@string/bundling"-->
+                <!--android:textColor="@color/black_40"-->
+                <!--android:id="@+id/wechat_bundling"-->
+                <!--android:layout_toLeftOf="@id/wechat_right_arrow"-->
+                <!--android:layout_marginTop="12dp"-->
+                <!--android:layout_marginBottom="12dp"-->
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</RelativeLayout>-->
+        <!--<View-->
+            <!--android:background="@color/divider_color"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1px"/>-->
+    <!--</LinearLayout>-->
 </LinearLayout>

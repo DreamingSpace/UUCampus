@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/unconsume_state_ll"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <View
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/black_40"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <TextView
+        android:text="@string/pay_code"
+        android:textSize="16sp"
+        android:textColor="@color/black_40"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/order_password_tv"
+        android:text="密码 : 2019  3299  4537"
+        android:textColor="@color/black_40"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/qrcode_iv"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/divider_color"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <Button
+        android:id="@+id/apply_refund_btn"
+        android:text="@string/apply_refund"
+        android:textSize="16sp"
+        android:textColor="@color/app_theme_color2"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_gravity="right"
+        android:background="@drawable/green_stroke_btn_bg"
+        android:layout_width="80dp"
+        android:layout_height="30dp" />
+</LinearLayout>

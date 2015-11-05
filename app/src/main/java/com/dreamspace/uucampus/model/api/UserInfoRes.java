@@ -1,27 +1,20 @@
 package com.dreamspace.uucampus.model.api;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by wufan on 2015/9/28.
  */
-public class UserInfoRes {
+public class UserInfoRes implements Parcelable{
     private String image;
-    private String birthday;
-    private String school;
-    private String nickname;
     private String name;
     private String enroll_year;
-    private String sex;
     private String location;
     private String reg_data;
-    private String is_active;
-
-    public String getIs_active() {
-        return is_active;
-    }
-
-    public void setIs_active(String is_active) {
-        this.is_active = is_active;
-    }
+    private String weixin_bind;
+    private String weibo_bind;
+    private String phone_num;
 
     public String getImage() {
         return image;
@@ -31,20 +24,12 @@ public class UserInfoRes {
         this.image = image;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public String getName() {
+        return name;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getSchool() {
-        return school;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEnroll_year() {
@@ -53,14 +38,6 @@ public class UserInfoRes {
 
     public void setEnroll_year(String enroll_year) {
         this.enroll_year = enroll_year;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
     }
 
     public String getLocation() {
@@ -79,19 +56,81 @@ public class UserInfoRes {
         this.reg_data = reg_data;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getWeixin_bind() {
+        return weixin_bind;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setWeixin_bind(String weixin_bind) {
+        this.weixin_bind = weixin_bind;
     }
 
-    public String getName() {
-        return name;
+    public String getWeibo_bind() {
+        return weibo_bind;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setWeibo_bind(String weibo_bind) {
+        this.weibo_bind = weibo_bind;
     }
+
+    public String getPhone_num() {
+        return phone_num;
+    }
+
+    public void setPhone_num(String phone_num) {
+        this.phone_num = phone_num;
+    }
+
+    public static Creator<UserInfoRes> getCREATOR() {
+        return CREATOR;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(image);
+        dest.writeString(name);
+        dest.writeString(enroll_year);
+        dest.writeString(location);
+    }
+
+    public UserInfoRes(Parcel in){
+        image = in.readString();
+        name = in.readString();
+        enroll_year = in.readString();
+        location = in.readString();
+    }
+
+   public static final Creator<UserInfoRes> CREATOR = new Parcelable.Creator<UserInfoRes>(){
+
+       @Override
+       public UserInfoRes createFromParcel(Parcel source) {
+           return new UserInfoRes(source);
+       }
+
+       @Override
+       public UserInfoRes[] newArray(int size) {
+           return new UserInfoRes[size];
+       }
+   };
+//    public static final Parcelable.Creator<UserInfoRes> CREATOR = new Parcelable.ClassLoaderCreator<UserInfoRes>(){
+//        @Override
+//        public UserInfoRes createFromParcel(Parcel source) {
+//            return new UserInfoRes(source);
+//        }
+//
+//        @Override
+//        public UserInfoRes[] newArray(int size) {
+//            return new UserInfoRes[size];
+//        }
+//
+//        @Override
+//        public UserInfoRes createFromParcel(Parcel source, ClassLoader loader) {
+//            return new UserInfoRes(source);
+//        }
+//    };
+
 }

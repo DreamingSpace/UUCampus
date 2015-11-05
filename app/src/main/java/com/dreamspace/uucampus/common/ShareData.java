@@ -1,8 +1,5 @@
 package com.dreamspace.uucampus.common;
 
-/**
- * Created by Lx on 2015/10/13.
- */
 public class ShareData {
 
     public static final String[] freeGoodsCategorys = new String[]{

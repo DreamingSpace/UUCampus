@@ -74,11 +74,6 @@ public class RegisterInfoActivity extends AbsActivity {
         });
     }
 
-    @Override
-    protected View getLoadingTargetView() {
-        return null;
-    }
-
     //显示年份选择对话框
     private void showYearDialog() {
         ArrayList<String> years = new ArrayList<>();
@@ -110,5 +105,10 @@ public class RegisterInfoActivity extends AbsActivity {
         enroll_year = enrolledTime.getText().toString();
         //写与后台的交互，后台还有点问题暂时不写
 
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 }

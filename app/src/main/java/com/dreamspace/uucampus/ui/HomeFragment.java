@@ -69,7 +69,7 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CLASSIFICATION_TYPE,getResources().getString(R.string.travel));
+                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.travel));
                 readyGo(FastInAct.class,bundle);
             }
         });
@@ -78,7 +78,7 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CLASSIFICATION_TYPE,getResources().getString(R.string.class_uniform));
+                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.class_uniform));
                 readyGo(FastInAct.class,bundle);
             }
         });
@@ -87,7 +87,7 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CLASSIFICATION_TYPE,getResources().getString(R.string.driver_school));
+                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.driver_school));
                 readyGo(FastInAct.class,bundle);
             }
         });
@@ -96,7 +96,7 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CLASSIFICATION_TYPE,getResources().getString(R.string.study_abroad));
+                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.study_abroad));
                 readyGo(FastInAct.class,bundle);
             }
         });
@@ -105,7 +105,7 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CLASSIFICATION_TYPE,getResources().getString(R.string.personal_shop));
+                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.personal_shop));
                 readyGo(FastInAct.class,bundle);
             }
         });
@@ -121,7 +121,7 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CLASSIFICATION_TYPE,getResources().getString(R.string.travel));
+                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.travel));
                 readyGo(FastInAct.class,bundle);
             }
         });
@@ -130,7 +130,7 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CLASSIFICATION_TYPE,getResources().getString(R.string.driver_school));
+                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.driver_school));
                 readyGo(FastInAct.class,bundle);
             }
         });
@@ -139,7 +139,7 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CLASSIFICATION_TYPE,getResources().getString(R.string.study_abroad));
+                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.study_abroad));
                 readyGo(FastInAct.class,bundle);
             }
         });
@@ -148,7 +148,7 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CLASSIFICATION_TYPE,getResources().getString(R.string.personal_shop));
+                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.personal_shop));
                 readyGo(FastInAct.class,bundle);
             }
         });

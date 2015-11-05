@@ -118,8 +118,8 @@ public class CollectionFragment extends BaseLazyFragment {
         for(int i = 0;i < 10;i++){
             list.add(i + "");
         }
-        shopListAdapter = new ShopListAdapter(mContext,list,ShopListAdapter.ViewHolder.class);
-        collectionLv.setAdapter(shopListAdapter);
+//        shopListAdapter = new ShopListAdapter(mContext,list,ShopListAdapter.ViewHolder.class);
+//        collectionLv.setAdapter(shopListAdapter);
     }
 
     private void setListItemClickListeners(){

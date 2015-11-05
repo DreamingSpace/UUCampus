@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dreamspace.uucampus" >
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.dreamspace.uucampus">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -17,64 +19,92 @@
             android:name=".ui.MainActivity"
             android:label="@string/app_name" >
         </activity>
-        <activity android:name=".ui.activity.Market.FastInAct" >
+        <activity android:name=".ui.activity.Market.FastInAct">
         </activity>
-        <activity android:name=".ui.activity.Market.ShopHostActivity" >
+        <activity android:name=".ui.activity.Market.ShopHostActivity">
         </activity>
-        <activity android:name=".ui.activity.Market.ShopManagmentAct" >
+        <activity android:name=".ui.activity.Market.ShopManagmentAct">
         </activity>
-        <activity
-            android:name=".ui.activity.Market.AddGoodAct"
-            android:windowSoftInputMode="adjustPan|stateHidden" >
+        <activity android:name=".ui.activity.Market.AddGoodAct" android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>
-        <activity
-            android:name="me.iwf.photopicker.PhotoPickerActivity"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name="me.iwf.photopicker.PhotoPagerActivity"
-            android:theme="@style/AppTheme" />
+        <activity android:name="me.iwf.photopicker.PhotoPickerActivity" android:theme="@style/AppTheme"/>
+        <activity android:name="me.iwf.photopicker.PhotoPagerActivity" android:theme="@style/AppTheme"/>
 
-        <activity
-            android:name=".ui.activity.FreeGoods.FreeGoodsActivity"
-            android:label="@string/free_goods">
+        <activity android:label="@string/free_goods" android:name=".ui.activity.FreeGoods.FreeGoodsActivity">
         </activity>
-        <activity
-            android:name=".ui.activity.FreeGoods.FreeGoodsDetailActivity"
-            android:label="@string/free_goods">
+        <activity android:label="@string/free_goods" android:name=".ui.activity.FreeGoods.FreeGoodsDetailActivity">
         </activity>
-        <activity
-            android:name=".ui.activity.FreeGoods.FreeGoodsPublishFirstActivity"
-            android:label="@string/select_goods_photo">
+        <activity android:label="@string/select_goods_photo" android:name=".ui.activity.FreeGoods.FreeGoodsPublishFirstActivity">
         </activity>
-        <activity
-            android:name=".ui.activity.FreeGoods.FreeGoodsPublishSecondActivity"
-            android:label="@string/write_goods_detail">
+        <activity android:label="@string/write_goods_detail" android:name=".ui.activity.FreeGoods.FreeGoodsPublishSecondActivity">
         </activity>
-        <activity
-            android:name=".ui.activity.FreeGoods.FreeGoodsPublishSuccessActivity"
-            android:label="@string/publish_success">
+        <activity android:label="@string/publish_success" android:name=".ui.activity.FreeGoods.FreeGoodsPublishSuccessActivity">
         </activity>
         <activity android:name=".widget.photopicker.SelectPhotoActivity"/>
         <activity android:name=".widget.photopicker.PhotoPreviewActivity"/>
         <activity android:name=".ui.activity.Market.GoodDetailAct"/>
         <activity android:name=".ui.activity.Market.ShopShowGoodsAct"/>
         <activity android:name=".ui.activity.Market.ShopDetailAct"/>
+        <activity android:name=".ui.activity.Market.ReportSellerAct"/>
         <activity android:name=".ui.activity.Personal.MyCollectionAct"/>
         <activity android:name=".ui.activity.Personal.SettingAct"/>
+        <activity android:name=".ui.activity.Personal.CouponCardAct"/>
         <activity android:name=".ui.activity.Login.RegisterActivity"/>
         <activity android:name=".ui.activity.Login.BoundActvity"/>
         <activity android:name=".ui.activity.Login.FindBackActivity"/>
         <activity android:name=".ui.activity.Login.LoginActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.Login.RegisterInfoActivity"/>
         <activity android:name=".ui.activity.Personal.FeedbackAct"/>
         <activity android:name=".ui.activity.Personal.PersonalInfoAct"/>
         <activity android:name=".ui.activity.Personal.MyFreeGoodsAct"/>
+
+        <!-- order-->
+        <activity android:name=".ui.activity.Order.OrderConfirmAct" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".ui.activity.Order.MyOrderAct"/>
+        <activity android:name=".ui.activity.Order.OrderDetailAct"/>
+        <activity android:name=".ui.activity.Order.CommentAct"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".ui.activity.Order.RefundAct"/>
+
+        <!-- umeng-->
+        <!--<meta-data android:name="UMENG_APPKEY" android:value="5625eac167e58e4e1f001985"/>-->
+        <!--<activity-->
+            <!--android:name="com.umeng.socialize.view.ShareActivity"-->
+            <!--android:configChanges="orientation|keyboard"-->
+            <!--android:launchMode="singleTask"-->
+            <!--android:noHistory="true"-->
+            <!--android:theme="@style/Theme.UMDialog"-->
+            <!--android:windowSoftInputMode="stateVisible|adjustResize"/>-->
+        <!--<activity-->
+            <!--android:name="com.tencent.tauth.AuthActivity"-->
+            <!--android:launchMode="singleTask"-->
+            <!--android:noHistory="true" >-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.VIEW" />-->
+
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <!--<category android:name="android.intent.category.BROWSABLE" />-->
+                <!--&lt;!&ndash; 100424468，如果你使用的公用账号，则不需要修改；否则修改成你在QQ开放平台申请的 APP ID&ndash;&gt;-->
+                <!--<data android:scheme="1104847133" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity android:name="com.tencent.connect.common.AssistActivity"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
+            <!--android:screenOrientation="portrait">-->
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name=".wxapi.WXEntryActivity"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
+            <!--android:exported="true"-->
+            <!--android:screenOrientation="portrait" />-->
     </application>
+
 
 </manifest>

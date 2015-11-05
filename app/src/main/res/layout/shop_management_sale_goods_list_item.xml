@@ -126,7 +126,7 @@
             android:text="@string/pull_off"
             android:id="@+id/good_pull_off_btn"
             style="@style/pull_off_sale_btn_style"
-            android:background="@drawable/pull_off_sale_btn_bg"
+            android:background="@drawable/green_stroke_btn_bg"
             android:layout_width="60dp"
             android:layout_height="26dp" />
         <Button
@@ -134,7 +134,7 @@
             android:id="@+id/sale_good_edit_btn"
             android:layout_marginLeft="20dp"
             style="@style/pull_off_sale_btn_style"
-            android:background="@drawable/pull_off_sale_btn_bg"
+            android:background="@drawable/green_stroke_btn_bg"
             android:layout_width="60dp"
             android:layout_height="26dp" />
     </LinearLayout>

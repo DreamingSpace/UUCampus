@@ -2,6 +2,7 @@ package com.dreamspace.uucampus.widget.photopicker;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import com.dreamspace.uucampus.ui.base.AbsActivity;
 import java.io.File;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by Lx on 2015/9/29.

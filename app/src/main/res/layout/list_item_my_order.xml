@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <View
+        android:background="@color/divider_color"
+        android:layout_width="match_parent"
+        android:layout_height="2px"/>
+    <RelativeLayout
+        android:paddingTop="10dp"
+        android:paddingBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/shop_name_tv"
+            android:text="东大旅游吧"
+            android:textColor="@color/app_theme_color2"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/order_state_tv"
+            android:text="已评价"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <View
+        android:background="@color/divider_color"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="2px"/>
+    <RelativeLayout
+        android:paddingBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/order_image_iv"
+            android:background="@color/search_opaque"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="87dp"
+            android:layout_height="65dp" />
+        <TextView
+            android:id="@+id/good_name_tv"
+            android:text="常州一日游"
+            android:textSize="18sp"
+            android:textColor="@color/black_40"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/order_image_iv"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/total_price_tv"
+            android:text="总价 : 1200"
+            android:textSize="14sp"
+            android:textColor="@color/text_normal"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/good_name_tv"
+            android:layout_alignLeft="@id/good_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/num_tv"
+            android:text="数量 : 2"
+            android:textSize="14sp"
+            android:textColor="@color/text_normal"
+            android:layout_below="@id/total_price_tv"
+            android:layout_alignLeft="@id/good_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <View
+        android:background="@color/divider_color"
+        android:layout_width="match_parent"
+        android:layout_height="2px"/>
+</LinearLayout>

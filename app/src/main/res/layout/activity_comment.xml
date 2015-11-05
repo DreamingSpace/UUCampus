@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/custom_toolbar"/>
+    <TextView
+        android:layout_marginTop="25dp"
+        android:textColor="@color/black_40"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/overall_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.dreamspace.uucampus.widget.RatingBar
+            android:id="@+id/comment_rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:clickable="true"
+            app:starCount="5"
+            app:starEmpty="@drawable/comment_btn_star_n"
+            app:starFill="@drawable/comment_btn_star"
+            app:starImageSize="30dp" />
+        <TextView
+            android:id="@+id/rating_tv"
+            android:layout_marginLeft="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/search_opaque"
+            android:layout_toRightOf="@id/comment_rating_bar"
+            android:layout_alignBottom="@id/comment_rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/comment_et"
+        android:gravity="start"
+        android:padding="15dp"
+        android:textSize="16sp"
+        android:background="@drawable/add_good_info_bg"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <Button
+        android:id="@+id/submit_comment_btn"
+        android:text="@string/submit_comment"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:background="@drawable/button_round"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+</LinearLayout>

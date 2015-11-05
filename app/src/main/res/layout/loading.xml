@@ -28,8 +28,7 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:indeterminate="true"
-        android:indeterminateOnly="false"
-        app:cpb_colors="@array/gplus_colors"/>
+        android:indeterminateOnly="false" />
 
     <TextView
         android:id="@+id/loading_msg"

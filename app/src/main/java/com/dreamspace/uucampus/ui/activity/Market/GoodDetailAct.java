@@ -1,5 +1,7 @@
 package com.dreamspace.uucampus.ui.activity.Market;
 
+import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
@@ -8,17 +10,35 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.api.ApiManager;
+import com.dreamspace.uucampus.common.Share;
+import com.dreamspace.uucampus.common.utils.CommonUtils;
+import com.dreamspace.uucampus.common.utils.DensityUtils;
+import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.model.api.AddGoodsCollectionRes;
+import com.dreamspace.uucampus.model.api.CommonStatusRes;
+import com.dreamspace.uucampus.model.api.GoodsInfoRes;
+import com.dreamspace.uucampus.ui.activity.Order.OrderConfirmAct;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
 import com.dreamspace.uucampus.ui.fragment.Market.GoodDetailPagerFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
+import com.umeng.socialize.sso.UMSsoHandler;
 
 import butterknife.Bind;
+import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Created by Lx on 2015/10/8.
@@ -36,9 +56,40 @@ public class GoodDetailAct extends AbsActivity {
     LinearLayout collect_ll;
     @Bind(R.id.shop_name_ll)
     LinearLayout shopNameLl;
+    @Bind(R.id.buy_btn)
+    Button buyBtn;
+    @Bind(R.id.collect_iv)
+    ImageView collectIv;
+    @Bind(R.id.good_detail_image_iv)
+    ImageView goodIv;
+    @Bind(R.id.good_name_tv)
+    TextView goodNameTv;
+    @Bind(R.id.shop_image_civ)
+    CircleImageView shopImageCiv;
+    @Bind(R.id.shop_name_tv)
+    TextView shopNameTv;
+    @Bind(R.id.people_like_tv)
+    TextView peopleLikeTv;
+    @Bind(R.id.sale_num_tv)
+    TextView saleNumTv;
+    @Bind(R.id.last_update_tv)
+    TextView lastUpdateTv;
+    @Bind(R.id.good_detail_price_tv)
+    TextView priceTv;
+    @Bind(R.id.price_before_reduce_tv)
+    TextView priceBeforeReduceTv;
+    @Bind(R.id.content_rl)
+    RelativeLayout contentRl;
+
+    private Share share;
+    private String goodId;
+    private boolean actDestory = false;
+    private GoodsInfoRes goodInfo;//当前商品的信息
+
     public static final String TYPE = "type";
     public static final String DETAIL="detail";
     public static final String COMMENT="comment";
+    public static final String GOOD_ID = "good_id";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,6 +99,11 @@ public class GoodDetailAct extends AbsActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if(id == R.id.good_detail_action_share){
+            share.getController().openShare(this,false);
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -58,17 +114,29 @@ public class GoodDetailAct extends AbsActivity {
 
     @Override
     protected void prepareDatas() {
-        initStl();
+        Bundle bundle = getIntent().getExtras();
+        goodId = bundle.getString(GOOD_ID);
+        getGoodInfo();
+
+        //初始化分享内容
+        share = new Share(this);
+        share.ShareInQQ("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
+        share.ShareInWechat("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
+        share.ShareInQZone("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
+        share.ShareInWechatCircle("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
+        share.ShareInSina("good内容", R.drawable.banner1);
     }
 
     @Override
     protected void initViews() {
+        getSupportActionBar().setTitle(getResources().getString(R.string.detial));
+        priceBeforeReduceTv.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         initListeners();
     }
 
     @Override
     protected View getLoadingTargetView() {
-        return null;
+        return contentRl;
     }
 
     private void initListeners(){
@@ -79,16 +147,16 @@ public class GoodDetailAct extends AbsActivity {
             }
         });
 
+        //创建咨询对话框并显示
         consultLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //consultShadowRl.setVisibility(View.VISIBLE);
-                ConnectSellerDialog dialog = dialog = new ConnectSellerDialog(GoodDetailAct.this,
-                        R.style.UpDialog, "good name", "phone number");
+                ConnectSellerDialog dialog = new ConnectSellerDialog(GoodDetailAct.this,
+                        R.style.UpDialog, goodInfo.getName(), goodInfo.getPhone_num());
                 Window window = dialog.getWindow();
                 WindowManager.LayoutParams layoutParams = window.getAttributes();
                 layoutParams.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
-                layoutParams.y = (int)(80*getResources().getDisplayMetrics().density);
+                layoutParams.y = DensityUtils.dip2px(GoodDetailAct.this, 80);//int)(80*getResources().getDisplayMetrics().density);
                 window.setAttributes(layoutParams);
                 dialog.show();
             }
@@ -97,39 +165,177 @@ public class GoodDetailAct extends AbsActivity {
         collect_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(goodInfo != null){
+                    if(goodInfo.getIs_collected() == 0){
+                        addGoodCollection();
+                    }else{
+                        cancelGoodCollection();
+                    }
+                }
             }
         });
 
         shopNameLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGo(ShopShowGoodsAct.class);
+                Bundle bundle = new Bundle();
+                bundle.putString(ShopShowGoodsAct.SHOP_ID,goodInfo.getShop_id());
+                bundle.putString(ShopShowGoodsAct.SHOP_NAME,goodInfo.getShop_name());
+                readyGo(ShopShowGoodsAct.class,bundle);
+            }
+        });
+
+        //同shopnameLl点击效果一样，都是将shopid和shopname传递到下个界面
+        shopLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString(ShopShowGoodsAct.SHOP_ID,goodInfo.getShop_id());
+                bundle.putString(ShopShowGoodsAct.SHOP_NAME,goodInfo.getShop_name());
+                readyGo(ShopShowGoodsAct.class,bundle);
+            }
+        });
+
+        buyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readyGo(OrderConfirmAct.class);
             }
         });
     }
 
     private void initStl(){
-        getSupportActionBar().setTitle(getResources().getString(R.string.detial));
+        Bundle detailBundle = new Bundle();
+        detailBundle.putString(DETAIL,goodInfo.getDescription());
+        detailBundle.putString(TYPE,DETAIL);
+        Bundle commentBundle = new Bundle();
+        commentBundle.putString(COMMENT, goodId);
+        commentBundle.putString(TYPE, COMMENT);
+
         FragmentPagerItemAdapter pagerAdapter = new FragmentPagerItemAdapter(getSupportFragmentManager(), FragmentPagerItems.with(this)
-                                .add(R.string.detial, GoodDetailPagerFragment.class, getBundles(0))
-                                .add(R.string.comment, GoodDetailPagerFragment.class, getBundles(1))
-                                .create()
+                .add(R.string.detial, GoodDetailPagerFragment.class, detailBundle)
+                .add(R.string.comment, GoodDetailPagerFragment.class, commentBundle)
+                .create()
         );
         tabLayout.setCustomTabView(R.layout.good_detail_stl_title_tab, R.id.detail_stl_title_tv);
         detailViewPager.setAdapter(pagerAdapter);
         tabLayout.setViewPager(detailViewPager);
     }
 
-    private Bundle getBundles(int index){
-        Bundle bundle = new Bundle();
-        if(index < 2){
-            if(index == 0){
-                bundle.putString(TYPE,DETAIL);
-            }else{
-                bundle.putString(TYPE,COMMENT);
-            }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /**使用SSO授权必须添加如下代码 */
+        UMSsoHandler ssoHandler = share.getController().getConfig().getSsoHandler(requestCode) ;
+        if(ssoHandler != null){
+            ssoHandler.authorizeCallBack(requestCode, resultCode, data);
         }
-        return bundle;
     }
+
+    //获取商品详细信息
+    private void getGoodInfo(){
+        toggleShowLoading(true, null);
+        if(!NetUtils.isNetworkConnected(this)){
+            showNetWorkError();
+            toggleNetworkError(true, getGoodInfoClickListener);
+            return;
+        }
+
+        ApiManager.getService(this).getGoodsInfo(goodId, new Callback<GoodsInfoRes>() {
+            @Override
+            public void success(GoodsInfoRes goodsInfoRes, Response response) {
+                if (goodsInfoRes != null && !actDestory) {
+                    toggleRestore();
+                    goodInfo = goodsInfoRes;
+                    setInfoIntoViews(goodsInfoRes);
+                    initStl();
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                showInnerError(error);
+                toggleShowEmpty(true, null, getGoodInfoClickListener);
+            }
+        });
+    }
+
+    //添加商品收藏
+    private void addGoodCollection(){
+        if(!NetUtils.isNetworkConnected(this)){
+            showNetWorkError();
+            return;
+        }
+
+        ApiManager.getService(this).addGoodsCollection(goodId, new Callback<AddGoodsCollectionRes>() {
+            @Override
+            public void success(AddGoodsCollectionRes addGoodsCollectionRes, Response response) {
+                if (addGoodsCollectionRes != null && !actDestory) {
+                    goodInfo.setIs_collected(1);//更改本地数据，使其与服务器同步
+                    collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_p));
+                    showToast(getString(R.string.collect_success));
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                showInnerError(error);
+            }
+        });
+    }
+
+    //商品收藏取消
+    private void cancelGoodCollection(){
+        if(!NetUtils.isNetworkConnected(this)){
+            showNetWorkError();
+            return;
+        }
+
+//        ApiManager.getService(this).deleteGoodsCollection(goodId, new Callback<CommonStatusRes>() {
+//            @Override
+//            public void success(CommonStatusRes commonStatusRes, Response response) {
+//                if(commonStatusRes != null && !actDestory){
+//                    goodInfo.setIs_collected(0);
+//                    collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_n));
+//                    showToast(getString(R.string.collect_cancel));
+//                }
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                showInnerError(error);
+//            }
+//        });
+    }
+
+    //将商品详细信息填入view
+    private void setInfoIntoViews(GoodsInfoRes goodsInfoRes){
+        CommonUtils.showImageWithGlide(this, goodIv, goodsInfoRes.getImage());
+        CommonUtils.showImageWithGlideInCiv(this, shopImageCiv, goodsInfoRes.getShop_image());
+        goodNameTv.setText(goodsInfoRes.getName());
+        shopNameTv.setText(goodsInfoRes.getShop_name());
+        priceBeforeReduceTv.setText(getString(R.string.RMB) + goodsInfoRes.getOriginal_price());
+        priceTv.setText(getString(R.string.RMB) +  goodsInfoRes.getPrice());
+        peopleLikeTv.setText(goodsInfoRes.getView_number() + getString(R.string.x_people_like));
+        saleNumTv.setText(goodsInfoRes.getSales_number() + getString(R.string.x_people_bought));
+        lastUpdateTv.setText(goodsInfoRes.getLast_update());
+        if(goodsInfoRes.getIs_collected() == 1){
+            collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_p));
+        }else{
+            collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_n));
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        actDestory = true;
+        super.onDestroy();
+    }
+
+    private View.OnClickListener getGoodInfoClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            getGoodInfo();
+        }
+    };
 }
