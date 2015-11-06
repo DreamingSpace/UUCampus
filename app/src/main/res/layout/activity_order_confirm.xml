@@ -14,32 +14,31 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="12dp"
                 android:background="@color/white"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="35dp">
+                    android:layout_height="40dp">
                     <TextView
                         android:id="@+id/good_name_tv"
                         android:text="恐龙园两日游"
                         android:textColor="@color/black_40"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="25dp"
+                        android:layout_marginLeft="28dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
                         android:id="@+id/good_single_price_tv"
                         android:text="￥600"
                         android:textColor="@color/price_text_color"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="22dp"
+                        android:layout_marginRight="25dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </RelativeLayout>
@@ -53,20 +52,20 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="35dp">
+                    android:layout_height="37dp">
                     <TextView
                         android:text="@string/number"
                         android:textColor="@color/black_40"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="25dp"
+                        android:layout_marginLeft="28dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <LinearLayout
                         android:layout_centerVertical="true"
                         android:gravity="center_vertical"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="22dp"
+                        android:layout_marginRight="23dp"
                         android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent">
@@ -84,9 +83,9 @@
                         </LinearLayout>
                         <TextView
                             android:id="@+id/good_num_tv"
-                            android:text="2"
+                            android:text="1"
                             android:textColor="@color/text_normal"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:inputType="number"
                             android:gravity="center"
                             android:layout_gravity="center_vertical"
@@ -110,29 +109,21 @@
                 <RelativeLayout
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp">
+                    android:layout_height="37dp">
                     <TextView
                         android:text="@string/use_coupon_card"
                         android:textColor="@color/black_40"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="25dp"
+                        android:layout_marginLeft="28dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <ImageView
-                        android:id="@+id/coupon_used_iv"
+                        android:id="@+id/coupon_use_iv"
                         android:src="@drawable/orderdetail_btn_chose_h"
                         android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="22dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <ImageView
-                        android:id="@+id/coupon_not_used_iv"
-                        android:src="@drawable/orderdetail_btn_chose_n"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="22dp"
+                        android:layout_marginRight="23dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <Button
@@ -142,7 +133,7 @@
                         android:textColor="@color/app_theme_color2"
                         android:textSize="16sp"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="22dp"
+                        android:layout_marginRight="23dp"
                         android:background="@drawable/green_stroke_btn_bg"
                         android:layout_alignParentRight="true"
                         android:layout_width="60dp"
@@ -164,7 +155,7 @@
                         android:text="@string/total"
                         android:textSize="16sp"
                         android:textColor="@color/black_40"
-                        android:layout_marginLeft="25dp"
+                        android:layout_marginLeft="28dp"
                         android:layout_centerVertical="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -202,7 +193,7 @@
 
             <LinearLayout
                 android:background="@color/white"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="12dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -213,8 +204,8 @@
                     <TextView
                         android:text="@string/bundling_phone"
                         android:textColor="@color/text_normal"
-                        android:textSize="16sp"
-                        android:layout_marginLeft="25dp"
+                        android:textSize="14sp"
+                        android:layout_marginLeft="28dp"
                         android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -222,8 +213,8 @@
                         android:id="@+id/bundling_phone_tv"
                         android:text="13659431356"
                         android:textColor="@color/text_normal"
-                        android:textSize="16sp"
-                        android:layout_marginLeft="25dp"
+                        android:textSize="14sp"
+                        android:layout_marginLeft="21dp"
                         android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -241,8 +232,8 @@
                     <TextView
                         android:text="@string/campus_in"
                         android:textColor="@color/text_normal"
-                        android:textSize="16sp"
-                        android:layout_marginLeft="25dp"
+                        android:textSize="14sp"
+                        android:layout_marginLeft="28dp"
                         android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -250,8 +241,8 @@
                         android:id="@+id/campus_tv"
                         android:text="东南大学九龙湖校区"
                         android:textColor="@color/text_normal"
-                        android:textSize="16sp"
-                        android:layout_marginLeft="25dp"
+                        android:textSize="14sp"
+                        android:layout_marginLeft="21dp"
                         android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -268,7 +259,7 @@
                     android:text="@string/remark"
                     android:textSize="16sp"
                     android:textColor="@color/black_40"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="28dp"
                     android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -284,7 +275,7 @@
                     android:layout_marginRight="25dp"
                     android:layout_marginBottom="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp" />
+                    android:layout_height="91dp" />
             </LinearLayout>
 
             <Button
@@ -293,7 +284,7 @@
                 android:textSize="18sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_round"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
                 android:layout_marginBottom="20dp"

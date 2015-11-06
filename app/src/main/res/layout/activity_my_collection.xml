@@ -60,6 +60,35 @@
                 android:layout_width="35dp"
                 android:layout_height="3dp" />
         </RelativeLayout>
+
+        <View
+            android:layout_gravity="center_vertical"
+            android:background="@color/divider_color"
+            android:layout_width="1dp"
+            android:layout_height="15dp"/>
+
+        <RelativeLayout
+            android:id="@+id/idle_rl"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/free_goods"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@drawable/market_smart_tab_textcolor"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/idle_tab_bottom_iv"
+                android:background="@color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_width="35dp"
+                android:layout_height="3dp" />
+        </RelativeLayout>
     </LinearLayout>
 
     <View

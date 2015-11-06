@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.market.ShopListAdapter;
@@ -39,6 +40,8 @@ public class ShowShopsFragment extends BaseLazyFragment {
     SwipeRefreshLayout swipeRefreshLayout;
     @Bind(R.id.load_more_lv)
     LoadMoreListView loadMoreListView;
+    @Bind(R.id.content_ll)
+    LinearLayout contentLl;
 
     private CategoryItem categoryItem;
     private int shopPage = 1;
@@ -70,7 +73,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
 
     @Override
     protected View getLoadingTargetView() {
-        return swipeRefreshLayout;
+        return contentLl;
     }
 
     @Override
@@ -133,7 +136,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
                     swipeRefreshLayout.setRefreshing(false);
                     //没有数据
                     if(shopPage == 1 && searchShopRes.getResult().size() == 0){
-                        toggleShowEmpty(true,"没有相关商品",null);
+                        toggleShowEmpty(true,getString(R.string.no_such_shop),null);
                         return;
                     }
 

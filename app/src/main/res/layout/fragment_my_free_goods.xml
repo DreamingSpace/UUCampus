@@ -3,12 +3,20 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!--<ListView-->
-    <!--android:id="@+id/collection_smlv"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"/>-->
-    <com.baoyz.swipemenulistview.SwipeMenuListView
-        android:id="@+id/free_goods_smlv"
+
+    <LinearLayout
+        android:id="@+id/content_ll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.dreamspace.uucampus.widget.SwipeMenuLoadMoreListView
+                android:id="@+id/free_good_smlv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </com.dreamspace.uucampus.widget.SwipeMenuLoadMoreListView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
 </LinearLayout>

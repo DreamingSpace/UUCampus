@@ -1,38 +1,22 @@
 package com.dreamspace.uucampus.model.api;
 
 import com.dreamspace.uucampus.model.GoodsCollectionItem;
+import com.dreamspace.uucampus.model.GoodsItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by wufan on 2015/10/1.
  */
 public class AllGoodsCollectionRes {
-    private int total;
-    private int number;
-    private List<GoodsCollectionItem>result;
+    private ArrayList<GoodsItem> collection;
 
-    public int getTotal() {
-        return total;
+    public ArrayList<GoodsItem> getCollection() {
+        return collection;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public List<GoodsCollectionItem> getResult() {
-        return result;
-    }
-
-    public void setResult(List<GoodsCollectionItem> result) {
-        this.result = result;
+    public void setCollection(ArrayList<GoodsItem> collection) {
+        this.collection = collection;
     }
 }

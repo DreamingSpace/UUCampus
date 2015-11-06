@@ -9,6 +9,7 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.common.Share;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.umeng.socialize.controller.UMSocialService;
+import com.umeng.socialize.controller.listener.SocializeListeners;
 import com.umeng.socialize.sso.UMSsoHandler;
 
 import butterknife.Bind;

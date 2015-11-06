@@ -26,6 +26,7 @@ import com.dreamspace.uucampus.model.api.AddGoodsCollectionRes;
 import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.GoodsInfoRes;
 import com.dreamspace.uucampus.ui.activity.Order.OrderConfirmAct;
+import com.dreamspace.uucampus.ui.activity.Order.OrderDetailAct;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
 import com.dreamspace.uucampus.ui.fragment.Market.GoodDetailPagerFragment;
@@ -42,6 +43,7 @@ import retrofit.client.Response;
 
 /**
  * Created by Lx on 2015/10/8.
+ * 进入此activity需要传入相关商品的good_id
  */
 public class GoodDetailAct extends AbsActivity {
     @Bind(R.id.detail_comment_stl)
@@ -90,6 +92,7 @@ public class GoodDetailAct extends AbsActivity {
     public static final String DETAIL="detail";
     public static final String COMMENT="comment";
     public static final String GOOD_ID = "good_id";
+    public static final String GOOD_CURRENT_COLLCET_STATE = "CURRENT_COLLECT_STATE";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -199,7 +202,11 @@ public class GoodDetailAct extends AbsActivity {
         buyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGo(OrderConfirmAct.class);
+                Bundle bundle = new Bundle();
+                bundle.putString(OrderConfirmAct.GOOD_NAME,goodInfo.getName());
+                bundle.putString(OrderConfirmAct.PRICE,goodInfo.getPrice());
+                bundle.putString(OrderConfirmAct.DISCOUNT,goodInfo.getDiscount());
+                readyGo(OrderConfirmAct.class,bundle);
             }
         });
     }
@@ -324,6 +331,15 @@ public class GoodDetailAct extends AbsActivity {
         }else{
             collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_n));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        //为“我的收藏”界面返回当前此商品的收藏状态
+        Intent data = new Intent();
+        data.putExtra(GOOD_CURRENT_COLLCET_STATE,goodInfo.getIs_collected());
+        setResult(RESULT_OK,data);
+        super.onBackPressed();
     }
 
     @Override

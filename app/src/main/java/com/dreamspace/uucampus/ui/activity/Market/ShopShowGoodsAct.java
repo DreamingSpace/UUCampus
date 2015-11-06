@@ -1,5 +1,6 @@
 package com.dreamspace.uucampus.ui.activity.Market;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
@@ -21,6 +22,7 @@ import com.dreamspace.uucampus.model.api.ShopAllGroupRes;
 import com.dreamspace.uucampus.model.api.ShopInfoRes;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
+import com.dreamspace.uucampus.ui.fragment.Market.ShopShowGoodsFragment;
 import com.dreamspace.uucampus.ui.fragment.Market.ShowGoodsFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
@@ -33,6 +35,7 @@ import retrofit.client.Response;
 
 /**
  * Created by Lx on 2015/10/10.
+ * 店铺页面，展示的都是相应店铺的商品,进入此页面是需要传入对应shop的id和name
  */
 public class ShopShowGoodsAct extends AbsActivity {
     @Bind(R.id.shop_show_goods_act_smarttablayout)
@@ -58,6 +61,8 @@ public class ShopShowGoodsAct extends AbsActivity {
     public static final String SHOP_ID = "SHOP_ID";
     public static final String SHOP_NAME = "SHOP_NAME";
     public static final String GROUP = "GROUP";
+    private static final int SHOP_DETAIL = 1;
+    public static final String SHOP_CURRENT_COLLECT_STATE = "CURRENT_COLLECTION_STATE";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,9 +76,9 @@ public class ShopShowGoodsAct extends AbsActivity {
         if(id == R.id.shop_action_shop_detail){
             if(mShopInfo != null){
                 Bundle bundle = new Bundle();
-                bundle.putParcelable(ShopDetailAct.SHOP_INFO,mShopInfo);
-                bundle.putString(SHOP_ID,shopId);
-                readyGo(ShopDetailAct.class,bundle);
+                bundle.putParcelable(ShopDetailAct.SHOP_INFO, mShopInfo);
+                bundle.putString(SHOP_ID, shopId);
+                readyGoForResult(ShopDetailAct.class, SHOP_DETAIL, bundle);
             }
         }
         return super.onOptionsItemSelected(item);
@@ -134,10 +139,11 @@ public class ShopShowGoodsAct extends AbsActivity {
     private void loadViews(){
         FragmentPagerItems.Creator creator = FragmentPagerItems.with(this);
         for(String group:mShopGroup.getGroup()){
+            //将此店铺的id和各个fragment对应的group传入fragment
             Bundle bundle = new Bundle();
             bundle.putString(GROUP,group);
             bundle.putString(SHOP_ID,shopId);
-            creator.add(group,ShowGoodsFragment.class,bundle);
+            creator.add(group,ShopShowGoodsFragment.class,bundle);
         }
         FragmentStatePagerItemAdapter adapter = new FragmentStatePagerItemAdapter(getSupportFragmentManager(),creator.create());
         viewPager.setAdapter(adapter);
@@ -253,6 +259,29 @@ public class ShopShowGoodsAct extends AbsActivity {
     protected void onDestroy() {
         actDestory = true;
         super.onDestroy();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == SHOP_DETAIL && resultCode == RESULT_OK){
+            int collected = data.getIntExtra(ShopDetailAct.CURRENT_COLLECTION_STATE,-1);
+            if(collected == 1){
+                collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_p));
+                mShopInfo.setIs_collected(1);//使本地数据与服务器同步
+            }else if(collected == 0){
+                collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_n));
+                mShopInfo.setIs_collected(0);
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        //为“我的收藏”界面返回当前商铺的收藏状态
+        Intent data = new Intent();
+        data.putExtra(SHOP_CURRENT_COLLECT_STATE,mShopInfo.getIs_collected());
+        setResult(RESULT_OK,data);
+        super.onBackPressed();
     }
 
     private View.OnClickListener getGroupClickListener = new View.OnClickListener() {

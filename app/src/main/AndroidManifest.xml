@@ -30,7 +30,7 @@
         <activity android:name=".ui.activity.Market.GoodDetailAct"/>
         <activity android:name=".ui.activity.Market.ShopShowGoodsAct"/>
         <activity android:name=".ui.activity.Market.ShopDetailAct"/>
-        <activity android:name=".ui.activity.Market.ReportSellerAct"/>
+        <activity android:name=".ui.activity.Market.ReportShopAct"/>
         <activity android:name=".ui.activity.Personal.MyCollectionAct"/>
         <activity android:name=".ui.activity.Personal.SettingAct"/>
         <activity android:name=".ui.activity.Personal.CouponCardAct"/>
@@ -57,38 +57,38 @@
             android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ui.activity.Order.RefundAct"/>
 
-        <!-- umeng-->
-        <!--<meta-data android:name="UMENG_APPKEY" android:value="5625eac167e58e4e1f001985"/>-->
-        <!--<activity-->
-            <!--android:name="com.umeng.socialize.view.ShareActivity"-->
-            <!--android:configChanges="orientation|keyboard"-->
-            <!--android:launchMode="singleTask"-->
-            <!--android:noHistory="true"-->
-            <!--android:theme="@style/Theme.UMDialog"-->
-            <!--android:windowSoftInputMode="stateVisible|adjustResize"/>-->
-        <!--<activity-->
-            <!--android:name="com.tencent.tauth.AuthActivity"-->
-            <!--android:launchMode="singleTask"-->
-            <!--android:noHistory="true" >-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.VIEW" />-->
+         <!--umeng-->
+        <meta-data android:name="UMENG_APPKEY" android:value="5625eac167e58e4e1f001985"/>
+        <activity
+            android:name="com.umeng.socialize.view.ShareActivity"
+            android:configChanges="orientation|keyboard"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@style/Theme.UMDialog"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
-                <!--<category android:name="android.intent.category.BROWSABLE" />-->
-                <!--&lt;!&ndash; 100424468，如果你使用的公用账号，则不需要修改；否则修改成你在QQ开放平台申请的 APP ID&ndash;&gt;-->
-                <!--<data android:scheme="1104847133" />-->
-            <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name="com.tencent.connect.common.AssistActivity"-->
-            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
-            <!--android:screenOrientation="portrait">-->
-        <!--</activity>-->
-        <!--<activity-->
-            <!--android:name=".wxapi.WXEntryActivity"-->
-            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
-            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
-            <!--android:exported="true"-->
-            <!--android:screenOrientation="portrait" />-->
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- 100424468，如果你使用的公用账号，则不需要修改；否则修改成你在QQ开放平台申请的 APP ID-->
+                <data android:scheme="1104847133" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.tencent.connect.common.AssistActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
