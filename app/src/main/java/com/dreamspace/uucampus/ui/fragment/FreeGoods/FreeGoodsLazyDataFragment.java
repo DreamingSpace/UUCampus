@@ -9,6 +9,7 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.ShareData;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.IdleItem;
 import com.dreamspace.uucampus.model.api.SearchIdleRes;
@@ -29,6 +30,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     private int page = 1;
     private String order = null;   //popupWindow对应选中的order
     private boolean isFragDestroy = false;
+    private String location = null;
 
     public FreeGoodsLazyDataFragment() {
     }
@@ -75,7 +77,8 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     @Override
     public void getInitData() {
         category = ShareData.freeGoodsCategorys[FragmentPagerItem.getPosition(getArguments())];
-        Log.i("INFO", "TAG IS :" + category);
+        location = PreferenceUtils.getString(getActivity().getApplicationContext(), PreferenceUtils.Key.LOCATION);
+        Log.i("INFO", "TAG IS :" + category + " Location:" + location);
 
         loadingInitData();
     }
@@ -111,7 +114,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
 
     public void loadingDataByPage(int page, final OnRefreshListener onRefreshListener) {
         if (NetUtils.isNetworkConnected(getActivity().getApplicationContext())) {
-            ApiManager.getService(getActivity().getApplicationContext()).searchIdle(null, order, category, page, new Callback<SearchIdleRes>() {
+            ApiManager.getService(getActivity().getApplicationContext()).searchIdle(null, order, category, page, location, new Callback<SearchIdleRes>() {
                 @Override
                 public void success(SearchIdleRes searchIdleRes, Response response) {
                     if (searchIdleRes != null) {

@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
@@ -18,7 +17,6 @@ import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.model.api.GetIdleInfoRes;
 import com.dreamspace.uucampus.model.api.LikeIdleRes;
-import com.dreamspace.uucampus.ui.activity.Market.ShopShowGoodsAct;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsDetailBottomCommentFragment;
 import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsDetailBottomInfoFragment;
@@ -42,8 +40,6 @@ public class FreeGoodsDetailActivity extends AbsActivity {
     SmartTabLayout tabLayout;
     @Bind(R.id.free_good_detail_comment_view_pager)
     ViewPager detailViewPager;
-    @Bind(R.id.free_good_detail_shop_name_ll)
-    LinearLayout shopNameLl;
     @Bind(R.id.free_goods_detail_name_tv)
     TextView mGoodsNameTv;
     @Bind(R.id.free_goods_detail_user_name_tv)
@@ -99,7 +95,6 @@ public class FreeGoodsDetailActivity extends AbsActivity {
 
     @Override
     protected void initViews() {
-        initListeners();
 
     }
 
@@ -165,15 +160,6 @@ public class FreeGoodsDetailActivity extends AbsActivity {
         tabLayout.setViewPager(detailViewPager);
     }
 
-    private void initListeners(){
-
-        shopNameLl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readyGo(ShopShowGoodsAct.class);    //进入个人信息中心
-            }
-        });
-    }
 
     @OnClick(R.id.free_good_detail_like_no_click_iv)
     void like(){

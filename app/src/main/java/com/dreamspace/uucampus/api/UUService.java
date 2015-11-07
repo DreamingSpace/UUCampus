@@ -299,7 +299,7 @@ public interface UUService {
 
     //闲置搜索
     @GET("/idle/search/")
-    void searchIdle(@Query("keyword")String keyword,@Query("order")String order,@Query("category")String category,@Query("page")int page,Callback<SearchIdleRes>cb);
+    void searchIdle(@Query("keyword")String keyword,@Query("order")String order,@Query("category")String category,@Query("page")int page,@Query("location")String location,Callback<SearchIdleRes>cb);
 
     //闲置点赞
     @POST("/idle/{idle_id}/like/")
