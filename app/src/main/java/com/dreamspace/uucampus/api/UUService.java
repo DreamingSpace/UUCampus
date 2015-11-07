@@ -5,11 +5,12 @@ import com.dreamspace.uucampus.model.AllGoodsCommentRes;
 import com.dreamspace.uucampus.model.Labels;
 import com.dreamspace.uucampus.model.api.AddGoodsCollectionRes;
 import com.dreamspace.uucampus.model.api.AddGoodsCommentRes;
+import com.dreamspace.uucampus.model.api.AddIdleCollectionRes;
 import com.dreamspace.uucampus.model.api.AddIdleCommentRes;
 import com.dreamspace.uucampus.model.api.AddShopCollectionRes;
 import com.dreamspace.uucampus.model.api.AddShopCommentRes;
+import com.dreamspace.uucampus.model.api.AllCategoryRes;
 import com.dreamspace.uucampus.model.api.AllGoodsCollectionRes;
-import com.dreamspace.uucampus.model.api.AllGoodsCommentItemRes;
 import com.dreamspace.uucampus.model.api.CategoryReq;
 import com.dreamspace.uucampus.model.api.CheckUpdateRes;
 import com.dreamspace.uucampus.model.api.CommitReportReq;
@@ -26,11 +27,10 @@ import com.dreamspace.uucampus.model.api.CreateShopCategoryRes;
 import com.dreamspace.uucampus.model.api.CreateShopDiscountRes;
 import com.dreamspace.uucampus.model.api.CreateShopReq;
 import com.dreamspace.uucampus.model.api.CreateShopRes;
-import com.dreamspace.uucampus.model.api.AllCategoryRes;
 import com.dreamspace.uucampus.model.api.GetIdleInfoRes;
+import com.dreamspace.uucampus.model.api.GetMyIdleRes;
 import com.dreamspace.uucampus.model.api.GoodsInfoRes;
 import com.dreamspace.uucampus.model.api.IdleAllCommentRes;
-import com.dreamspace.uucampus.model.api.GetMyIdleRes;
 import com.dreamspace.uucampus.model.api.LikeGoodsRes;
 import com.dreamspace.uucampus.model.api.LikeIdleRes;
 import com.dreamspace.uucampus.model.api.LocationAllRes;
@@ -324,6 +324,16 @@ public interface UUService {
     //评论有用取消
     @DELETE("/idle/{idle_id}/comment/{idle_comment_id}/useful/")
     void cancelIdleCommentUseful(@Path("idle_id")String idle_id,@Path("idle_comment_id")String idle_comment_id,Callback<Response> cb);
+
+
+    //闲置收藏添加
+    @POST("/idle/collection/{idle_id}")
+    void addIdleCollection(@Path("idle_id")String idle_id,Callback<AddIdleCollectionRes>cb);
+
+    //闲置收藏删除
+    @DELETE("/idle/collection/{idle_id}")
+    void deleteIdleCollection(@Path("idle_id")String idle_id,Callback<Response>cb);
+
 
 //校区
     //校区创建

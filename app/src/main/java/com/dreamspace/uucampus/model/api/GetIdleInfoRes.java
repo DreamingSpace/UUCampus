@@ -14,6 +14,10 @@ public class GetIdleInfoRes {
     private String last_update;
     private String user_id;
     private String user_name;  //出售者
+    private String user_image;
+    private String phone_num;
+    private String like_clicked;
+    private String is_collected;
 
     public String getName() {
         return name;
@@ -93,5 +97,37 @@ public class GetIdleInfoRes {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    public String getUser_image() {
+        return user_image;
+    }
+
+    public void setUser_image(String user_image) {
+        this.user_image = user_image;
+    }
+
+    public String getPhone_num() {
+        return phone_num;
+    }
+
+    public void setPhone_num(String phone_num) {
+        this.phone_num = phone_num;
+    }
+
+    public String getLike_clicked() {
+        return like_clicked;
+    }
+
+    public void setLike_clicked(String like_clicked) {
+        this.like_clicked = like_clicked;
+    }
+
+    public String getIs_collected() {
+        return is_collected;
+    }
+
+    public void setIs_collected(String is_collected) {
+        this.is_collected = is_collected;
     }
 }

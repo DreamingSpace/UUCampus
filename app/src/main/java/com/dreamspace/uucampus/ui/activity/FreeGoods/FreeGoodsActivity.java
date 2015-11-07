@@ -1,15 +1,23 @@
 package com.dreamspace.uucampus.ui.activity.FreeGoods;
 
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.common.ShareData;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
-import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsFragment;
+import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsLazyDataFragment;
 import com.dreamspace.uucampus.ui.popupwindow.GoodsSortPopupWindow;
+import com.dreamspace.uucampus.widget.smartlayout.SmartTabLayout;
 import com.melnykov.fab.FloatingActionButton;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
+
+import java.util.Arrays;
+import java.util.List;
 
 import butterknife.Bind;
 
@@ -22,7 +30,14 @@ public class FreeGoodsActivity extends AbsActivity {
     FloatingActionButton mPublishBtn;
     @Bind(R.id.free_goods_shadow_view)
     View shadowView;
+    @Bind(R.id.free_goods_view_pager)
+    ViewPager mViewPager;
+    @Bind(R.id.free_goods_smart_tab)
+    SmartTabLayout mSmartTabLayout;
+
     GoodsSortPopupWindow popupWindow;
+    //    private int popup=0;
+    public static final String EXTRA_POPUP_WINDOW = "popupWindow";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +51,16 @@ public class FreeGoodsActivity extends AbsActivity {
 
     @Override
     protected void prepareDatas() {
-        FreeGoodsFragment fragment = new FreeGoodsFragment();
-        getSupportFragmentManager().beginTransaction().
-                add(R.id.free_goods_tab_container, fragment).
-                commit();
+//        FreeGoodsFragment fragment = new FreeGoodsFragment();
+//        getSupportFragmentManager().beginTransaction().
+//                add(R.id.free_goods_tab_container, fragment).
+//                commit();
     }
 
     @Override
     protected void initViews() {
-        popupWindow = new GoodsSortPopupWindow(this,shadowView);
+        initFragment();   //初始化viewpager与smartLayout
+        popupWindow = new GoodsSortPopupWindow(this, shadowView);
         initListeners();
         mPublishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +75,7 @@ public class FreeGoodsActivity extends AbsActivity {
         return null;
     }
 
-    private void initListeners(){
+    private void initListeners() {
         popupWindow.setMostPopularOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,11 +125,24 @@ public class FreeGoodsActivity extends AbsActivity {
 
     @Override
     public void onBackPressed() {
-        if(popupWindow != null && popupWindow.isShowing()){
+        if (popupWindow != null && popupWindow.isShowing()) {
             popupWindow.dismiss();
-        }else{
+        } else {
             super.onBackPressed();
         }
+    }
+
+    void initFragment() {
+        final List<String> items = Arrays.asList(ShareData.freeGoodsCategorys);
+        FragmentStatePagerItemAdapter mAdapter = new FragmentStatePagerItemAdapter(getSupportFragmentManager(),
+                FragmentPagerItems.with(this)
+                        .add(items.get(0), FreeGoodsLazyDataFragment.class)
+                        .add(items.get(1), FreeGoodsLazyDataFragment.class)
+                        .add(items.get(2), FreeGoodsLazyDataFragment.class)
+                        .add(items.get(3), FreeGoodsLazyDataFragment.class)
+                        .create());
+        mViewPager.setAdapter(mAdapter);
+        mSmartTabLayout.setViewPager(mViewPager);
     }
 
 }

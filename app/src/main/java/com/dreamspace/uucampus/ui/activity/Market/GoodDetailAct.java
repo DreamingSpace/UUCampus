@@ -22,8 +22,8 @@ import com.dreamspace.uucampus.common.Share;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.DensityUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.api.AddGoodsCollectionRes;
-import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.GoodsInfoRes;
 import com.dreamspace.uucampus.ui.activity.Order.OrderConfirmAct;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
@@ -116,6 +116,9 @@ public class GoodDetailAct extends AbsActivity {
     protected void prepareDatas() {
         Bundle bundle = getIntent().getExtras();
         goodId = bundle.getString(GOOD_ID);
+
+        TLog.i("good_id:",goodId);
+
         getGoodInfo();
 
         //初始化分享内容

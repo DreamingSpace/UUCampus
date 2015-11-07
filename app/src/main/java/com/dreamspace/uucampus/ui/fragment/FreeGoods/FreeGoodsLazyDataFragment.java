@@ -12,6 +12,7 @@ import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.IdleItem;
 import com.dreamspace.uucampus.model.api.SearchIdleRes;
+import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsActivity;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 
 import java.util.List;
@@ -26,8 +27,9 @@ import retrofit.client.Response;
  */
 public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleItem> {
     private String category = ShareData.freeGoodsCategorys[0];
-    private int page=1;
-    private String order=null;   //popupWindow对应选中的order
+    private int page = 1;
+    private String order = null;   //popupWindow对应选中的order
+    private int popupWindow = 10;
 
     public FreeGoodsLazyDataFragment() {
     }
@@ -50,7 +52,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
 
     @Override
     public void onPullDown() { //下拉刷新，加载最新的
-        page=1;
+        page = 1;
         loadingDataByPage(page, new OnRefreshListener<IdleItem>() {
             @Override
             public void onFinish(List<IdleItem> mEntities) {
@@ -76,12 +78,19 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
         category = ShareData.freeGoodsCategorys[FragmentPagerItem.getPosition(getArguments())];
         Log.i("INFO", "TAG IS :" + category);
 
+        popupWindow = getArguments().getInt(FreeGoodsActivity.EXTRA_POPUP_WINDOW);
+        if (popupWindow != 10) {
+            order = ShareData.popupWindowOrder[popupWindow];
+        } else {
+            order = null;    //未选择popupWindow事件的默认值
+        }
+        TLog.i("popup window:", order);
         loadingInitData();
     }
 
     public void loadingInitData() {
         toggleShowLoading(true, getString(R.string.common_loading_message));
-        page=1;
+        page = 1;
         loadingDataByPage(page, new OnRefreshListener<IdleItem>() {
             @Override
             public void onFinish(List<IdleItem> mEntities) {
@@ -90,7 +99,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
                 } else {
                     toggleShowLoading(false, null);
                     refreshDate(mEntities, FreeGoodsLazyListFragment.LOAD);
-                    TLog.i("获取的闲置列表：",mEntities.get(0).getIdle_id()+" useName:"+mEntities.get(0).getUser_name());
+                    TLog.i("获取的闲置列表：", mEntities.get(0).getIdle_id() + " useName:" + mEntities.get(0).getUser_name());
                 }
             }
 

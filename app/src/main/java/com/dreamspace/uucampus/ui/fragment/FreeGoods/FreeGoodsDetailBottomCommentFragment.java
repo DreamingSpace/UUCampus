@@ -87,6 +87,7 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
                 onPullUp();
             }
         });
+
     }
 
 
@@ -108,17 +109,18 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
                 ApiManager.getService(getActivity().getApplicationContext()).addIdleComment(idle_id, req, new Callback<AddIdleCommentRes>() {
                     @Override
                     public void success(AddIdleCommentRes addIdleCommentRes, Response response) {
-                        loadingCommentByPage(page, new OnRefreshListener() {
-                            @Override
-                            public void onFinish(List mEntities) {
-
-                            }
-
-                            @Override
-                            public void onError() {
-
-                            }
-                        });
+                        initCommentData();
+//                        loadingCommentByPage(page, new OnRefreshListener() {
+//                            @Override
+//                            public void onFinish(List mEntities) {
+//                                initCommentData();
+//                            }
+//
+//                            @Override
+//                            public void onError() {
+//
+//                            }
+//                        });
                         pd.dismiss();
                     }
 
@@ -233,7 +235,7 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
                                 loadingCommentByPage(page, new OnRefreshListener() {
                                     @Override
                                     public void onFinish(List mEntities) {
-                                        refreshDate(mEntities,ADD);
+//                                        refreshDate(mEntities,ADD);
                                     }
 
                                     @Override

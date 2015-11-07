@@ -13,7 +13,7 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
-import com.dreamspace.uucampus.model.api.AddGoodsCollectionRes;
+import com.dreamspace.uucampus.model.api.AddIdleCollectionRes;
 import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsDetailActivity;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
@@ -40,8 +40,10 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
 
     private boolean bCollect=false;
     public static final String EXTRA_CONTENT="content";
+    public static final String EXTRA_IS_COLLECTION="is_collection";
     private String idle_id=null;
     private String content=null;
+    private String is_collection=null;
 
     public static FreeGoodsDetailBottomInfoFragment newInstance() {
         FreeGoodsDetailBottomInfoFragment fragment = new FreeGoodsDetailBottomInfoFragment();
@@ -71,7 +73,18 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
     @Override
     protected void initViewsAndEvents() {
         content =getArguments().getString(EXTRA_CONTENT);
+        is_collection=getArguments().getString(EXTRA_IS_COLLECTION);
         mDetailTv.setText(content);
+        if(Integer.parseInt(is_collection)==1){  //已收藏状态
+            mCollectIv.setImageResource(R.drawable.xiangqing_tab_bar_collect_p);
+            mCollectTv.setTextColor(getResources().getColor(R.color.text_pressed));
+            bCollect = true;
+        }else{                                 //未收藏状态
+            mCollectIv.setImageResource(R.drawable.xiangqing_tab_bar_collect_n);
+            mCollectTv.setTextColor(getResources().getColor(R.color.text_normal));
+            bCollect = false;
+        }
+
         mConsult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,12 +103,12 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
             public void onClick(View v) {
                 if(bCollect){
                     mCollectIv.setImageResource(R.drawable.xiangqing_tab_bar_collect_n);
-                    mCollectTv.setTextColor(getResources().getColor(R.color.text_pressed));
+                    mCollectTv.setTextColor(getResources().getColor(R.color.text_normal));
                     bCollect = false;
                     updateCollect(bCollect);
                 }else{
                     mCollectIv.setImageResource(R.drawable.xiangqing_tab_bar_collect_p);
-                    mCollectTv.setTextColor(getResources().getColor(R.color.text_normal));
+                    mCollectTv.setTextColor(getResources().getColor(R.color.text_pressed));
                     bCollect=true;
                     updateCollect(bCollect);
                 }
@@ -107,25 +120,26 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
         if(NetUtils.isNetworkConnected(getActivity().getApplicationContext())){
             if(bCollect) {
                 final ProgressDialog pd =ProgressDialog.show(getActivity(), "", "正在收藏", true, false);
-                ApiManager.getService(getActivity().getApplicationContext()).addGoodsCollection(idle_id, new Callback<AddGoodsCollectionRes>() {
+                ApiManager.getService(getActivity().getApplicationContext()).addIdleCollection(idle_id, new Callback<AddIdleCollectionRes>() {
                     @Override
-                    public void success(AddGoodsCollectionRes addGoodsCollectionRes, Response response) {
-                        TLog.i("成功收藏:",addGoodsCollectionRes.getGoods_collection_id()+"status"+response.getStatus());
+                    public void success(AddIdleCollectionRes addIdleCollectionRes, Response response) {
+                        TLog.i("成功收藏:", addIdleCollectionRes.getIdle_collection_id() + "status" + response.getStatus());
                         pd.dismiss();
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
+                        TLog.i("error:", error.getMessage());
                         showInnerError(error);
                         pd.dismiss();
                     }
-            });
+                });
             }else{
                 final ProgressDialog pd =ProgressDialog.show(getActivity(), "", "取消收藏", true, false);
-                ApiManager.getService(getActivity().getApplicationContext()).deleteGoodsCollection(idle_id, new Callback<Response>() {
+                ApiManager.getService(getActivity().getApplicationContext()).deleteIdleCollection(idle_id, new Callback<Response>() {
                     @Override
                     public void success(Response response, Response response2) {
-                        TLog.i("取消收藏：","yes");
+                        TLog.i("取消收藏：", "yes");
                         pd.dismiss();
                     }
 

@@ -1,6 +1,7 @@
 package com.dreamspace.uucampus.ui.activity.FreeGoods;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
+import com.dreamspace.uucampus.common.Share;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
@@ -24,9 +26,11 @@ import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsDetailBottomInfoFr
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
+import com.umeng.socialize.sso.UMSsoHandler;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -57,6 +61,8 @@ public class FreeGoodsDetailActivity extends AbsActivity {
     TextView mViewTv;
     @Bind(R.id.free_good_detail_like_no_click_iv)
     ImageView mLikeIv;
+    @Bind(R.id.free_goods_detail_shop_name_image_cv)
+    CircleImageView mUserImage;
 
     public static final String TYPE = "type";
     public static final String DETAIL = "detail";
@@ -65,8 +71,10 @@ public class FreeGoodsDetailActivity extends AbsActivity {
 
     private String idle_id=null;
     private String content=null;
+    private String is_collection=null;
     private boolean bLike=false;
     private int likeNum=0;
+    private Share share;
 
     @Override
     protected int getContentView() {
@@ -77,7 +85,16 @@ public class FreeGoodsDetailActivity extends AbsActivity {
     protected void prepareDatas() {
         Bundle bundle = getIntent().getExtras();
         idle_id = bundle.getString(EXTRA_IDLE_ID);
-        loadingInitData();
+
+        //初始化分享内容
+        share = new Share(this);
+        share.ShareInQQ("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
+        share.ShareInWechat("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
+        share.ShareInQZone("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
+        share.ShareInWechatCircle("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
+        share.ShareInSina("good内容", R.drawable.banner1);
+
+        loadingInitData();  //初始化界面数据
     }
 
     @Override
@@ -109,7 +126,6 @@ public class FreeGoodsDetailActivity extends AbsActivity {
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.good_detial_act_menu, menu);
@@ -118,7 +134,21 @@ public class FreeGoodsDetailActivity extends AbsActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.good_detail_action_share){
+            share.getController().openShare(this,false);
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /**使用SSO授权必须添加如下代码 */
+        UMSsoHandler ssoHandler = share.getController().getConfig().getSsoHandler(requestCode) ;
+        if(ssoHandler != null){
+            ssoHandler.authorizeCallBack(requestCode, resultCode, data);
+        }
     }
 
     private void initStl(){
@@ -206,6 +236,7 @@ public class FreeGoodsDetailActivity extends AbsActivity {
                 bundle.putString(TYPE,DETAIL);
                 bundle.putString(EXTRA_IDLE_ID,idle_id);
                 bundle.putString(FreeGoodsDetailBottomInfoFragment.EXTRA_CONTENT,content);
+                bundle.putString(FreeGoodsDetailBottomInfoFragment.EXTRA_IS_COLLECTION,is_collection);
             }else{
                 bundle.putString(TYPE,COMMENT);
                 bundle.putString(EXTRA_IDLE_ID,idle_id);
@@ -218,19 +249,30 @@ public class FreeGoodsDetailActivity extends AbsActivity {
         CommonUtils.showImageWithGlide(this, mImageIv, getIdleInfoRes.getImage());
         mGoodsNameTv.setText(getIdleInfoRes.getName());
         mUserNameTv.setText(getIdleInfoRes.getUser_name());
-        mPriceTv.setText(getResources().getString(R.string.yuan)+String.valueOf(getIdleInfoRes.getPrice()));
+        CommonUtils.showImageWithGlide(this, mUserImage, getIdleInfoRes.getUser_image());
+        mPriceTv.setText(String.valueOf(getIdleInfoRes.getPrice())+getResources().getString(R.string.yuan));
         mViewTv.setText(String.valueOf(getIdleInfoRes.getView_number())+getResources().getString(R.string.interest)); //感兴趣的人
         mLikeTv.setText(String.valueOf(getIdleInfoRes.getLike_number())+getResources().getString(R.string.like));
         mDateTv.setText(getIdleInfoRes.getLast_update());
 
-        content =getIdleInfoRes.getDescription();
+        if(Integer.parseInt(getIdleInfoRes.getLike_clicked())==1){ //已点赞状态
+            mLikeIv.setImageResource(R.drawable.xiangqing_btn_dianzan);
+            bLike=true;
+        }else{
+            mLikeIv.setImageResource(R.drawable.xiangqing_btn_dianzan_p);  //未点赞状态
+            bLike=false;
+        }
+
         likeNum=getIdleInfoRes.getLike_number();
+
         //保存信息传到子fragment中显示与请求
+        content =getIdleInfoRes.getDescription();
+        is_collection=getIdleInfoRes.getIs_collected();
 
-        TLog.i("闲置详情初始化：","userName:"+getIdleInfoRes.getUser_name()+" user_id:"+getIdleInfoRes.getUser_id()+" likeNum:"+likeNum);
-        initStl();  //必须在idle_id和content都拿到后再传给fragment
+//        TLog.i("闲置详情初始化：","image:"+getIdleInfoRes.getUser_image()+"  like_clicked:"+getIdleInfoRes.getLike_clicked()
+//                +"  is_collected:"+getIdleInfoRes.getIs_collected());
+        initStl();  //必须在idle_id和content，is_collection都拿到后再传给fragment
     }
-
 
     private void updateLikeNum(int likeNum) {  //点赞实时更新点赞数，同时写入后台
         mLikeTv.setText(String.valueOf(likeNum+getResources().getString(R.string.like)));

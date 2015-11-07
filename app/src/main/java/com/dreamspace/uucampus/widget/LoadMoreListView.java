@@ -120,7 +120,7 @@ public class LoadMoreListView extends ListView implements OnScrollListener {
 
         if (mOnLoadMoreListener != null) {
 
-            boolean loadMore = firstVisibleItem + visibleItemCount >= totalItemCount;
+            boolean loadMore = firstVisibleItem + visibleItemCount >= totalItemCount-1;
 
             if (!mIsLoadingMore && loadMore
                     && mCurrentScrollState != SCROLL_STATE_IDLE) {

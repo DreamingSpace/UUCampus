@@ -11,10 +11,37 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tl_custom">
 
-        <FrameLayout
-            android:id="@+id/free_goods_tab_container"
+        <!--<FrameLayout-->
+        <!--android:id="@+id/free_goods_tab_container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.dreamspace.uucampus.widget.smartlayout.SmartTabLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/free_goods_smart_tab"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@color/white"
+                app:stl_customTabTextLayoutId="@layout/custom_tab"
+                app:stl_distributeEvenly="true"
+                app:stl_dividerColor="@android:color/transparent"
+                app:stl_dividerThickness="0dp"
+                app:stl_indicatorColor="#06C1AE"
+                app:stl_indicatorCornerRadius="2dp"
+                app:stl_indicatorInterpolation="smart"
+                app:stl_indicatorThickness="3dp"
+                app:stl_indicatorWithoutPadding="true"
+                app:stl_underlineColor="@android:color/transparent" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/free_goods_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
         <com.melnykov.fab.FloatingActionButton xmlns:fab="http://schemas.android.com/apk/res-auto"
             android:id="@+id/free_goods_publish_btn"

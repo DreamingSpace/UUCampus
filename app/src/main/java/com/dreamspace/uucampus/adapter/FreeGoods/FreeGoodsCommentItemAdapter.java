@@ -45,6 +45,7 @@ public class FreeGoodsCommentItemAdapter extends BasisAdapter<FreeGoodsCommentIt
         holder.bUseful =entity.isUseful_clicked();    //获取当前评论是否点击
         if ( holder.bUseful) {
             holder.mUsefulIv.setImageResource(R.drawable.xiangqing_comment_btn_dianzan_p);
+
         } else {
             holder.mUsefulIv.setImageResource(R.drawable.xiangqing_comment_btn_dianzan);
         }
@@ -57,23 +58,26 @@ public class FreeGoodsCommentItemAdapter extends BasisAdapter<FreeGoodsCommentIt
                 if ( holder.bUseful) {    //取消有用
                     holder.bUseful = false;
                     holder.mUseful-=1;
-
+                    //界面更新
                     holder.mUsefulTv.setText(String.valueOf(holder.mUseful));
                     holder.mUsefulIv.setImageResource(R.drawable.xiangqing_comment_btn_dianzan);
+                    //缓冲数据更新
+                    entity.setUseful_clicked(holder.bUseful);
+                    entity.setUseful_number(holder.mUseful);
+                    //后端数据更新
                     if (updateData != null) {
                         updateData.updateUsefulData(entity.getId(),  holder.bUseful);
                     }
-                    TLog.i("取消有用评论:", " comment_id" + entity.getId() + "有用评论点击" +  holder.bUseful);
                 } else {          //添加有用
                     holder.bUseful = true;
                     holder.mUseful += 1;
-
                     holder.mUsefulTv.setText(String.valueOf(holder.mUseful));
                     holder.mUsefulIv.setImageResource(R.drawable.xiangqing_comment_btn_dianzan_p);
+                    entity.setUseful_clicked(holder.bUseful);
+                    entity.setUseful_number(holder.mUseful);
                     if (updateData != null) {
                         updateData.updateUsefulData(entity.getId(),  holder.bUseful);
                     }
-                    TLog.i("添加有用评论:", " comment_id" + entity.getId() + "有用评论点击" +  holder.bUseful);
                 }
             }
         });
