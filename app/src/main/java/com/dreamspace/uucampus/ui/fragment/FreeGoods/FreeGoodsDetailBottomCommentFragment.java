@@ -110,17 +110,6 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
                     @Override
                     public void success(AddIdleCommentRes addIdleCommentRes, Response response) {
                         initCommentData();
-//                        loadingCommentByPage(page, new OnRefreshListener() {
-//                            @Override
-//                            public void onFinish(List mEntities) {
-//                                initCommentData();
-//                            }
-//
-//                            @Override
-//                            public void onError() {
-//
-//                            }
-//                        });
                         pd.dismiss();
                     }
 

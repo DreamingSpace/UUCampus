@@ -164,6 +164,8 @@
     <string name="report_shop">举 报 商 家</string>
     <string name="report_shop1">举报商家</string>
     <string name="report_shop_hint">我们会根据您的反馈及时处理，保证您的权益</string>
+    <string name="report_success">举报成功</string>
+    <string name="report_cant_less_than_10">举报内容不能小于10个字~</string>
 
     <!-- mine strings used-->
     <string name="personal_center">个人中心</string>
@@ -200,6 +202,12 @@
     <string name="choose_enroll_year">选择校区</string>
     <string name="uploading_image">图片上传中</string>
     <string name="get_loaction_error">没有获取到校区信息，是否重新获取?</string>
+    <string name="delete_success">删除成功~</string>
+    <string name="in_delete">删除中</string>
+    <string name="pull_off_success">下架成功~</string>
+    <string name="on_sale_success">上架成功~</string>
+    <string name="in_pull_off">下架中</string>
+    <string name="in_on_sale">上架中</string>
 
     <!-- login strings used-->
     <string name="login_username_hint">请输入您的手机号</string>
@@ -257,4 +265,6 @@
     <string name="pay_platform_handle_finish">支付平台处理完成</string>
     <string name="refund_success">退款成功</string>
     <string name="refund_detail">退款详情</string>
+    <string name="check_network_to_get_card_info">当前网络不可用，获取优惠卡信息失败，请检查网络~</string>
+    <string name="get_card_info_fail">获取优惠卡信息失败~</string>
 </resources>

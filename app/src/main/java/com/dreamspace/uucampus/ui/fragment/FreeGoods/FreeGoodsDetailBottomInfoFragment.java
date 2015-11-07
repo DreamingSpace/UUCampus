@@ -123,7 +123,7 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
                 ApiManager.getService(getActivity().getApplicationContext()).addIdleCollection(idle_id, new Callback<AddIdleCollectionRes>() {
                     @Override
                     public void success(AddIdleCollectionRes addIdleCollectionRes, Response response) {
-                        TLog.i("成功收藏:", addIdleCollectionRes.getIdle_collection_id() + "status" + response.getStatus());
+                        showToast("成功收藏");
                         pd.dismiss();
                     }
 
@@ -139,7 +139,7 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
                 ApiManager.getService(getActivity().getApplicationContext()).deleteIdleCollection(idle_id, new Callback<Response>() {
                     @Override
                     public void success(Response response, Response response2) {
-                        TLog.i("取消收藏：", "yes");
+                        showToast("取消收藏");
                         pd.dismiss();
                     }
 

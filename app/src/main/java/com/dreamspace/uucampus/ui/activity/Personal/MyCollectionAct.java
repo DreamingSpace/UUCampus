@@ -19,15 +19,20 @@ public class MyCollectionAct extends AbsActivity {
     RelativeLayout goodsRl;
     @Bind(R.id.seller_rl)
     RelativeLayout sellerRl;
+    @Bind(R.id.idle_rl)
+    RelativeLayout idleRl;
     @Bind(R.id.goods_tab_bottom_iv)
     ImageView goodsBottom;
     @Bind(R.id.seller_tab_bottom_iv)
     ImageView sellerBottom;
+    @Bind(R.id.idle_tab_bottom_iv)
+    ImageView idleBottom;
 
     public static final String TYPE = "type";
 
     private CollectionFragment goodsFragment;
     private CollectionFragment sellerFragment;
+    private CollectionFragment idleFragment;
     //当前所在的fragment
     private int currentIndex = 0;
 
@@ -60,8 +65,10 @@ public class MyCollectionAct extends AbsActivity {
                 if(currentIndex != 0){
                     goodsRl.setSelected(true);
                     sellerRl.setSelected(false);
+                    idleRl.setSelected(false);
                     goodsBottom.setBackgroundColor(getResources().getColor(R.color.app_theme_color));
                     sellerBottom.setBackgroundColor(getResources().getColor(R.color.white));
+                    idleBottom.setBackgroundColor(getResources().getColor(R.color.white));
                     currentIndex = 0;
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,goodsFragment)
                             .commit();
@@ -75,10 +82,29 @@ public class MyCollectionAct extends AbsActivity {
                 if(currentIndex != 1){
                     goodsRl.setSelected(false);
                     sellerRl.setSelected(true);
+                    idleRl.setSelected(false);
                     goodsBottom.setBackgroundColor(getResources().getColor(R.color.white));
                     sellerBottom.setBackgroundColor(getResources().getColor(R.color.app_theme_color));
+                    idleBottom.setBackgroundColor(getResources().getColor(R.color.white));
                     currentIndex = 1;
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,sellerFragment)
+                            .commit();
+                }
+            }
+        });
+
+        idleRl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(currentIndex != 2){
+                    goodsRl.setSelected(false);
+                    sellerRl.setSelected(false);
+                    idleRl.setSelected(true);
+                    goodsBottom.setBackgroundColor(getResources().getColor(R.color.white));
+                    sellerBottom.setBackgroundColor(getResources().getColor(R.color.white));
+                    idleBottom.setBackgroundColor(getResources().getColor(R.color.app_theme_color));
+                    currentIndex = 2;
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,idleFragment)
                             .commit();
                 }
             }
@@ -94,8 +120,13 @@ public class MyCollectionAct extends AbsActivity {
 
         sellerFragment = new CollectionFragment();
         Bundle sellerBundle = new Bundle();
-        sellerBundle.putString(TYPE,getResources().getString(R.string.seller));
+        sellerBundle.putString(TYPE, getResources().getString(R.string.seller));
         sellerFragment.setArguments(sellerBundle);
+
+        idleFragment = new CollectionFragment();
+        Bundle idleBundle = new Bundle();
+        idleBundle.putString(TYPE,getString(R.string.free_goods));
+        idleFragment.setArguments(idleBundle);
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,goodsFragment)
                 .commit();

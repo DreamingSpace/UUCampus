@@ -7,8 +7,8 @@ public class ShopCollectionItem {
     private String shop_id;
     private String name;
     private String image;
-    private int view_number;
-    private int like_number;
+    private String address;
+    private String main;
 
     public String getShop_id() {
         return shop_id;
@@ -34,19 +34,19 @@ public class ShopCollectionItem {
         this.image = image;
     }
 
-    public int getView_number() {
-        return view_number;
+    public String getAddress() {
+        return address;
     }
 
-    public void setView_number(int view_number) {
-        this.view_number = view_number;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public int getLike_number() {
-        return like_number;
+    public String getMain() {
+        return main;
     }
 
-    public void setLike_number(int like_number) {
-        this.like_number = like_number;
+    public void setMain(String main) {
+        this.main = main;
     }
 }

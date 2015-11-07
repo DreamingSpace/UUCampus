@@ -4,14 +4,15 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.market.GoodsListAdapter;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.model.api.SearchGoodsRes;
-import com.dreamspace.uucampus.ui.activity.Market.FastInAct;
 import com.dreamspace.uucampus.ui.activity.Market.GoodDetailAct;
+import com.dreamspace.uucampus.ui.activity.Market.ShopShowGoodsAct;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.widget.LoadMoreListView;
 
@@ -29,9 +30,11 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
     SwipeRefreshLayout swipeRefreshLayout;
     @Bind(R.id.load_more_lv)
     LoadMoreListView loadMoreListView;
+    @Bind(R.id.content_ll)
+    LinearLayout contentLl;
 
-    private String label;
-    private String category;
+    private String shopId;//当前商铺的shopid
+    private String group;//当前group的名称
     private int goodPage = 1;//当前good的page
     private boolean fragmentDestory = false;
     private boolean firstGetGoods = true;//判断是不是第一次获取数据，第一次获取数据需要显示“加载中”界面
@@ -39,15 +42,15 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //获取从activity传递过来的category和label，根据这两个属性获取自己要获取的内容
-        label = getArguments() == null? "null":getArguments().getString(FastInAct.LABEL);
-        category = getArguments() == null? "null":getArguments().getString(FastInAct.CATEGORY);
+        //获取从activity传递过来的shopid和group，根据这两个属性获取自己要获取的内容
+        shopId = getArguments() == null? "null":getArguments().getString(ShopShowGoodsAct.SHOP_ID);
+        group = getArguments() == null? "null":getArguments().getString(ShopShowGoodsAct.GROUP);
     }
 
     @Override
     protected void onFirstUserVisible() {
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.app_theme_color));
-        getGoods(null);
+        getGoods();
     }
 
     @Override
@@ -62,7 +65,7 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
 
     @Override
     protected View getLoadingTargetView() {
-        return swipeRefreshLayout;
+        return contentLl;
     }
 
     @Override
@@ -81,7 +84,7 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
             public void onLoadMore() {
                 loadMoreListView.setLoading(true);
                 goodPage++;
-                getGoods(null);
+                getGoods();
             }
         });
 
@@ -90,7 +93,7 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
             public void onRefresh() {
                 firstGetGoods = true;
                 goodPage = 1;
-                getGoods(null);
+                getGoods();
             }
         });
     }
@@ -100,8 +103,8 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
         return R.layout.fragment_show_items;
     }
 
-    //order需要根据用户的选择传递进来
-    private void getGoods(String order){
+    //获取商品
+    private void getGoods(){
         if(firstGetGoods){
             toggleShowLoading(true,null);
         }
@@ -115,7 +118,7 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
             return;
         }
 
-        ApiManager.getService(mContext).searchGoods(null, order, category, label, null, null, goodPage,
+        ApiManager.getService(mContext).searchGoods(null, null, null, null, group, shopId, goodPage,
                 new Callback<SearchGoodsRes>() {
                     @Override
                     public void success(SearchGoodsRes searchGoodsRes, Response response) {
@@ -157,15 +160,10 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
                 });
     }
 
-    //当更换排序方式时，activity对调用此方法
-    public void orderChange(String order){
-
-    }
-
     private View.OnClickListener getGoodsClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            getGoods(null);
+            getGoods();
         }
     };
 

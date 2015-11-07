@@ -12,7 +12,6 @@ import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.IdleItem;
 import com.dreamspace.uucampus.model.api.SearchIdleRes;
-import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsActivity;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 
 import java.util.List;
@@ -29,7 +28,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     private String category = ShareData.freeGoodsCategorys[0];
     private int page = 1;
     private String order = null;   //popupWindow对应选中的order
-    private int popupWindow = 10;
+    private boolean isFragDestroy = false;
 
     public FreeGoodsLazyDataFragment() {
     }
@@ -78,13 +77,6 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
         category = ShareData.freeGoodsCategorys[FragmentPagerItem.getPosition(getArguments())];
         Log.i("INFO", "TAG IS :" + category);
 
-        popupWindow = getArguments().getInt(FreeGoodsActivity.EXTRA_POPUP_WINDOW);
-        if (popupWindow != 10) {
-            order = ShareData.popupWindowOrder[popupWindow];
-        } else {
-            order = null;    //未选择popupWindow事件的默认值
-        }
-        TLog.i("popup window:", order);
         loadingInitData();
     }
 
@@ -94,12 +86,14 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
         loadingDataByPage(page, new OnRefreshListener<IdleItem>() {
             @Override
             public void onFinish(List<IdleItem> mEntities) {
-                if (mEntities != null && mEntities.size() == 0) {
-                    toggleShowEmpty(true, getString(R.string.common_empty_msg), null);
-                } else {
-                    toggleShowLoading(false, null);
-                    refreshDate(mEntities, FreeGoodsLazyListFragment.LOAD);
-                    TLog.i("获取的闲置列表：", mEntities.get(0).getIdle_id() + " useName:" + mEntities.get(0).getUser_name());
+                if (!isFragDestroy) {
+                    if (mEntities != null && mEntities.size() == 0) {
+                        toggleShowEmpty(true, getString(R.string.common_empty_msg), null);
+                    } else {
+                        toggleShowLoading(false, null);
+                        refreshDate(mEntities, FreeGoodsLazyListFragment.LOAD);
+                        TLog.i("获取的闲置列表：", mEntities.get(0).getIdle_id() + " useName:" + mEntities.get(0).getUser_name());
+                    }
                 }
             }
 
@@ -117,7 +111,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
 
     public void loadingDataByPage(int page, final OnRefreshListener onRefreshListener) {
         if (NetUtils.isNetworkConnected(getActivity().getApplicationContext())) {
-            ApiManager.getService(getActivity().getApplicationContext()).searchIdle(null, null, category, page, new Callback<SearchIdleRes>() {
+            ApiManager.getService(getActivity().getApplicationContext()).searchIdle(null, order, category, page, new Callback<SearchIdleRes>() {
                 @Override
                 public void success(SearchIdleRes searchIdleRes, Response response) {
                     if (searchIdleRes != null) {
@@ -139,5 +133,20 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
             showNetWorkError();
         }
 
+    }
+
+    //当更换排序方式时，activity对调用此方法
+    public void orderChange(String order) {
+        this.order = order;
+        TLog.i("排序方式:", order);
+
+        //更新当前页面数据
+        loadingInitData();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        isFragDestroy = true;
     }
 }

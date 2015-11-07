@@ -2,6 +2,7 @@ package com.dreamspace.uucampus.api;
 
 
 import com.dreamspace.uucampus.model.AllGoodsCommentRes;
+import com.dreamspace.uucampus.model.IdleCollectionRes;
 import com.dreamspace.uucampus.model.Labels;
 import com.dreamspace.uucampus.model.api.AddGoodsCollectionRes;
 import com.dreamspace.uucampus.model.api.AddGoodsCommentRes;
@@ -11,6 +12,7 @@ import com.dreamspace.uucampus.model.api.AddShopCollectionRes;
 import com.dreamspace.uucampus.model.api.AddShopCommentRes;
 import com.dreamspace.uucampus.model.api.AllCategoryRes;
 import com.dreamspace.uucampus.model.api.AllGoodsCollectionRes;
+import com.dreamspace.uucampus.model.api.Card;
 import com.dreamspace.uucampus.model.api.CategoryReq;
 import com.dreamspace.uucampus.model.api.CheckUpdateRes;
 import com.dreamspace.uucampus.model.api.CommitReportReq;
@@ -28,9 +30,9 @@ import com.dreamspace.uucampus.model.api.CreateShopDiscountRes;
 import com.dreamspace.uucampus.model.api.CreateShopReq;
 import com.dreamspace.uucampus.model.api.CreateShopRes;
 import com.dreamspace.uucampus.model.api.GetIdleInfoRes;
-import com.dreamspace.uucampus.model.api.GetMyIdleRes;
 import com.dreamspace.uucampus.model.api.GoodsInfoRes;
 import com.dreamspace.uucampus.model.api.IdleAllCommentRes;
+import com.dreamspace.uucampus.model.api.IdleInfoRes;
 import com.dreamspace.uucampus.model.api.LikeGoodsRes;
 import com.dreamspace.uucampus.model.api.LikeIdleRes;
 import com.dreamspace.uucampus.model.api.LocationAllRes;
@@ -73,6 +75,7 @@ import retrofit.http.PUT;
 import retrofit.http.Path;
 import retrofit.http.Query;
 import retrofit.http.RestMethod;
+
 
 /**
  * Created by Administrator on 2015/8/20 0020.
@@ -143,7 +146,8 @@ public interface UUService {
 
     //店铺搜索
     @GET("/shop/search/")
-    void searchShop(@Query("keyword") String keyword, @Query("order") String order, @Query("category") String category, @Query("page") int page, Callback<SearchShopRes> cb);
+    void searchShop(@Query("keyword") String keyword, @Query("order") String order, @Query("category") String category,
+                    @Query("page") int page, Callback<SearchShopRes> cb);
 
     //店铺评论添加
     @POST("/shop/{shop_id}/comment/")
@@ -269,7 +273,7 @@ public interface UUService {
 
     //商品收藏删除
     @DELETE("/goods/collection/{goods_id}")
-    void deleteGoodsCollection(@Path("goods_id")String goods_id,Callback<Response>cb);
+    void deleteGoodsCollection(@Path("goods_id")String goods_id,Callback<CommonStatusRes>cb);
 
 //闲置
     //闲置创建
@@ -278,16 +282,16 @@ public interface UUService {
 
     //查看自己的闲置
     @GET("/idle/list/")
-    void getIdleList(@Query("page")int page,@Query("is_active")String is_active,Callback<
-            GetMyIdleRes>cb);
+    void getIdleList(@Query("page")int page,@Query("is_active")int is_active,Callback<
+            IdleInfoRes>cb);
 
     //闲置信息更新
     @PUT("/idle/{idle_id}")
-    void updateIdleInfo(@Path("idle_id")String idle_id,@Body UpdateIdleReq req,Callback<Response>cb);
+    void updateIdleInfo(@Path("idle_id")String idle_id,@Body UpdateIdleReq req,Callback<CommonStatusRes>cb);
 
     //闲置删除
     @DELETE("/idle/{idle_id}")
-    void deleteIdle(@Path("idle_id")String idle_id,Callback<Response>cb);
+    void deleteIdle(@Path("idle_id")String idle_id,Callback<CommonStatusRes>cb);
 
     //闲置查看
     @GET("/idle/{idle_id}")
@@ -335,6 +339,13 @@ public interface UUService {
     void deleteIdleCollection(@Path("idle_id")String idle_id,Callback<Response>cb);
 
 
+    //个人闲置收藏查看
+    @GET("/idle/collection/{page}")
+    void getIdleCollection(@Path("page")int page,Callback<IdleCollectionRes> cb);
+
+    //闲置收藏删除
+    @DELETE("/idle/collection/{idle_id}")
+    void idleCollectionDelete(@Path("idle_id")String idle_id,Callback<CommonStatusRes> cb);
 //校区
     //校区创建
     @POST("/location/")
@@ -388,11 +399,7 @@ public interface UUService {
 
     //举报提交
     @POST("/report/")
-    void commitReport(@Body CommitReportReq req,Callback<Response>cb);
-
-    //查看所有举报
-    @GET("/report/")
-    void getAllReport(Callback<ReportRes>cb);
+    void commitReport(@Body CommitReportReq req,Callback<ReportRes>cb);
 
     //检查更新
     @GET("/check_update/{version}")
@@ -400,4 +407,7 @@ public interface UUService {
 
     @GET("/label/")
     void getLabels(@Query("category") String category,Callback<Labels> cb);
+
+    @POST("/card/")
+    void checkCard(Callback<Card> cb);
 }

@@ -1,5 +1,7 @@
 package com.dreamspace.uucampus.ui.activity.Market;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +44,7 @@ public class ShopDetailAct extends AbsActivity {
     Button reportBtn;
 
     public static final String SHOP_INFO = "shop_info";
+    public static final String CURRENT_COLLECTION_STATE = "collection_state";
 
     private boolean actDestory = false;
     private ShopInfoRes shopInfo;
@@ -79,20 +82,30 @@ public class ShopDetailAct extends AbsActivity {
         reportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGo(ReportSellerAct.class);
+                //进入举报商家页面，并传入shopid
+                Bundle bundle = new Bundle();
+                bundle.putString(ReportShopAct.SHOP_ID,shopId);
+                readyGo(ReportShopAct.class,bundle);
             }
         });
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+        if(shopInfo != null){
+            if(shopInfo.getIs_collected() == 1){
+                menu.findItem(R.id.action_collect).setIcon(R.drawable.xiangqing_btn_shoucang_n);
+            }else{
+                menu.findItem(R.id.action_collect).setIcon(R.drawable.xiangqing_btn_shoucang_p);
+            }
+        }
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.action_collect){
+        if(id == R.id.action_collect && shopInfo != null){
             if(shopInfo.getIs_collected() == 1){
                 cancelShopCollection(item);
             }else{
@@ -160,5 +173,14 @@ public class ShopDetailAct extends AbsActivity {
     protected void onDestroy() {
         actDestory = true;
         super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        //返回用户当前对此店铺的收藏状态，使得商铺界面的收藏图标与此同步
+        Intent data = new Intent();
+        data.putExtra(CURRENT_COLLECTION_STATE,shopInfo.getIs_collected());
+        setResult(RESULT_OK, data);
+        super.onBackPressed();
     }
 }

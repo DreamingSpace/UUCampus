@@ -16,7 +16,6 @@ import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.Share;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
-import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.api.GetIdleInfoRes;
 import com.dreamspace.uucampus.model.api.LikeIdleRes;
 import com.dreamspace.uucampus.ui.activity.Market.ShopShowGoodsAct;
@@ -75,6 +74,7 @@ public class FreeGoodsDetailActivity extends AbsActivity {
     private boolean bLike=false;
     private int likeNum=0;
     private Share share;
+    private boolean isActDestroy=false;
 
     @Override
     protected int getContentView() {
@@ -113,7 +113,9 @@ public class FreeGoodsDetailActivity extends AbsActivity {
             ApiManager.getService(this.getApplicationContext()).getIdleInfo(idle_id, new Callback<GetIdleInfoRes>() {
                 @Override
                 public void success(GetIdleInfoRes getIdleInfoRes, Response response) {
-                    initViewData(getIdleInfoRes);
+                    if(!isActDestroy) {
+                        initViewData(getIdleInfoRes);
+                    }
                 }
 
                 @Override
@@ -193,7 +195,7 @@ public class FreeGoodsDetailActivity extends AbsActivity {
                 ApiManager.getService(this.getApplicationContext()).likeIdle(idle_id, new Callback<LikeIdleRes>() {
                     @Override
                     public void success(LikeIdleRes likeIdleRes, Response response) {
-                        TLog.i("成功点赞:",likeIdleRes.getIdle_like_id()+" status:"+response.getStatus());
+                        showToast("成功点赞");
                         likeNum+=1;
                         updateLikeNum(likeNum);
                         pd.dismiss();
@@ -211,7 +213,7 @@ public class FreeGoodsDetailActivity extends AbsActivity {
                     public void success(Response response, Response response2) {
                         likeNum-=1;
                         updateLikeNum(likeNum);
-                        TLog.i("取消点赞成功：","yes");
+                        showToast("取消点赞");
                         pd.dismiss();
                     }
 
@@ -276,5 +278,11 @@ public class FreeGoodsDetailActivity extends AbsActivity {
 
     private void updateLikeNum(int likeNum) {  //点赞实时更新点赞数，同时写入后台
         mLikeTv.setText(String.valueOf(likeNum+getResources().getString(R.string.like)));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        isActDestroy=true;
     }
 }

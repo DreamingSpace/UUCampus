@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
-            android:src="@drawable/xianzhi_icon_visitor"
+            android:src="@drawable/xiangqing_icon_interesting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
