@@ -6,6 +6,7 @@ import com.dreamspace.uucampus.model.api.AddGoodsCommentRes;
 import com.dreamspace.uucampus.model.api.AddIdleCommentRes;
 import com.dreamspace.uucampus.model.api.AddShopCollectionRes;
 import com.dreamspace.uucampus.model.api.AddShopCommentRes;
+import com.dreamspace.uucampus.model.api.AllCategoryRes;
 import com.dreamspace.uucampus.model.api.AllGoodsCollectionRes;
 import com.dreamspace.uucampus.model.api.AllGoodsCommentRes;
 import com.dreamspace.uucampus.model.api.CategoryReq;
@@ -23,7 +24,6 @@ import com.dreamspace.uucampus.model.api.CreateShopCategoryRes;
 import com.dreamspace.uucampus.model.api.CreateShopDiscountRes;
 import com.dreamspace.uucampus.model.api.CreateShopReq;
 import com.dreamspace.uucampus.model.api.CreateShopRes;
-import com.dreamspace.uucampus.model.api.AllCategoryRes;
 import com.dreamspace.uucampus.model.api.GoodsInfoRes;
 import com.dreamspace.uucampus.model.api.IdleAllCommentRes;
 import com.dreamspace.uucampus.model.api.IdleInfoRes;
@@ -54,6 +54,11 @@ import com.dreamspace.uucampus.model.api.UpdateIdleReq;
 import com.dreamspace.uucampus.model.api.UpdateShopReq;
 import com.dreamspace.uucampus.model.api.UpdateUserInfoReq;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
+import com.dreamspace.uucampus.model.api.WeiXinBindReq;
+import com.dreamspace.uucampus.model.api.WeiXinBindRes;
+import com.dreamspace.uucampus.model.api.WeiXinLoginReq;
+import com.dreamspace.uucampus.model.api.WeiXinLoginRes;
+import com.dreamspace.uucampus.model.api.WeiXinRegisterReq;
 
 import retrofit.Callback;
 import retrofit.client.Response;
@@ -82,6 +87,18 @@ public interface UUService {
     //创建用户访问凭证(登陆)
     @POST("/auth/login/")
     void createAccessToken(@Body LoginReq req, Callback<LoginRes> cb);
+
+    //微信绑定已有用户
+    @POST("/auth/weixin/bind/")
+    void weiXinBind(@Body WeiXinBindReq req, Callback<WeiXinBindRes> cb);
+
+    //微信创建新用户
+    @POST("/auth/weixin/register/")
+    void weiXinRegister(@Body WeiXinRegisterReq req, Callback<Response> cb);
+
+    //微信登录
+    @POST("/auth/weixin/login/")
+    void weiXinLogin(@Body WeiXinLoginReq req, Callback<WeiXinLoginRes> cb);
 
     //删除用户访问凭证(注销)
     @DELETE("/auth/logout/")

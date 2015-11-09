@@ -3,40 +3,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <include
-        layout="@layout/custom_toolbar"></include>
 
-    <ImageView
-        android:id="@+id/weixin_img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="37dp"
-        android:src="@drawable/register_icon_just_a_sign" />
+    <include layout="@layout/custom_toolbar"></include>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/weixin_img"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="center"
+    android:layout_marginTop="37dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="亲爱的YOYO校园用户："
+            android:textColor="#069282"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/wechat_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="微信昵称"
+            android:textColor="#069282"
+            android:textSize="14sp" />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/weixin_text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="微信昵称"
-        android:textColor="#069282"
-        android:layout_marginTop="13dp"
-        android:textSize="18sp"
-        android:layout_gravity="center"/>
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="为了给您更好的服务，请您关联一个YOYO账号"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="25dp"
+        android:text="还没有YOYO账号？"
+        android:textSize="14sp" />
 
     <Button
-        android:id="@+id/weixin_btn"
+        android:id="@+id/weixin_register"
         android:layout_width="match_parent"
         android:layout_height="43dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_round"
         android:gravity="center"
-        android:text="微信授权"
+        android:text="快速注册"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="25dp"
+        android:text="已有YOYO账号？"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/weixin_bound"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_round"
+        android:gravity="center"
+        android:text="立即关联"
         android:textColor="@color/white"
         android:textSize="20sp" />
 

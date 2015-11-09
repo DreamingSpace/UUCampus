@@ -17,12 +17,12 @@ import com.dreamspace.uucampus.common.ShareData;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
+import com.dreamspace.uucampus.model.WeChatUser;
 import com.dreamspace.uucampus.model.api.LoginReq;
 import com.dreamspace.uucampus.model.api.LoginRes;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
 import com.dreamspace.uucampus.ui.MainActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
-import com.igexin.sdk.PushManager;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
@@ -72,7 +72,6 @@ public class LoginActivity extends AbsActivity {
     @Override
     protected void prepareDatas() {
         ButterKnife.bind(this);
-        PushManager.getInstance().initialize(this.getApplicationContext());
     }
 
     @Override
@@ -185,12 +184,14 @@ public class LoginActivity extends AbsActivity {
                     }
 
                     @Override
-                    public void onComplete(Bundle bundle, SHARE_MEDIA share_media) {
+                    public void onComplete(final Bundle bundle, SHARE_MEDIA share_media) {
                         Log.d("TestData", "bbbb");
-                        showToast("授权完成");
+                        Log.d("TestData",bundle.toString());
+                        //获取相关授权信息
                         mController.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.WEIXIN, new SocializeListeners.UMDataListener() {
                             @Override
                             public void onStart() {
+                                Log.d("TestData","cccc");
                                 showToast("获取平台数据开始~~~");
                             }
 
@@ -200,10 +201,26 @@ public class LoginActivity extends AbsActivity {
                                 if( i == 200 && map!= null){
                                     StringBuilder sb = new StringBuilder();
                                     Set<String> keys = map.keySet();
+                                    WeChatUser weChatUser = new WeChatUser();
                                     for(String key : keys){
                                         sb.append(key + "=" + map.get(key).toString() + "\r\n");
                                     }
+                                    weChatUser.setCity(map.get("city").toString());
+                                    weChatUser.setCountry(map.get("country").toString());
+                                    weChatUser.setHeadimgurl(map.get("headimgurl").toString());
+                                    weChatUser.setLanguage(map.get("language").toString());
+                                    weChatUser.setNickname(map.get("nickname").toString());
+                                    weChatUser.setProvince(map.get("province").toString());
+                                    weChatUser.setSex(map.get("sex").toString());
+                                    weChatUser.setOpenid(map.get("openid").toString());
+                                    weChatUser.setUnionid(map.get("unionid").toString());
+                                    weChatUser.setAccess_token(bundle.get("access_token").toString());
+                                    ShareData.weChatUser = weChatUser;
                                     Log.d("TestData",sb.toString());
+
+                                    //授权成功获取用户信息之后跳转到微信绑定界面
+                                    readyGo(WechatActivity.class);
+
                                 }else{
                                     Log.d("TestData","发生错误："+i);
                                 }
@@ -213,6 +230,7 @@ public class LoginActivity extends AbsActivity {
 
                     @Override
                     public void onError(SocializeException e, SHARE_MEDIA share_media) {
+                        showToast("授权错误");
                     }
 
                     @Override
@@ -231,6 +249,7 @@ public class LoginActivity extends AbsActivity {
             ApiManager.getService(this.getApplicationContext()).createAccessToken(loginReq,new Callback<LoginRes>(){
                 @Override
                 public void success(LoginRes loginRes, Response response) {
+                    progressDialog.dismiss();
                     PreferenceUtils.putString(LoginActivity.this.getApplicationContext(),
                             PreferenceUtils.Key.ACCESS,loginRes.getAccess_token());
                     ApiManager.clear();

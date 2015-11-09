@@ -1,7 +1,5 @@
 package com.dreamspace.uucampus.ui.activity.Login;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -15,10 +13,7 @@ import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.api.UUService;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
-import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.model.ErrorRes;
-import com.dreamspace.uucampus.model.api.RegisterReq;
-import com.dreamspace.uucampus.model.api.RegisterRes;
 import com.dreamspace.uucampus.model.api.ResetReq;
 import com.dreamspace.uucampus.model.api.SendVerifyReq;
 import com.dreamspace.uucampus.ui.MainActivity;

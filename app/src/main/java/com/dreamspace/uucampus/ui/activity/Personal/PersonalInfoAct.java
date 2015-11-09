@@ -1,20 +1,16 @@
 package com.dreamspace.uucampus.ui.activity.Personal;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.WheelViewDialog;
 import com.dreamspace.uucampus.widget.photopicker.SelectPhotoActivity;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -148,7 +144,7 @@ public class PersonalInfoAct extends AbsActivity {
                     .error(R.drawable.default_error)
                     .centerCrop()
                     .into(avaterCiv);
-//            CommonUtils.showImageWithGlide(this,avaterCiv,path);
+//          CommonUtils.showImageWithGlide(this,avaterCiv,path);
         }
     }
 }

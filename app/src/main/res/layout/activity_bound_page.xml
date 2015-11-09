@@ -74,6 +74,63 @@
             android:textSize="10sp" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/bound_password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="37dp"
+            android:layout_marginRight="37dp"
+            android:background="@drawable/inputview"
+            android:hint="请输入您的密码"
+            android:inputType="number"
+            android:paddingLeft="40dp"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@id/bound_password"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:src="@drawable/register_button_password" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/bound_pwd_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="37dp"
+            android:layout_marginRight="37dp"
+            android:background="@drawable/inputview"
+            android:hint="@string/text_pwd_confirm"
+            android:inputType="textPassword"
+            android:paddingLeft="40dp"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@id/bound_pwd_confirm"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:src="@drawable/register_button_password" />
+    </RelativeLayout>
+
     <Button
         android:id="@+id/bound_button"
         android:layout_width="match_parent"

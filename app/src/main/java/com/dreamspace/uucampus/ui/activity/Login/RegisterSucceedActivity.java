@@ -1,6 +1,5 @@
 package com.dreamspace.uucampus.ui.activity.Login;
 
-import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 
