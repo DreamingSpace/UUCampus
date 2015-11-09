@@ -4,15 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/custom_toolbar"/>
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swp"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
-        <com.dreamspace.uucampus.widget.LoadMoreListView
-            android:id="@+id/load_more_lv"
-            android:divider="@color/transparent"
-            android:dividerHeight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/content_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+            <com.dreamspace.uucampus.widget.LoadMoreListView
+                android:id="@+id/load_more_lv"
+                android:divider="@color/transparent"
+                android:dividerHeight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
 </LinearLayout>

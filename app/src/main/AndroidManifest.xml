@@ -63,6 +63,7 @@
         <activity android:name=".ui.activity.Personal.FeedbackAct"/>
         <activity android:name=".ui.activity.Personal.PersonalInfoAct"/>
         <activity android:name=".ui.activity.Personal.MyFreeGoodsAct"/>
+        <activity android:name=".ui.activity.Personal.AboutAct"/>
 
         <!-- order-->
         <activity android:name=".ui.activity.Order.OrderConfirmAct" android:windowSoftInputMode="stateHidden"/>
@@ -71,6 +72,7 @@
         <activity android:name=".ui.activity.Order.CommentAct"
             android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ui.activity.Order.RefundAct"/>
+        <activity android:name=".ui.activity.Order.OrderPayAct"/>
 
          <!--umeng-->
         <meta-data android:name="UMENG_APPKEY" android:value="5625eac167e58e4e1f001985"/>
@@ -104,6 +106,31 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait" />
+
+        <!-- Ping++ sdk -->
+        <activity
+            android:name="com.pingplusplus.android.PaymentActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 微信支付 sdk ，也是 Ping++ sdk 调用入口 -->
+        <activity-alias
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:targetActivity="com.pingplusplus.android.PaymentActivity" />
+        <!-- 支付宝 sdk -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
     </application>
 
 

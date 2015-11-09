@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
     <include layout="@layout/custom_toolbar"/>
     <ScrollView
+        android:id="@+id/content_sv"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -96,6 +97,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp" />
                 <TextView
+                    android:id="@+id/shop_name_tv"
                     android:text="东大旅游吧"
                     android:textColor="@color/app_theme_color2"
                     android:textSize="16sp"

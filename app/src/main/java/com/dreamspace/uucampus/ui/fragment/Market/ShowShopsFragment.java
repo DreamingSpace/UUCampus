@@ -119,7 +119,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
             return;
         }
 
-        ApiManager.getService(mContext).searchShop("", "", categoryItem.getName(), shopPage, new Callback<SearchShopRes>() {
+        ApiManager.getService(mContext).searchShop("", "", categoryItem.getName(), shopPage, "东南大学九龙湖校区",new Callback<SearchShopRes>() {
             @Override
             public void success(SearchShopRes searchShopRes, Response response) {
                 if(searchShopRes != null && !fragmentDestroy){

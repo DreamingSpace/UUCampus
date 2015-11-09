@@ -46,13 +46,14 @@ public class FastInAct extends AbsActivity {
     @Bind(R.id.content_rl)
     RelativeLayout contentRl;
 
+    private String order;//当前的排列方式
     private GoodsSortPopupWindow popupWindow;
     private boolean actDestory = false;
     private ArrayList<String> mLabels;
 
     private FragmentStatePagerItemAdapter pagerAdpater;
     public static String LABEL = "label";
-    public static String CATEGORY="category";
+    public static String CATEGORY = "category";
     private String category;
 
     @Override
@@ -60,6 +61,7 @@ public class FastInAct extends AbsActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         category = bundle.getString(CATEGORY);
+        order = getString(R.string.order_view_number);//默认排列方式
         super.onCreate(savedInstanceState);
     }
 
@@ -72,8 +74,8 @@ public class FastInAct extends AbsActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.action_sort){
-            if(popupWindow != null){
+        if (id == R.id.action_sort) {
+            if (popupWindow != null) {
                 popupWindow.showAsDropDown(mToolBar);
             }
         }
@@ -92,7 +94,7 @@ public class FastInAct extends AbsActivity {
 
     @Override
     protected void initViews() {
-        popupWindow = new GoodsSortPopupWindow(this,shadowView);
+        popupWindow = new GoodsSortPopupWindow(this, shadowView);
 
         initListeners();
     }
@@ -102,13 +104,14 @@ public class FastInAct extends AbsActivity {
         return contentRl;
     }
 
-    private void initListeners(){
+    private void initListeners() {
         popupWindow.setMostPopularOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(0);
+                order = getString(R.string.order_view_number);
                 //必须调用getpage才能获取准确的fragment，getitem获取的不对
-                ((ShowGoodsFragment)pagerAdpater.getPage(pager.getCurrentItem())).orderChange("hotest");
+                ((ShowGoodsFragment) pagerAdpater.getPage(pager.getCurrentItem())).orderChange(getString(R.string.order_view_number));
             }
         });
 
@@ -116,7 +119,8 @@ public class FastInAct extends AbsActivity {
             @Override
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(1);
-                ((ShowGoodsFragment)pagerAdpater.getPage(pager.getCurrentItem())).orderChange("highest");
+                order = getString(R.string.order_score);
+                ((ShowGoodsFragment) pagerAdpater.getPage(pager.getCurrentItem())).orderChange(getString(R.string.order_score));
             }
         });
 
@@ -124,7 +128,8 @@ public class FastInAct extends AbsActivity {
             @Override
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(2);
-                ((ShowGoodsFragment)pagerAdpater.getPage(pager.getCurrentItem())).orderChange("newest");
+                order = getString(R.string.order_last_update);
+                ((ShowGoodsFragment) pagerAdpater.getPage(pager.getCurrentItem())).orderChange(getString(R.string.order_last_update));
             }
         });
 
@@ -132,51 +137,51 @@ public class FastInAct extends AbsActivity {
             @Override
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(3);
-                ((ShowGoodsFragment)pagerAdpater.getPage(pager.getCurrentItem())).orderChange("cheapest");
+                order = getString(R.string.order_price);
+                ((ShowGoodsFragment) pagerAdpater.getPage(pager.getCurrentItem())).orderChange(getString(R.string.order_price));
             }
         });
     }
 
     @Override
     public void onBackPressed() {
-        if(popupWindow != null && popupWindow.isShowing())
-        {
+        if (popupWindow != null && popupWindow.isShowing()) {
             popupWindow.dismiss();
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
 
-    private void initSTL(){
-        if(mLabels != null){
+    private void initSTL() {
+        if (mLabels != null) {
             FragmentPagerItems.Creator creator = FragmentPagerItems.with(this);
-            for(String label:mLabels){
+            for (String label : mLabels) {
                 Bundle bundle = new Bundle();
-                bundle.putString(LABEL,label);
-                bundle.putString(CATEGORY,category);
-                creator.add(label,ShowGoodsFragment.class,bundle);
+                bundle.putString(LABEL, label);
+                bundle.putString(CATEGORY, category);
+                creator.add(label, ShowGoodsFragment.class, bundle);
             }
-            pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(),creator.create());
+            pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(), creator.create());
             smartTabLayout.setDistributeEvenly(false);
             pager.setAdapter(pagerAdpater);
             smartTabLayout.setViewPager(pager);
         }
     }
 
-    private void getLabels(){
-        toggleShowLoading(true,null);
-        if(!NetUtils.isNetworkConnected(this)){
+    private void getLabels() {
+        toggleShowLoading(true, null);
+        if (!NetUtils.isNetworkConnected(this)) {
             showNetWorkError();
-            toggleNetworkError(true,getLabelsClickListener);
+            toggleNetworkError(true, getLabelsClickListener);
         }
 
         ApiManager.getService(this).getLabels(category, new Callback<Labels>() {
             @Override
             public void success(Labels labels, Response response) {
-                if(labels != null && !actDestory){
-                    if(labels.getLabel().size() == 0){
-                        toggleShowEmpty(true,getString(R.string.no_such_good),null);
-                    }else{
+                if (labels != null && !actDestory) {
+                    if (labels.getLabel().size() == 0) {
+                        toggleShowEmpty(true, getString(R.string.no_such_good), null);
+                    } else {
                         mLabels = labels.getLabel();
                         initSTL();
                         toggleRestore();
@@ -186,7 +191,7 @@ public class FastInAct extends AbsActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                toggleShowEmpty(true,null,getLabelsClickListener);
+                toggleShowEmpty(true, null, getLabelsClickListener);
             }
         });
     }
@@ -202,5 +207,9 @@ public class FastInAct extends AbsActivity {
     protected void onDestroy() {
         super.onDestroy();
         actDestory = true;
+    }
+
+    public String getOrder() {
+        return order;
     }
 }

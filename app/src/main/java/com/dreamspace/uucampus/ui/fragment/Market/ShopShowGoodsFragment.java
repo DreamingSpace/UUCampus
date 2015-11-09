@@ -118,7 +118,7 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
             return;
         }
 
-        ApiManager.getService(mContext).searchGoods(null, null, null, null, group, shopId, goodPage,
+        ApiManager.getService(mContext).searchGoods(null, null, null, null, group, shopId, goodPage,"东南大学九龙湖校区",
                 new Callback<SearchGoodsRes>() {
                     @Override
                     public void success(SearchGoodsRes searchGoodsRes, Response response) {
