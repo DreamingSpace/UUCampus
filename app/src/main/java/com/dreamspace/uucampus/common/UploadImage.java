@@ -8,7 +8,6 @@ import com.qiniu.android.storage.UploadManager;
 import com.qiniu.android.storage.UploadOptions;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 
 /**
  * Created by Lx on 2015/10/24.

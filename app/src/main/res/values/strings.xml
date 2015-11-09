@@ -116,7 +116,7 @@
     <string name="publish">发表</string>
     <string name="next_step">下一步</string>
     <string name="comment_hint">写评论...</string>
-    <string name="back_home">返回主页</string>
+    <string name="back_idle_home">返回闲置主页</string>
 
     <!-- sort strings used-->
     <string name="most_popular">人气最高</string>
@@ -140,6 +140,8 @@
     <string name="write_goods_detail">填写商品详情</string>
     <string name="goods_describe">信息描述</string>
     <string name="goods_classify">商品分类</string>
+    <string name="interest">人感兴趣</string>
+    <string name="like">人赞</string>
     <string name="RMB">￥</string>
     <string name="x_people_like">人感兴趣</string>
     <string name="yoyo_coupon_card_reduce">凭借悠悠万能优惠卡减免</string>
@@ -245,7 +247,9 @@
     <string name="register_input_user_name_hint">请填写昵称</string>
     <string name="register_input_school">请选择你的学校</string>
     <string name="register_input_entertime">2015</string>
-    
+    <string name="register_succeed">返回登录界面</string>
+
+
     <!-- order-->
     <string name="number">数量</string>
     <string name="use_coupon_card">使用万能优惠卡</string>

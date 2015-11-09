@@ -11,7 +11,6 @@ import android.provider.MediaStore;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,17 +24,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.widget.photopicker.adapter.ImageFolderListAdapter;
 import com.dreamspace.uucampus.widget.photopicker.adapter.ImageGrideAdatper;
 import com.dreamspace.uucampus.widget.photopicker.entity.Folder;
 import com.dreamspace.uucampus.widget.photopicker.entity.Image;
-import com.dreamspace.uucampus.ui.base.AbsActivity;
 
 import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by Lx on 2015/9/28.

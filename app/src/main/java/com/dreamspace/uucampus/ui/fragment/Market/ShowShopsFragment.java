@@ -1,11 +1,8 @@
 package com.dreamspace.uucampus.ui.fragment.Market;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
@@ -14,20 +11,14 @@ import com.dreamspace.uucampus.adapter.market.ShopListAdapter;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.model.CategoryItem;
-import com.dreamspace.uucampus.model.ErrorRes;
 import com.dreamspace.uucampus.model.ShopItem;
 import com.dreamspace.uucampus.model.api.SearchShopRes;
 import com.dreamspace.uucampus.ui.MarketFragment;
 import com.dreamspace.uucampus.ui.activity.Market.ShopShowGoodsAct;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.widget.LoadMoreListView;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;

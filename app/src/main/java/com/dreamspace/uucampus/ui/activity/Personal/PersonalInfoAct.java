@@ -58,7 +58,7 @@ public class PersonalInfoAct extends AbsActivity {
     RelativeLayout schoolRl;
     @Bind(R.id.year_rl)
     RelativeLayout yearRl;
-//    @Bind(R.id.weibo_rl)
+    //    @Bind(R.id.weibo_rl)
 //    RelativeLayout weiboRl;
 //    @Bind(R.id.wechat_rl)
 //    RelativeLayout wechatRl;

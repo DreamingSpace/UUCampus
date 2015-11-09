@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.base.BasisAdapter;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
-import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.MyIdleItem;
 
 import java.util.List;

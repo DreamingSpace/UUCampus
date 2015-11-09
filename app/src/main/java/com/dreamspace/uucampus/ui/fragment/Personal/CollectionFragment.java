@@ -23,15 +23,12 @@ import com.dreamspace.uucampus.model.api.AllGoodsCollectionRes;
 import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.IdleCollectionItem;
 import com.dreamspace.uucampus.model.api.ShopCollectionRes;
-import com.dreamspace.uucampus.ui.activity.Market.ShopDetailAct;
-import com.dreamspace.uucampus.ui.activity.Personal.MyCollectionAct;
-import com.dreamspace.uucampus.ui.base.BaseFragment;
 import com.dreamspace.uucampus.ui.activity.Market.GoodDetailAct;
 import com.dreamspace.uucampus.ui.activity.Market.ShopShowGoodsAct;
+import com.dreamspace.uucampus.ui.activity.Personal.MyCollectionAct;
+import com.dreamspace.uucampus.ui.base.BaseFragment;
 import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
 import com.dreamspace.uucampus.widget.SwipeMenuLoadMoreListView;
-
-import java.util.ArrayList;
 
 import butterknife.Bind;
 import retrofit.Callback;

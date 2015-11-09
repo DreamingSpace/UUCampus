@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
 
-import java.util.Objects;
-
 /**
  * Created by Lx on 2015/10/26.
  */

@@ -11,7 +11,6 @@ import com.dreamspace.uucampus.adapter.market.GoodsListAdapter;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.model.api.SearchGoodsRes;
-import com.dreamspace.uucampus.ui.activity.Market.FastInAct;
 import com.dreamspace.uucampus.ui.activity.Market.GoodDetailAct;
 import com.dreamspace.uucampus.ui.activity.Market.ShopShowGoodsAct;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;

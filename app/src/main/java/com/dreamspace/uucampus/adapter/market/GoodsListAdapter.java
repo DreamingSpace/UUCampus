@@ -11,8 +11,6 @@ import com.dreamspace.uucampus.adapter.base.BasisAdapter;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.model.GoodsItem;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 /**
@@ -35,7 +33,7 @@ public class GoodsListAdapter extends BasisAdapter<GoodsItem,GoodsListAdapter.Vi
         holder.price.setText(mContext.getString(R.string.RMB) + entity.getPrice());
         holder.likeNum.setText(entity.getView_number() + mContext.getString(R.string.x_people_like));
         holder.perferential.setText(mContext.getString(R.string.yoyo_coupon_card_reduce) + entity.getDiscount()
-                    + mContext.getString(R.string.yuan));
+                    + mContext.getString(R.string.RMB));
     }
 
     @Override

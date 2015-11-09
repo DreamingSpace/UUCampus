@@ -1,9 +1,5 @@
 package com.dreamspace.uucampus.ui.activity.Login;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,28 +9,13 @@ import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
-import com.dreamspace.uucampus.common.ShareData;
-import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
-import com.dreamspace.uucampus.model.ErrorRes;
 import com.dreamspace.uucampus.model.api.LoginReq;
 import com.dreamspace.uucampus.model.api.LoginRes;
-import com.dreamspace.uucampus.model.api.ResetReq;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
 import com.dreamspace.uucampus.ui.MainActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
-import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.controller.UMServiceFactory;
-import com.umeng.socialize.controller.UMSocialService;
-import com.umeng.socialize.controller.listener.SocializeListeners;
-import com.umeng.socialize.exception.SocializeException;
-import com.umeng.socialize.sso.SinaSsoHandler;
-import com.umeng.socialize.sso.UMSsoHandler;
-import com.umeng.socialize.weixin.controller.UMWXHandler;
-
-import java.util.Map;
-import java.util.Set;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -137,7 +118,8 @@ public class LoginActivity extends AbsActivity {
                 PreferenceUtils.putString(LoginActivity.this, PreferenceUtils.Key.ACCESS, loginRes.getAccess_token());
                 PreferenceUtils.putString(LoginActivity.this, PreferenceUtils.Key.PHONE, loginReq.getPhone_num());
                 PreferenceUtils.putString(LoginActivity.this, PreferenceUtils.Key.PASSWORD, loginReq.getPassword());
-                readyGo(MainActivity.class);
+                getUserInfo();
+//                readyGo(MainActivity.class);
             }
 
             @Override
@@ -350,38 +332,36 @@ public class LoginActivity extends AbsActivity {
 //        }
 //    }
 //
-//    //获取用户信息
-//    private void getUserInfo() {
-//        ApiManager.getService(getApplicationContext()).getUserInfo(new Callback<UserInfoRes>() {
-//
-//            @Override
-//            public void success(UserInfoRes userInfoRes, Response response) {
-//                if(userInfoRes != null){
-//                    Log.i("INFO", userInfoRes.toString());
-//                    saveUserInfo(userInfoRes);
+    //获取用户信息
+    private void getUserInfo() {
+        ApiManager.getService(getApplicationContext()).getUserInfo(new Callback<UserInfoRes>() {
+//            ProgressDialog progressDialog = ProgressDialog.show(getApplicationContext(),"","正在登录",true,false);
+            @Override
+            public void success(UserInfoRes userInfoRes, Response response) {
+                if(userInfoRes != null){
+                    Log.i("INFO", userInfoRes.toString());
+                    saveUserInfo(userInfoRes);
 //                    progressDialog.dismiss();
-//                    readyGo(MainActivity.class);
+                    readyGo(MainActivity.class);
 //                    finish();
-//                }
-//            }
-//
-//            @Override
-//            public void failure(RetrofitError error) {
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
 //                progressDialog.dismiss();
-//                showInnerError(error);
-//            }
-//        });
-//    }
-//
-//    //保存用户信息到本地
-//    private void saveUserInfo(UserInfoRes userInfoRes){
-//        //这部分还需要修改~
-//        PreferenceUtils.putString(getApplicationContext(),PreferenceUtils.Key.AVATAR,userInfoRes.getImage());
+                showInnerError(error);
+            }
+        });
+    }
+
+    //保存用户信息到本地
+    private void saveUserInfo(UserInfoRes userInfoRes){
+        PreferenceUtils.putString(getApplicationContext(), PreferenceUtils.Key.LOCATION,userInfoRes.getLocation());
 //        PreferenceUtils.putString(getApplicationContext(),PreferenceUtils.Key.ACCOUNT,userInfoRes.getName());
-//        //PreferenceUtils.putString(getApplicationContext(),PreferenceUtils.Key.SEX,userInfoRes.getSex());
 //        PreferenceUtils.putString(getApplicationContext(), PreferenceUtils.Key.PHONE, LoginUserName.getText().toString());
-//    }
-//
+    }
+
 //    //输入有效性判断
 //    private boolean isValid(String phoneNum,String pwd){
 //

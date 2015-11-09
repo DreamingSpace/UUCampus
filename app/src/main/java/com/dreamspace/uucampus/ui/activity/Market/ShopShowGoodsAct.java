@@ -23,7 +23,6 @@ import com.dreamspace.uucampus.model.api.ShopInfoRes;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
 import com.dreamspace.uucampus.ui.fragment.Market.ShopShowGoodsFragment;
-import com.dreamspace.uucampus.ui.fragment.Market.ShowGoodsFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;

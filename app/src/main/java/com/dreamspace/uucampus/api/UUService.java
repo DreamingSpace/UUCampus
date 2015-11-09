@@ -7,9 +7,11 @@ import com.dreamspace.uucampus.model.IdleCollectionRes;
 import com.dreamspace.uucampus.model.Labels;
 import com.dreamspace.uucampus.model.api.AddGoodsCollectionRes;
 import com.dreamspace.uucampus.model.api.AddGoodsCommentRes;
+import com.dreamspace.uucampus.model.api.AddIdleCollectionRes;
 import com.dreamspace.uucampus.model.api.AddIdleCommentRes;
 import com.dreamspace.uucampus.model.api.AddShopCollectionRes;
 import com.dreamspace.uucampus.model.api.AddShopCommentRes;
+import com.dreamspace.uucampus.model.api.AllCategoryRes;
 import com.dreamspace.uucampus.model.api.AllGoodsCollectionRes;
 import com.dreamspace.uucampus.model.api.Card;
 import com.dreamspace.uucampus.model.api.CategoryReq;
@@ -30,7 +32,7 @@ import com.dreamspace.uucampus.model.api.CreateShopCategoryRes;
 import com.dreamspace.uucampus.model.api.CreateShopDiscountRes;
 import com.dreamspace.uucampus.model.api.CreateShopReq;
 import com.dreamspace.uucampus.model.api.CreateShopRes;
-import com.dreamspace.uucampus.model.api.AllCategoryRes;
+import com.dreamspace.uucampus.model.api.GetIdleInfoRes;
 import com.dreamspace.uucampus.model.api.GoodsInfoRes;
 import com.dreamspace.uucampus.model.api.IdleAllCommentRes;
 import com.dreamspace.uucampus.model.api.IdleInfoRes;
@@ -83,6 +85,7 @@ import retrofit.http.Path;
 import retrofit.http.Query;
 import retrofit.http.RestMethod;
 
+
 /**
  * Created by Administrator on 2015/8/20 0020.
  */
@@ -100,7 +103,7 @@ public interface UUService {
     void createQiNiuToken(Callback<QnRes> cb);
 
     //给指定手机发送短信验证码
-    @POST("/auth/code")
+    @POST("/auth/code/")
     void sendVerifyCode(@Body SendVerifyReq req, Callback<Response> cb);
 
 //用户
@@ -109,7 +112,7 @@ public interface UUService {
     void createAccessToken(@Body LoginReq req, Callback<LoginRes> cb);
 
     //删除用户访问凭证(注销)
-    @DELETE("/auth/logout")
+    @DELETE("/auth/logout/")
     void deleteAccessToken(Callback<Response> cb);
 
     //用户创建
@@ -281,8 +284,6 @@ public interface UUService {
     @DELETE("/goods/collection/{goods_id}")
     void deleteGoodsCollection(@Path("goods_id")String goods_id,Callback<CommonStatusRes>cb);
 
-
-
 //闲置
     //闲置创建
     @POST("/idle/")
@@ -303,11 +304,11 @@ public interface UUService {
 
     //闲置查看
     @GET("/idle/{idle_id}")
-    void getIdleInfo(@Path("idle_id")String idle_id,Callback<IdleInfoRes>cb);
+    void getIdleInfo(@Path("idle_id")String idle_id,Callback<GetIdleInfoRes>cb);
 
     //闲置搜索
     @GET("/idle/search/")
-    void searchIdle(@Query("keyword")String keyword,@Query("order")String order,@Query("category")String category,@Query("location")String location,@Query("user")String user,Callback<SearchIdleRes>cb);
+    void searchIdle(@Query("keyword")String keyword,@Query("order")String order,@Query("category")String category,@Query("page")int page,@Query("location")String location,Callback<SearchIdleRes>cb);
 
     //闲置点赞
     @POST("/idle/{idle_id}/like/")
@@ -330,12 +331,22 @@ public interface UUService {
     void deleteIdleComment(@Path("idle_id")String idle_id,@Path("idle_comment_id")String idle_comment_id,Callback<Response>cb);
 
     //评论有用添加
-    @POST("/idle/{idle_id}/comment/{idle_comment_id}/useful")
+    @POST("/idle/{idle_id}/comment/{idle_comment_id}/useful/")
     void addIdleCommentUseful(@Path("idle_id")String idle_id,@Path("idle_comment_id")String idle_comment_id,Callback<Response> cb);
 
     //评论有用取消
-    @PUT("/idle/{idle_id}/comment/{idle_comment_id}/useful")
+    @DELETE("/idle/{idle_id}/comment/{idle_comment_id}/useful/")
     void cancelIdleCommentUseful(@Path("idle_id")String idle_id,@Path("idle_comment_id")String idle_comment_id,Callback<Response> cb);
+
+
+    //闲置收藏添加
+    @POST("/idle/collection/{idle_id}")
+    void addIdleCollection(@Path("idle_id")String idle_id,Callback<AddIdleCollectionRes>cb);
+
+    //闲置收藏删除
+    @DELETE("/idle/collection/{idle_id}")
+    void deleteIdleCollection(@Path("idle_id")String idle_id,Callback<Response>cb);
+
 
     //个人闲置收藏查看
     @GET("/idle/collection/{page}")

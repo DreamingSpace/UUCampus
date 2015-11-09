@@ -22,11 +22,10 @@ import com.dreamspace.uucampus.common.Share;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.DensityUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.api.AddGoodsCollectionRes;
-import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.GoodsInfoRes;
 import com.dreamspace.uucampus.ui.activity.Order.OrderConfirmAct;
-import com.dreamspace.uucampus.ui.activity.Order.OrderDetailAct;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
 import com.dreamspace.uucampus.ui.fragment.Market.GoodDetailPagerFragment;
@@ -119,6 +118,9 @@ public class GoodDetailAct extends AbsActivity {
     protected void prepareDatas() {
         Bundle bundle = getIntent().getExtras();
         goodId = bundle.getString(GOOD_ID);
+
+        TLog.i("good_id:",goodId);
+
         getGoodInfo();
 
         //初始化分享内容
@@ -221,9 +223,9 @@ public class GoodDetailAct extends AbsActivity {
         commentBundle.putString(TYPE, COMMENT);
 
         FragmentPagerItemAdapter pagerAdapter = new FragmentPagerItemAdapter(getSupportFragmentManager(), FragmentPagerItems.with(this)
-                                .add(R.string.detial, GoodDetailPagerFragment.class, detailBundle)
-                                .add(R.string.comment, GoodDetailPagerFragment.class, commentBundle)
-                                .create()
+                .add(R.string.detial, GoodDetailPagerFragment.class, detailBundle)
+                .add(R.string.comment, GoodDetailPagerFragment.class, commentBundle)
+                .create()
         );
         tabLayout.setCustomTabView(R.layout.good_detail_stl_title_tab, R.id.detail_stl_title_tv);
         detailViewPager.setAdapter(pagerAdapter);
@@ -299,21 +301,21 @@ public class GoodDetailAct extends AbsActivity {
             return;
         }
 
-        ApiManager.getService(this).deleteGoodsCollection(goodId, new Callback<CommonStatusRes>() {
-            @Override
-            public void success(CommonStatusRes commonStatusRes, Response response) {
-                if(commonStatusRes != null && !actDestory){
-                    goodInfo.setIs_collected(0);
-                    collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_n));
-                    showToast(getString(R.string.collect_cancel));
-                }
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                showInnerError(error);
-            }
-        });
+//        ApiManager.getService(this).deleteGoodsCollection(goodId, new Callback<CommonStatusRes>() {
+//            @Override
+//            public void success(CommonStatusRes commonStatusRes, Response response) {
+//                if(commonStatusRes != null && !actDestory){
+//                    goodInfo.setIs_collected(0);
+//                    collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_n));
+//                    showToast(getString(R.string.collect_cancel));
+//                }
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                showInnerError(error);
+//            }
+//        });
     }
 
     //将商品详细信息填入view

@@ -7,16 +7,12 @@ import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
-import com.dreamspace.uucampus.ui.base.ChangeColorTabWithText;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +49,7 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
     private TextView centerTitleTv;
     //当前所在的fragment标号
     private int currentIndex = 0;
+    
     @Override
     protected int getContentView() {
         return R.layout.activity_main;

@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
-import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.Personal.FreeGoodsPullOffListAdapter;
 import com.dreamspace.uucampus.adapter.Personal.FreeGoodsSaleListAdapter;
@@ -23,8 +22,6 @@ import com.dreamspace.uucampus.ui.activity.Personal.MyFreeGoodsAct;
 import com.dreamspace.uucampus.ui.base.BaseFragment;
 import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
 import com.dreamspace.uucampus.widget.SwipeMenuLoadMoreListView;
-
-import java.util.ArrayList;
 
 import butterknife.Bind;
 import retrofit.Callback;

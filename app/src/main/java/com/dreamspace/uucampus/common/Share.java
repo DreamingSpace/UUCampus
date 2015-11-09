@@ -1,10 +1,7 @@
 package com.dreamspace.uucampus.common;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 
-import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.common.ShareData;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -13,7 +10,6 @@ import com.umeng.socialize.media.QQShareContent;
 import com.umeng.socialize.media.QZoneShareContent;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.sso.QZoneSsoHandler;
-import com.umeng.socialize.sso.SinaSsoHandler;
 import com.umeng.socialize.sso.UMQQSsoHandler;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.umeng.socialize.weixin.media.CircleShareContent;
