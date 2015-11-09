@@ -45,6 +45,7 @@ public class ShowGoodsFragment extends BaseLazyFragment {
     private boolean fragmentDestory = false;
     private boolean firstGetGoods = true;//判断是不是第一次获取数据，第一次获取数据需要显示“加载中”界面
     private GoodsListAdapter adapter;
+    private String order;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,12 +57,21 @@ public class ShowGoodsFragment extends BaseLazyFragment {
     @Override
     protected void onFirstUserVisible() {
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.app_theme_color));
-        getGoods(null);
+        order = ((FastInAct)getActivity()).getOrder();
+        getGoods();
     }
 
     @Override
     protected void onUserVisible() {
-
+        System.out.println("se :" + order);
+        System.out.println("ac :" + ((FastInAct)getActivity()).getOrder());
+        //排列方式变化，重新获取数据
+        if(!order.equals(((FastInAct)getActivity()).getOrder())){
+            order = ((FastInAct)getActivity()).getOrder();
+            firstGetGoods = true;
+            goodPage = 1;
+            getGoods();
+        }
     }
 
     @Override
@@ -80,8 +90,8 @@ public class ShowGoodsFragment extends BaseLazyFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
-                bundle.putString(GoodDetailAct.GOOD_ID,adapter.getItem(position).getGoods_id());
-                readyGo(GoodDetailAct.class,bundle);
+                bundle.putString(GoodDetailAct.GOOD_ID, adapter.getItem(position).getGoods_id());
+                readyGo(GoodDetailAct.class, bundle);
             }
         });
 
@@ -90,7 +100,7 @@ public class ShowGoodsFragment extends BaseLazyFragment {
             public void onLoadMore() {
                 loadMoreListView.setLoading(true);
                 goodPage++;
-                getGoods(null);
+                getGoods();
             }
         });
 
@@ -99,7 +109,7 @@ public class ShowGoodsFragment extends BaseLazyFragment {
             public void onRefresh() {
                 firstGetGoods = true;
                 goodPage = 1;
-                getGoods(null);
+                getGoods();
             }
         });
     }
@@ -110,7 +120,7 @@ public class ShowGoodsFragment extends BaseLazyFragment {
     }
 
     //order需要根据用户的选择传递进来
-    private void getGoods(String order){
+    private void getGoods(){
         if(firstGetGoods){
             toggleShowLoading(true,null);
         }
@@ -124,7 +134,7 @@ public class ShowGoodsFragment extends BaseLazyFragment {
             return;
         }
 
-        ApiManager.getService(mContext).searchGoods(null, order, category, label, null, null, goodPage,
+        ApiManager.getService(mContext).searchGoods(null, order, category, label, null, null, goodPage,"东南大学九龙湖校区",
                 new Callback<SearchGoodsRes>() {
             @Override
             public void success(SearchGoodsRes searchGoodsRes, Response response) {
@@ -168,13 +178,16 @@ public class ShowGoodsFragment extends BaseLazyFragment {
 
     //当更换排序方式时，activity对调用此方法
     public void orderChange(String order){
-
+        firstGetGoods = true;
+        goodPage = 1;
+        this.order = order;
+        getGoods();
     }
 
     private View.OnClickListener getGoodsClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            getGoods(null);
+            getGoods();
         }
     };
 

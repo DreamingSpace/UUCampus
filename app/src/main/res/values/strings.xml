@@ -12,6 +12,21 @@
     <string name="action_settings">Settings</string>
     <string name="warn">提示</string>
 
+    <!-- about-->
+    <string name="yoyo_campus">悠 悠 校 园</string>
+    <string name="about_line1">悠悠校园是由创梦工作室</string>
+    <string name="about_line2">专为大学生而推出的一款生活服务一站式产品。</string>
+    <string name="about_line3">悠悠校园完全贴近大学生生活，</string>
+    <string name="about_line4">充分满足当代大学生</string>
+    <string name="about_line5">闲置物品交易、旅游、学车、开设个人小店等需求。</string>
+    <string name="about_line6">最全面的资讯</string>
+    <string name="about_line7">最有力度的折扣</string>
+    <string name="about_line8">最到位的服务</string>
+    <string name="about_line9">尽在悠悠校园</string>
+    <string name="copy_right">Copyright@2014-2015</string>
+    <string name="company">南京虎腾信息科技有限公司</string>
+
+
     <!-- market Strings used-->
     <string name="travel">旅游</string>
     <string name="study_abroad">留学</string>
@@ -135,6 +150,10 @@
     <string name="no_such_good">没有相关商品</string>
     <string name="collect_success">已收藏</string>
     <string name="collect_cancel">已取消收藏</string>
+    <string name="order_view_number">view_number</string>
+    <string name="order_price">price</string>
+    <string name="order_last_update">last_update</string>
+    <string name="order_score">score</string>
 
     <!-- select photo stings used-->
     <string name="select_photo">选择图片</string>
@@ -206,6 +225,8 @@
     <string name="on_sale_success">上架成功~</string>
     <string name="in_pull_off">下架中</string>
     <string name="in_on_sale">上架中</string>
+    <string name="thx_your_feedback">感谢您的意见反馈，我们会更加努力~</string>
+    <string name="feed_back_cant_less_than_10">反馈不能少于10字~</string>
 
     <!-- login strings used-->
     <string name="login_username_hint">请输入您的手机号</string>
@@ -263,4 +284,23 @@
     <string name="refund_detail">退款详情</string>
     <string name="check_network_to_get_card_info">当前网络不可用，获取优惠卡信息失败，请检查网络~</string>
     <string name="get_card_info_fail">获取优惠卡信息失败~</string>
+    <string name="order_name">订单名称</string>
+    <string name="order_total_price">订单总价</string>
+    <string name="rest_to_pay">还需支付</string>
+    <string name="already_reduce">已优惠</string>
+    <string name="plz_select_pay_way">请选择支付方式</string>
+    <string name="confirm_to_pay">确 认 支 付</string>
+    <string name="creating_order">创建订单中</string>
+    <string name="alipay">alipay</string>
+    <string name="wxpay">wx</string>
+    <string name="plz_wait">请稍等</string>
+    <string name="not_pay_yet">未支付</string>
+    <string name="not_consume_yet">未消费</string>
+    <string name="total_price">总价 : </string>
+    <string name="num">数量 : </string>
+    <string name="no_orders">没有订单</string>
+    <string name="pay_fail">支付失败</string>
+    <string name="not_comment_yet">未评价</string>
+    <string name="already_comment">已评价</string>
+    <string name="order_qr_code_password">密码 : </string>
 </resources>

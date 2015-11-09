@@ -2,6 +2,7 @@ package com.dreamspace.uucampus.api;
 
 
 import com.dreamspace.uucampus.model.AllGoodsCommentRes;
+import com.dreamspace.uucampus.model.GetOrderListRes;
 import com.dreamspace.uucampus.model.IdleCollectionRes;
 import com.dreamspace.uucampus.model.Labels;
 import com.dreamspace.uucampus.model.api.AddGoodsCollectionRes;
@@ -10,7 +11,6 @@ import com.dreamspace.uucampus.model.api.AddIdleCommentRes;
 import com.dreamspace.uucampus.model.api.AddShopCollectionRes;
 import com.dreamspace.uucampus.model.api.AddShopCommentRes;
 import com.dreamspace.uucampus.model.api.AllGoodsCollectionRes;
-import com.dreamspace.uucampus.model.api.AllGoodsCommentItemRes;
 import com.dreamspace.uucampus.model.api.Card;
 import com.dreamspace.uucampus.model.api.CategoryReq;
 import com.dreamspace.uucampus.model.api.CheckUpdateRes;
@@ -18,12 +18,14 @@ import com.dreamspace.uucampus.model.api.CommitReportReq;
 import com.dreamspace.uucampus.model.api.CommitSuggestionRes;
 import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.ContentReq;
+import com.dreamspace.uucampus.model.api.CreateOrderReq;
 import com.dreamspace.uucampus.model.api.CreateCategoryRes;
 import com.dreamspace.uucampus.model.api.CreateGoodsReq;
 import com.dreamspace.uucampus.model.api.CreateGoodsRes;
 import com.dreamspace.uucampus.model.api.CreateIdleReq;
 import com.dreamspace.uucampus.model.api.CreateIdleRes;
 import com.dreamspace.uucampus.model.api.CreateLocationRes;
+import com.dreamspace.uucampus.model.api.CreateOrderRes;
 import com.dreamspace.uucampus.model.api.CreateShopCategoryRes;
 import com.dreamspace.uucampus.model.api.CreateShopDiscountRes;
 import com.dreamspace.uucampus.model.api.CreateShopReq;
@@ -39,6 +41,9 @@ import com.dreamspace.uucampus.model.api.LoginReq;
 import com.dreamspace.uucampus.model.api.LoginRes;
 import com.dreamspace.uucampus.model.api.MyGoodsRes;
 import com.dreamspace.uucampus.model.api.NameReq;
+import com.dreamspace.uucampus.model.api.OrderDetail;
+import com.dreamspace.uucampus.model.api.OrderItem;
+import com.dreamspace.uucampus.model.api.PayOrderReq;
 import com.dreamspace.uucampus.model.api.QnRes;
 import com.dreamspace.uucampus.model.api.RegisterReq;
 import com.dreamspace.uucampus.model.api.RegisterRes;
@@ -59,6 +64,9 @@ import com.dreamspace.uucampus.model.api.UpdateIdleReq;
 import com.dreamspace.uucampus.model.api.UpdateShopReq;
 import com.dreamspace.uucampus.model.api.UpdateUserInfoReq;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
+import com.google.gson.JsonElement;
+
+import org.json.JSONObject;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -68,7 +76,6 @@ import java.lang.annotation.Target;
 import retrofit.Callback;
 import retrofit.client.Response;
 import retrofit.http.Body;
-import retrofit.http.DELETE;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.PUT;
@@ -146,7 +153,7 @@ public interface UUService {
     //店铺搜索
     @GET("/shop/search/")
     void searchShop(@Query("keyword") String keyword, @Query("order") String order, @Query("category") String category,
-                    @Query("page") int page, Callback<SearchShopRes> cb);
+                    @Query("page") int page,@Query("location")String location, Callback<SearchShopRes> cb);
 
     //店铺评论添加
     @POST("/shop/{shop_id}/comment/")
@@ -232,7 +239,7 @@ public interface UUService {
     void searchGoods(@Query("keyword")String keyword,@Query("order")String order,
                      @Query("category")String category,@Query("label")String label,
                      @Query("group")String group,@Query("shop_id") String shop_id,
-                     @Query("page") int page,Callback<SearchGoodsRes>cb);
+                     @Query("page") int page,@Query("location")String location,Callback<SearchGoodsRes>cb);
 
     //商品点赞
     @POST("/goods/{goods_id}/like/")
@@ -399,6 +406,19 @@ public interface UUService {
     @GET("/label/")
     void getLabels(@Query("category") String category,Callback<Labels> cb);
 
-    @POST("/card/")
+    @GET("/card/")
     void checkCard(Callback<Card> cb);
+
+    //订单
+    @POST("/user/order/")
+    void createOrder(@Body CreateOrderReq orderReq,Callback<CreateOrderRes> cb);
+
+    @POST("/user/order/pay/{order_id}/")
+    void payOrder(@Path("order_id")String order_id,@Body PayOrderReq payOrderReq,Callback<JsonElement> cb);
+
+    @GET("/user/orders/")
+    void getOrderList(@Query("page")int page,Callback<GetOrderListRes> cb);
+
+    @GET("/user/order/{order_id}/")
+    void getOrderDetail(@Path("order_id")String order_id,Callback<OrderDetail> cb);
 }

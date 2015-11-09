@@ -17,6 +17,9 @@ public class SettingAct extends AbsActivity {
     RelativeLayout updateRl;
     @Bind(R.id.logout_btn)
     Button logoutBtn;
+    @Bind(R.id.feedback_rl)
+    RelativeLayout feedBackRl;
+
     @Override
     protected int getContentView() {
         return R.layout.activity_setting;
@@ -43,6 +46,13 @@ public class SettingAct extends AbsActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        feedBackRl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readyGo(FeedbackAct.class);
             }
         });
     }

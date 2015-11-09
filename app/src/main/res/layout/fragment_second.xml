@@ -225,19 +225,19 @@
                 android:layout_height="1px"/>
 
             <LinearLayout
-                android:id="@+id/feedback_ll"
+                android:id="@+id/about_ll"
                 android:background="@drawable/personal_center_item_bg"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="38dp">
                 <ImageView
-                    android:src="@drawable/setting_icon_suggestion"
+                    android:src="@drawable/my_center_button_about"
                     android:layout_marginLeft="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
-                    android:text="@string/feedback"
+                    android:text="@string/about"
                     android:textSize="16sp"
                     android:textColor="@color/black_40"
                     android:layout_marginLeft="15dp"

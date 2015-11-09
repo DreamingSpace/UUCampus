@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/custom_toolbar"/>
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="19dp"
+        android:src="@drawable/register_icon_just_a_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/app_name_tv"
+            android:text="@string/yoyo_campus"
+            android:textSize="16sp"
+            android:textColor="@color/text_normal"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_toLeftOf="@id/app_name_tv"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="65dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/text_normal"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"/>
+        <View
+            android:layout_toRightOf="@id/app_name_tv"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="65dp"
+            android:background="@color/text_normal"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:text="@string/about_line1"
+        android:textColor="@color/my_shop_text_color"
+        android:textSize="14sp"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="@string/about_line2"
+        android:textColor="@color/my_shop_text_color"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="@string/about_line3"
+        android:textColor="@color/my_shop_text_color"
+        android:textSize="14sp"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="@string/about_line4"
+        android:textColor="@color/my_shop_text_color"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="@string/about_line5"
+        android:textColor="@color/my_shop_text_color"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="@string/about_line6"
+        android:textColor="@color/my_shop_text_color"
+        android:textSize="14sp"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="@string/about_line7"
+        android:textColor="@color/my_shop_text_color"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="@string/about_line8"
+        android:textColor="@color/my_shop_text_color"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="@string/about_line9"
+        android:textColor="@color/my_shop_text_color"
+        android:textSize="14sp"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/company_tv"
+            android:text="@string/company"
+            android:textColor="@color/text_normal"
+            android:textSize="12sp"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="@string/copy_right"
+            android:textColor="@color/text_normal"
+            android:textSize="12sp"
+            android:layout_above="@id/company_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>

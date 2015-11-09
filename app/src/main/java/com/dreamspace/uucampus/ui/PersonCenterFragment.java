@@ -13,6 +13,7 @@ import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.model.ErrorRes;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
 import com.dreamspace.uucampus.ui.activity.Order.MyOrderAct;
+import com.dreamspace.uucampus.ui.activity.Personal.AboutAct;
 import com.dreamspace.uucampus.ui.activity.Personal.CouponCardAct;
 import com.dreamspace.uucampus.ui.activity.Personal.FeedbackAct;
 import com.dreamspace.uucampus.ui.activity.Personal.MyCollectionAct;
@@ -46,8 +47,8 @@ public class PersonCenterFragment extends BaseLazyFragment {
     LinearLayout couponCardLl;
     @Bind(R.id.setting_ll)
     LinearLayout settingLl;
-    @Bind(R.id.feedback_ll)
-    LinearLayout feedbackLl;
+    @Bind(R.id.about_ll)
+    LinearLayout aboutLl;
     @Bind(R.id.personal_nickname_tv)
     TextView nicnNameTv;
 
@@ -126,10 +127,10 @@ public class PersonCenterFragment extends BaseLazyFragment {
             }
         });
 
-        feedbackLl.setOnClickListener(new View.OnClickListener() {
+        aboutLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGo(FeedbackAct.class);
+                readyGo(AboutAct.class);
             }
         });
     }

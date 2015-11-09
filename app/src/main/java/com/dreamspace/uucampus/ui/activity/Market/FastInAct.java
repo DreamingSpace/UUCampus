@@ -46,6 +46,7 @@ public class FastInAct extends AbsActivity {
     @Bind(R.id.content_rl)
     RelativeLayout contentRl;
 
+    private String order;//当前的排列方式
     private GoodsSortPopupWindow popupWindow;
     private boolean actDestory = false;
     private ArrayList<String> mLabels;
@@ -60,6 +61,7 @@ public class FastInAct extends AbsActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         category = bundle.getString(CATEGORY);
+        order = getString(R.string.order_view_number);//默认排列方式
         super.onCreate(savedInstanceState);
     }
 
@@ -107,8 +109,9 @@ public class FastInAct extends AbsActivity {
             @Override
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(0);
+                order = getString(R.string.order_view_number);
                 //必须调用getpage才能获取准确的fragment，getitem获取的不对
-                ((ShowGoodsFragment)pagerAdpater.getPage(pager.getCurrentItem())).orderChange("hotest");
+                ((ShowGoodsFragment)pagerAdpater.getPage(pager.getCurrentItem())).orderChange(getString(R.string.order_view_number));
             }
         });
 
@@ -116,7 +119,8 @@ public class FastInAct extends AbsActivity {
             @Override
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(1);
-                ((ShowGoodsFragment)pagerAdpater.getPage(pager.getCurrentItem())).orderChange("highest");
+                order = getString(R.string.order_score);
+                ((ShowGoodsFragment)pagerAdpater.getPage(pager.getCurrentItem())).orderChange(getString(R.string.order_score));
             }
         });
 
@@ -124,7 +128,8 @@ public class FastInAct extends AbsActivity {
             @Override
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(2);
-                ((ShowGoodsFragment)pagerAdpater.getPage(pager.getCurrentItem())).orderChange("newest");
+                order = getString(R.string.order_last_update);
+                ((ShowGoodsFragment)pagerAdpater.getPage(pager.getCurrentItem())).orderChange(getString(R.string.order_last_update));
             }
         });
 
@@ -132,7 +137,8 @@ public class FastInAct extends AbsActivity {
             @Override
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(3);
-                ((ShowGoodsFragment)pagerAdpater.getPage(pager.getCurrentItem())).orderChange("cheapest");
+                order = getString(R.string.order_price);
+                ((ShowGoodsFragment)pagerAdpater.getPage(pager.getCurrentItem())).orderChange(getString(R.string.order_price));
             }
         });
     }
@@ -202,5 +208,9 @@ public class FastInAct extends AbsActivity {
     protected void onDestroy() {
         super.onDestroy();
         actDestory = true;
+    }
+
+    public String getOrder() {
+        return order;
     }
 }

@@ -33,7 +33,7 @@
                         android:layout_height="wrap_content" />
                     <TextView
                         android:id="@+id/good_single_price_tv"
-                        android:text="￥600"
+                        android:text="￥0"
                         android:textColor="@color/price_text_color"
                         android:textSize="14sp"
                         android:layout_alignParentRight="true"
@@ -65,7 +65,7 @@
                         android:layout_centerVertical="true"
                         android:gravity="center_vertical"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="23dp"
+                        android:layout_marginRight="18dp"
                         android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent">
@@ -73,8 +73,8 @@
                             android:id="@+id/good_num_reduce_ll"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:paddingLeft="5dp"
-                            android:paddingRight="5dp">
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp">
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:src="@drawable/orderdetail_btn_reduce"
@@ -93,8 +93,8 @@
                             android:layout_height="wrap_content" />
                         <LinearLayout
                             android:id="@+id/good_num_add_ll"
-                            android:paddingLeft="5dp"
-                            android:paddingRight="5dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent">
                             <ImageView
@@ -120,12 +120,26 @@
                         android:layout_height="wrap_content" />
                     <ImageView
                         android:id="@+id/coupon_use_iv"
-                        android:src="@drawable/orderdetail_btn_chose_h"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginRight="23dp"
+                        android:src="@drawable/orderdetail_btn_chose_h"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
+                    <!--<RelativeLayout-->
+                        <!--android:id="@+id/coupon_use_rl"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:layout_width="60dp"-->
+                        <!--android:layout_height="match_parent">-->
+                        <!--<ImageView-->
+                            <!--android:id="@+id/coupon_use_iv"-->
+                            <!--android:layout_alignParentRight="true"-->
+                            <!--android:layout_centerVertical="true"-->
+                            <!--android:layout_marginRight="23dp"-->
+                            <!--android:src="@drawable/orderdetail_btn_chose_h"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content" />-->
+                    <!--</RelativeLayout>-->
                     <Button
                         android:id="@+id/get_coupon_btn"
                         android:visibility="invisible"
@@ -161,7 +175,7 @@
                         android:layout_height="wrap_content" />
                     <TextView
                         android:id="@+id/total_price_tv"
-                        android:text="￥1000"
+                        android:text="￥0"
                         android:textSize="16sp"
                         android:textColor="@color/price_text_color"
                         android:layout_alignParentRight="true"
@@ -178,7 +192,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:id="@+id/total_price_before_reduce_tv"
-                            android:text="￥1200"
+                            android:text="￥0"
                             android:textSize="14sp"
                             android:textColor="@color/text_normal"
                             android:layout_width="wrap_content"

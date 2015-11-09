@@ -206,7 +206,8 @@ public class GoodDetailAct extends AbsActivity {
                 bundle.putString(OrderConfirmAct.GOOD_NAME,goodInfo.getName());
                 bundle.putString(OrderConfirmAct.PRICE,goodInfo.getPrice());
                 bundle.putString(OrderConfirmAct.DISCOUNT,goodInfo.getDiscount());
-                readyGo(OrderConfirmAct.class,bundle);
+                bundle.putString(OrderConfirmAct.GOOD_ID,goodId);
+                readyGo(OrderConfirmAct.class, bundle);
             }
         });
     }

@@ -31,6 +31,10 @@ dependencies {
     compile files('src/main/libs/SocialSDK_WeiXin_1.jar')
     compile files('src/main/libs/SocialSDK_WeiXin_2.jar')
     compile files('src/main/libs/umeng_social_sdk.jar')
+    compile files('src/main/libs/alipaySDK-20150818.jar')
+    compile files('src/main/libs/libpingpp-2.0.6.jar')
+    compile files('src/main/libs/UPPayAssistEx.jar')
+    compile files('src/main/libs/UPPayPluginEx.jar')
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.android.support:design:22.2.0'
     compile 'com.android.support:cardview-v7:22.2.0'
