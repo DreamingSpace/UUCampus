@@ -4,9 +4,14 @@
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <include
+    <LinearLayout
+        android:id="@+id/content_ll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        layout="@layout/view_free_goods_top_good_detail"/>
+        android:layout_height="match_parent">
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/view_free_goods_top_good_detail"/>
+    </LinearLayout>
+
 </LinearLayout>

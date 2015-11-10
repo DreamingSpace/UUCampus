@@ -28,6 +28,7 @@ import retrofit.client.Response;
 
 /**
  * Created by Lx on 2015/11/7.
+ * 订单支付界面，进入此界面需要传入order_name,order_id,order_total_price,rest_to_pay_price
  */
 public class OrderPayAct extends AbsActivity{
     @Bind(R.id.order_name_tv)

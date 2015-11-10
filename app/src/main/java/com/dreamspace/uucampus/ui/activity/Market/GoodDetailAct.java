@@ -24,6 +24,7 @@ import com.dreamspace.uucampus.common.utils.DensityUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.api.AddGoodsCollectionRes;
+import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.GoodsInfoRes;
 import com.dreamspace.uucampus.ui.activity.Order.OrderConfirmAct;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
@@ -170,6 +171,7 @@ public class GoodDetailAct extends AbsActivity {
         collect_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("collect " + goodInfo.getIs_collected());
                 if(goodInfo != null){
                     if(goodInfo.getIs_collected() == 0){
                         addGoodCollection();
@@ -301,21 +303,21 @@ public class GoodDetailAct extends AbsActivity {
             return;
         }
 
-//        ApiManager.getService(this).deleteGoodsCollection(goodId, new Callback<CommonStatusRes>() {
-//            @Override
-//            public void success(CommonStatusRes commonStatusRes, Response response) {
-//                if(commonStatusRes != null && !actDestory){
-//                    goodInfo.setIs_collected(0);
-//                    collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_n));
-//                    showToast(getString(R.string.collect_cancel));
-//                }
-//            }
-//
-//            @Override
-//            public void failure(RetrofitError error) {
-//                showInnerError(error);
-//            }
-//        });
+        ApiManager.getService(this).deleteGoodsCollection(goodId, new Callback<CommonStatusRes>() {
+            @Override
+            public void success(CommonStatusRes commonStatusRes, Response response) {
+                if(commonStatusRes != null && !actDestory){
+                    goodInfo.setIs_collected(0);
+                    collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_n));
+                    showToast(getString(R.string.collect_cancel));
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                showInnerError(error);
+            }
+        });
     }
 
     //将商品详细信息填入view
@@ -338,10 +340,12 @@ public class GoodDetailAct extends AbsActivity {
 
     @Override
     public void onBackPressed() {
-        //为“我的收藏”界面返回当前此商品的收藏状态
-        Intent data = new Intent();
-        data.putExtra(GOOD_CURRENT_COLLCET_STATE,goodInfo.getIs_collected());
-        setResult(RESULT_OK,data);
+        if(goodInfo != null){
+            //为“我的收藏”界面返回当前此商品的收藏状态
+            Intent data = new Intent();
+            data.putExtra(GOOD_CURRENT_COLLCET_STATE,goodInfo.getIs_collected());
+            setResult(RESULT_OK,data);
+        }
         super.onBackPressed();
     }
 

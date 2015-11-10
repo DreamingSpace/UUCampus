@@ -153,13 +153,15 @@ public class ShowShopsFragment extends BaseLazyFragment {
 
             @Override
             public void failure(RetrofitError error) {
-                if(shopPage == 1){
-                    toggleShowEmpty(true, null, getShopsClickListener);
-                }else{
-                    showInnerError(error);
+                if(!fragmentDestroy){
+                    if(shopPage == 1){
+                        toggleShowEmpty(true, null, getShopsClickListener);
+                    }else{
+                        showInnerError(error);
+                    }
+                    loadMoreListView.setLoading(false);
+                    swipeRefreshLayout.setRefreshing(false);
                 }
-                loadMoreListView.setLoading(false);
-                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }

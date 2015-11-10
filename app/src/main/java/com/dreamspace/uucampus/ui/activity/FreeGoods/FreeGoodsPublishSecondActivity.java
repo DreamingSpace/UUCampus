@@ -57,7 +57,8 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
     private String mGoodsInfoWrong;   //输出填写错误信息
     private boolean isInfoCorrect;
 
-    private ProgressDialog pd;
+//    private ProgressDialog pd;
+    private com.dreamspace.uucampus.ui.dialog.ProgressDialog pd;
     private CreateIdleReq req = new CreateIdleReq();
 
     @Override
@@ -193,7 +194,10 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
 
     //上传图片
     private void upLoadImage(final String path){
-        pd = ProgressDialog.show(FreeGoodsPublishSecondActivity.this, "", "正在创建", true, false);
+//        pd = ProgressDialog.show(FreeGoodsPublishSecondActivity.this, "", "正在创建", true, false);
+        pd = new com.dreamspace.uucampus.ui.dialog.ProgressDialog(this);
+        pd.setContent("正在创建");
+        pd.show();
         if (NetUtils.isNetworkConnected(FreeGoodsPublishSecondActivity.this)) {
             ApiManager.getService(this).createQiNiuToken(new Callback<QnRes>() {
                 @Override

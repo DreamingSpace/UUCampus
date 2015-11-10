@@ -50,6 +50,8 @@ public class PersonCenterFragment extends BaseLazyFragment {
     LinearLayout aboutLl;
     @Bind(R.id.personal_nickname_tv)
     TextView nicnNameTv;
+    @Bind(R.id.personal_center_content_ll)
+    LinearLayout contentLl;
 
     private UserInfoRes userInfo;
     private boolean fragmentDestory = false;
@@ -59,6 +61,7 @@ public class PersonCenterFragment extends BaseLazyFragment {
 
     @Override
     protected void onFirstUserVisible() {
+        fragmentDestory = false;
         getUserInfo();
     }
 
@@ -141,7 +144,7 @@ public class PersonCenterFragment extends BaseLazyFragment {
 
     @Override
     protected View getLoadingTargetView() {
-        return ButterKnife.findById(getActivity(),R.id.personal_center_content_ll);
+        return contentLl;
     }
 
     @Override
@@ -168,6 +171,7 @@ public class PersonCenterFragment extends BaseLazyFragment {
                 if(userInfoRes != null && !fragmentDestory){
                     showUserInfoIntoViews(userInfoRes);
                     toggleRestore();
+                    System.out.println("in");
                 }
             }
 
@@ -180,9 +184,9 @@ public class PersonCenterFragment extends BaseLazyFragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
         fragmentDestory = true;
+        super.onDestroyView();
     }
 
     private View.OnClickListener getInfoClickListeners = new View.OnClickListener() {
@@ -194,8 +198,10 @@ public class PersonCenterFragment extends BaseLazyFragment {
 
     //将头像和昵称显示到视图中
     private void showUserInfoIntoViews(UserInfoRes userInfo){
-        CommonUtils.showImageWithGlideInCiv(mContext, avatarCiv, userInfo.getImage());
-        nicnNameTv.setText(userInfo.getName());
-        this.userInfo = userInfo;
+        if(!fragmentDestory){
+            CommonUtils.showImageWithGlideInCiv(mContext, avatarCiv, userInfo.getImage());
+            nicnNameTv.setText(userInfo.getName());
+            this.userInfo = userInfo;
+        }
     }
 }

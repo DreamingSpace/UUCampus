@@ -307,4 +307,11 @@
     <string name="not_comment_yet">未评价</string>
     <string name="already_comment">已评价</string>
     <string name="order_qr_code_password">密码 : </string>
+    <string name="comment_success">评论成功~</string>
+    <string name="in_comment">评价中</string>
+    <string name="comment_cant_less_than_10">评论不能少于10个字</string>
+    <string name="plz_score">请评星~</string>
+    <string name="confirm_cancel_order">确认要申请退款吗？</string>
+    <string name="in_cancel_order">申请退款中</string>
+    <string name="cancel_order_success">申请退款成功</string>
 </resources>

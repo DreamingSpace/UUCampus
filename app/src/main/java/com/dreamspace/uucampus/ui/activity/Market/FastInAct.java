@@ -50,6 +50,7 @@ public class FastInAct extends AbsActivity {
     private GoodsSortPopupWindow popupWindow;
     private boolean actDestory = false;
     private ArrayList<String> mLabels;
+    private boolean haveGood = false;
 
     private FragmentStatePagerItemAdapter pagerAdpater;
     public static String LABEL = "label";
@@ -76,10 +77,25 @@ public class FastInAct extends AbsActivity {
         int id = item.getItemId();
         if (id == R.id.action_sort) {
             if (popupWindow != null) {
-                popupWindow.showAsDropDown(mToolBar);
+                if(popupWindow.isShowing()){
+                    popupWindow.dismiss();
+                }else{
+                    popupWindow.showAsDropDown(mToolBar);
+                }
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem sort = menu.findItem(R.id.action_sort);
+        if(!haveGood){
+            sort.setVisible(false);//若没有数据则不现实排序
+        }else{
+            sort.setVisible(true);
+        }
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -180,8 +196,12 @@ public class FastInAct extends AbsActivity {
             public void success(Labels labels, Response response) {
                 if (labels != null && !actDestory) {
                     if (labels.getLabel().size() == 0) {
+                        haveGood = false;
+                        invalidateOptionsMenu();//不显示排序
                         toggleShowEmpty(true, getString(R.string.no_such_good), null);
                     } else {
+                        haveGood = true;
+                        invalidateOptionsMenu();
                         mLabels = labels.getLabel();
                         initSTL();
                         toggleRestore();

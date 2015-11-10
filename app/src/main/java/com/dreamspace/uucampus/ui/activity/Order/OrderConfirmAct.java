@@ -20,6 +20,7 @@ import com.dreamspace.uucampus.model.ErrorRes;
 import com.dreamspace.uucampus.model.api.Card;
 import com.dreamspace.uucampus.model.api.CreateOrderReq;
 import com.dreamspace.uucampus.model.api.CreateOrderRes;
+import com.dreamspace.uucampus.ui.activity.Personal.CouponCardAct;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
 
@@ -186,7 +187,7 @@ public class OrderConfirmAct extends AbsActivity{
         getCouponBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO 获取优惠卡
+                readyGo(CouponCardAct.class);
             }
         });
     }

@@ -28,7 +28,7 @@
         android:id="@+id/message_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/register_icon_just_a_sign"/>
+        android:src="@drawable/srarch_icon_search"/>
 
     <TextView
         android:id="@+id/message_info"

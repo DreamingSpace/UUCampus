@@ -136,7 +136,7 @@
     <orderEntry type="library" exported="" name="utils-v4-1.4.1" level="project" />
     <orderEntry type="library" exported="" name="qiniu-android-sdk-7.0.7.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-22.2.0" level="project" />
-    <orderEntry type="library" exported="" name="core-2.0" level="project" />
     <orderEntry type="library" exported="" name="gson-2.4" level="project" />
+    <orderEntry type="library" exported="" name="core-2.0" level="project" />
   </component>
 </module>

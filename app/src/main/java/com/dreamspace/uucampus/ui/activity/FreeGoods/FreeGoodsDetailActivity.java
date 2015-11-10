@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
@@ -58,11 +59,14 @@ public class FreeGoodsDetailActivity extends AbsActivity {
     ImageView mLikeIv;
     @Bind(R.id.free_goods_detail_shop_name_image_cv)
     CircleImageView mUserImage;
+    @Bind(R.id.content_ll)
+    LinearLayout contentLl;
 
     public static final String TYPE = "type";
     public static final String DETAIL = "detail";
     public static final String COMMENT= "comment";
     public static final String EXTRA_IDLE_ID="idle_id";
+    public static final String IDLE_CURRENT_COLLECT_STATE = "IDLE_CURRENT_COLLECT_STATE";
 
     private String idle_id=null;
     private String content=null;
@@ -100,15 +104,17 @@ public class FreeGoodsDetailActivity extends AbsActivity {
 
     @Override
     protected View getLoadingTargetView() {
-        return null;
+        return contentLl;
     }
 
     private void loadingInitData() {
+        toggleShowLoading(true, null);
         if(NetUtils.isNetworkConnected(this.getApplicationContext())){
             ApiManager.getService(this.getApplicationContext()).getIdleInfo(idle_id, new Callback<GetIdleInfoRes>() {
                 @Override
                 public void success(GetIdleInfoRes getIdleInfoRes, Response response) {
                     if(!isActDestroy) {
+                        toggleRestore();
                         initViewData(getIdleInfoRes);
                     }
                 }
@@ -116,10 +122,12 @@ public class FreeGoodsDetailActivity extends AbsActivity {
                 @Override
                 public void failure(RetrofitError error) {
                     showInnerError(error);
+                    toggleShowEmpty(true,null,clickGetDetailListener);
                 }
             });
         }else{
             showNetWorkError();
+            toggleNetworkError(true,clickGetDetailListener);
         }
     }
 
@@ -133,7 +141,7 @@ public class FreeGoodsDetailActivity extends AbsActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.good_detail_action_share){
-            share.getController().openShare(this,false);
+            share.getController().openShare(this, false);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -175,7 +183,10 @@ public class FreeGoodsDetailActivity extends AbsActivity {
     }
 
     private void likeIdle(boolean bLike) {
-        final ProgressDialog pd =ProgressDialog.show(this, "", "正在点赞", true, false);
+//        final ProgressDialog pd =ProgressDialog.show(this, "", "正在点赞", true, false);
+        final com.dreamspace.uucampus.ui.dialog.ProgressDialog pd = new com.dreamspace.uucampus.ui.dialog.ProgressDialog(this);
+        pd.setContent("正在点赞");
+        pd.show();
         if(NetUtils.isNetworkConnected(this.getApplicationContext())){
             if(bLike) {
                 ApiManager.getService(this.getApplicationContext()).likeIdle(idle_id, new Callback<LikeIdleRes>() {
@@ -271,4 +282,22 @@ public class FreeGoodsDetailActivity extends AbsActivity {
         super.onDestroy();
         isActDestroy=true;
     }
+
+    @Override
+    public void onBackPressed() {
+        if(is_collection != null ){
+            //为“我的收藏”界面返回当前闲置的收藏状态
+            Intent data = new Intent();
+            data.putExtra(IDLE_CURRENT_COLLECT_STATE, Integer.parseInt(is_collection));
+            setResult(RESULT_OK,data);
+        }
+        super.onBackPressed();
+    }
+
+    private View.OnClickListener clickGetDetailListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            loadingInitData();
+        }
+    };
 }

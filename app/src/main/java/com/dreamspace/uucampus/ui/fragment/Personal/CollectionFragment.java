@@ -23,6 +23,7 @@ import com.dreamspace.uucampus.model.api.AllGoodsCollectionRes;
 import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.IdleCollectionItem;
 import com.dreamspace.uucampus.model.api.ShopCollectionRes;
+import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsDetailActivity;
 import com.dreamspace.uucampus.ui.activity.Market.GoodDetailAct;
 import com.dreamspace.uucampus.ui.activity.Market.ShopShowGoodsAct;
 import com.dreamspace.uucampus.ui.activity.Personal.MyCollectionAct;
@@ -215,7 +216,17 @@ public class CollectionFragment extends BaseFragment {
                 }
             });
         }else if(type.equals(getString(R.string.free_goods))){
-            //TODO 和吴凡的闲置详情界面对接
+            collectionLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    if(idleListAdapter != null){
+                        Bundle bundle = new Bundle();
+                        bundle.putString(FreeGoodsDetailActivity.EXTRA_IDLE_ID,idleListAdapter.getItem(position).getIdle_id());
+                        detailInPosition = position;
+                        readyGoForResult(FreeGoodsDetailActivity.class,IDLE_DETAIL,bundle);
+                    }
+                }
+            });
         }
     }
 
@@ -477,24 +488,34 @@ public class CollectionFragment extends BaseFragment {
                 //取消收藏
                 if(type.equals(getString(R.string.goods))){
                     goodsListAdapter.removeItem(detailInPosition);
-                }else if(type.equals(getString(R.string.seller))){
-                    shopListAdapter.removeItem(detailInPosition);
-                }else if(type.equals(getString(R.string.free_goods))){
-                    idleListAdapter.removeItem(detailInPosition);
                 }
+//                else if(type.equals(getString(R.string.seller))){
+//                    shopListAdapter.removeItem(detailInPosition);
+//                }else if(type.equals(getString(R.string.free_goods))){
+//                    idleListAdapter.removeItem(detailInPosition);
+//                }
             }
         }else if(requestCode == SHOP_SHOW_GOODS && resultCode == getActivity().RESULT_OK){
             int state = data.getIntExtra(ShopShowGoodsAct.SHOP_CURRENT_COLLECT_STATE,-1);
             if(state == 0){
-                if(type.equals(getString(R.string.goods))){
-                    goodsListAdapter.removeItem(detailInPosition);
-                }else if(type.equals(getString(R.string.seller))){
+                if(type.equals(getString(R.string.seller))){
                     shopListAdapter.removeItem(detailInPosition);
-                }else if(type.equals(getString(R.string.free_goods))){
+                }
+//                if(type.equals(getString(R.string.goods))){
+//                    goodsListAdapter.removeItem(detailInPosition);
+//                }else if(type.equals(getString(R.string.seller))){
+//                    shopListAdapter.removeItem(detailInPosition);
+//                }else if(type.equals(getString(R.string.free_goods))){
+//                    idleListAdapter.removeItem(detailInPosition);
+//                }
+            }
+        }else if(requestCode == IDLE_DETAIL && resultCode == getActivity().RESULT_OK){
+            int state = data.getIntExtra(FreeGoodsDetailActivity.IDLE_CURRENT_COLLECT_STATE,-1);
+            if(state == 0){
+                if(type.equals(getString(R.string.free_goods))){
                     idleListAdapter.removeItem(detailInPosition);
                 }
             }
-        }else if(requestCode == IDLE_DETAIL && resultCode == getActivity().RESULT_OK){
 //            if(type.equals(getString(R.string.goods))){
 //                goodsListAdapter.removeItem(detailInPosition);
 //            }else if(type.equals(getString(R.string.seller))){

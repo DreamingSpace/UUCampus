@@ -18,6 +18,7 @@ import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.IdleInfoRes;
 import com.dreamspace.uucampus.model.api.MyIdleItem;
 import com.dreamspace.uucampus.model.api.UpdateIdleReq;
+import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsDetailActivity;
 import com.dreamspace.uucampus.ui.activity.Personal.MyFreeGoodsAct;
 import com.dreamspace.uucampus.ui.base.BaseFragment;
 import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
@@ -144,7 +145,13 @@ public class MyFreeGoodsFragment extends BaseFragment {
         freeGoodsLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO 进入闲置详情界面
+                Bundle bundle = new Bundle();
+                if (type.equals(getString(R.string.on_sale))) {
+                    bundle.putString(FreeGoodsDetailActivity.EXTRA_IDLE_ID,saleListAdapter.getItem(position).getIdle_id());
+                } else if (type.equals(getString(R.string.already_pull_off))) {
+                    bundle.putString(FreeGoodsDetailActivity.EXTRA_IDLE_ID,pullOffListAdapter.getItem(position).getIdle_id());
+                }
+                readyGo(FreeGoodsDetailActivity.class,bundle);
             }
         });
     }

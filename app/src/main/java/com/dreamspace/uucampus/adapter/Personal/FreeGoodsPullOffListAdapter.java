@@ -52,8 +52,8 @@ public class FreeGoodsPullOffListAdapter extends BasisAdapter<MyIdleItem,FreeGoo
         holder.image = (ImageView) convertView.findViewById(R.id.good_image_iv);
         holder.name = (TextView) convertView.findViewById(R.id.good_name_tv);
         holder.price = (TextView) convertView.findViewById(R.id.good_price_tv);
-        holder.edit = (Button) convertView.findViewById(R.id.edit_btn);
-        holder.sale = (Button) convertView.findViewById(R.id.sale_btn);
+        holder.edit = (TextView) convertView.findViewById(R.id.edit_tv);
+        holder.sale = (TextView) convertView.findViewById(R.id.sale_tv);
     }
 
     @Override
@@ -65,8 +65,8 @@ public class FreeGoodsPullOffListAdapter extends BasisAdapter<MyIdleItem,FreeGoo
         public ImageView image;
         public TextView name;
         public TextView price;
-        public Button edit;
-        public Button sale;
+        public TextView edit;
+        public TextView sale;
     }
 
     public interface OnGoodSaleClickListener{

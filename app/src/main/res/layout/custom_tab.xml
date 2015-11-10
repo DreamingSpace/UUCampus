@@ -6,6 +6,7 @@
     android:background="?attr/selectableItemBackground"
     android:gravity="center"
     android:textColor="@color/custom_text"
+    android:textStyle="bold"
     android:textSize="16sp">
 
 </TextView>

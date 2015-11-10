@@ -34,24 +34,26 @@
         android:layout_marginTop="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/edit_btn"
+    <TextView
+        android:id="@+id/edit_tv"
         android:text="@string/edit"
         style="@style/pull_off_sale_btn_style"
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
+        android:gravity="center"
         android:background="@drawable/green_stroke_btn_bg"
         android:layout_width="70dp"
         android:layout_height="30dp" />
-    <Button
-        android:id="@+id/sale_btn"
+    <TextView
+        android:id="@+id/sale_tv"
         android:text="@string/sale"
         style="@style/pull_off_sale_btn_style"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/edit_btn"
+        android:layout_below="@id/edit_tv"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
+        android:gravity="center"
         android:background="@drawable/green_stroke_btn_bg"
         android:layout_width="70dp"
         android:layout_height="30dp" />

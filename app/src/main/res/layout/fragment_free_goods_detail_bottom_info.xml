@@ -37,9 +37,9 @@
     <LinearLayout
         android:id="@+id/goods_detail_bottom_linear_layout"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="48dp"
         android:layout_alignParentBottom="true"
-        android:background="#F0EFE0"
+        android:background="@color/market_fragments_bg_color"
         android:gravity="center"
         android:padding="2dp"
         android:orientation="horizontal">
@@ -87,4 +87,9 @@
         </LinearLayout>
     </LinearLayout>
 
+    <View
+        android:layout_above="@id/goods_detail_bottom_linear_layout"
+        android:background="@color/divider_color"
+        android:layout_width="match_parent"
+        android:layout_height="2px"/>
 </RelativeLayout>

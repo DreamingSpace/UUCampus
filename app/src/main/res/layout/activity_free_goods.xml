@@ -30,10 +30,10 @@
                 app:stl_distributeEvenly="true"
                 app:stl_dividerColor="@android:color/transparent"
                 app:stl_dividerThickness="0dp"
-                app:stl_indicatorColor="#06C1AE"
-                app:stl_indicatorCornerRadius="2dp"
+                app:stl_indicatorColor="@color/app_theme_color"
+                app:stl_indicatorCornerRadius="5dp"
                 app:stl_indicatorInterpolation="smart"
-                app:stl_indicatorThickness="3dp"
+                app:stl_indicatorThickness="4dp"
                 app:stl_indicatorWithoutPadding="true"
                 app:stl_underlineColor="@android:color/transparent" />
 

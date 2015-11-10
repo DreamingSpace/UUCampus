@@ -1,6 +1,5 @@
 package com.dreamspace.uucampus.ui.fragment.FreeGoods;
 
-import android.app.ProgressDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +15,7 @@ import com.dreamspace.uucampus.model.api.ContentReq;
 import com.dreamspace.uucampus.model.api.IdleAllCommentRes;
 import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsDetailActivity;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
+import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
 import com.dreamspace.uucampus.widget.LoadMoreListView;
 
 import java.util.List;
@@ -104,7 +104,10 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
         } else {
             req.setContent(mCommentEditText.getText().toString());
             mCommentEditText.setText("");
-            final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "正在添加", true, false);
+            final ProgressDialog pd = new ProgressDialog(mContext);
+            pd.setContent("正在添加");
+            pd.show();
+//            final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "正在添加", true, false);
             if (NetUtils.isNetworkConnected(getActivity().getApplicationContext())) {
                 ApiManager.getService(getActivity().getApplicationContext()).addIdleComment(idle_id, req, new Callback<AddIdleCommentRes>() {
                     @Override
@@ -141,27 +144,27 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
     }
 
     public void initCommentData() {
-        toggleShowLoading(true, getString(R.string.common_loading_message));
+//        toggleShowLoading(true, getString(R.string.common_loading_message));
         page = 1;
         loadingCommentByPage(page, new OnRefreshListener<FreeGoodsCommentItem>() {
             @Override
             public void onFinish(List<FreeGoodsCommentItem> mEntities) {
                 if (mEntities != null && mEntities.size() == 0) {
-                    toggleShowEmpty(true, getString(R.string.common_empty_msg), null);
+//                    toggleShowEmpty(true, getString(R.string.common_empty_msg), null);
                 } else {
-                    toggleShowLoading(false, null);
+//                    toggleShowLoading(false, null);
                     refreshDate(mEntities, LOAD);
                 }
             }
 
             @Override
             public void onError() {
-                toggleShowError(true, getString(R.string.common_error_msg), new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        initCommentData();
-                    }
-                });
+//                toggleShowError(true, getString(R.string.common_error_msg), new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        initCommentData();
+//                    }
+//                });
             }
         });
     }
@@ -216,7 +219,10 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
             public void updateUsefulData(String comment_id, boolean bUseful) {
                 if (NetUtils.isNetworkConnected(getActivity().getApplicationContext())) {
                     if (bUseful) {  //评论有用
-                        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "有用评论添加", true, false);
+                        final ProgressDialog pd = new ProgressDialog(mContext);
+                        pd.setContent("有用评论添加");
+                        pd.show();
+//                        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "有用评论添加", true, false);
                         ApiManager.getService(getActivity().getApplicationContext()).addIdleCommentUseful(idle_id, comment_id, new Callback<Response>() {
                             @Override
                             public void success(Response response, Response response2) {
@@ -242,7 +248,10 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
                             }
                         });
                     } else {  //评论无用
-                        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "有用评取消", true, false);
+                        final ProgressDialog pd = new ProgressDialog(mContext);
+                        pd.setContent("有用评取消");
+                        pd.show();
+//                        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "有用评取消", true, false);
                         ApiManager.getService(getActivity().getApplicationContext()).cancelIdleCommentUseful(idle_id, comment_id, new Callback<Response>() {
                             @Override
                             public void success(Response response, Response response2) {

@@ -1,5 +1,6 @@
 package com.dreamspace.uucampus.ui.activity.Order;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -15,10 +16,13 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.OrderDetail;
 import com.dreamspace.uucampus.ui.activity.Market.GoodDetailAct;
 import com.dreamspace.uucampus.ui.activity.Market.ShopShowGoodsAct;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
+import com.dreamspace.uucampus.ui.dialog.MsgDialog;
+import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
 import com.dreamspace.uucampus.widget.RatingBar;
 
 import net.glxn.qrgen.android.QRCode;
@@ -79,11 +83,17 @@ public class OrderDetailAct extends AbsActivity{
     private TextView alreadyRefundTv;
     private ImageView qrCodeIv;
     private String order_id;
+    private MsgDialog msgDialog;
+    private ProgressDialog progressDialog;
 
     private boolean actDestory = false;
+    private boolean orderStateChange = false;
     private OrderDetail mOrderDetail;
 
     public static final String ORDER_ID = "ORDER_ID";
+    private static final int GO_PAY = 1;
+    private static final int GO_COMMENT = 2;
+
     @Override
     protected int getContentView() {
         return R.layout.activity_order_detail;
@@ -124,7 +134,9 @@ public class OrderDetailAct extends AbsActivity{
         paidBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //进入支付界面
+                intPayAct(mOrderDetail.getGood().getName(), mOrderDetail.get_id(),
+                        mOrderDetail.getQuantity() * mOrderDetail.getGood().getOriginal_price(), mOrderDetail.getTotal_price());
             }
         });
     }
@@ -154,7 +166,8 @@ public class OrderDetailAct extends AbsActivity{
         applyRefundBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                initCancelOrderMsgDialog();
+                msgDialog.show();
             }
         });
     }
@@ -172,7 +185,8 @@ public class OrderDetailAct extends AbsActivity{
         commentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGo(CommentAct.class);
+                //进入评论界面
+                inCommentAct(mOrderDetail.get_id(), mOrderDetail.getGood().get_id());
             }
         });
     }
@@ -196,12 +210,7 @@ public class OrderDetailAct extends AbsActivity{
     }
 
     private void initRefundListeners(){
-        refundView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readyGo(RefundAct.class);
-            }
-        });
+
     }
 
     //初始化已评价订单状态视图（无控件需要添加监听器）
@@ -217,6 +226,7 @@ public class OrderDetailAct extends AbsActivity{
         return goodLl.indexOfChild(goodLlBottomDivider);
     }
 
+    //获取订单详情
     private void getOrderDetail(){
         toggleShowLoading(true,null);
         if(!NetUtils.isNetworkConnected(this)){
@@ -239,6 +249,29 @@ public class OrderDetailAct extends AbsActivity{
             public void failure(RetrofitError error) {
                 showInnerError(error);
                 toggleShowEmpty(true,null,getOrderDetailClickListener);
+            }
+        });
+    }
+
+    //取消订单(退款)
+    private void cancelOrder(){
+        if(!NetUtils.isNetworkConnected(this)){
+            showNetWorkError();
+            return;
+        }
+        ApiManager.getService(this).cancelOrder(mOrderDetail.get_id(), new Callback<CommonStatusRes>() {
+            @Override
+            public void success(CommonStatusRes commonStatusRes, Response response) {
+                if (commonStatusRes != null && !actDestory) {
+                    progressDialog.dismiss();
+                    showToast(getString(R.string.cancel_order_success));
+                    resetViews();
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                showInnerError(error);
             }
         });
     }
@@ -275,6 +308,7 @@ public class OrderDetailAct extends AbsActivity{
                 break;
         }
 
+        //把订单的数据填写到view中
         CommonUtils.showImageWithGlide(this, goodImageIv, mOrderDetail.getGood().getImage());
         if(mOrderDetail.getQuantity() > 1){
             goodNameTv.setText(mOrderDetail.getGood().getName() + "*" + mOrderDetail.getQuantity());
@@ -292,15 +326,15 @@ public class OrderDetailAct extends AbsActivity{
         locationTv.setText(mOrderDetail.getBuyer().getLocation());
         discountTv.setText(getString(R.string.RMB) +
                 (mOrderDetail.getGood().getOriginal_price() * mOrderDetail.getQuantity() -
-                mOrderDetail.getTotal_price()));
+                        mOrderDetail.getTotal_price()));
         remarkTv.setText(mOrderDetail.getRemark());
 
         goodLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(GoodDetailAct.GOOD_ID,mOrderDetail.getGood().get_id());
-                readyGo(GoodDetailAct.class,bundle);
+                bundle.putString(GoodDetailAct.GOOD_ID, mOrderDetail.getGood().get_id());
+                readyGo(GoodDetailAct.class, bundle);
             }
         });
 
@@ -308,11 +342,61 @@ public class OrderDetailAct extends AbsActivity{
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(ShopShowGoodsAct.SHOP_ID,mOrderDetail.getShop().getShop_id());
-                bundle.putString(ShopShowGoodsAct.SHOP_NAME,mOrderDetail.getShop().getName());
-                readyGo(ShopShowGoodsAct.class,bundle);
+                bundle.putString(ShopShowGoodsAct.SHOP_ID, mOrderDetail.getShop().getShop_id());
+                bundle.putString(ShopShowGoodsAct.SHOP_NAME, mOrderDetail.getShop().getName());
+                readyGo(ShopShowGoodsAct.class, bundle);
             }
         });
+    }
+
+    private void intPayAct(String order_name,String order_id,float total_price,float rest_to_pay){
+        Bundle bundle = new Bundle();
+        bundle.putString(OrderPayAct.ORDER_NAME, order_name);
+        bundle.putString(OrderPayAct.ORDER_ID, order_id);
+        bundle.putFloat(OrderPayAct.ORDER_TOTAL_PRICE, total_price);
+        bundle.putFloat(OrderPayAct.REST_TO_PAY, rest_to_pay);
+        readyGoForResult(OrderPayAct.class, GO_PAY, bundle);
+    }
+
+    private void inCommentAct(String order_id,String good_id){
+        Bundle bundle = new Bundle();
+        bundle.putString(CommentAct.ORDER_ID, order_id);
+        bundle.putString(CommentAct.GOOD_ID, good_id);
+        readyGoForResult(CommentAct.class, GO_COMMENT, bundle);
+    }
+
+    //初始化退款确认框
+    private void initCancelOrderMsgDialog(){
+        if(msgDialog != null){
+            return;
+        }
+        msgDialog = new MsgDialog(this);
+        msgDialog.setContent(getString(R.string.confirm_cancel_order));
+        msgDialog.setNegativeButton(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                msgDialog.dismiss();
+            }
+        });
+
+        msgDialog.setPositiveButton(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initProgressDialog();
+                msgDialog.dismiss();
+                progressDialog.show();
+                cancelOrder();
+            }
+        });
+    }
+
+    private void initProgressDialog(){
+        if(progressDialog != null){
+            return;
+        }
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setContent(getString(R.string.in_cancel_order));
     }
 
     private View.OnClickListener getOrderDetailClickListener = new View.OnClickListener() {
@@ -326,5 +410,31 @@ public class OrderDetailAct extends AbsActivity{
     protected void onDestroy() {
         actDestory = true;
         super.onDestroy();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == GO_PAY && resultCode == RESULT_OK){
+            //将原来添加进来的视图删除，再重新获取数据
+            resetViews();
+        }else if(requestCode == GO_COMMENT && resultCode == RESULT_OK){
+            resetViews();
+        }
+    }
+
+    private void resetViews(){
+        orderStateChange = true;//订单状态发生改变
+        goodLl.removeViewAt(getInflatePosition() - 1);
+        getOrderDetail();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(orderStateChange){
+            setResult(RESULT_OK);
+        }else{
+            setResult(RESULT_CANCELED);
+        }
+        super.onBackPressed();
     }
 }

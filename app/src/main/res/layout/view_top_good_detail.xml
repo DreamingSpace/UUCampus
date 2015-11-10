@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/good_detail_image_iv"
-        android:background="@color/search_opaque"
+        android:background="@drawable/default_error"
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:layout_marginTop="10dp"

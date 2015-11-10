@@ -78,6 +78,7 @@ import java.lang.annotation.Target;
 import retrofit.Callback;
 import retrofit.client.Response;
 import retrofit.http.Body;
+import retrofit.http.DELETE;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.PUT;
@@ -432,4 +433,7 @@ public interface UUService {
 
     @GET("/user/order/{order_id}/")
     void getOrderDetail(@Path("order_id")String order_id,Callback<OrderDetail> cb);
+
+    @DELETE("/user/order/{order_id}/")
+    void cancelOrder(@Path("order_id")String order_id,Callback<CommonStatusRes>cb);
 }

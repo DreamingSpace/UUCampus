@@ -4,7 +4,7 @@ package com.dreamspace.uucampus.model.api;
  * Created by Lx on 2015/11/4.
  */
 public class Card {
-    private String title;
+    private String title1;
     private String title2;
     private String explain;
     private String start_date;
@@ -42,11 +42,11 @@ public class Card {
         this.title2 = title2;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTitle1() {
+        return title1;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle1(String title1) {
+        this.title1 = title1;
     }
 }

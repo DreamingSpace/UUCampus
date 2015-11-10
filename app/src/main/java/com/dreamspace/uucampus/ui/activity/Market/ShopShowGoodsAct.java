@@ -276,10 +276,12 @@ public class ShopShowGoodsAct extends AbsActivity {
 
     @Override
     public void onBackPressed() {
-        //为“我的收藏”界面返回当前商铺的收藏状态
-        Intent data = new Intent();
-        data.putExtra(SHOP_CURRENT_COLLECT_STATE,mShopInfo.getIs_collected());
-        setResult(RESULT_OK,data);
+        if(mShopInfo != null){
+            //为“我的收藏”界面返回当前商铺的收藏状态
+            Intent data = new Intent();
+            data.putExtra(SHOP_CURRENT_COLLECT_STATE,mShopInfo.getIs_collected());
+            setResult(RESULT_OK,data);
+        }
         super.onBackPressed();
     }
 

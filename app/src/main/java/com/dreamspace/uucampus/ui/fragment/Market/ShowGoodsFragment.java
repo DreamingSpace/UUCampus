@@ -63,8 +63,6 @@ public class ShowGoodsFragment extends BaseLazyFragment {
 
     @Override
     protected void onUserVisible() {
-        System.out.println("se :" + order);
-        System.out.println("ac :" + ((FastInAct)getActivity()).getOrder());
         //排列方式变化，重新获取数据
         if(!order.equals(((FastInAct)getActivity()).getOrder())){
             order = ((FastInAct)getActivity()).getOrder();
@@ -138,9 +136,9 @@ public class ShowGoodsFragment extends BaseLazyFragment {
                 new Callback<SearchGoodsRes>() {
             @Override
             public void success(SearchGoodsRes searchGoodsRes, Response response) {
-                loadMoreListView.setLoading(false);
-                swipeRefreshLayout.setRefreshing(false);
                 if(searchGoodsRes != null && !fragmentDestory){
+                    loadMoreListView.setLoading(false);
+                    swipeRefreshLayout.setRefreshing(false);
                     if(goodPage == 1 && searchGoodsRes.getResult().size() == 0){
                         toggleShowEmpty(true,getString(R.string.no_such_good),null);
                         return;
@@ -165,13 +163,15 @@ public class ShowGoodsFragment extends BaseLazyFragment {
 
             @Override
             public void failure(RetrofitError error) {
-                if(goodPage == 1){
-                    toggleShowEmpty(true, null, getGoodsClickListener);
-                }else{
-                    showInnerError(error);
+                if(!fragmentDestory){
+                    if(goodPage == 1){
+                        toggleShowEmpty(true, null, getGoodsClickListener);
+                    }else{
+                        showInnerError(error);
+                    }
+                    loadMoreListView.setLoading(false);
+                    swipeRefreshLayout.setRefreshing(false);
                 }
-                loadMoreListView.setLoading(false);
-                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }

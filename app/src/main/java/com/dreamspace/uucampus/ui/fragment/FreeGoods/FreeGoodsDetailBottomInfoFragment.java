@@ -1,6 +1,5 @@
 package com.dreamspace.uucampus.ui.fragment.FreeGoods;
 
-import android.app.ProgressDialog;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -17,6 +16,7 @@ import com.dreamspace.uucampus.model.api.AddIdleCollectionRes;
 import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsDetailActivity;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
+import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
 
 import butterknife.Bind;
 import retrofit.Callback;
@@ -119,7 +119,10 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
     private void updateCollect(boolean bCollect) {
         if(NetUtils.isNetworkConnected(getActivity().getApplicationContext())){
             if(bCollect) {
-                final ProgressDialog pd =ProgressDialog.show(getActivity(), "", "正在收藏", true, false);
+                final ProgressDialog pd = new ProgressDialog(mContext);
+                pd.setContent("正在收藏");
+                pd.show();
+//                final ProgressDialog pd =ProgressDialog.show(getActivity(), "", "正在收藏", true, false);
                 ApiManager.getService(getActivity().getApplicationContext()).addIdleCollection(idle_id, new Callback<AddIdleCollectionRes>() {
                     @Override
                     public void success(AddIdleCollectionRes addIdleCollectionRes, Response response) {
@@ -135,7 +138,10 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
                     }
                 });
             }else{
-                final ProgressDialog pd =ProgressDialog.show(getActivity(), "", "取消收藏", true, false);
+                final ProgressDialog pd = new ProgressDialog(mContext);
+                pd.setContent("取消收藏");
+                pd.show();
+//                final ProgressDialog pd =ProgressDialog.show(getActivity(), "", "取消收藏", true, false);
                 ApiManager.getService(getActivity().getApplicationContext()).deleteIdleCollection(idle_id, new Callback<Response>() {
                     @Override
                     public void success(Response response, Response response2) {
