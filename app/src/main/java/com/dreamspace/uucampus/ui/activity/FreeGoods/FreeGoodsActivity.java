@@ -81,23 +81,23 @@ public class FreeGoodsActivity extends AbsActivity {
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(0);
                 //必须调用getpage才能获取准确的fragment，getitem获取的不对
-                ((FreeGoodsLazyDataFragment) pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange(getString(R.string.order_view_number));
+                ((FreeGoodsLazyDataFragment) pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange("view_number");
             }
         });
 
         popupWindow.setRecentPublishOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popupWindow.popupItemSetSelect(2);
-                ((FreeGoodsLazyDataFragment)pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange(getString(R.string.order_last_update));
+                popupWindow.popupItemSetSelect(1);
+                ((FreeGoodsLazyDataFragment)pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange("last_update");
             }
         });
 
         popupWindow.setCheapestOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popupWindow.popupItemSetSelect(3);
-                ((FreeGoodsLazyDataFragment)pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange(getString(R.string.order_price));
+                popupWindow.popupItemSetSelect(2);
+                ((FreeGoodsLazyDataFragment)pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange("price");
             }
         });
     }
