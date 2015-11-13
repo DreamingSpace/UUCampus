@@ -28,7 +28,7 @@ public class SearchShopAdapter extends BasisAdapter<ShopItem,SearchShopAdapter.V
     @Override
     protected void initViewHolder(View convertView, ViewHolder holder) {
         holder.searchShopName = (TextView) convertView.findViewById(R.id.search_good_name_tv);
-        holder.searchShopMain = (TextView) convertView.findViewById(R.id.search_shop_shop_name_tv);
+        holder.searchShopMain = (TextView) convertView.findViewById(R.id.search_main_tv);
     }
 
     @Override

@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="54dp"
     android:background="@drawable/personal_center_item_bg"
     android:paddingBottom="10dp">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/divider_color" />
 
     <TextView
         android:id="@+id/search_idle_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
         android:singleLine="true"
         android:text="汤山温泉两天一夜游"
         android:textColor="@color/good_name_text_color"
@@ -23,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/search_idle_name_tv"
         android:layout_below="@id/search_idle_name_tv"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="3dp"
         android:singleLine="true"
         android:text="康辉旅行社"
         android:textColor="@color/app_theme_color2"
@@ -34,8 +41,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/search_idle_name_tv"
+        android:layout_toLeftOf="@id/search_idle_name_tv"
         android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
         android:text="￥230"
         android:textColor="@color/price_text_color"
         android:textSize="18sp" />

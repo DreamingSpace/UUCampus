@@ -2,13 +2,17 @@ package com.dreamspace.uucampus.ui;
 
 import android.app.ProgressDialog;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.adapter.search.SearchGoodsAdapter;
+import com.dreamspace.uucampus.adapter.search.SearchIdleAdapter;
+import com.dreamspace.uucampus.adapter.search.SearchShopAdapter;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
@@ -19,6 +23,9 @@ import com.dreamspace.uucampus.model.api.SearchGoodsRes;
 import com.dreamspace.uucampus.model.api.SearchIdleRes;
 import com.dreamspace.uucampus.model.api.SearchShopRes;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,62 +42,33 @@ public class SearchResultActivity extends AbsActivity {
     EditText searchText;
     @Bind(R.id.search_img)
     ImageView searchImg;
-    @Bind(R.id.search_good_name_tv1)
-    TextView searchGoodNameTv1;
-    @Bind(R.id.search_good_shop_name_tv1)
-    TextView searchGoodShopNameTv1;
-    @Bind(R.id.search_good_price_tv1)
-    TextView searchGoodPriceTv1;
-    @Bind(R.id.search_good_name_tv2)
-    TextView searchGoodNameTv2;
-    @Bind(R.id.search_good_shop_name_tv2)
-    TextView searchGoodShopNameTv2;
-    @Bind(R.id.search_good_price_tv2)
-    TextView searchGoodPriceTv2;
+    @Bind(R.id.search_goods_list)
+    ListView searchGoodsList;
     @Bind(R.id.search_goods_more)
     LinearLayout searchGoodsMore;
     @Bind(R.id.search_goods_linear)
     LinearLayout searchGoodsLinear;
-    @Bind(R.id.search_idle_name_tv1)
-    TextView searchIdleNameTv1;
-    @Bind(R.id.search_idle_shop_name_tv1)
-    TextView searchIdleShopNameTv1;
-    @Bind(R.id.search_idle_price_tv1)
-    TextView searchIdlePriceTv1;
-    @Bind(R.id.search_idle_name_tv2)
-    TextView searchIdleNameTv2;
-    @Bind(R.id.search_idle_shop_name_tv2)
-    TextView searchIdleShopNameTv2;
-    @Bind(R.id.search_idle_price_tv2)
-    TextView searchIdlePriceTv2;
     @Bind(R.id.search_idle_more)
     LinearLayout searchIdleMore;
     @Bind(R.id.search_idle_linear)
     LinearLayout searchIdleLinear;
-    @Bind(R.id.search_shop_name_tv1)
-    TextView searchShopNameTv1;
-    @Bind(R.id.search_shop_main_tv1)
-    TextView searchShopMainTv1;
-    @Bind(R.id.search_shop_name_tv2)
-    TextView searchShopNameTv2;
-    @Bind(R.id.search_shop_main_tv2)
-    TextView searchShopMainTv2;
     @Bind(R.id.search_shop_more)
     LinearLayout searchShopMore;
     @Bind(R.id.search_shop_linear)
     LinearLayout searchShopLinear;
-    @Bind(R.id.search_goods_relative)
-    RelativeLayout searchGoodsRelative;
-    @Bind(R.id.search_idle_relative)
-    RelativeLayout searchIdleRelative;
-    @Bind(R.id.search_shop_relative)
-    RelativeLayout searchShopRelative;
     @Bind(R.id.search_failed_linear)
     LinearLayout searchFailedLinear;
+    @Bind(R.id.search_idle_list)
+    ListView searchIdleList;
+    @Bind(R.id.search_shop_list)
+    ListView searchShopList;
+
     private ProgressDialog pd;
-
-
     private boolean haveResult;
+    private SearchGoodsAdapter searchGoodsAdapter;
+    private SearchIdleAdapter searchIdleAdapter;
+    private SearchShopAdapter searchShopAdapter;
+    private String keyWord;
 
     @Override
     protected int getContentView() {
@@ -104,6 +82,10 @@ public class SearchResultActivity extends AbsActivity {
 
     @Override
     protected void initViews() {
+        searchGoodsLinear.setVisibility(View.GONE);
+        searchIdleLinear.setVisibility(View.GONE);
+        searchShopLinear.setVisibility(View.GONE);
+        searchFailedLinear.setVisibility(View.GONE);
         initListeners();
     }
 
@@ -114,71 +96,76 @@ public class SearchResultActivity extends AbsActivity {
                 showPd();
                 //判断是否有匹配结果
                 haveResult = false;
+                keyWord = searchText.getText().toString();
                 searchFailedLinear.setVisibility(View.GONE);
-                searchGoods();
+                searchGoods(false);
             }
         });
         searchGoodsMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                searchGoods(true);
             }
         });
         searchIdleMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                searchIdle(true);
             }
         });
         searchShopMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                searchShop(true);
             }
         });
 
     }
 
     //搜索商品
-    private void searchGoods() {
-        final String keyWord = searchText.getText().toString();
+    private void searchGoods(final boolean ifAll) {
         if (!CommonUtils.isEmpty(keyWord)) {
             if (NetUtils.isNetworkConnected(this)) {
                 ApiManager.getService(this).searchGoods(keyWord, "东南大学九龙湖校区", "1", new Callback<SearchGoodsRes>() {
                     @Override
                     public void success(SearchGoodsRes searchGoodsRes, Response response) {
+                        searchGoodsMore.setVisibility(View.GONE);
+                        searchGoodsLinear.setVisibility(View.GONE);
                         int size = searchGoodsRes.getResult().size();
                         if (size != 0) {
-                            haveResult = true;
                             searchGoodsLinear.setVisibility(View.VISIBLE);
-                            GoodsItem temp = searchGoodsRes.getResult().get(0);
-                            searchGoodNameTv1.setText(temp.getName());
-                            searchGoodShopNameTv1.setText(temp.getShop_name());
-                            searchGoodPriceTv1.setText(String.valueOf(temp.getPrice()));
-                            if (size > 1) {
-                                searchGoodsRelative.setVisibility(View.VISIBLE);
+                            haveResult = true;
+                        }
+                        List<GoodsItem> temp = new ArrayList<GoodsItem>();
+                        if (!ifAll) {
+                            if (size > 2) {
+                                temp.add(searchGoodsRes.getResult().get(0));
+                                temp.add(searchGoodsRes.getResult().get(1));
                                 searchGoodsMore.setVisibility(View.VISIBLE);
-                                temp = searchGoodsRes.getResult().get(1);
-                                searchGoodNameTv2.setText(temp.getName());
-                                searchGoodShopNameTv2.setText(temp.getShop_name());
-                                searchGoodPriceTv2.setText(String.valueOf(temp.getPrice()));
                             } else {
-                                searchGoodsRelative.setVisibility(View.GONE);
-                                searchGoodsMore.setVisibility(View.GONE);
+                                temp = searchGoodsRes.getResult();
                             }
                         } else {
-                            searchGoodsLinear.setVisibility(View.GONE);
+                            temp = searchGoodsRes.getResult();
                         }
-                        searchIdle(keyWord);
+                        searchGoodsAdapter = new SearchGoodsAdapter(getApplicationContext(), temp, SearchGoodsAdapter.ViewHolder.class);
+                        searchGoodsList.setAdapter(searchGoodsAdapter);
+                        fixListViewHeight(searchGoodsList);
+                        dismissPd();
+                        if(!ifAll){
+                            searchIdle(ifAll);
+                        }
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
                         showInnerError(error);
+                        dismissPd();
                     }
                 });
             } else {
                 showNetWorkError();
+                dismissPd();
             }
         } else {
             showToast("搜索关键字不能为空");
@@ -187,75 +174,85 @@ public class SearchResultActivity extends AbsActivity {
     }
 
     //搜索闲置
-    private void searchIdle(final String keyword) {
-        ApiManager.getService(this).searchIdle(keyword, "东南大学九龙湖校区", "1", new Callback<SearchIdleRes>() {
+    private void searchIdle(final boolean ifAll) {
+        ApiManager.getService(this).searchIdle(keyWord, "东南大学九龙湖校区", "1", new Callback<SearchIdleRes>() {
             @Override
             public void success(SearchIdleRes searchIdleRes, Response response) {
+                searchIdleLinear.setVisibility(View.GONE);
+                searchIdleMore.setVisibility(View.GONE);
                 int size = searchIdleRes.getResult().size();
                 if (size != 0) {
-                    haveResult = true;
                     searchIdleLinear.setVisibility(View.VISIBLE);
-                    IdleItem temp = searchIdleRes.getResult().get(0);
-                    searchIdleNameTv1.setText(temp.getName());
-                    searchIdleShopNameTv1.setText(temp.getUser_name());
-                    searchIdlePriceTv1.setText(String.valueOf(temp.getPrice()));
-                    if (size > 1) {
-                        searchIdleRelative.setVisibility(View.VISIBLE);
+                    haveResult = true;
+                }
+                List<IdleItem> temp = new ArrayList<IdleItem>();
+                if (!ifAll) {
+                    if (size > 2) {
+                        temp.add(searchIdleRes.getResult().get(0));
+                        temp.add(searchIdleRes.getResult().get(1));
                         searchIdleMore.setVisibility(View.VISIBLE);
-                        temp = searchIdleRes.getResult().get(1);
-                        searchIdleNameTv2.setText(temp.getName());
-                        searchIdleShopNameTv2.setText(temp.getUser_name());
-                        searchIdlePriceTv2.setText(String.valueOf(temp.getPrice()));
                     } else {
-                        searchIdleRelative.setVisibility(View.GONE);
-                        searchIdleMore.setVisibility(View.GONE);
+                        temp = searchIdleRes.getResult();
                     }
                 } else {
-                    searchIdleLinear.setVisibility(View.GONE);
+                    temp = searchIdleRes.getResult();
                 }
-                searchShop(keyword);
+                searchIdleAdapter = new SearchIdleAdapter(getApplicationContext(), temp, SearchIdleAdapter.ViewHolder.class);
+                searchIdleList.setAdapter(searchIdleAdapter);
+                fixListViewHeight(searchIdleList);
+                dismissPd();
+                if(!ifAll){
+                    searchShop(ifAll);
+                }
             }
 
             @Override
             public void failure(RetrofitError error) {
                 showInnerError(error);
+                dismissPd();
             }
         });
     }
 
     //搜索店铺
-    private void searchShop(String keyWord) {
+    private void searchShop(final boolean ifAll) {
         ApiManager.getService(this).searchShop(keyWord, "东南大学九龙湖校区", "1", new Callback<SearchShopRes>() {
             @Override
             public void success(SearchShopRes searchShopRes, Response response) {
+                searchShopLinear.setVisibility(View.GONE);
+                searchShopMore.setVisibility(View.GONE);
                 int size = searchShopRes.getResult().size();
-                if (size != 0) {
-                    haveResult = true;
+                if(size!=0){
                     searchShopLinear.setVisibility(View.VISIBLE);
-                    ShopItem temp = searchShopRes.getResult().get(0);
-                    searchShopNameTv1.setText(temp.getName());
-                    searchShopMainTv1.setText(temp.getMain());
-                    if (size > 1) {
-                        searchShopRelative.setVisibility(View.VISIBLE);
-                        searchShopMore.setVisibility(View.VISIBLE);
-                        searchShopNameTv2.setText(temp.getName());
-                        searchShopMainTv2.setText(temp.getMain());
-                    } else {
-                        searchShopRelative.setVisibility(View.GONE);
-                        searchShopMore.setVisibility(View.GONE);
-                    }
-                } else {
-                    searchShopLinear.setVisibility(View.GONE);
-                    if (!haveResult) {
-                        searchFailedLinear.setVisibility(View.VISIBLE);
-                    }
+                    haveResult = true;
                 }
+                List<ShopItem> temp = new ArrayList<ShopItem>();
+                if(!ifAll){
+                    if(size>2){
+                        temp.add(searchShopRes.getResult().get(0));
+                        temp.add(searchShopRes.getResult().get(1));
+                        searchShopMore.setVisibility(View.VISIBLE);
+                    }else{
+                        temp = searchShopRes.getResult();
+                    }
+                }else{
+                    temp = searchShopRes.getResult();
+                }
+                searchShopAdapter = new SearchShopAdapter(getApplicationContext(),temp,SearchShopAdapter.ViewHolder.class);
+                searchShopList.setAdapter(searchShopAdapter);
+                fixListViewHeight(searchShopList);
                 dismissPd();
+
+                if(!haveResult){
+                    searchFailedLinear.setVisibility(View.VISIBLE);
+                }
+
             }
 
             @Override
             public void failure(RetrofitError error) {
                 showInnerError(error);
+                dismissPd();
             }
         });
     }
@@ -274,4 +271,28 @@ public class SearchResultActivity extends AbsActivity {
         }
     }
 
+    //ScrollVIew嵌套ListView时，会无法正确的计算ListView的大小
+    //需要手动计算列表的高度
+    private void fixListViewHeight(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        int totalHeight = 0;
+        if (listAdapter == null) {
+            return;
+        }
+        for (int i = 0, len = listAdapter.getCount(); i < len; i++) {
+            View listViewItem = listAdapter.getView(i, null, listView);
+            //计算子项View的宽高
+            listViewItem.measure(0, 0);
+            totalHeight += listViewItem.getMeasuredHeight();
+            //并不知道为什么要减掉4，一个一个试的
+            //这样计算出来的列表高度刚好
+            totalHeight -= 4;
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        // listView.getDividerHeight()获取子项间分隔符的高度
+        // params.height设置ListView完全显示需要的高度
+        params.height = totalHeight;
+        listView.setLayoutParams(params);
+    }
 }
