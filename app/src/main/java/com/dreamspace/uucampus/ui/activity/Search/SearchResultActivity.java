@@ -1,6 +1,5 @@
 package com.dreamspace.uucampus.ui.activity.Search;
 
-import android.app.ProgressDialog;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -63,7 +62,7 @@ public class SearchResultActivity extends AbsActivity {
     @Bind(R.id.search_shop_list)
     ListView searchShopList;
 
-    private ProgressDialog pd;
+    private com.dreamspace.uucampus.ui.dialog.ProgressDialog pd;
     private boolean haveResult;
     private SearchGoodsAdapter searchGoodsAdapter;
     private SearchIdleAdapter searchIdleAdapter;
@@ -86,6 +85,7 @@ public class SearchResultActivity extends AbsActivity {
         searchIdleLinear.setVisibility(View.GONE);
         searchShopLinear.setVisibility(View.GONE);
         searchFailedLinear.setVisibility(View.GONE);
+        pd = new com.dreamspace.uucampus.ui.dialog.ProgressDialog(this);
         initListeners();
     }
 
@@ -98,7 +98,7 @@ public class SearchResultActivity extends AbsActivity {
         searchImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPd();
+                //pd.show();
                 //判断是否有匹配结果
                 haveResult = false;
                 keyWord = searchText.getText().toString();
@@ -156,7 +156,6 @@ public class SearchResultActivity extends AbsActivity {
                         searchGoodsAdapter = new SearchGoodsAdapter(getApplicationContext(), temp, SearchGoodsAdapter.ViewHolder.class);
                         searchGoodsList.setAdapter(searchGoodsAdapter);
                         fixListViewHeight(searchGoodsList);
-                        dismissPd();
                         if(!ifAll){
                             searchIdle(ifAll);
                         }
@@ -165,22 +164,22 @@ public class SearchResultActivity extends AbsActivity {
                     @Override
                     public void failure(RetrofitError error) {
                         showInnerError(error);
-                        dismissPd();
+                        //pd.dismiss();
                     }
                 });
             } else {
                 showNetWorkError();
-                dismissPd();
+                //pd.dismiss();
             }
         } else {
             showToast("搜索关键字不能为空");
-            dismissPd();
+            //pd.dismiss();
         }
     }
 
     //搜索闲置
     private void searchIdle(final boolean ifAll) {
-        ApiManager.getService(this).searchIdle(keyWord, "东南大学九龙湖校区", "1", new Callback<SearchIdleRes>() {
+        ApiManager.getService(this).searchIdle(keyWord,null,null,1, "东南大学九龙湖校区", new Callback<SearchIdleRes>() {
             @Override
             public void success(SearchIdleRes searchIdleRes, Response response) {
                 searchIdleLinear.setVisibility(View.GONE);
@@ -205,7 +204,7 @@ public class SearchResultActivity extends AbsActivity {
                 searchIdleAdapter = new SearchIdleAdapter(getApplicationContext(), temp, SearchIdleAdapter.ViewHolder.class);
                 searchIdleList.setAdapter(searchIdleAdapter);
                 fixListViewHeight(searchIdleList);
-                dismissPd();
+                //pd.dismiss();
                 if(!ifAll){
                     searchShop(ifAll);
                 }
@@ -214,14 +213,14 @@ public class SearchResultActivity extends AbsActivity {
             @Override
             public void failure(RetrofitError error) {
                 showInnerError(error);
-                dismissPd();
+                //pd.dismiss();
             }
         });
     }
 
     //搜索店铺
     private void searchShop(final boolean ifAll) {
-        ApiManager.getService(this).searchShop(keyWord, "东南大学九龙湖校区", "1", new Callback<SearchShopRes>() {
+        ApiManager.getService(this).searchShop(keyWord,null,null,1, "东南大学九龙湖校区", new Callback<SearchShopRes>() {
             @Override
             public void success(SearchShopRes searchShopRes, Response response) {
                 searchShopLinear.setVisibility(View.GONE);
@@ -246,7 +245,7 @@ public class SearchResultActivity extends AbsActivity {
                 searchShopAdapter = new SearchShopAdapter(getApplicationContext(),temp,SearchShopAdapter.ViewHolder.class);
                 searchShopList.setAdapter(searchShopAdapter);
                 fixListViewHeight(searchShopList);
-                dismissPd();
+                //pd.dismiss();
 
                 if(!haveResult){
                     searchFailedLinear.setVisibility(View.VISIBLE);
@@ -257,23 +256,9 @@ public class SearchResultActivity extends AbsActivity {
             @Override
             public void failure(RetrofitError error) {
                 showInnerError(error);
-                dismissPd();
+                //pd.dismiss();
             }
         });
-    }
-
-    private void showPd() {
-        if (pd == null) {
-            pd = ProgressDialog.show(this, "", "正在获取数据，请稍候", true, false);
-        } else {
-            pd.show();
-        }
-    }
-
-    private void dismissPd() {
-        if (pd != null) {
-            pd.dismiss();
-        }
     }
 
     //ScrollVIew嵌套ListView时，会无法正确的计算ListView的大小

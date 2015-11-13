@@ -44,7 +44,6 @@ import com.dreamspace.uucampus.model.api.LoginRes;
 import com.dreamspace.uucampus.model.api.MyGoodsRes;
 import com.dreamspace.uucampus.model.api.NameReq;
 import com.dreamspace.uucampus.model.api.OrderDetail;
-import com.dreamspace.uucampus.model.api.OrderItem;
 import com.dreamspace.uucampus.model.api.PayOrderReq;
 import com.dreamspace.uucampus.model.api.QnRes;
 import com.dreamspace.uucampus.model.api.RegisterReq;
@@ -73,16 +72,14 @@ import com.dreamspace.uucampus.model.api.WeiXinLoginRes;
 import com.dreamspace.uucampus.model.api.WeiXinRegisterReq;
 import com.google.gson.JsonElement;
 
-import org.json.JSONObject;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
 import retrofit.Callback;
 import retrofit.client.Response;
 import retrofit.http.Body;
-import retrofit.http.DELETE;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.PUT;
@@ -172,8 +169,7 @@ public interface UUService {
 
     //店铺搜索
     @GET("/shop/search/")
-    void searchShop(@Query("keyword") String keyword, @Query("order") String order, @Query("category") String category,
-                    @Query("page") int page,@Query("location")String location, Callback<SearchShopRes> cb);
+    void searchShop(@Query("keyword") String keyword, @Query("order")String order,@Query("category")String category,@Query("page") int page,@Query("location")String location, Callback<SearchShopRes> cb);
 
     //店铺评论添加
     @POST("/shop/{shop_id}/comment/")
@@ -324,7 +320,7 @@ public interface UUService {
 
     //闲置搜索
     @GET("/idle/search/")
-    void searchIdle(@Query("keyword")String keyword,@Query("order")String order,@Query("category")String category,@Query("page")int page,@Query("location")String location,Callback<SearchIdleRes>cb);
+    void searchIdle(@Query("keyword")String keyword,@Query("order") String order, @Query("category") String category,@Query("page")int page,@Query("location")String location,Callback<SearchIdleRes>cb);
 
     //闲置点赞
     @POST("/idle/{idle_id}/like/")

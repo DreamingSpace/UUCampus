@@ -152,7 +152,7 @@
                 android:layout_height="wrap_content">
                 <RelativeLayout
                     android:gravity="center_vertical"
-                    android:id="@+id/study_abroad_rl"
+                    android:id="@+id/free_goods_rl"
                     android:layout_width="match_parent"
                     android:layout_height="30dp">
                     <View
@@ -163,7 +163,7 @@
                         android:layout_width="4dp"
                         android:layout_height="15dp"/>
                     <TextView
-                        android:text="@string/study_abroad"
+                        android:text="@string/free_goods"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="30dp"
                         android:layout_width="wrap_content"
@@ -184,101 +184,92 @@
                     android:layout_height="1dp"/>
                 <LinearLayout
                     android:orientation="vertical"
-                    android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:id="@+id/ielts"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <ImageView
-                                android:src="@drawable/homepage_study_abroad_btn_ielts"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/min_language"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <ImageView
-                                android:src="@drawable/homepage_study_abroad_btn_language"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/abroad_consult"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <ImageView
-                                android:src="@drawable/homepage_study_abroad_btn_consult"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
-                    </LinearLayout>
-
                     <LinearLayout
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <LinearLayout
-                            android:id="@+id/toefl"
+                            android:id="@+id/free_goods1"
+
+                            android:layout_marginLeft="15dp"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:orientation="vertical"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content">
                             <ImageView
-                                android:src="@drawable/homepage_study_abroad_btn_toefl"
+                                android:padding="3dp"
+                                android:src="@drawable/homepage_market_advertisement1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="数码电子"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/gre"
+                            android:id="@+id/free_goods2"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:orientation="vertical"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content">
                             <ImageView
-                                android:src="@drawable/homepage_study_abroad_btn_gre"
+                                android:padding="3dp"
+                                android:src="@drawable/homepage_market_advertisement2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="书籍杂志"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/abroad_others"
+                            android:id="@+id/free_goods3"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:orientation="vertical"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content">
                             <ImageView
-                                android:src="@drawable/homepage_study_abroad_btn_others"
+                                android:padding="3dp"
+                                android:src="@drawable/homepage_driving_school_advertisement3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="代步工具"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_marginRight="15dp"
+                            android:id="@+id/free_goods4"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:padding="3dp"
+                                android:src="@drawable/homepage_driving_school_advertisement3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="生活日常"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
 
             <View
                 android:background="@color/divider_color"
@@ -290,7 +281,6 @@
                 android:background="@color/divider_color"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
-
             <LinearLayout
                 android:background="@color/white"
                 android:orientation="vertical"
@@ -298,7 +288,7 @@
                 android:layout_height="wrap_content">
                 <RelativeLayout
                     android:gravity="center_vertical"
-                    android:id="@+id/driver_school_rl"
+                    android:id="@+id/personal_shop_rl"
                     android:layout_width="match_parent"
                     android:layout_height="30dp">
                     <View
@@ -309,7 +299,7 @@
                         android:layout_width="4dp"
                         android:layout_height="15dp"/>
                     <TextView
-                        android:text="@string/driver_school"
+                        android:text="@string/popular_personal_shop"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="30dp"
                         android:layout_width="wrap_content"
@@ -339,58 +329,76 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <LinearLayout
-                            android:id="@+id/driver_school1"
+                            android:id="@+id/personal_shop1"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <ImageView
-                                android:src="@drawable/homepage_driving_school_advertisement1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:src="@drawable/homepage_personal_shop_advertisement1"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp" />
                             <TextView
-                                android:text="恒通驾校"
+                                android:text="小绿多肉"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/driver_school2"
+                            android:id="@+id/personal_shop2"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <ImageView
-                                android:src="@drawable/homepage_driving_school_advertisement2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:src="@drawable/homepage_personal_shop_advertisement2"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp" />
                             <TextView
-                                android:text="永高驾校"
+                                android:text="汉服社"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/driver_school3"
+                            android:id="@+id/personal_shop3"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <ImageView
-                                android:src="@drawable/homepage_driving_school_advertisement3"
+                                android:src="@drawable/homepage_personal_shop_advertisement3"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp" />
+                            <TextView
+                                android:text="手工小店"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/personal_shop4"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:src="@drawable/homepage_personal_shop_advertisement4"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp" />
                             <TextView
-                                android:text="保通驾校"
+                                android:text="吉他店"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
             <View
                 android:background="@color/divider_color"
                 android:layout_width="match_parent"
@@ -543,10 +551,11 @@
                 android:layout_height="1dp"/>
 
             <View
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:background="@color/divider_color"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
+
             <LinearLayout
                 android:background="@color/white"
                 android:orientation="vertical"
@@ -554,7 +563,7 @@
                 android:layout_height="wrap_content">
                 <RelativeLayout
                     android:gravity="center_vertical"
-                    android:id="@+id/free_goods_rl"
+                    android:id="@+id/driver_school_rl"
                     android:layout_width="match_parent"
                     android:layout_height="30dp">
                     <View
@@ -565,7 +574,7 @@
                         android:layout_width="4dp"
                         android:layout_height="15dp"/>
                     <TextView
-                        android:text="@string/free_goods"
+                        android:text="@string/driver_school"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="30dp"
                         android:layout_width="wrap_content"
@@ -595,41 +604,41 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <LinearLayout
-                            android:id="@+id/free_goods1"
+                            android:id="@+id/driver_school1"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <ImageView
-                                android:src="@drawable/homepage_market_advertisement1"
+                                android:src="@drawable/homepage_driving_school_advertisement1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <TextView
-                                android:text="情侣抱枕"
+                                android:text="恒通驾校"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/free_goods2"
+                            android:id="@+id/driver_school2"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <ImageView
-                                android:src="@drawable/homepage_market_advertisement2"
+                                android:src="@drawable/homepage_driving_school_advertisement2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <TextView
-                                android:text="闲置围巾"
+                                android:text="永高驾校"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/free_goods3"
+                            android:id="@+id/driver_school3"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:orientation="vertical"
@@ -640,7 +649,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <TextView
-                                android:text="针织毛线帽"
+                                android:text="保通驾校"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
@@ -653,10 +662,11 @@
                 android:layout_height="1dp"/>
 
             <View
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:background="@color/divider_color"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
+
             <LinearLayout
                 android:background="@color/white"
                 android:orientation="vertical"
@@ -664,7 +674,7 @@
                 android:layout_height="wrap_content">
                 <RelativeLayout
                     android:gravity="center_vertical"
-                    android:id="@+id/personal_shop_rl"
+                    android:id="@+id/study_abroad_rl"
                     android:layout_width="match_parent"
                     android:layout_height="30dp">
                     <View
@@ -675,7 +685,7 @@
                         android:layout_width="4dp"
                         android:layout_height="15dp"/>
                     <TextView
-                        android:text="@string/popular_personal_shop"
+                        android:text="@string/study_abroad"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="30dp"
                         android:layout_width="wrap_content"
@@ -705,81 +715,94 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <LinearLayout
-                            android:id="@+id/personal_shop1"
+                            android:id="@+id/ielts"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <ImageView
-                                android:src="@drawable/homepage_personal_shop_advertisement1"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp" />
-                            <TextView
-                                android:text="小绿多肉"
+                                android:src="@drawable/homepage_study_abroad_btn_ielts"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/personal_shop2"
+                            android:id="@+id/min_language"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <ImageView
-                                android:src="@drawable/homepage_personal_shop_advertisement2"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp" />
-                            <TextView
-                                android:text="汉服社"
+                                android:src="@drawable/homepage_study_abroad_btn_language"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/personal_shop3"
+                            android:id="@+id/abroad_consult"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <ImageView
-                                android:src="@drawable/homepage_personal_shop_advertisement3"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp" />
-                            <TextView
-                                android:text="手工小店"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/personal_shop4"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <ImageView
-                                android:src="@drawable/homepage_personal_shop_advertisement4"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp" />
-                            <TextView
-                                android:text="吉他店"
+                                android:src="@drawable/homepage_study_abroad_btn_consult"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:id="@+id/toefl"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:src="@drawable/homepage_study_abroad_btn_toefl"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/gre"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:src="@drawable/homepage_study_abroad_btn_gre"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/abroad_others"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:src="@drawable/homepage_study_abroad_btn_others"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-            <View
-                android:layout_marginBottom="20dp"
-                android:background="@color/divider_color"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
         </LinearLayout>
+
     </ScrollView>
 
 
