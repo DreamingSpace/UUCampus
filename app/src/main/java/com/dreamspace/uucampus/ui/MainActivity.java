@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
+import com.dreamspace.uucampus.ui.activity.Search.SearchResultActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
 import java.util.ArrayList;
@@ -65,6 +66,11 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
         initView();
         initDates();
         initListener();
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 
     private void initListener() {

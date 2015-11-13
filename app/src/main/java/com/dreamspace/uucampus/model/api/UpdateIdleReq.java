@@ -6,10 +6,9 @@ package com.dreamspace.uucampus.model.api;
 public class UpdateIdleReq {
     private String name;
     private String image;
-    private String location;
-    private String is_active;
+    private int is_active;
     private String category;
-    private float price;
+    private String price;
     private String description;
 
     public String getName() {
@@ -28,19 +27,11 @@ public class UpdateIdleReq {
         this.image = image;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getIs_active() {
+    public int getIs_active() {
         return is_active;
     }
 
-    public void setIs_active(String is_active) {
+    public void setIs_active(int is_active) {
         this.is_active = is_active;
     }
 
@@ -52,11 +43,11 @@ public class UpdateIdleReq {
         this.category = category;
     }
 
-    public float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

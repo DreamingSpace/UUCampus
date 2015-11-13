@@ -7,8 +7,8 @@ public class ShopItem {
     private String shop_id;
     private String name;
     private String image;
-    private String address;
     private String main;
+    private String address;
 
     public String getShop_id() {
         return shop_id;
@@ -34,19 +34,19 @@ public class ShopItem {
         this.image = image;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getMain() {
         return main;
     }
 
     public void setMain(String main) {
         this.main = main;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

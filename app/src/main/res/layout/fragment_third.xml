@@ -1,44 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/market_fragments_bg_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.ogaclejapan.smarttablayout.SmartTabLayout
-        android:id="@+id/market_smarttablayout"
+    <RelativeLayout
+        android:id="@+id/content_rl"
+        android:background="@color/market_fragments_bg_color"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@color/white"
-        app:stl_indicatorGravity="bottom"
-        app:stl_indicatorInFront="false"
-        app:stl_indicatorColor="@color/app_theme_color"
-        app:stl_indicatorThickness="4dp"
-        app:stl_indicatorCornerRadius="5dp"
-        app:stl_indicatorAlwaysInCenter="false"
-        app:stl_defaultTabTextColor="@drawable/market_smart_tab_textcolor"
-        app:stl_defaultTabTextSize="16sp"
-        app:stl_distributeEvenly="true"
-        app:stl_dividerThickness="0dp"
-        app:stl_underlineColor="@color/white"
-        app:stl_underlineThickness="0dp"
-        app:stl_clickable="true"/>
-    <View
-        android:id="@+id/divider_below_smarttab"
-        android:layout_below="@id/market_smarttablayout"
-        android:background="@color/divider_color"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
-    <View
-        android:id="@+id/divider_above_viewpager"
-        android:layout_below="@id/market_smarttablayout"
-        android:background="@color/divider_color"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
+        android:layout_height="match_parent">
+        <com.ogaclejapan.smarttablayout.SmartTabLayout
+            android:id="@+id/market_smarttablayout"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/white"
+            app:stl_indicatorGravity="bottom"
+            app:stl_indicatorInFront="false"
+            app:stl_indicatorColor="@color/app_theme_color"
+            app:stl_indicatorThickness="4dp"
+            app:stl_indicatorCornerRadius="5dp"
+            app:stl_indicatorAlwaysInCenter="false"
+            app:stl_defaultTabTextColor="@drawable/market_smart_tab_textcolor"
+            app:stl_defaultTabTextSize="16sp"
+            app:stl_distributeEvenly="true"
+            app:stl_dividerThickness="0dp"
+            app:stl_underlineColor="@color/white"
+            app:stl_underlineThickness="0dp"
+            app:stl_clickable="true"/>
+        <View
+            android:id="@+id/divider_below_smarttab"
+            android:layout_below="@id/market_smarttablayout"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+        <View
+            android:id="@+id/divider_above_viewpager"
+            android:layout_below="@id/market_smarttablayout"
+            android:background="@color/divider_color"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/market_view_pager"
-        android:layout_below="@id/divider_above_viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</RelativeLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/market_view_pager"
+            android:layout_below="@id/divider_above_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+</LinearLayout>
+

@@ -1,5 +1,6 @@
 package com.dreamspace.uucampus.ui.activity.Order;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,6 +52,11 @@ public class RefundAct extends AbsActivity{
     protected void initViews() {
         getSupportActionBar().setTitle(getString(R.string.refund_detail));
         initListeners();
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 
     private void initListeners(){

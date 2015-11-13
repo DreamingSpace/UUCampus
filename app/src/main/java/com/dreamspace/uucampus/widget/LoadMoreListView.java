@@ -43,11 +43,11 @@ public class LoadMoreListView extends ListView implements OnScrollListener {
     @Override
     public void setAdapter(ListAdapter adapter) {
 
-        mFooterView = (RelativeLayout) mInflater.inflate(R.layout.load_more_footer,
-                this, false);
-        mLoadMoreStatusView = mFooterView.findViewById(R.id.load_more_progress_bar);
-        addFooterView(mFooterView);
-        setLoading(false);
+//        mFooterView = (RelativeLayout) mInflater.inflate(R.layout.load_more_footer,
+//                this, false);
+//        mLoadMoreStatusView = mFooterView.findViewById(R.id.load_more_progress_bar);
+//        addFooterView(mFooterView);
+//        setLoading(false);
 
         super.setAdapter(adapter);
     }
@@ -57,6 +57,11 @@ public class LoadMoreListView extends ListView implements OnScrollListener {
         mInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+        mFooterView = (RelativeLayout) mInflater.inflate(R.layout.load_more_footer,
+                this, false);
+        mLoadMoreStatusView = mFooterView.findViewById(R.id.load_more_progress_bar);
+        addFooterView(mFooterView);
+        setLoading(false);
         super.setOnScrollListener(this);
     }
 
@@ -115,7 +120,7 @@ public class LoadMoreListView extends ListView implements OnScrollListener {
 
         if (mOnLoadMoreListener != null) {
 
-            boolean loadMore = firstVisibleItem + visibleItemCount >= totalItemCount;
+            boolean loadMore = firstVisibleItem + visibleItemCount >= totalItemCount-1;
 
             if (!mIsLoadingMore && loadMore
                     && mCurrentScrollState != SCROLL_STATE_IDLE) {

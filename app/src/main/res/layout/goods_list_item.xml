@@ -6,7 +6,6 @@
     android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/good_image_iv"
-        android:background="@color/search_opaque"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_width="87dp"
@@ -45,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
-            android:src="@drawable/xianzhi_icon_visitor"
+            android:src="@drawable/xiangqing_icon_interesting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
@@ -68,24 +67,15 @@
         android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <RelativeLayout
-        android:layout_marginRight="20dp"
+
+    <TextView
+        android:id="@+id/goods_org_price"
+        android:text="￥260"
+        android:layout_marginRight="10dp"
         android:layout_toLeftOf="@id/good_price_tv"
         android:layout_alignBottom="@id/good_price_tv"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/goods_org_price"
-            android:text="￥260"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <View
-            android:layout_centerVertical="true"
-            android:background="@color/divider_color"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"/>
-    </RelativeLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:id="@+id/good_preferential_ll"

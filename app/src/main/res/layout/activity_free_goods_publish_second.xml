@@ -45,6 +45,7 @@
                         android:layout_height="40dp">
 
                         <EditText
+                            android:id="@+id/free_goods_publish_second_name_et"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -70,6 +71,7 @@
                         android:layout_height="40dp">
 
                         <EditText
+                            android:id="@+id/free_goods_publish_second_price_et"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -129,6 +131,7 @@
                             android:src="@drawable/add_product_icon_depict"/>
 
                         <EditText
+                            android:id="@+id/free_goods_publish_second_detail_et"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             android:background="@null"

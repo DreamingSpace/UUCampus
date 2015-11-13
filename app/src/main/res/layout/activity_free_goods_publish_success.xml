@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:background="@drawable/button_round"
-            android:text="@string/back_home"
+            android:text="@string/back_idle_home"
             android:textColor="@color/white"
             android:textSize="18sp" />
 

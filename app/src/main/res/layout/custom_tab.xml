@@ -5,9 +5,10 @@
     android:layout_height="35dp"
     android:background="?attr/selectableItemBackground"
     android:gravity="center"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp"
     android:textColor="@color/custom_text"
+    android:textStyle="bold"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     android:textSize="16sp">
 
 </TextView>

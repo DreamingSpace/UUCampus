@@ -88,6 +88,11 @@ public class BoundActvity extends AbsActivity implements Handler.Callback {
         });
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     //获取手机验证码
     private void sendVerifyCode() {
         if (isPhoneValid()) {

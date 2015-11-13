@@ -1,5 +1,4 @@
 package com.dreamspace.uucampus.common;
-
 import com.dreamspace.uucampus.model.WeChatUser;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
 
@@ -7,6 +6,14 @@ import com.dreamspace.uucampus.model.api.UserInfoRes;
  * Created by Lx on 2015/10/23.
  */
 public class ShareData {
+
+    public static final String[] freeGoodsCategorys = new String[]{
+            "数码电子",
+            "衣帽服饰",
+            "生活用品",
+            "书籍杂志",
+            "出行车辆"
+    };
     public static final String WechatAppId = "wxcd544705acc90854";
     public static final String WechatAppSecret = "4b855c5546bf62fa20ec07af7e5ffc2d";
     public static final String QQAppId = "1104847133";
@@ -16,4 +23,11 @@ public class ShareData {
     public static WeChatUser weChatUser;
     //登录后获取的用户信息保存的实体类
     public static UserInfoRes user;
+
+    public static final String[] popupWindowOrder = new String[]{
+            "人气最高",
+            "评价最高",
+            "最新发布",
+            "价格最低",
+    };
 }

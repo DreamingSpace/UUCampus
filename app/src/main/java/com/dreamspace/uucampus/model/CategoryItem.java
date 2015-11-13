@@ -1,19 +1,14 @@
 package com.dreamspace.uucampus.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by wufan on 2015/9/29.
  */
-public class CategoryItem {
-    private String category_id;
+public class CategoryItem implements Parcelable{
+    private String id;
     private String name;
-
-    public String getCategory_id() {
-        return category_id;
-    }
-
-    public void setCategory_id(String category_id) {
-        this.category_id = category_id;
-    }
 
     public String getName() {
         return name;
@@ -22,4 +17,40 @@ public class CategoryItem {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public CategoryItem(Parcel in){
+        id = in.readString();
+        name = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(name);
+    }
+
+    public static final Parcelable.Creator<CategoryItem> CREATOR = new Creator<CategoryItem>() {
+        @Override
+        public CategoryItem createFromParcel(Parcel source) {
+            return new CategoryItem(source);
+        }
+
+        @Override
+        public CategoryItem[] newArray(int size) {
+            return new CategoryItem[size];
+        }
+    };
 }

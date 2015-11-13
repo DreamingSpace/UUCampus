@@ -13,6 +13,7 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.LocationAllRes;
 import com.dreamspace.uucampus.model.api.UpdateUserInfoReq;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
@@ -201,9 +202,9 @@ public class RegisterInfoActivity extends AbsActivity {
                 updateUserInfoReq.setLocation(school);
                 updateUserInfoReq.setName(userName);
 
-                ApiManager.getService(this.getApplicationContext()).updateUserInfo(updateUserInfoReq, new Callback<Response>() {
+                ApiManager.getService(this.getApplicationContext()).updateUserInfo(updateUserInfoReq, new Callback<CommonStatusRes>() {
                     @Override
-                    public void success(Response response, Response response2) {
+                    public void success(CommonStatusRes response, Response response2) {
                         progressDialog.dismiss();
                         showToast("用户信息上传成功~~");
                         readyGoThenKill(RegisterSucceedActivity.class);
@@ -220,5 +221,10 @@ public class RegisterInfoActivity extends AbsActivity {
                 showNetWorkError();
             }
         }
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 }

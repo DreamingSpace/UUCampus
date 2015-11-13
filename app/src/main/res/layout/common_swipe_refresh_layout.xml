@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swiperefresh_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:divider="@drawable/market_listview_divider"
-        android:dividerHeight="0.5dp">
+        android:divider="@color/divider_color"
+        android:dividerHeight="1dp">
     </com.dreamspace.uucampus.widget.LoadMoreListView>
 </android.support.v4.widget.SwipeRefreshLayout>

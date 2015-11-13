@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/list_item_selectable"
     android:orientation="vertical">
 
@@ -16,13 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="8dp"
-            android:paddingBottom="6dp">
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="70dp"
-                android:background="@color/orange" />
+                android:id="@+id/free_goods_item_image_iv"
+                android:layout_width="87dp"
+                android:layout_height="65dp"
+                android:background="@color/white" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -31,19 +32,25 @@
                 android:paddingLeft="@dimen/activity_padding">
 
                 <TextView
+                    android:id="@+id/free_goods_item_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="大四学长的限量滑板鞋"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="16sp"
+                    android:textColor="@color/good_name_text_color"
+                    android:textStyle="bold"
+                    android:singleLine="true"/>
 
                 <TextView
+                    android:id="@+id/free_goods_item_user_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:text="小猫咪"
-                    android:textColor="#059183"
-                    android:textSize="12sp" />
+                    android:textColor="@color/app_theme_color2"
+                    android:textSize="11sp"
+                    android:layout_marginBottom="6dp"
+                    android:singleLine="true"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -60,51 +67,35 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/xianzhi_icon_visitor" />
+                            android:src="@drawable/xiangqing_icon_interesting" />
 
                         <TextView
+                            android:id="@+id/free_goods_item_view_number_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="4dp"
-                            android:text="65人浏览"
-                            android:textSize="10sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/xianzhi_icon_like" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="4dp"
-                            android:text="15人赞"
-                            android:textSize="10sp" />
+                            android:layout_marginLeft="6dp"
+                            android:text="10人感兴趣"
+                            android:singleLine="true"
+                            style="@style/browse_collect_text_style"/>
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/free_goods_item_price_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="￥30"
-                        android:textColor="#F15353"
-                        android:textSize="18sp" />
+                        android:layout_marginRight="8dp"
+                        android:textColor="@color/price_text_color"
+                        android:textSize="18sp"/>
                 </RelativeLayout>
 
             </LinearLayout>
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#999999" />
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@color/divider_color" />-->
     </LinearLayout>
 </LinearLayout>
