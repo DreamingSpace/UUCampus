@@ -1,57 +1,28 @@
 package com.dreamspace.uucampus.model.api;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by wufan on 2015/9/29.
  */
-public class ShopInfoRes {
-    private String name;
-    private String image;
-    private String category;
-    private String phone;
-    private String address;
+public class ShopInfoRes implements Parcelable{
+    private String phone_num;
     private String description;
-    private int view_number;
-    private int like_number;
-    private int collect_number;
+    private String image;
+    private int is_active;
+    private int is_collected;
+    private String address;
+    private String owner;
+    private String main;
+    private String name;
 
-    public String getName() {
-        return name;
+    public String getPhone_num() {
+        return phone_num;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPhone_num(String phone_num) {
+        this.phone_num = phone_num;
     }
 
     public String getDescription() {
@@ -62,27 +33,102 @@ public class ShopInfoRes {
         this.description = description;
     }
 
-    public int getView_number() {
-        return view_number;
+    public String getImage() {
+        return image;
     }
 
-    public void setView_number(int view_number) {
-        this.view_number = view_number;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public int getLike_number() {
-        return like_number;
+    public int getIs_active() {
+        return is_active;
     }
 
-    public void setLike_number(int like_number) {
-        this.like_number = like_number;
+    public void setIs_active(int is_active) {
+        this.is_active = is_active;
     }
 
-    public int getCollect_number() {
-        return collect_number;
+    public int getIs_collected() {
+        return is_collected;
     }
 
-    public void setCollect_number(int collect_number) {
-        this.collect_number = collect_number;
+    public void setIs_collected(int is_collected) {
+        this.is_collected = is_collected;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getMain() {
+        return main;
+    }
+
+    public void setMain(String main) {
+        this.main = main;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ShopInfoRes(Parcel in){
+        phone_num = in.readString();
+        description = in.readString();
+        image = in.readString();
+        is_active = in.readInt();
+        is_collected = in.readInt();
+        address = in.readString();
+        owner = in.readString();
+        main = in.readString();
+        name = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(phone_num);
+        dest.writeString(description);
+        dest.writeString(image);
+        dest.writeInt(is_active);
+        dest.writeInt(is_collected);
+        dest.writeString(address);
+        dest.writeString(owner);
+        dest.writeString(main);
+        dest.writeString(name);
+    }
+
+    public static Parcelable.Creator<ShopInfoRes> CREATOR = new Parcelable.Creator<ShopInfoRes>(){
+
+        @Override
+        public ShopInfoRes createFromParcel(Parcel source) {
+            return new ShopInfoRes(source);
+        }
+
+        @Override
+        public ShopInfoRes[] newArray(int size) {
+            return new ShopInfoRes[size];
+        }
+    };
 }

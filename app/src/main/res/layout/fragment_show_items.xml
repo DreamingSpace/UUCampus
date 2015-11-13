@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:id="@+id/content_par"
     android:background="@color/market_fragments_bg_color"
     android:layout_height="match_parent">
-    <include
-        layout="@layout/common_swipe_refresh_layout"/>
+    <LinearLayout
+        android:id="@+id/content_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            layout="@layout/common_swipe_refresh_layout"/>
+    </LinearLayout>
 </RelativeLayout>

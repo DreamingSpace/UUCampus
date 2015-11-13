@@ -82,6 +82,11 @@ public class AddGoodAct extends AbsActivity {
         initListeners();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListeners(){
         addGoodIv.setOnClickListener(new View.OnClickListener() {
             @Override

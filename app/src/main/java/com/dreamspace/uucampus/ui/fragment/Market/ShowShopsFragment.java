@@ -1,24 +1,27 @@
 package com.dreamspace.uucampus.ui.fragment.Market;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.market.ShopListAdapter;
+import com.dreamspace.uucampus.api.ApiManager;
+import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.model.CategoryItem;
+import com.dreamspace.uucampus.model.ShopItem;
+import com.dreamspace.uucampus.model.api.SearchShopRes;
 import com.dreamspace.uucampus.ui.MarketFragment;
 import com.dreamspace.uucampus.ui.activity.Market.ShopShowGoodsAct;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.widget.LoadMoreListView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.Bind;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Created by Lx on 2015/9/21.
@@ -28,32 +31,25 @@ public class ShowShopsFragment extends BaseLazyFragment {
     SwipeRefreshLayout swipeRefreshLayout;
     @Bind(R.id.load_more_lv)
     LoadMoreListView loadMoreListView;
+    @Bind(R.id.content_ll)
+    LinearLayout contentLl;
 
-    private String type;
+    private CategoryItem categoryItem;
+    private int shopPage = 1;
+    private boolean fragmentDestroy = false;
+    private boolean firstGetData = true;
     private ShopListAdapter adapter;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        type = getArguments() == null? "null":getArguments().getString(MarketFragment.TYPE_NAME);
-//        System.out.println(type + " " + FragmentPagerItem.getPosition(getArguments()));
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_show_items, container, false);
-        return view;
+        categoryItem = getArguments().getParcelable(MarketFragment.CATEGORY);
     }
 
     @Override
     protected void onFirstUserVisible() {
-        List<String> list = new ArrayList<>();
-        for(int i = 0;i < 5;i++){
-            list.add(i+"");
-        }
-        adapter = new ShopListAdapter(mContext,list,ShopListAdapter.ViewHolder.class);
-        loadMoreListView.setAdapter(adapter);
-        System.out.println("fi" + type);
-
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.app_theme_color));
+        toggleShowLoading(true, null);
+        getShops();
     }
 
     @Override
@@ -68,7 +64,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
 
     @Override
     protected View getLoadingTargetView() {
-        return null;
+        return contentLl;
     }
 
     @Override
@@ -76,20 +72,110 @@ public class ShowShopsFragment extends BaseLazyFragment {
         loadMoreListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                readyGo(ShopShowGoodsAct.class);
+                if(adapter != null){
+                    //启动商家页面，并传入对应商家的shopid,shopname
+                    ShopItem shopInfo = adapter.getItem(position);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(ShopShowGoodsAct.SHOP_ID,shopInfo.getShop_id());
+                    bundle.putString(ShopShowGoodsAct.SHOP_NAME,shopInfo.getName());
+                    readyGo(ShopShowGoodsAct.class, bundle);
+                }
+            }
+        });
+
+        loadMoreListView.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                loadMoreListView.setLoading(true);
+                shopPage++;
+                getShops();
             }
         });
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                swipeRefreshLayout.setRefreshing(false);
+                shopPage = 1;
+                firstGetData = true;
+                getShops();
             }
         });
     }
 
     @Override
     protected int getContentViewLayoutID() {
-        return 0;
+        return R.layout.fragment_show_items;
+    }
+
+    private void getShops(){
+        if(!NetUtils.isNetworkConnected(mContext)){
+            showNetWorkError();
+            //若还没有取得数据则显示网络错误界面
+            if(firstGetData){
+                toggleNetworkError(true, getShopsClickListener);
+            }
+            loadMoreListView.setLoading(false);
+            swipeRefreshLayout.setRefreshing(false);
+            return;
+        }
+
+        ApiManager.getService(mContext).searchShop("", "", categoryItem.getName(), shopPage, "东南大学九龙湖校区",new Callback<SearchShopRes>() {
+            @Override
+            public void success(SearchShopRes searchShopRes, Response response) {
+                if(searchShopRes != null && !fragmentDestroy){
+                    loadMoreListView.setLoading(false);
+                    swipeRefreshLayout.setRefreshing(false);
+                    //没有数据
+                    if(shopPage == 1 && searchShopRes.getResult().size() == 0){
+                        toggleShowEmpty(true,getString(R.string.no_such_shop),null);
+                        return;
+                    }
+
+                    //没有更多
+                    if(shopPage != 1 && searchShopRes.getResult().size() == 0){
+                        showToast(getString(R.string.no_more));
+                        return;
+                    }
+
+                    //若还没取得过数据则取消加载界面
+                    if(firstGetData){
+                        adapter = new ShopListAdapter(mContext,searchShopRes.getResult(),ShopListAdapter.ViewHolder.class);
+                        loadMoreListView.setAdapter(adapter);
+                        toggleRestore();
+                        //已取得了数据
+                        firstGetData = false;
+                    }else{
+                        adapter.addEntities(searchShopRes.getResult());
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                if(!fragmentDestroy){
+                    if(shopPage == 1){
+                        toggleShowEmpty(true, null, getShopsClickListener);
+                    }else{
+                        showInnerError(error);
+                    }
+                    loadMoreListView.setLoading(false);
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            }
+        });
+    }
+
+    private View.OnClickListener getShopsClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            getShops();
+        }
+    };
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        fragmentDestroy = true;
     }
 }

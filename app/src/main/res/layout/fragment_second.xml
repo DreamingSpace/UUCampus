@@ -4,48 +4,116 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:background="@color/white"
+        android:id="@+id/personal_center_content_ll"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/personal_avatar_civ"
-            android:layout_marginTop="25dp"
-            android:src="@color/search_opaque"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="80dp"
-            android:layout_height="80dp" />
-        <TextView
-            android:id="@+id/personal_nickname_tv"
-            android:text="麦伊"
-            android:textColor="@color/black_40"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="18dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/personal_avatar_civ"
+                android:layout_marginTop="25dp"
+                android:src="@color/search_opaque"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+            <TextView
+                android:id="@+id/personal_nickname_tv"
+                android:text="麦伊"
+                android:textColor="@color/black_40"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="18dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="38dp">
+                <LinearLayout
+                    android:id="@+id/my_free_goods_ll"
+                    android:background="@drawable/personal_center_item_bg"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/mycenter_button_idlethings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="@string/my_free_goods"
+                        android:textSize="16sp"
+                        android:textColor="@color/black_40"
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <View
+                    android:background="@color/divider_color"
+                    android:layout_width="2px"
+                    android:layout_height="16dp"/>
+                <LinearLayout
+                    android:id="@+id/my_collection_ll"
+                    android:background="@drawable/personal_center_item_bg"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/mycenter_button_mycollection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="@string/my_collection"
+                        android:textSize="16sp"
+                        android:textColor="@color/black_40"
+                        android:layout_marginLeft="14dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:background="@color/divider_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+        </LinearLayout>
 
         <LinearLayout
+            android:background="@color/white"
             android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="38dp">
-            <LinearLayout
-                android:id="@+id/my_free_goods_ll"
-                android:background="@drawable/personal_center_item_bg"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <View
+                android:background="@color/divider_color"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:id="@+id/my_order_ll"
+                android:background="@drawable/personal_center_item_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="38dp">
                 <ImageView
-                    android:src="@drawable/mycenter_button_idlethings"
+                    android:src="@drawable/mycenter_button_myorder"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
-                    android:text="@string/my_free_goods"
+                    android:text="@string/my_orders"
                     android:textSize="16sp"
                     android:textColor="@color/black_40"
                     android:layout_marginLeft="15dp"
@@ -55,193 +123,131 @@
 
             <View
                 android:background="@color/divider_color"
-                android:layout_width="2px"
-                android:layout_height="16dp"/>
-            <LinearLayout
-                android:id="@+id/my_collection_ll"
-                android:background="@drawable/personal_center_item_bg"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="1px"/>
+
+            <LinearLayout
+                android:id="@+id/my_coupon_card_ll"
+                android:gravity="center_vertical"
+                android:background="@drawable/personal_center_item_bg"
+                android:layout_width="match_parent"
+                android:layout_height="38dp">
                 <ImageView
-                    android:src="@drawable/mycenter_button_mycollection"
+                    android:src="@drawable/mycenter_button_account"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
-                    android:text="@string/my_collection"
+                    android:text="@string/my_coupon_card"
                     android:textSize="16sp"
                     android:textColor="@color/black_40"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+
+            <View
+                android:background="@color/divider_color"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
+            <LinearLayout
+                android:id="@+id/apply_shop_ll"
+                android:background="@drawable/personal_center_item_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="38dp">
+                <ImageView
+                    android:src="@drawable/mycenter_button_myshop"
+                    android:layout_marginLeft="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="@string/apply_shop"
+                    android:textSize="16sp"
+                    android:textColor="@color/black_40"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="@color/divider_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
         </LinearLayout>
 
         <View
             android:background="@color/divider_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:background="@color/white"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <View
-            android:background="@color/divider_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-        <LinearLayout
-            android:id="@+id/my_order_ll"
-            android:background="@drawable/personal_center_item_bg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="38dp">
-            <ImageView
-                android:src="@drawable/mycenter_button_myorder"
-                android:layout_marginLeft="40dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="@string/my_orders"
-                android:textSize="16sp"
-                android:textColor="@color/black_40"
-                android:layout_marginLeft="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <View
-            android:background="@color/divider_color"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="1px"/>
 
         <LinearLayout
-            android:id="@+id/my_coupon_card_ll"
-            android:gravity="center_vertical"
-            android:background="@drawable/personal_center_item_bg"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="38dp">
-            <ImageView
-                android:src="@drawable/mycenter_button_account"
-                android:layout_marginLeft="40dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="@string/my_coupon_card"
-                android:textSize="16sp"
-                android:textColor="@color/black_40"
-                android:layout_marginLeft="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+            <View
+                android:background="@color/divider_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:id="@+id/setting_ll"
+                android:background="@drawable/personal_center_item_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="38dp">
+                <ImageView
+                    android:src="@drawable/my_center_button_set"
+                    android:layout_marginLeft="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="@string/setting"
+                    android:textSize="16sp"
+                    android:textColor="@color/black_40"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:background="@color/divider_color"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
+            <LinearLayout
+                android:id="@+id/about_ll"
+                android:background="@drawable/personal_center_item_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="38dp">
+                <ImageView
+                    android:src="@drawable/my_center_button_about"
+                    android:layout_marginLeft="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="@string/about"
+                    android:textSize="16sp"
+                    android:textColor="@color/black_40"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="@color/divider_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
         </LinearLayout>
-
-        <View
-            android:background="@color/divider_color"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-
-        <LinearLayout
-            android:id="@+id/apply_shop_ll"
-            android:background="@drawable/personal_center_item_bg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="38dp">
-            <ImageView
-                android:src="@drawable/mycenter_button_myshop"
-                android:layout_marginLeft="40dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="@string/apply_shop"
-                android:textSize="16sp"
-                android:textColor="@color/black_40"
-                android:layout_marginLeft="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <View
-            android:background="@color/divider_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-    </LinearLayout>
-
-    <View
-        android:background="@color/divider_color"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-
-    <LinearLayout
-        android:background="@color/white"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <View
-            android:background="@color/divider_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-        <LinearLayout
-            android:id="@+id/setting_ll"
-            android:background="@drawable/personal_center_item_bg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="38dp">
-            <ImageView
-                android:src="@drawable/my_center_button_set"
-                android:layout_marginLeft="40dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="@string/setting"
-                android:textSize="16sp"
-                android:textColor="@color/black_40"
-                android:layout_marginLeft="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <View
-            android:background="@color/divider_color"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-
-        <LinearLayout
-            android:id="@+id/feedback_ll"
-            android:background="@drawable/personal_center_item_bg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="38dp">
-            <ImageView
-                android:src="@drawable/setting_icon_suggestion"
-                android:layout_marginLeft="40dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="@string/feedback"
-                android:textSize="16sp"
-                android:textColor="@color/black_40"
-                android:layout_marginLeft="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <View
-            android:background="@color/divider_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
     </LinearLayout>
 </LinearLayout>

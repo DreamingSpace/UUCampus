@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:background="@drawable/personal_center_item_bg">
+    <ImageView
+        android:id="@+id/idle_image_iv"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="87dp"
+        android:layout_height="65dp" />
+    <TextView
+        android:text="维秀"
+        android:id="@+id/idle_name_tv"
+        android:layout_alignTop="@id/idle_image_iv"
+        android:layout_toRightOf="@id/idle_image_iv"
+        android:layout_marginLeft="15dp"
+        android:textSize="16sp"
+        android:textColor="@color/good_name_text_color"
+        android:textStyle="bold"
+        android:singleLine="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id="@+id/publisher_name_tv"
+        android:text="小猫咪"
+        android:textColor="@color/app_theme_color2"
+        android:layout_marginTop="12dp"
+        android:layout_below="@id/idle_name_tv"
+        android:layout_alignLeft="@id/idle_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/interest_ll"
+        android:layout_below="@id/publisher_name_tv"
+        android:layout_alignLeft="@id/publisher_name_tv"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/xiangqing_icon_interesting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/view_num_tv"
+            android:layout_marginLeft="8dp"
+            android:text="10人感兴趣"
+            android:textSize="12sp"
+            android:textColor="@color/text_normal"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/price_tv"
+        android:text="30RMB"
+        android:textColor="@color/price_text_color"
+        android:textSize="18sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/interest_ll"
+        android:layout_marginRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

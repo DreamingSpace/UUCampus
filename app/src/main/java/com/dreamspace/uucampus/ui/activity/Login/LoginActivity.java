@@ -76,6 +76,8 @@ public class LoginActivity extends AbsActivity {
 
     @Override
     protected void initViews() {
+        LoginUserName.setText(PreferenceUtils.getString(LoginActivity.this,PreferenceUtils.Key.PHONE));
+        LoginPwd.setText(PreferenceUtils.getString(LoginActivity.this,PreferenceUtils.Key.PASSWORD));
         initListener();
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setTitle("登录");
@@ -83,6 +85,11 @@ public class LoginActivity extends AbsActivity {
         UMWXHandler wxHandler = new UMWXHandler(LoginActivity.this,ShareData.WechatAppId,
                 ShareData.WechatAppSecret);
         wxHandler.addToSocialSDK();
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 
     //设置监听器
@@ -272,7 +279,7 @@ public class LoginActivity extends AbsActivity {
     //获取用户信息
     private void getUserInfo() {
         ApiManager.getService(getApplicationContext()).getUserInfo(new Callback<UserInfoRes>() {
-
+//            ProgressDialog progressDialog = ProgressDialog.show(getApplicationContext(),"","正在登录",true,false);
             @Override
             public void success(UserInfoRes userInfoRes, Response response) {
                 if(userInfoRes != null){
@@ -286,7 +293,7 @@ public class LoginActivity extends AbsActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
                 showInnerError(error);
             }
         });

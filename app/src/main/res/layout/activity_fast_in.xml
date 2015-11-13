@@ -6,50 +6,55 @@
     <include
         layout="@layout/custom_toolbar"/>
 
-    <com.ogaclejapan.smarttablayout.SmartTabLayout
-        android:id="@+id/fast_in_act_smarttablayout"
+    <RelativeLayout
+        android:id="@+id/content_rl"
         android:layout_below="@+id/tl_custom"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@color/white"
-        app:stl_indicatorGravity="bottom"
-        app:stl_indicatorInFront="false"
-        app:stl_indicatorColor="@color/app_theme_color"
-        app:stl_indicatorThickness="4dp"
-        app:stl_indicatorCornerRadius="5dp"
-        app:stl_indicatorAlwaysInCenter="false"
-        app:stl_defaultTabTextColor="@drawable/market_smart_tab_textcolor"
-        app:stl_defaultTabTextSize="16sp"
-        app:stl_distributeEvenly="true"
-        app:stl_dividerThickness="0dp"
-        app:stl_underlineColor="@color/white"
-        app:stl_underlineThickness="0dp"
-        app:stl_clickable="true"/>
-    <View
-        android:id="@+id/divider_below_fi_act_smarttab"
-        android:layout_below="@id/fast_in_act_smarttablayout"
-        android:background="@color/divider_color"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
-    <View
-        android:id="@+id/divider_above_fi_act_viewpager"
-        android:layout_below="@id/divider_below_fi_act_smarttab"
-        android:background="@color/divider_color"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
+        android:layout_height="match_parent">
+        <com.ogaclejapan.smarttablayout.SmartTabLayout
+            android:id="@+id/fast_in_act_smarttablayout"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/white"
+            app:stl_indicatorGravity="bottom"
+            app:stl_indicatorInFront="false"
+            app:stl_indicatorColor="@color/app_theme_color"
+            app:stl_indicatorThickness="4dp"
+            app:stl_indicatorCornerRadius="5dp"
+            app:stl_indicatorAlwaysInCenter="false"
+            app:stl_defaultTabTextColor="@drawable/market_smart_tab_textcolor"
+            app:stl_defaultTabTextSize="16sp"
+            app:stl_distributeEvenly="true"
+            app:stl_dividerThickness="0dp"
+            app:stl_underlineColor="@color/white"
+            app:stl_underlineThickness="0dp"
+            app:stl_clickable="true"/>
+        <View
+            android:id="@+id/divider_below_fi_act_smarttab"
+            android:layout_below="@id/fast_in_act_smarttablayout"
+            android:background="@color/divider_color"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+        <View
+            android:id="@+id/divider_above_fi_act_viewpager"
+            android:layout_below="@id/divider_below_fi_act_smarttab"
+            android:background="@color/divider_color"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/fast_in_act_view_pager"
-        android:layout_below="@id/divider_above_fi_act_viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/fast_in_act_view_pager"
+            android:layout_below="@id/divider_above_fi_act_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    <View
-        android:id="@+id/shadow_view"
-        android:visibility="invisible"
-        android:layout_below="@+id/tl_custom"
-        android:background="#66000000"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <View
+            android:id="@+id/shadow_view"
+            android:visibility="invisible"
+            android:layout_below="@+id/tl_custom"
+            android:background="#66000000"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
 </RelativeLayout>

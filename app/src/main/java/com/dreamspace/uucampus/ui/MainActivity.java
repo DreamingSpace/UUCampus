@@ -67,6 +67,11 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
         initListener();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListener() {
         homeRl.setOnClickListener(this);
         shopRl.setOnClickListener(this);

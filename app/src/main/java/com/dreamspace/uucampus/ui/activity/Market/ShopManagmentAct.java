@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -69,6 +70,11 @@ public class ShopManagmentAct extends AbsActivity{
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         TextView title = (TextView) mToolBar.findViewById(R.id.custom_title_tv);
         title.setText(getResources().getString(R.string.my_goods));
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 
     private Bundle getBundle(int position){

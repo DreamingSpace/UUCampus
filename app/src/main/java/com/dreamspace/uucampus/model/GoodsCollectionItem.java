@@ -7,9 +7,10 @@ public class GoodsCollectionItem {
     private String goods_id;
     private String name;
     private String image;
-    private float price;
-    private int view_number;
-    private int like_number;
+    private String original_price;
+    private String price;
+    private String shop_name;
+    private String view_number;
     private String discount;
 
     public String getGoods_id() {
@@ -36,28 +37,36 @@ public class GoodsCollectionItem {
         this.image = image;
     }
 
-    public float getPrice() {
+    public String getOriginal_price() {
+        return original_price;
+    }
+
+    public void setOriginal_price(String original_price) {
+        this.original_price = original_price;
+    }
+
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public int getView_number() {
+    public String getShop_name() {
+        return shop_name;
+    }
+
+    public void setShop_name(String shop_name) {
+        this.shop_name = shop_name;
+    }
+
+    public String getView_number() {
         return view_number;
     }
 
-    public void setView_number(int view_number) {
+    public void setView_number(String view_number) {
         this.view_number = view_number;
-    }
-
-    public int getLike_number() {
-        return like_number;
-    }
-
-    public void setLike_number(int like_number) {
-        this.like_number = like_number;
     }
 
     public String getDiscount() {

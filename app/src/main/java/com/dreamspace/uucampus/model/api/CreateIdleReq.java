@@ -7,7 +7,6 @@ public class CreateIdleReq {
     private String name;
     private String image;
     private String category;
-    private String location;
     private float price;
     private String description;
 
@@ -33,14 +32,6 @@ public class CreateIdleReq {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public float getPrice() {

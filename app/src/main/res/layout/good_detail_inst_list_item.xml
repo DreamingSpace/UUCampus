@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:text="报名须知"
+        android:text="报名须知dfsdfsdfsdf"
         android:id="@+id/good_detail_condition"
         android:textColor="@color/white"
         android:paddingLeft="10dp"
@@ -12,7 +12,7 @@
         android:paddingBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:background="@color/app_theme_color"
+        android:background="@drawable/xiangqing_icon_application_notes_"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView

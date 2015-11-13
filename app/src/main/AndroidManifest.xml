@@ -2,17 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dreamspace.uucampus">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -75,6 +72,17 @@
         <activity
             android:name=".ui.activity.Login.FindBackActivity"
             android:label="重新设置密码" />
+        <activity android:name=".widget.photopicker.SelectPhotoActivity"/>
+        <activity android:name=".widget.photopicker.PhotoPreviewActivity"/>
+        <activity android:name=".ui.activity.Market.GoodDetailAct"/>
+        <activity android:name=".ui.activity.Market.ShopShowGoodsAct"/>
+        <activity android:name=".ui.activity.Market.ShopDetailAct"/>
+        <activity android:name=".ui.activity.Market.ReportShopAct"/>
+        <activity android:name=".ui.activity.Personal.MyCollectionAct"/>
+        <activity android:name=".ui.activity.Personal.SettingAct"/>
+        <activity android:name=".ui.activity.Personal.CouponCardAct"/>
+        <activity android:name=".ui.activity.Login.RegisterActivity"/>
+        <activity android:name=".ui.activity.Login.BoundActvity"/>
         <activity android:name=".ui.activity.Login.LoginActivity">
         </activity>
         <activity
@@ -102,6 +110,23 @@
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5625eac167e58e4e1f001985" />
+        <activity android:name=".ui.activity.Login.RegisterInfoActivity"/>
+        <activity android:name=".ui.activity.Personal.FeedbackAct"/>
+        <activity android:name=".ui.activity.Personal.PersonalInfoAct"/>
+        <activity android:name=".ui.activity.Personal.MyFreeGoodsAct"/>
+        <activity android:name=".ui.activity.Personal.AboutAct"/>
+
+        <!-- order-->
+        <activity android:name=".ui.activity.Order.OrderConfirmAct" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".ui.activity.Order.MyOrderAct"/>
+        <activity android:name=".ui.activity.Order.OrderDetailAct"/>
+        <activity android:name=".ui.activity.Order.CommentAct"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".ui.activity.Order.RefundAct"/>
+        <activity android:name=".ui.activity.Order.OrderPayAct"/>
+
+         <!--umeng-->
+        <meta-data android:name="UMENG_APPKEY" android:value="5625eac167e58e4e1f001985"/>
         <activity
             android:name="com.umeng.socialize.view.ShareActivity"
             android:configChanges="orientation|keyboard"
@@ -111,6 +136,7 @@
             android:windowSoftInputMode="stateVisible|adjustResize" />
 
         <!-- ############ QQ空间和QQ SSO授权的Activity注册 ############ -->
+
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
@@ -136,5 +162,30 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- Ping++ sdk -->
+        <activity
+            android:name="com.pingplusplus.android.PaymentActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 微信支付 sdk ，也是 Ping++ sdk 调用入口 -->
+        <activity-alias
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:targetActivity="com.pingplusplus.android.PaymentActivity" />
+        <!-- 支付宝 sdk -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
     </application>
 </manifest>
