@@ -21,7 +21,14 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.SearchResultActivity"
+            android:label="搜索结果"/>
         <activity android:name=".ui.activity.Market.FastInAct"></activity>
         <activity android:name=".ui.activity.Market.ShopHostActivity"></activity>
         <activity android:name=".ui.activity.Market.ShopManagmentAct"></activity>
@@ -64,20 +71,16 @@
             android:label="微信创建新用户" />
         <activity android:name=".ui.activity.Login.BoundSecondActivity"
             android:label="微信绑定">
-
         </activity>
         <activity
             android:name=".ui.activity.Login.FindBackActivity"
-            android:label="找回密码" />
+            android:label="重新设置密码" />
         <activity android:name=".ui.activity.Login.LoginActivity">
         </activity>
         <activity
             android:name=".ui.activity.Login.RegisterInfoActivity"
             android:label="个人信息" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
+        </activity>
         <activity
             android:name=".ui.activity.Login.WechatActivity"
             android:label="关联账号"></activity>

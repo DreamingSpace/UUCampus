@@ -11,7 +11,7 @@ import java.util.List;
 public class SearchShopRes {
     private int total;  //条目总数
     private int number; //本页条目数量
-    private List<ShopItem> results;
+    private List<ShopItem> result;
 
     public int getTotal() {
         return total;
@@ -29,11 +29,11 @@ public class SearchShopRes {
         this.number = number;
     }
 
-    public List<ShopItem> getResults() {
-        return results;
+    public List<ShopItem> getResult() {
+        return result;
     }
 
-    public void setResults(List<ShopItem> results) {
-        this.results = results;
+    public void setResult(List<ShopItem> result) {
+        this.result = result;
     }
 }

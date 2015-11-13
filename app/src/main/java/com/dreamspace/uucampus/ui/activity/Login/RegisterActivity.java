@@ -137,8 +137,9 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
                     showInnerError(error);
                 }
             });
-        }}else{
-        showNetWorkError();
+        }else {
+                showNetWorkError();
+            }
     }
     }
 

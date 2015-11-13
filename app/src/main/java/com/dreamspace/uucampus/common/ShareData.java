@@ -1,6 +1,7 @@
 package com.dreamspace.uucampus.common;
 
 import com.dreamspace.uucampus.model.WeChatUser;
+import com.dreamspace.uucampus.model.api.UserInfoRes;
 
 /**
  * Created by Lx on 2015/10/23.
@@ -13,4 +14,6 @@ public class ShareData {
 
     //微信授权后获取的用户信息保存的实体类
     public static WeChatUser weChatUser;
+    //登录后获取的用户信息保存的实体类
+    public static UserInfoRes user;
 }

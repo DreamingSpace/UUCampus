@@ -5,11 +5,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.util.List;
-
 /**
  * SharedPreferences工具类
  *
@@ -21,10 +16,8 @@ public class PreferenceUtils {
     public static class Key {
         public static final String ACCOUNT = "ACCOUNT";
         public static final String AVATAR = "AVATAR";
-        public static final String REALNAME="REALNAME";
-        public static final String SEX="SEX";
         public static final String CLASSIFY = "CLASSIFY";
-        public static final String ACCESS="access_token";
+        public static final String ACCESS="ACCESS_token";
         public static final String PHONE="PHONE";
 
     }

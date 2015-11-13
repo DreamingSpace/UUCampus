@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingBottom="10dp"
+    android:background="@drawable/personal_center_item_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:text="汤山温泉两天一夜游"
+        android:id="@+id/search_good_name_tv"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/good_name_text_color"
+        android:textStyle="bold"
+        android:singleLine="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="康辉旅行社"
+        android:id="@+id/search_good_shop_name_tv"
+        android:layout_below="@id/search_good_name_tv"
+        android:layout_marginTop="12dp"
+        android:layout_alignLeft="@id/search_good_name_tv"
+        android:textColor="@color/app_theme_color2"
+        android:textSize="11sp"
+        android:singleLine="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="￥230"
+        android:id="@+id/search_good_price_tv"
+        android:layout_below="@id/search_good_name_tv"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/price_text_color"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

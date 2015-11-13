@@ -83,7 +83,7 @@ public interface UUService {
     @POST("/auth/code/")
     void sendVerifyCode(@Body SendVerifyReq req, Callback<Response> cb);
 
-//用户
+    //用户
     //创建用户访问凭证(登陆)
     @POST("/auth/login/")
     void createAccessToken(@Body LoginReq req, Callback<LoginRes> cb);
@@ -113,7 +113,7 @@ public interface UUService {
     void updateUserInfo(@Body UpdateUserInfoReq req, Callback<Response> cb);
 
     //用户密码重置
-    @PUT("/user/reset_password")
+    @PUT("/user/reset_password/")
     void resetPassword(@Body ResetReq req, Callback<Response> cb);
 
     //用户信息查看（自己）
@@ -125,7 +125,7 @@ public interface UUService {
     void getOtherUserInfo(@Path("user_id") String user_id, Callback<UserInfoRes> cb);
 
 
-//店铺
+    //店铺
     //店铺创建
     @POST("/shop/")
     void createShop(@Body CreateShopReq req, Callback<CreateShopRes> cb);
@@ -144,7 +144,7 @@ public interface UUService {
 
     //店铺搜索
     @GET("/shop/search/")
-    void searchShop(@Query("keyword") String keyword, @Query("order") String order, @Query("category") String category, @Query("location") String location, Callback<SearchShopRes> cb);
+    void searchShop(@Query("keyword") String keyword, @Query("location") String location, @Query("page") String page, Callback<SearchShopRes> cb);
 
     //店铺评论添加
     @POST("/shop/{shop_id}/comment/")
@@ -203,189 +203,185 @@ public interface UUService {
     void deleteShopDiscount(@Path("shop_id") String shop_id, Callback<Response> cb);
 
 
-
-//商品
+    //商品
     //商品创建
     @POST("/goods/")
-    void createGoods(@Body CreateGoodsReq req,Callback<CreateGoodsRes> cb);
+    void createGoods(@Body CreateGoodsReq req, Callback<CreateGoodsRes> cb);
 
     //查看自己的商品
     @GET("/goods/list/")
-    void getMyGoods(@Query("page")int page,@Query("is_active")String is_active,@Query("group")String group,Callback<MyGoodsRes>cb);
+    void getMyGoods(@Query("page") int page, @Query("is_active") String is_active, @Query("group") String group, Callback<MyGoodsRes> cb);
 
     //上信息更新
     @PUT("/goods/{goods_id}")
-    void updateGoods(@Path("goods_id")String goods_id,@Body UpdateGoodsReq req,Callback<Response>cb);
+    void updateGoods(@Path("goods_id") String goods_id, @Body UpdateGoodsReq req, Callback<Response> cb);
 
     //商品删除
     @DELETE("/goods/{goods_id}")
-    void deleteGoods(@Path("goods_id")String goods_id,Callback<Response>cb);
+    void deleteGoods(@Path("goods_id") String goods_id, Callback<Response> cb);
 
     //商品查看
     @GET("/goods/{goods_id}")
-    void getGoodsInfo(@Path("goods_id")String goods_id,Callback<GoodsInfoRes> cb);
+    void getGoodsInfo(@Path("goods_id") String goods_id, Callback<GoodsInfoRes> cb);
 
     //商品搜索
     @GET("/goods/search/")
-    void searchGoods(@Query("keyword")String keyword,@Query("order")String order,@Query("category")String category,@Query("location")String location,@Query("shop")String shop,Callback<SearchGoodsRes>cb);
+    void searchGoods(@Query("keyword") String keyword, @Query("location") String location, @Query("page") String page, Callback<SearchGoodsRes> cb);
 
     //商品点赞
     @POST("/goods/{goods_id}/like/")
-    void likeGoods(@Path("goods_id")String goods_id,Callback<LikeGoodsRes>cb);
+    void likeGoods(@Path("goods_id") String goods_id, Callback<LikeGoodsRes> cb);
 
     //商品取消点赞
     @DELETE("/goods/{goods_id}/like/")
-    void unLikeGoods(@Path("goods_id")String goods_id,Callback<Response> cb);
+    void unLikeGoods(@Path("goods_id") String goods_id, Callback<Response> cb);
 
     //商品评论添加
     @POST("/goods/{goods_id}/comment")
-    void addGoodsComment(@Path("goods_id")String goods_id,@Body ContentReq req,Callback<AddGoodsCommentRes>cb);
+    void addGoodsComment(@Path("goods_id") String goods_id, @Body ContentReq req, Callback<AddGoodsCommentRes> cb);
 
     //商品所有评论查看
     @GET("/goods/{goods_id}/comment/{page}")
-    void getAllGoodsComment(@Path("goods_id")String goods_id,@Path("page")int page,Callback<AllGoodsCommentRes> cb);
+    void getAllGoodsComment(@Path("goods_id") String goods_id, @Path("page") int page, Callback<AllGoodsCommentRes> cb);
 
     //商品评论删除
     @DELETE("/goods/{goods_id}/comment/{goods_comment_id}")
-    void deleteGoodsComment(@Path("goods_id")String goods_id,@Path("goods_comment_id")String goods_comment_id,Callback<Response> cb);
+    void deleteGoodsComment(@Path("goods_id") String goods_id, @Path("goods_comment_id") String goods_comment_id, Callback<Response> cb);
 
     //商品有用添加
     @POST("/goods/{goods_id}/comment/{goods_comment_id}/useful")
-    void addGoodsUseful(@Path("goods_id")String goods_id,@Path("goods_comment_id")String goods_comment_id,Callback<Response> cb);
+    void addGoodsUseful(@Path("goods_id") String goods_id, @Path("goods_comment_id") String goods_comment_id, Callback<Response> cb);
 
     //商品有用取消
     @PUT("/goods/{goods_id}/comment/{goods_comment_id}/useful")
-    void cancelGoodsUseful(@Path("goods_id")String goods_id,@Path("goods_comment_id")String goods_comment_id,Callback<Response> cb);
+    void cancelGoodsUseful(@Path("goods_id") String goods_id, @Path("goods_comment_id") String goods_comment_id, Callback<Response> cb);
 
     //商品收藏添加
     @POST("/goods/{goods_id}/collection/")
-    void addGoodsCollection(@Path("goods_id")String  goods_id,Callback<AddGoodsCollectionRes>cb);
+    void addGoodsCollection(@Path("goods_id") String goods_id, Callback<AddGoodsCollectionRes> cb);
 
     //个人商品收藏查看
     @GET("/goods/collection/{page}")
-    void getAllGoodsCollection(@Path("page")int page,Callback<AllGoodsCollectionRes> cb);
+    void getAllGoodsCollection(@Path("page") int page, Callback<AllGoodsCollectionRes> cb);
 
     //商品收藏删除
     @DELETE("/goods/{goods_id}/collection/")
-    void deleteGoodsCollection(@Path("goods_id")String goods_id,Callback<Response>cb);
+    void deleteGoodsCollection(@Path("goods_id") String goods_id, Callback<Response> cb);
 
 
-
-//闲置
+    //闲置
     //闲置创建
     @POST("/idle/")
-    void createIdle(@Body CreateIdleReq req,Callback<CreateIdleRes>cb);
+    void createIdle(@Body CreateIdleReq req, Callback<CreateIdleRes> cb);
 
     //查看自己的闲置
     @GET("/idle/list/")
-    void getIdleList(@Query("page")int page,@Query("is_active")String is_active,Callback<
-            IdleInfoRes>cb);
+    void getIdleList(@Query("page") int page, @Query("is_active") String is_active, Callback<
+            IdleInfoRes> cb);
 
     //闲置信息更新
     @PUT("/idle/{idle_id}")
-    void updateIdleInfo(@Path("idle_id")String idle_id,@Body UpdateIdleReq req,Callback<Response>cb);
+    void updateIdleInfo(@Path("idle_id") String idle_id, @Body UpdateIdleReq req, Callback<Response> cb);
 
     //闲置删除
     @DELETE("/idle/{idle_id}")
-    void deleteIdle(@Path("idle_id")String idle_id,Callback<Response>cb);
+    void deleteIdle(@Path("idle_id") String idle_id, Callback<Response> cb);
 
     //闲置查看
     @GET("/idle/{idle_id}")
-    void getIdleInfo(@Path("idle_id")String idle_id,Callback<IdleInfoRes>cb);
+    void getIdleInfo(@Path("idle_id") String idle_id, Callback<IdleInfoRes> cb);
 
     //闲置搜索
     @GET("/idle/search/")
-    void searchIdle(@Query("keyword")String keyword,@Query("order")String order,@Query("category")String category,@Query("location")String location,@Query("user")String user,Callback<SearchIdleRes>cb);
+    void searchIdle(@Query("keyword") String keyword,@Query("location") String location,@Query("page") String page, Callback<SearchIdleRes> cb);
 
     //闲置点赞
     @POST("/idle/{idle_id}/like/")
-    void likeIdle(@Path("idle_id")String idle_id,Callback<LikeIdleRes>cb);
+    void likeIdle(@Path("idle_id") String idle_id, Callback<LikeIdleRes> cb);
 
     //闲置取消点赞
     @DELETE("/idle/{idle_id}/like/")
-    void unLikeIdle(@Path("idle_id")String idle_id,Callback<Response>cb);
+    void unLikeIdle(@Path("idle_id") String idle_id, Callback<Response> cb);
 
     //闲置评论添加
     @POST("/idle/{idle_id}/comment/")
-    void addIdleComment(@Path("idle_id")String idle_id,@Body ContentReq req,Callback<AddIdleCommentRes>cb);
+    void addIdleComment(@Path("idle_id") String idle_id, @Body ContentReq req, Callback<AddIdleCommentRes> cb);
 
     //闲置所有评论查看
     @GET("/idle/{idle_id}/comment/{page}")
-    void getIdleComment(@Path("idle_id")String idle_id,@Path("page")int page,Callback<IdleAllCommentRes>cb);
+    void getIdleComment(@Path("idle_id") String idle_id, @Path("page") int page, Callback<IdleAllCommentRes> cb);
 
     //闲置评论删除
     @DELETE("/idle/{idle_id}/comment/{idle_comment_id}")
-    void deleteIdleComment(@Path("idle_id")String idle_id,@Path("idle_comment_id")String idle_comment_id,Callback<Response>cb);
+    void deleteIdleComment(@Path("idle_id") String idle_id, @Path("idle_comment_id") String idle_comment_id, Callback<Response> cb);
 
     //评论有用添加
     @POST("/idle/{idle_id}/comment/{idle_comment_id}/useful")
-    void addIdleCommentUseful(@Path("idle_id")String idle_id,@Path("idle_comment_id")String idle_comment_id,Callback<Response> cb);
+    void addIdleCommentUseful(@Path("idle_id") String idle_id, @Path("idle_comment_id") String idle_comment_id, Callback<Response> cb);
 
     //评论有用取消
     @PUT("/idle/{idle_id}/comment/{idle_comment_id}/useful")
-    void cancelIdleCommentUseful(@Path("idle_id")String idle_id,@Path("idle_comment_id")String idle_comment_id,Callback<Response> cb);
+    void cancelIdleCommentUseful(@Path("idle_id") String idle_id, @Path("idle_comment_id") String idle_comment_id, Callback<Response> cb);
 
-//校区
+    //校区
     //校区创建
     @POST("/location/")
-    void createLocation(@Body NameReq req,Callback<CreateLocationRes>cb);
+    void createLocation(@Body NameReq req, Callback<CreateLocationRes> cb);
 
     //校区修改
     @PUT("/location/{location_id}")
-    void modifyLocation(@Path("location_id")String location_id,@Body NameReq req,Callback<Response>cb);
+    void modifyLocation(@Path("location_id") String location_id, @Body NameReq req, Callback<Response> cb);
 
     //获取所有校区
     @GET("/location/")
-    void getAllLocation(Callback<LocationAllRes>cb);
+    void getAllLocation(Callback<LocationAllRes> cb);
 
     //校区删除
     @DELETE("/location/{location_id}")
-    void deleteLocation(Callback<Response>cb);
+    void deleteLocation(Callback<Response> cb);
 
 
-
-//分类
+    //分类
     //类目创建
     @POST("/category/")
-    void createCategory(@Body CategoryReq req,Callback<CreateCategoryRes>cb);
+    void createCategory(@Body CategoryReq req, Callback<CreateCategoryRes> cb);
 
     //类目修改
     @PUT("/category/{category_id}")
-    void modifyCategory(@Body CategoryReq req,Callback<Response>cb);
+    void modifyCategory(@Body CategoryReq req, Callback<Response> cb);
 
     //获取所有闲置类目
     @GET("/category/idle/")
-    void getAllIdleCategory(Callback<AllCategoryRes>cb);
+    void getAllIdleCategory(Callback<AllCategoryRes> cb);
 
     //获取所有店铺类目
     @GET("/category/shop/")
-    void getAllShopCategory(Callback<AllCategoryRes>cb);
+    void getAllShopCategory(Callback<AllCategoryRes> cb);
 
     //类目删除
     @DELETE("/category/{category_id}")
-    void deleteCategory(Callback<Response>cb);
+    void deleteCategory(Callback<Response> cb);
 
 
-
-//意见、报告、更新等
+    //意见、报告、更新等
     //意见提交
     @POST("/suggestion/")
-    void commitSuggestion(@Body ContentReq req,Callback<CommitSuggestionRes>cb);
+    void commitSuggestion(@Body ContentReq req, Callback<CommitSuggestionRes> cb);
 
     //查看所有意见
     @GET("/suggestion/")
-    void getSuggestion(Callback<SuggestionRes>cb);
+    void getSuggestion(Callback<SuggestionRes> cb);
 
     //举报提交
     @POST("/report/")
-    void commitReport(@Body CommitReportReq req,Callback<Response>cb);
+    void commitReport(@Body CommitReportReq req, Callback<Response> cb);
 
     //查看所有举报
     @GET("/report/")
-    void getAllReport(Callback<ReportRes>cb);
+    void getAllReport(Callback<ReportRes> cb);
 
     //检查更新
     @GET("/check_update/{version}")
-    void checkUpdate(@Path("version")float version,Callback<CheckUpdateRes>cb);
+    void checkUpdate(@Path("version") float version, Callback<CheckUpdateRes> cb);
 
 }

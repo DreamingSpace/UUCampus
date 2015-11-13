@@ -5,38 +5,13 @@ package com.dreamspace.uucampus.model.api;
  */
 public class UserInfoRes {
     private String image;
-    private String birthday;
-    private String school;
-    private String nickname;
     private String name;
     private String enroll_year;
-    private String sex;
     private String location;
-    private String reg_data;
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getSchool() {
-        return school;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
-    }
+    private String reg_date;
+    private String weixin_bind;
+    private String weibo_bind;
+    private String phone_num;
 
     public String getEnroll_year() {
         return enroll_year;
@@ -46,12 +21,20 @@ public class UserInfoRes {
         this.enroll_year = enroll_year;
     }
 
-    public String getSex() {
-        return sex;
+    public String getImage() {
+        return image;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLocation() {
@@ -62,27 +45,35 @@ public class UserInfoRes {
         this.location = location;
     }
 
-    public String getReg_data() {
-        return reg_data;
+    public String getReg_date() {
+        return reg_date;
     }
 
-    public void setReg_data(String reg_data) {
-        this.reg_data = reg_data;
+    public void setReg_date(String reg_date) {
+        this.reg_date = reg_date;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getWeixin_bind() {
+        return weixin_bind;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setWeixin_bind(String weixin_bind) {
+        this.weixin_bind = weixin_bind;
     }
 
-    public String getName() {
-        return name;
+    public String getWeibo_bind() {
+        return weibo_bind;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setWeibo_bind(String weibo_bind) {
+        this.weibo_bind = weibo_bind;
+    }
+
+    public String getPhone_num() {
+        return phone_num;
+    }
+
+    public void setPhone_num(String phone_num) {
+        this.phone_num = phone_num;
     }
 }

@@ -124,11 +124,12 @@ public class LoginActivity extends AbsActivity {
                 mController.doOauthVerify(LoginActivity.this, SHARE_MEDIA.SINA, new SocializeListeners.UMAuthListener() {
                     @Override
                     public void onStart(SHARE_MEDIA share_media) {
-
+                        Log.d("TestData", "start");
                     }
 
                     @Override
                     public void onComplete(Bundle bundle, SHARE_MEDIA share_media) {
+                        Log.d("TestData","compete");
                         if (bundle != null && !TextUtils.isEmpty(bundle.getString("uid"))) {
                             showToast("授权成功~");
                             showToast("获取用户数据----");
@@ -160,12 +161,12 @@ public class LoginActivity extends AbsActivity {
 
                     @Override
                     public void onError(SocializeException e, SHARE_MEDIA share_media) {
-
+                        Log.d("TestData","error");
                     }
 
                     @Override
                     public void onCancel(SHARE_MEDIA share_media) {
-
+                        Log.d("TestData","cancel");
                     }
                 });
             }
@@ -278,8 +279,8 @@ public class LoginActivity extends AbsActivity {
                     Log.i("INFO", userInfoRes.toString());
                     saveUserInfo(userInfoRes);
                     progressDialog.dismiss();
-                    readyGo(MainActivity.class);
-                    finish();
+                    showToast("登录成功");
+                    readyGoThenKill(MainActivity.class);
                 }
             }
 
@@ -293,11 +294,7 @@ public class LoginActivity extends AbsActivity {
 
     //保存用户信息到本地
     private void saveUserInfo(UserInfoRes userInfoRes){
-        //这部分还需要修改~
-        PreferenceUtils.putString(getApplicationContext(),PreferenceUtils.Key.AVATAR,userInfoRes.getImage());
-        PreferenceUtils.putString(getApplicationContext(),PreferenceUtils.Key.ACCOUNT,userInfoRes.getName());
-        //PreferenceUtils.putString(getApplicationContext(),PreferenceUtils.Key.SEX,userInfoRes.getSex());
-        PreferenceUtils.putString(getApplicationContext(), PreferenceUtils.Key.PHONE, LoginUserName.getText().toString());
+        ShareData.user = userInfoRes;
     }
 
     //输入有效性判断

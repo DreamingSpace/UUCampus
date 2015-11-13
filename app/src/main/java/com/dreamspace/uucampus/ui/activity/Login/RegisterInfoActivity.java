@@ -2,6 +2,7 @@ package com.dreamspace.uucampus.ui.activity.Login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.model.api.LocationAllRes;
 import com.dreamspace.uucampus.model.api.UpdateUserInfoReq;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.WheelViewDialog;
@@ -48,6 +50,7 @@ public class RegisterInfoActivity extends AbsActivity {
     private String year;
     public static final int AVATER = 1;
     ProgressDialog progressDialog;
+    private ArrayList<String> locations;
 
     @Override
     protected int getContentView() {
@@ -95,6 +98,53 @@ public class RegisterInfoActivity extends AbsActivity {
                 showYearDialog();
             }
         });
+        schoolTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSchoolDialog();
+            }
+        });
+    }
+
+    //显示学校选择对话框
+    private void showSchoolDialog(){
+        getSchools();
+    }
+
+    //获取所有校区
+    private void getSchools(){
+        if(NetUtils.isNetworkConnected(this)){
+            ApiManager.getService(this).getAllLocation(new Callback<LocationAllRes>() {
+                @Override
+                public void success(LocationAllRes locationAllRes, Response response) {
+                    Log.d("TestData", locationAllRes.getLocation().toString());
+                    final WheelViewDialog inSchoolDialog = new WheelViewDialog(RegisterInfoActivity.this,locationAllRes.getLocation(),"选择校区");
+
+                    inSchoolDialog.setNegativeButton(getString(R.string.cancel), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            inSchoolDialog.dismiss();
+                        }
+                    });
+
+                    inSchoolDialog.setPositiveButton(getString(R.string.confirm), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            school = inSchoolDialog.getSelected();
+                            schoolTextView.setText(school);
+                            inSchoolDialog.dismiss();
+                        }
+                    });
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    showInnerError(error);
+                }
+            });
+        }else{
+            showNetWorkError();
+        }
     }
 
     //显示年份选择对话框
