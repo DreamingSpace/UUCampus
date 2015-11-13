@@ -7,13 +7,8 @@ public class ShopItem {
     private String shop_id;
     private String name;
     private String image;
-<<<<<<< HEAD
-    private String address;
-    private String main;
-=======
     private String main;
     private String address;
->>>>>>> master
 
     public String getShop_id() {
         return shop_id;
@@ -39,22 +34,6 @@ public class ShopItem {
         this.image = image;
     }
 
-<<<<<<< HEAD
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getMain() {
-        return main;
-    }
-
-    public void setMain(String main) {
-        this.main = main;
-=======
     public String getMain() {
         return main;
     }
@@ -69,6 +48,5 @@ public class ShopItem {
 
     public void setAddress(String address) {
         this.address = address;
->>>>>>> master
     }
 }

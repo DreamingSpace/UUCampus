@@ -1,4 +1,6 @@
-package com.dreamspace.uucampus.ui;
+package com.dreamspace.uucampus.ui.activity.Search;
+
+import android.view.View;
 
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
@@ -9,6 +11,11 @@ public class SearchResultMoreActivity extends AbsActivity{
     @Override
     protected void initViews() {
 
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
     }
 
     @Override

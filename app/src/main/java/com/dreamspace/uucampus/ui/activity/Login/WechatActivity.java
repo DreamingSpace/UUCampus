@@ -55,4 +55,9 @@ public class WechatActivity extends AbsActivity {
             }
         });
     }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
 }

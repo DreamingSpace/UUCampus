@@ -38,4 +38,9 @@ public class RegisterSucceedActivity extends AbsActivity {
         });
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
 }

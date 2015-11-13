@@ -66,6 +66,11 @@ public class BoundSecondActivity extends AbsActivity {
         });
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void weChatBind(){
         if(isValid()){
             if(NetUtils.isNetworkConnected(this)){

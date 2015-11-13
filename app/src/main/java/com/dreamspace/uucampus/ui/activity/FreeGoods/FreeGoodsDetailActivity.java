@@ -1,7 +1,5 @@
 package com.dreamspace.uucampus.ui.activity.FreeGoods;
 
-<<<<<<< HEAD
-=======
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;

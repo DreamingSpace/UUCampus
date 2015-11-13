@@ -24,106 +24,63 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.SearchResultActivity"
-            android:label="搜索结果"/>
-        <activity android:name=".ui.activity.Market.FastInAct"></activity>
-        <activity android:name=".ui.activity.Market.ShopHostActivity"></activity>
-        <activity android:name=".ui.activity.Market.ShopManagmentAct"></activity>
-        <activity
-            android:name=".ui.activity.Market.AddGoodAct"
-            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
-        <activity
-            android:name="me.iwf.photopicker.PhotoPickerActivity"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name="me.iwf.photopicker.PhotoPagerActivity"
-            android:theme="@style/AppTheme" />
 
-        <activity
-            android:name=".ui.activity.FreeGoods.FreeGoodsActivity"
-            android:label="@string/free_goods"></activity>
-        <activity
-            android:name=".ui.activity.FreeGoods.FreeGoodsPublishFirstActivity"
-            android:label="@string/select_goods_photo"></activity>
-        <activity
-            android:name=".ui.activity.FreeGoods.FreeGoodsPublishSecondActivity"
-            android:label="@string/write_goods_detail"></activity>
-        <activity
-            android:name=".ui.activity.FreeGoods.FreeGoodsPublishSuccessActivity"
-            android:label="@string/publish_success"></activity>
-        <activity android:name=".widget.photopicker.SelectPhotoActivity" />
-        <activity android:name=".widget.photopicker.PhotoPreviewActivity" />
+        <!-- goods-->
+        <activity android:name=".ui.activity.Market.FastInAct"/>
         <activity android:name=".ui.activity.Market.GoodDetailAct" />
+
+        <!-- free goods-->
+        <activity android:name=".ui.activity.FreeGoods.FreeGoodsActivity" android:label="@string/free_goods"/>
+        <activity android:name=".ui.activity.FreeGoods.FreeGoodsPublishFirstActivity" android:label="@string/select_goods_photo"/>
+        <activity android:name=".ui.activity.FreeGoods.FreeGoodsPublishSecondActivity" android:label="@string/write_goods_detail"/>
+        <activity android:name=".ui.activity.FreeGoods.FreeGoodsPublishSuccessActivity" android:label="@string/publish_success"/>
+        <activity android:name=".ui.activity.FreeGoods.FreeGoodsDetailActivity"/>
+
+        <!-- shop-->
         <activity android:name=".ui.activity.Market.ShopShowGoodsAct" />
         <activity android:name=".ui.activity.Market.ShopDetailAct" />
-        <activity android:name=".ui.activity.Market.ReportSellerAct" />
+        <activity android:name=".ui.activity.Market.ReportShopAct" />
+
+        <!-- personal-->
         <activity android:name=".ui.activity.Personal.MyCollectionAct" />
         <activity android:name=".ui.activity.Personal.SettingAct" />
         <activity android:name=".ui.activity.Personal.CouponCardAct" />
-        <activity
-            android:name=".ui.activity.Login.RegisterActivity"
-            android:label="注册" />
-        <activity
-            android:name=".ui.activity.Login.BoundActvity"
-            android:label="微信创建新用户" />
-        <activity android:name=".ui.activity.Login.BoundSecondActivity"
-            android:label="微信绑定">
-        </activity>
-        <activity
-            android:name=".ui.activity.Login.FindBackActivity"
-            android:label="重新设置密码" />
-        <activity android:name=".widget.photopicker.SelectPhotoActivity"/>
-        <activity android:name=".widget.photopicker.PhotoPreviewActivity"/>
-        <activity android:name=".ui.activity.Market.GoodDetailAct"/>
-        <activity android:name=".ui.activity.Market.ShopShowGoodsAct"/>
-        <activity android:name=".ui.activity.Market.ShopDetailAct"/>
-        <activity android:name=".ui.activity.Market.ReportShopAct"/>
-        <activity android:name=".ui.activity.Personal.MyCollectionAct"/>
-        <activity android:name=".ui.activity.Personal.SettingAct"/>
-        <activity android:name=".ui.activity.Personal.CouponCardAct"/>
-        <activity android:name=".ui.activity.Login.RegisterActivity"/>
-        <activity android:name=".ui.activity.Login.BoundActvity"/>
-        <activity android:name=".ui.activity.Login.LoginActivity">
-        </activity>
-        <activity
-            android:name=".ui.activity.Login.RegisterInfoActivity"
-            android:label="个人信息" >
-        </activity>
-        <activity
-            android:name=".ui.activity.Login.WechatActivity"
-            android:label="关联账号"></activity>
-        <activity
-            android:name=".ui.activity.Login.RegisterSucceedActivity"
-            android:label="注册成功"></activity>
         <activity android:name=".ui.activity.Personal.FeedbackAct" />
         <activity android:name=".ui.activity.Personal.PersonalInfoAct" />
         <activity android:name=".ui.activity.Personal.MyFreeGoodsAct" />
 
-        <!-- order-->
-        <activity
-            android:name=".ui.activity.Order.OrderConfirmAct"
-            android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".ui.activity.Order.MyOrderAct" />
-        <activity android:name=".ui.activity.Order.RefundAct" />
+        <activity android:name=".ui.activity.Search.SearchResultActivity" android:label="搜索结果"/>
+        <activity android:name=".ui.activity.Market.ShopHostActivity"/>
+        <activity android:name=".ui.activity.Market.ShopManagmentAct"/>
+        <activity android:name=".ui.activity.Market.AddGoodAct" android:windowSoftInputMode="adjustPan|stateHidden"/>
 
-        <!-- umeng-->
-        <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="5625eac167e58e4e1f001985" />
-        <activity android:name=".ui.activity.Login.RegisterInfoActivity"/>
-        <activity android:name=".ui.activity.Personal.FeedbackAct"/>
-        <activity android:name=".ui.activity.Personal.PersonalInfoAct"/>
-        <activity android:name=".ui.activity.Personal.MyFreeGoodsAct"/>
-        <activity android:name=".ui.activity.Personal.AboutAct"/>
+        <activity android:name=".widget.photopicker.SelectPhotoActivity" />
+        <activity android:name=".widget.photopicker.PhotoPreviewActivity" />
+
+        <!-- register login-->
+        <activity android:name=".ui.activity.Login.RegisterActivity" android:label="注册" />
+        <activity android:name=".ui.activity.Login.BoundActvity" android:label="微信创建新用户" />
+        <activity android:name=".ui.activity.Login.BoundSecondActivity" android:label="微信绑定"/>
+        <activity android:name=".ui.activity.Login.FindBackActivity" android:label="重新设置密码" />
+        <activity android:name=".ui.activity.Login.LoginActivity"/>
+        <activity android:name=".ui.activity.Login.RegisterInfoActivity" android:label="个人信息" />
+        <activity android:name=".ui.activity.Login.WechatActivity" android:label="关联账号"/>
+        <activity android:name=".ui.activity.Login.RegisterSucceedActivity" android:label="注册成功"/>
 
         <!-- order-->
         <activity android:name=".ui.activity.Order.OrderConfirmAct" android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ui.activity.Order.MyOrderAct"/>
         <activity android:name=".ui.activity.Order.OrderDetailAct"/>
-        <activity android:name=".ui.activity.Order.CommentAct"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".ui.activity.Order.CommentAct" android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ui.activity.Order.RefundAct"/>
         <activity android:name=".ui.activity.Order.OrderPayAct"/>
+
+        <!-- umeng-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5625eac167e58e4e1f001985" />
+        <activity android:name=".ui.activity.Personal.AboutAct"/>
+
 
          <!--umeng-->
         <meta-data android:name="UMENG_APPKEY" android:value="5625eac167e58e4e1f001985"/>

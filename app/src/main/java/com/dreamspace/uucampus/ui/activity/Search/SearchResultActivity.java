@@ -1,4 +1,4 @@
-package com.dreamspace.uucampus.ui;
+package com.dreamspace.uucampus.ui.activity.Search;
 
 import android.app.ProgressDialog;
 import android.view.View;
@@ -107,6 +107,11 @@ public class SearchResultActivity extends AbsActivity {
         initListeners();
     }
 
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
     private void initListeners() {
         searchImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,7 +149,7 @@ public class SearchResultActivity extends AbsActivity {
         final String keyWord = searchText.getText().toString();
         if (!CommonUtils.isEmpty(keyWord)) {
             if (NetUtils.isNetworkConnected(this)) {
-                ApiManager.getService(this).searchGoods(keyWord, "东南大学九龙湖校区", "1", new Callback<SearchGoodsRes>() {
+                ApiManager.getService(this).searchGoods(keyWord, null, null,null,null,null,1,"东南大学九龙湖校区", new Callback<SearchGoodsRes>() {
                     @Override
                     public void success(SearchGoodsRes searchGoodsRes, Response response) {
                         int size = searchGoodsRes.getResult().size();
@@ -188,7 +193,7 @@ public class SearchResultActivity extends AbsActivity {
 
     //搜索闲置
     private void searchIdle(final String keyword) {
-        ApiManager.getService(this).searchIdle(keyword, "东南大学九龙湖校区", "1", new Callback<SearchIdleRes>() {
+        ApiManager.getService(this).searchIdle(keyword, null,null,1, "东南大学九龙湖校区", new Callback<SearchIdleRes>() {
             @Override
             public void success(SearchIdleRes searchIdleRes, Response response) {
                 int size = searchIdleRes.getResult().size();
@@ -225,7 +230,7 @@ public class SearchResultActivity extends AbsActivity {
 
     //搜索店铺
     private void searchShop(String keyWord) {
-        ApiManager.getService(this).searchShop(keyWord, "东南大学九龙湖校区", "1", new Callback<SearchShopRes>() {
+        ApiManager.getService(this).searchShop(keyWord, null,null, 1,"东南大学九龙湖校区", new Callback<SearchShopRes>() {
             @Override
             public void success(SearchShopRes searchShopRes, Response response) {
                 int size = searchShopRes.getResult().size();
