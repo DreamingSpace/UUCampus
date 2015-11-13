@@ -1,6 +1,5 @@
 package com.dreamspace.uucampus.ui.activity.FreeGoods;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,10 +8,11 @@ import android.widget.Toast;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
-import com.dreamspace.uucampus.common.ShareData;
 import com.dreamspace.uucampus.common.UploadImage;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
+import com.dreamspace.uucampus.model.CategoryItem;
+import com.dreamspace.uucampus.model.api.AllCategoryRes;
 import com.dreamspace.uucampus.model.api.CreateIdleReq;
 import com.dreamspace.uucampus.model.api.CreateIdleRes;
 import com.dreamspace.uucampus.model.api.QnRes;
@@ -25,7 +25,6 @@ import com.qiniu.android.storage.UpCompletionHandler;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import butterknife.Bind;
 import retrofit.Callback;
@@ -118,25 +117,12 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
         mGoodsClassifyEt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final WheelViewDialog dialog = new WheelViewDialog(
-                        FreeGoodsPublishSecondActivity.this, getClassifys(), getString(R.string.goods_classify));
-                dialog.setPositiveButton("取消", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.setNegativeButton("确认", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mGoodsClassifyEt.setText(dialog.getSelected());
-                        dialog.dismiss();
-                    }
-                });
+                showClassify();
             }
         });
 
     }
+
 
     @Override
     protected View getLoadingTargetView() {
@@ -185,11 +171,48 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
         }
     }
 
-    //后台获取的商品分类
-    public ArrayList<String> getClassifys() {
-        ArrayList<String> classifys = new ArrayList<String>();
-        Collections.addAll(classifys, ShareData.freeGoodsCategorys);
-        return classifys;
+    //后台获取的商品分类,并展示分类对话框
+    private void showClassifyDialog(ArrayList<String> classifys) {
+        final WheelViewDialog dialog = new WheelViewDialog(
+                FreeGoodsPublishSecondActivity.this, classifys, getString(R.string.goods_classify));
+        dialog.setPositiveButton("取消", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setNegativeButton("确认", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGoodsClassifyEt.setText(dialog.getSelected());
+                dialog.dismiss();
+            }
+        });
+    }
+
+
+
+    public void showClassify() {
+        final ArrayList<String> classifys = new ArrayList<String>();
+        if(NetUtils.isNetworkConnected(getApplicationContext())){
+            ApiManager.getService(getApplicationContext()).getAllIdleCategory(new Callback<AllCategoryRes>() {
+                @Override
+                public void success(AllCategoryRes allCategoryRes, Response response) {
+                    TLog.i("idle tabs:", response.getReason());
+                    for(CategoryItem categoryItem :allCategoryRes.getCategory()){
+                        classifys.add(categoryItem.getName());
+                    }
+                    showClassifyDialog(classifys);
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    showInnerError(error);
+                }
+            });
+        }else {
+            showNetWorkError();
+        }
     }
 
     //上传图片

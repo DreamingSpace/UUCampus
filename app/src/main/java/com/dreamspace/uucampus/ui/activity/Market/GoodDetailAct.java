@@ -230,7 +230,7 @@ public class GoodDetailAct extends AbsActivity {
                 .create()
         );
         tabLayout.setCustomTabView(R.layout.good_detail_stl_title_tab, R.id.detail_stl_title_tv);
-        detailViewPager.setAdapter(pagerAdapter);
+        //detailViewPager.setAdapter(pagerAdapter);
         tabLayout.setViewPager(detailViewPager);
     }
 

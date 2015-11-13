@@ -21,7 +21,6 @@ import retrofit.RetrofitError;
  */
 public abstract class BaseFragment extends Fragment {
 
-
     private String TAG="SUPER";
     private VaryViewHelperController mVaryViewHelperController = null;
     public void setTAG(String TAG) {

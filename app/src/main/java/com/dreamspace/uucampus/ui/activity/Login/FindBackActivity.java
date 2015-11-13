@@ -2,7 +2,6 @@ package com.dreamspace.uucampus.ui.activity.Login;
 
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,10 +12,8 @@ import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.api.UUService;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
-import com.dreamspace.uucampus.model.ErrorRes;
 import com.dreamspace.uucampus.model.api.ResetReq;
 import com.dreamspace.uucampus.model.api.SendVerifyReq;
-import com.dreamspace.uucampus.ui.MainActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
 import butterknife.Bind;
@@ -104,6 +101,7 @@ public class FindBackActivity extends AbsActivity implements View.OnClickListene
                         findBackGetCode.setEnabled(false);
                         mHandler.sendEmptyMessage(BEGIN_TIMER);
                     }
+
                     @Override
                     public void failure(RetrofitError error) {
                         showInnerError(error);
@@ -118,28 +116,31 @@ public class FindBackActivity extends AbsActivity implements View.OnClickListene
     //重置密码
     private void reset(){
         if(isPhoneValid()&&isRestValid()){
-            final ResetReq resetReq = new ResetReq();
-            resetReq.setPhone_num(phoneNum);
-            resetReq.setCode(code);
-            resetReq.setPassword(password);
-            mService.resetPassword(resetReq, new Callback<Response>() {
+            if(NetUtils.isNetworkConnected(this)) {
+                final ResetReq resetReq = new ResetReq();
+                resetReq.setPhone_num(phoneNum);
+                resetReq.setCode(code);
+                resetReq.setPassword(password);
+                mService.resetPassword(resetReq, new Callback<Response>() {
 
-                @Override
-                public void success(Response response, Response response2) {
-                    if (response.getStatus() == 200) {
-                        readyGo(MainActivity.class);
-                        mHandler.removeMessages(BEGIN_TIMER);
-                        finish();
+                    @Override
+                    public void success(Response response, Response response2) {
+                        if (response.getStatus() == 200) {
+                            readyGo(LoginActivity.class);
+                            mHandler.removeMessages(BEGIN_TIMER);
+                            showToast("密码重置成功，请重新登录~");
+                            finish();
+                        }
                     }
-                }
 
-                @Override
-                public void failure(RetrofitError error) {
-                    ErrorRes errorRes = (ErrorRes) error.getBodyAs(ErrorRes.class);
-                    Log.i("INFO", error.getMessage());
-                    Log.i("INFO", errorRes.toString());
-                }
-            });
+                    @Override
+                    public void failure(RetrofitError error) {
+                        showInnerError(error);
+                    }
+                });
+            }else {
+                showNetWorkError();
+            }
         }
     }
 

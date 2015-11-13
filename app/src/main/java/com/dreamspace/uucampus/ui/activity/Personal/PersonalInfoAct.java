@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.dreamspace.uucampus.R;
+
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.UploadImage;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
@@ -34,7 +34,6 @@ import com.qiniu.android.storage.UpCompletionHandler;
 
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 

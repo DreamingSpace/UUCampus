@@ -7,19 +7,27 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.common.ShareData;
+import com.dreamspace.uucampus.api.ApiManager;
+import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.TLog;
+import com.dreamspace.uucampus.model.CategoryItem;
+import com.dreamspace.uucampus.model.api.AllCategoryRes;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsLazyDataFragment;
 import com.dreamspace.uucampus.ui.popupwindow.FreeGoodsSortPopupWindow;
 import com.dreamspace.uucampus.widget.smartlayout.SmartTabLayout;
 import com.melnykov.fab.FloatingActionButton;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Created by wufan on 2015/9/19.
@@ -51,15 +59,12 @@ public class FreeGoodsActivity extends AbsActivity {
 
     @Override
     protected void prepareDatas() {
-//        FreeGoodsFragment fragment = new FreeGoodsFragment();
-//        getSupportFragmentManager().beginTransaction().
-//                add(R.id.free_goods_tab_container, fragment).
-//                commit();
     }
 
     @Override
     protected void initViews() {
-        initFragment();   //初始化viewpager与smartLayout
+        initTabs();
+
         popupWindow = new FreeGoodsSortPopupWindow(this, shadowView);
         initListeners();
         mPublishBtn.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +74,7 @@ public class FreeGoodsActivity extends AbsActivity {
             }
         });
     }
+
 
     @Override
     protected View getLoadingTargetView() {
@@ -81,23 +87,23 @@ public class FreeGoodsActivity extends AbsActivity {
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(0);
                 //必须调用getpage才能获取准确的fragment，getitem获取的不对
-                ((FreeGoodsLazyDataFragment) pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange(getString(R.string.order_view_number));
+                ((FreeGoodsLazyDataFragment) pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange("view_number");
             }
         });
 
         popupWindow.setRecentPublishOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popupWindow.popupItemSetSelect(2);
-                ((FreeGoodsLazyDataFragment)pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange(getString(R.string.order_last_update));
+                popupWindow.popupItemSetSelect(1);
+                ((FreeGoodsLazyDataFragment)pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange("last_update");
             }
         });
 
         popupWindow.setCheapestOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popupWindow.popupItemSetSelect(3);
-                ((FreeGoodsLazyDataFragment)pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange(getString(R.string.order_price));
+                popupWindow.popupItemSetSelect(2);
+                ((FreeGoodsLazyDataFragment)pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange("price");
             }
         });
     }
@@ -130,15 +136,43 @@ public class FreeGoodsActivity extends AbsActivity {
         }
     }
 
-    void initFragment() {
-        final List<String> items = Arrays.asList(ShareData.freeGoodsCategorys);
-        pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(),
-                FragmentPagerItems.with(this)
-                        .add(items.get(0), FreeGoodsLazyDataFragment.class)
-                        .add(items.get(1), FreeGoodsLazyDataFragment.class)
-                        .add(items.get(2), FreeGoodsLazyDataFragment.class)
-                        .add(items.get(3), FreeGoodsLazyDataFragment.class)
-                        .create());
+    private void initTabs() {
+        final List<String> items = new ArrayList<String>();
+        if(NetUtils.isNetworkConnected(getApplicationContext())){
+            ApiManager.getService(getApplicationContext()).getAllIdleCategory(new Callback<AllCategoryRes>() {
+                @Override
+                public void success(AllCategoryRes allCategoryRes, Response response) {
+                    TLog.i("idle tabs:",response.getReason());
+                    for(CategoryItem categoryItem :allCategoryRes.getCategory()){
+                        items.add(categoryItem.getName());
+                    }
+                    initFragment(items);   //初始化viewpager与smartLayout
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    showInnerError(error);
+                }
+            });
+        }else {
+            showNetWorkError();
+        }
+    }
+
+    void initFragment(List<String> items) {
+        FragmentPagerItems pages =new FragmentPagerItems((this));
+        for(String titleTab:items){
+            pages.add(FragmentPagerItem.of(titleTab, FreeGoodsLazyDataFragment.class));
+        }
+        pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(),pages);
+//        items = Arrays.asList(ShareData.freeGoodsCategorys);
+//        pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(),
+//                FragmentPagerItems.with(this)
+//                        .add(items.get(0), FreeGoodsLazyDataFragment.class)
+//                        .add(items.get(1), FreeGoodsLazyDataFragment.class)
+//                        .add(items.get(2), FreeGoodsLazyDataFragment.class)
+//                        .add(items.get(3), FreeGoodsLazyDataFragment.class)
+//                        .create());
         mViewPager.setAdapter(pagerAdpater);
         mSmartTabLayout.setViewPager(mViewPager);
     }

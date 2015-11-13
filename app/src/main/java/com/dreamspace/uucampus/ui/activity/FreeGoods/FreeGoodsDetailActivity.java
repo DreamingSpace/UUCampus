@@ -33,9 +33,6 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-/**
- * Created by wufan on 2015/9/20.
- */
 public class FreeGoodsDetailActivity extends AbsActivity {
     @Bind(R.id.free_good_detail_comment_stl)
     SmartTabLayout tabLayout;

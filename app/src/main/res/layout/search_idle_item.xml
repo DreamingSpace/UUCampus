@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/personal_center_item_bg"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:id="@+id/search_idle_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:singleLine="true"
+        android:text="汤山温泉两天一夜游"
+        android:textColor="@color/good_name_text_color"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/search_idle_shop_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/search_idle_name_tv"
+        android:layout_below="@id/search_idle_name_tv"
+        android:layout_marginTop="12dp"
+        android:singleLine="true"
+        android:text="康辉旅行社"
+        android:textColor="@color/app_theme_color2"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/search_idle_price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/search_idle_name_tv"
+        android:layout_marginRight="20dp"
+        android:text="￥230"
+        android:textColor="@color/price_text_color"
+        android:textSize="18sp" />
+</RelativeLayout>

@@ -62,7 +62,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="4dp"
-                        android:src="@drawable/xiangqing_comment_btn_dianzan"/>
+                        android:src="@drawable/comment_like_icon"/>
 
                     <TextView
                         android:id="@+id/free_goods_detail_comment_useful_tv"

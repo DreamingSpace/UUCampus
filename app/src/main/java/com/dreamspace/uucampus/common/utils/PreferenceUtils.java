@@ -16,10 +16,8 @@ public class PreferenceUtils {
     public static class Key {
         public static final String ACCOUNT = "ACCOUNT";
         public static final String AVATAR = "AVATAR";
-        public static final String REALNAME="REALNAME";
-        public static final String SEX="SEX";
         public static final String CLASSIFY = "CLASSIFY";
-        public static final String ACCESS="access_token";
+        public static final String ACCESS="ACCESS_token";
         public static final String PHONE="PHONE";
         public static final String IS_ACTIVE="IS_ACTIVE";
         public static final String PASSWORD = "password";

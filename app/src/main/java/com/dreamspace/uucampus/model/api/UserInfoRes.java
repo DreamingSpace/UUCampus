@@ -11,7 +11,7 @@ public class UserInfoRes implements Parcelable{
     private String name;
     private String enroll_year;
     private String location;
-    private String reg_data;
+    private String reg_date;
     private String weixin_bind;
     private String weibo_bind;
     private String phone_num;
@@ -48,12 +48,12 @@ public class UserInfoRes implements Parcelable{
         this.location = location;
     }
 
-    public String getReg_data() {
-        return reg_data;
+    public String getReg_date() {
+        return reg_date;
     }
 
-    public void setReg_data(String reg_data) {
-        this.reg_data = reg_data;
+    public void setReg_date(String reg_date) {
+        this.reg_date = reg_date;
     }
 
     public String getWeixin_bind() {
@@ -116,21 +116,4 @@ public class UserInfoRes implements Parcelable{
            return new UserInfoRes[size];
        }
    };
-//    public static final Parcelable.Creator<UserInfoRes> CREATOR = new Parcelable.ClassLoaderCreator<UserInfoRes>(){
-//        @Override
-//        public UserInfoRes createFromParcel(Parcel source) {
-//            return new UserInfoRes(source);
-//        }
-//
-//        @Override
-//        public UserInfoRes[] newArray(int size) {
-//            return new UserInfoRes[size];
-//        }
-//
-//        @Override
-//        public UserInfoRes createFromParcel(Parcel source, ClassLoader loader) {
-//            return new UserInfoRes(source);
-//        }
-//    };
-
 }

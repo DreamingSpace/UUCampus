@@ -1,5 +1,9 @@
 package com.dreamspace.uucampus.ui.activity.Login;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -9,13 +13,27 @@ import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
+import com.dreamspace.uucampus.common.ShareData;
+import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
+import com.dreamspace.uucampus.model.WeChatUser;
 import com.dreamspace.uucampus.model.api.LoginReq;
 import com.dreamspace.uucampus.model.api.LoginRes;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
 import com.dreamspace.uucampus.ui.MainActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.controller.UMServiceFactory;
+import com.umeng.socialize.controller.UMSocialService;
+import com.umeng.socialize.controller.listener.SocializeListeners;
+import com.umeng.socialize.exception.SocializeException;
+import com.umeng.socialize.sso.SinaSsoHandler;
+import com.umeng.socialize.sso.UMSsoHandler;
+import com.umeng.socialize.weixin.controller.UMWXHandler;
+
+import java.util.Map;
+import java.util.Set;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -43,8 +61,8 @@ public class LoginActivity extends AbsActivity {
     @Bind(R.id.login_page_weibo_img)
     ImageView loginPageWeiboImg;
 
-    private String phoneNum = null;
-    private String password = null;
+    ProgressDialog progressDialog;
+    final UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.login");
 
     @Override
     protected int getContentView() {
@@ -61,6 +79,12 @@ public class LoginActivity extends AbsActivity {
         LoginUserName.setText(PreferenceUtils.getString(LoginActivity.this,PreferenceUtils.Key.PHONE));
         LoginPwd.setText(PreferenceUtils.getString(LoginActivity.this,PreferenceUtils.Key.PASSWORD));
         initListener();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setTitle("登录");
+        // 添加微信平台
+        UMWXHandler wxHandler = new UMWXHandler(LoginActivity.this,ShareData.WechatAppId,
+                ShareData.WechatAppSecret);
+        wxHandler.addToSocialSDK();
     }
 
     @Override
@@ -73,9 +97,14 @@ public class LoginActivity extends AbsActivity {
         loginPageLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                phoneNum = LoginUserName.getText().toString();
-                password = LoginPwd.getText().toString();
-                login(phoneNum,password);
+                String phoneNum = LoginUserName.getText().toString();
+                String password = LoginPwd.getText().toString();
+                if(isValid(phoneNum,password)){
+                    LoginReq req = new LoginReq();
+                    req.setPhone_num(phoneNum);
+                    req.setPassword(password);
+                    login(req);
+                }
             }
         });
         loginPageForget.setOnClickListener(new View.OnClickListener() {
@@ -90,248 +119,163 @@ public class LoginActivity extends AbsActivity {
                 readyGo(RegisterActivity.class);
             }
         });
-        loginPageWeichatImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //ShareSDK
-            }
-        });
+
+        //微博登录
         loginPageWeiboImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showToast("开始授权");
+                //设置新浪SSO handler
+                mController.getConfig().setSsoHandler(new SinaSsoHandler());
+                //授权接口
+                mController.doOauthVerify(LoginActivity.this, SHARE_MEDIA.SINA, new SocializeListeners.UMAuthListener() {
+                    @Override
+                    public void onStart(SHARE_MEDIA share_media) {
+                        Log.d("TestData", "start");
+                    }
 
+                    @Override
+                    public void onComplete(Bundle bundle, SHARE_MEDIA share_media) {
+                        Log.d("TestData","compete");
+                        if (bundle != null && !TextUtils.isEmpty(bundle.getString("uid"))) {
+                            showToast("授权成功~");
+                            showToast("获取用户数据----");
+                            //获取access_token及用户资料
+                            mController.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.SINA, new SocializeListeners.UMDataListener() {
+                                @Override
+                                public void onStart() {
+                                    showToast("获取平台数据开始~~~~");
+                                }
+
+                                @Override
+                                public void onComplete(int i, Map<String, Object> map) {
+                                    if (i == 200 && map != null) {
+                                        StringBuilder sb = new StringBuilder();
+                                        Set<String> keys = map.keySet();
+                                        for (String key : keys) {
+                                            sb.append(key + "=" + map.get(key).toString() + "\r\n");
+                                        }
+                                        Log.d("TestData", sb.toString());
+                                    } else {
+                                        Log.d("TestData", "发生错误：" + i);
+                                    }
+                                }
+                            });
+                        } else {
+                            showToast("授权失败！");
+                        }
+                    }
+
+                    @Override
+                    public void onError(SocializeException e, SHARE_MEDIA share_media) {
+                        Log.d("TestData","error");
+                    }
+
+                    @Override
+                    public void onCancel(SHARE_MEDIA share_media) {
+                        Log.d("TestData","cancel");
+                    }
+                });
+            }
+        });
+
+        //微信授权登录
+        loginPageWeichatImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mController.doOauthVerify(LoginActivity.this, SHARE_MEDIA.WEIXIN, new SocializeListeners.UMAuthListener() {
+                    @Override
+                    public void onStart(SHARE_MEDIA share_media) {
+                        showToast("授权开始");
+                        Log.d("TestData", "aaaa");
+                    }
+
+                    @Override
+                    public void onComplete(final Bundle bundle, SHARE_MEDIA share_media) {
+                        Log.d("TestData", "bbbb");
+                        Log.d("TestData",bundle.toString());
+                        //获取相关授权信息
+                        mController.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.WEIXIN, new SocializeListeners.UMDataListener() {
+                            @Override
+                            public void onStart() {
+                                Log.d("TestData","cccc");
+                                showToast("获取平台数据开始~~~");
+                            }
+
+                            @Override
+                            public void onComplete(int i, Map<String, Object> map) {
+                                showToast("授权完成");
+                                if( i == 200 && map!= null){
+                                    StringBuilder sb = new StringBuilder();
+                                    Set<String> keys = map.keySet();
+                                    WeChatUser weChatUser = new WeChatUser();
+                                    for(String key : keys){
+                                        sb.append(key + "=" + map.get(key).toString() + "\r\n");
+                                    }
+                                    weChatUser.setCity(map.get("city").toString());
+                                    weChatUser.setCountry(map.get("country").toString());
+                                    weChatUser.setHeadimgurl(map.get("headimgurl").toString());
+                                    weChatUser.setLanguage(map.get("language").toString());
+                                    weChatUser.setNickname(map.get("nickname").toString());
+                                    weChatUser.setProvince(map.get("province").toString());
+                                    weChatUser.setSex(map.get("sex").toString());
+                                    weChatUser.setOpenid(map.get("openid").toString());
+                                    weChatUser.setUnionid(map.get("unionid").toString());
+                                    weChatUser.setAccess_token(bundle.get("access_token").toString());
+                                    ShareData.weChatUser = weChatUser;
+                                    Log.d("TestData",sb.toString());
+
+                                    //授权成功获取用户信息之后跳转到微信绑定界面
+                                    readyGo(WechatActivity.class);
+
+                                }else{
+                                    Log.d("TestData","发生错误："+i);
+                                }
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(SocializeException e, SHARE_MEDIA share_media) {
+                        showToast("授权错误");
+                    }
+
+                    @Override
+                    public void onCancel(SHARE_MEDIA share_media) {
+                        showToast("授权取消");
+                    }
+                });
             }
         });
     }
 
-    private void login(String username, String password){
-        if(!NetUtils.isNetworkConnected(LoginActivity.this)){
-            showToast("网络没有链接");
-            return;
+    //登录操作
+    private void login(LoginReq loginReq){
+        progressDialog = ProgressDialog.show(this,"","正在登录",true,false);
+        if(NetUtils.isNetworkConnected(this)){
+            ApiManager.getService(this.getApplicationContext()).createAccessToken(loginReq,new Callback<LoginRes>(){
+                @Override
+                public void success(LoginRes loginRes, Response response) {
+                    progressDialog.dismiss();
+                    PreferenceUtils.putString(LoginActivity.this.getApplicationContext(),
+                            PreferenceUtils.Key.ACCESS,loginRes.getAccess_token());
+                    ApiManager.clear();
+                    getUserInfo();
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    progressDialog.dismiss();
+                    showInnerError(error);
+                }
+            });
+        }else{
+            progressDialog.dismiss();
+            showNetWorkError();
         }
-        final LoginReq loginReq = new LoginReq();
-        loginReq.setPhone_num(username);
-        loginReq.setPassword(password);
-        ApiManager.getService(this).createAccessToken(loginReq, new Callback<LoginRes>() {
-            @Override
-            public void success(LoginRes loginRes, Response response) {
-                PreferenceUtils.putString(LoginActivity.this, PreferenceUtils.Key.ACCESS, loginRes.getAccess_token());
-                PreferenceUtils.putString(LoginActivity.this, PreferenceUtils.Key.PHONE, loginReq.getPhone_num());
-                PreferenceUtils.putString(LoginActivity.this, PreferenceUtils.Key.PASSWORD, loginReq.getPassword());
-                getUserInfo();
-//                readyGo(MainActivity.class);
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-//                showInnerError(error);
-            }
-        });
     }
-//    @Bind(R.id.Login_userName)
-//    EditText LoginUserName;
-//    @Bind(R.id.Login_pwd)
-//    EditText LoginPwd;
-//    @Bind(R.id.login_page_loginButton)
-//    Button loginPageLoginButton;
-//    @Bind(R.id.login_page_forget)
-//    TextView loginPageForget;
-//    @Bind(R.id.login_page_register)
-//    TextView loginPageRegister;
-//    @Bind(R.id.login_page_weichat_img)
-//    ImageView loginPageWeichatImg;
-//    @Bind(R.id.login_page_weibo_img)
-//    ImageView loginPageWeiboImg;
-//
-//    ProgressDialog progressDialog;
-//    final UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.login");
-//
-//    @Override
-//    protected int getContentView() {
-//        return R.layout.activity_login_page;
-//    }
-//
-//    @Override
-//    protected void prepareDatas() {
-//        ButterKnife.bind(this);
-//    }
-//
-//    @Override
-//    protected void initViews() {
-//        initListener();
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-//        getSupportActionBar().setTitle("登录");
-//        // 添加微信平台
-//        UMWXHandler wxHandler = new UMWXHandler(LoginActivity.this, ShareData.WechatAppId,
-//                ShareData.WechatAppSecret);
-//        wxHandler.addToSocialSDK();
-//    }
-//
-//    @Override
-//    protected View getLoadingTargetView() {
-//        return null;
-//    }
-//
-//    //设置监听器
-//    private void initListener(){
-//        loginPageLoginButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String phoneNum = LoginUserName.getText().toString();
-//                String password = LoginPwd.getText().toString();
-//                if(isValid(phoneNum,password)){
-//                    LoginReq req = new LoginReq();
-//                    req.setPhone_num(phoneNum);
-//                    req.setPassword(password);
-//                    login(req);
-//                }
-//            }
-//        });
-//        loginPageForget.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                readyGo(FindBackActivity.class);
-//            }
-//        });
-//        loginPageRegister.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                readyGo(RegisterActivity.class);
-//            }
-//        });
-//
-//        //微博登录
-//        loginPageWeiboImg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showToast("开始授权");
-//                //设置新浪SSO handler
-//                mController.getConfig().setSsoHandler(new SinaSsoHandler());
-//                //授权接口
-//                mController.doOauthVerify(LoginActivity.this, SHARE_MEDIA.SINA, new SocializeListeners.UMAuthListener() {
-//                    @Override
-//                    public void onStart(SHARE_MEDIA share_media) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete(Bundle bundle, SHARE_MEDIA share_media) {
-//                        if (bundle != null && !TextUtils.isEmpty(bundle.getString("uid"))) {
-//                            showToast("授权成功~");
-//                        } else {
-//                            showToast("授权失败！");
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onError(SocializeException e, SHARE_MEDIA share_media) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancel(SHARE_MEDIA share_media) {
-//
-//                    }
-//                });
-//
-//                showToast("获取用户数据----");
-//                //获取access_token及用户资料
-//                mController.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.SINA, new SocializeListeners.UMDataListener() {
-//                    @Override
-//                    public void onStart() {
-//                        showToast("获取平台数据开始~~~~");
-//                    }
-//
-//                    @Override
-//                    public void onComplete(int i, Map<String, Object> map) {
-//                        if (i == 200 && map != null) {
-//                            StringBuilder sb = new StringBuilder();
-//                            Set<String> keys = map.keySet();
-//                            for (String key : keys) {
-//                                sb.append(key + "=" + map.get(key).toString() + "\r\n");
-//                            }
-//                            Log.d("TestData", sb.toString());
-//                        } else {
-//                            Log.d("TestData", "发生错误：" + i);
-//                        }
-//                    }
-//                });
-//            }
-//        });
-//        loginPageWeichatImg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                mController.doOauthVerify(LoginActivity.this, SHARE_MEDIA.WEIXIN, new SocializeListeners.UMAuthListener() {
-//                    @Override
-//                    public void onStart(SHARE_MEDIA share_media) {
-//                        showToast("授权开始");
-//                    }
-//
-//                    @Override
-//                    public void onComplete(Bundle bundle, SHARE_MEDIA share_media) {
-//                        showToast("授权完成");
-//                        mController.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.WEIXIN, new SocializeListeners.UMDataListener() {
-//                            @Override
-//                            public void onStart() {
-//                                showToast("获取平台数据开始~~~");
-//                            }
-//
-//                            @Override
-//                            public void onComplete(int i, Map<String, Object> map) {
-//                                showToast("授权完成");
-//                                if( i == 200 && map!= null){
-//                                    StringBuilder sb = new StringBuilder();
-//                                    Set<String> keys = map.keySet();
-//                                    for(String key : keys){
-//                                        sb.append(key+"="+map.get(key).toString()+"\r\n");
-//                                    }
-//                                    Log.d("TestData",sb.toString());
-//                                }else{
-//                                    Log.d("TestData","发生错误："+i);
-//                                }
-//                            }
-//                        });
-//                    }
-//
-//                    @Override
-//                    public void onError(SocializeException e, SHARE_MEDIA share_media) {
-//                    }
-//
-//                    @Override
-//                    public void onCancel(SHARE_MEDIA share_media) {
-//                        showToast("授权取消");
-//                    }
-//                });
-//            }
-//        });
-//    }
-//
-//    //登录操作
-//    private void login(LoginReq loginReq){
-//        progressDialog = ProgressDialog.show(this,"","正在登录",true,false);
-//        if(NetUtils.isNetworkConnected(this)){
-//            ApiManager.getService(this.getApplicationContext()).createAccessToken(loginReq,new Callback<LoginRes>(){
-//                @Override
-//                public void success(LoginRes loginRes, Response response) {
-//                    PreferenceUtils.putString(LoginActivity.this.getApplicationContext(),
-//                            PreferenceUtils.Key.ACCESS,loginRes.getAccess_token());
-//                    ApiManager.clear();
-//                    getUserInfo();
-//                }
-//
-//                @Override
-//                public void failure(RetrofitError error) {
-//                    progressDialog.dismiss();
-//                    showInnerError(error);
-//                }
-//            });
-//        }else{
-//            progressDialog.dismiss();
-//            showNetWorkError();
-//        }
-//    }
-//
+
     //获取用户信息
     private void getUserInfo() {
         ApiManager.getService(getApplicationContext()).getUserInfo(new Callback<UserInfoRes>() {
@@ -341,9 +285,9 @@ public class LoginActivity extends AbsActivity {
                 if(userInfoRes != null){
                     Log.i("INFO", userInfoRes.toString());
                     saveUserInfo(userInfoRes);
-//                    progressDialog.dismiss();
-                    readyGo(MainActivity.class);
-//                    finish();
+                    progressDialog.dismiss();
+                    showToast("登录成功");
+                    readyGoThenKill(MainActivity.class);
                 }
             }
 
@@ -357,38 +301,36 @@ public class LoginActivity extends AbsActivity {
 
     //保存用户信息到本地
     private void saveUserInfo(UserInfoRes userInfoRes){
-        PreferenceUtils.putString(getApplicationContext(), PreferenceUtils.Key.LOCATION,userInfoRes.getLocation());
-//        PreferenceUtils.putString(getApplicationContext(),PreferenceUtils.Key.ACCOUNT,userInfoRes.getName());
-//        PreferenceUtils.putString(getApplicationContext(), PreferenceUtils.Key.PHONE, LoginUserName.getText().toString());
+        ShareData.user = userInfoRes;
     }
 
-//    //输入有效性判断
-//    private boolean isValid(String phoneNum,String pwd){
-//
-//        if(CommonUtils.isEmpty(phoneNum)){
-//            showToast("请输入您的手机号码");
-//            LoginUserName.requestFocus();
-//            return false;
-//        }
-//        if(phoneNum.length()!=11){
-//            showToast("请检查您的输入格式");
-//            LoginUserName.requestFocus();
-//            return false;
-//        }
-//        if(CommonUtils.isEmpty(pwd)){
-//            showToast("请输入您的密码");
-//            return false;
-//        }
-//        return true;
-//    }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        /**使用SSO授权必须添加如下代码 */
-//        UMSsoHandler ssoHandler = mController.getConfig().getSsoHandler(requestCode);
-//        if(ssoHandler != null){
-//            ssoHandler.authorizeCallBack(requestCode, resultCode, data);
-//        }
-//    }
+    //输入有效性判断
+    private boolean isValid(String phoneNum,String pwd){
+
+        if(CommonUtils.isEmpty(phoneNum)){
+            showToast("请输入您的手机号码");
+            LoginUserName.requestFocus();
+            return false;
+        }
+        if(phoneNum.length()!=11){
+            showToast("请检查您的输入格式");
+            LoginUserName.requestFocus();
+            return false;
+        }
+        if(CommonUtils.isEmpty(pwd)){
+            showToast("请输入您的密码");
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /**使用SSO授权必须添加如下代码 */
+        UMSsoHandler ssoHandler = mController.getConfig().getSsoHandler(requestCode);
+        if(ssoHandler != null){
+            ssoHandler.authorizeCallBack(requestCode, resultCode, data);
+        }
+    }
 }

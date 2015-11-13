@@ -2,7 +2,6 @@ package com.dreamspace.uucampus.ui.activity.Login;
 
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -88,7 +87,6 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
                 sendVerifyCode();
                 break;
             case R.id.register_button:
-                readyGo(RegisterInfoActivity.class);
                 register();
                 break;
         }
@@ -103,6 +101,7 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
                 mService.sendVerifyCode(req, new Callback<Response>() {
                     @Override
                     public void success(Response o, Response response) {
+                        showToast("验证码发送成功~");
                         registerGetCode.setEnabled(false);
                         mHandler.sendEmptyMessage(BEGIN_TIMER);
                     }
@@ -121,6 +120,7 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
     //注册
     private void register(){
         if(isPhoneValid()&&isRestValid()){
+            if(NetUtils.isNetworkConnected(this)){
             final RegisterReq registerReq = new RegisterReq();
             registerReq.setPhone_num(phoneNum);
             registerReq.setCode(code);
@@ -132,23 +132,21 @@ public class RegisterActivity extends AbsActivity implements View.OnClickListene
                         //保存user_id,access_token,timelimit，设置is_active属性
                         PreferenceUtils.putString(RegisterActivity.this.getApplicationContext(),
                                 PreferenceUtils.Key.ACCESS, registerRes.getAccess_token());
-                        PreferenceUtils.putString(RegisterActivity.this.getApplicationContext(),
-                                PreferenceUtils.Key.IS_ACTIVE, "true");
-                        TLog.i("Access_token:", registerRes.getAccess_token());
-                        readyGo(RegisterInfoActivity.class);
                         mHandler.removeMessages(BEGIN_TIMER);
-                        finish();
+                        readyGoThenKill(RegisterInfoActivity.class);
                     }
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
                     ErrorRes errorRes = (ErrorRes) error.getBodyAs(ErrorRes.class);
-                    Log.i("INFO", error.getMessage());
-                    Log.i("INFO", errorRes.toString());
+                    showInnerError(error);
                 }
             });
-        }
+        }else {
+                showNetWorkError();
+            }
+    }
     }
 
     //检查手机号码是否输入正确

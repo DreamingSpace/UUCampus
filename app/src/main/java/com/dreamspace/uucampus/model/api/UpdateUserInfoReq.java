@@ -9,6 +9,7 @@ public class UpdateUserInfoReq {
     private String enroll_year;
     private String location;
 
+
     public String getName() {
         return name;
     }
@@ -17,12 +18,12 @@ public class UpdateUserInfoReq {
         this.name = name;
     }
 
-    public String getImage() {
-        return image;
-    }
-
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public String getEnroll_year() {

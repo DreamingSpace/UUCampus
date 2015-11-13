@@ -12,6 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
+import com.dreamspace.uucampus.ui.activity.Search.SearchResultActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
 import java.util.ArrayList;
@@ -49,7 +51,6 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
     private TextView centerTitleTv;
     //当前所在的fragment标号
     private int currentIndex = 0;
-    
     @Override
     protected int getContentView() {
         return R.layout.activity_main;
@@ -79,6 +80,9 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
     }
 
     private void initDates() {
+        //测试
+        PreferenceUtils.putString(MainActivity.this.getApplicationContext(),
+                PreferenceUtils.Key.ACCESS, "e75d1024-8155-11e5-a16f-00163e021195");
         HomeFragment firstFragment = new HomeFragment();
         MarketFragment secondFragment = new MarketFragment();
         PersonCenterFragment thirdFragment = new PersonCenterFragment();
@@ -186,6 +190,9 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        if(id==R.id.action_search){
+            readyGo(SearchResultActivity.class);
+        }
 
         //noinspection SimplifiableIfStatement
 

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <mapping directory="" vcs="" />
+=======
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
 <<<<<<< HEAD
+>>>>>>> master
 =======
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
@@ -32,6 +37,9 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+<<<<<<< HEAD
+>>>>>>> lx
+=======
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
@@ -68,6 +76,7 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
 =======
 >>>>>>> lx
+>>>>>>> master
 >>>>>>> master
   </component>
 </project>

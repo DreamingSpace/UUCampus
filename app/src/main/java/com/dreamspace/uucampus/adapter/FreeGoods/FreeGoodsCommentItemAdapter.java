@@ -44,10 +44,10 @@ public class FreeGoodsCommentItemAdapter extends BasisAdapter<FreeGoodsCommentIt
         //初始化图标
         holder.bUseful =entity.isUseful_clicked();    //获取当前评论是否点击
         if ( holder.bUseful) {
-            holder.mUsefulIv.setImageResource(R.drawable.xiangqing_comment_btn_dianzan_p);
+            holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon_p);
 
         } else {
-            holder.mUsefulIv.setImageResource(R.drawable.xiangqing_comment_btn_dianzan);
+            holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon);
         }
 
         holder.mUseful = entity.getUseful_number();
