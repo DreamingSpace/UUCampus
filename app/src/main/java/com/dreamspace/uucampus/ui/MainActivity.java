@@ -81,8 +81,8 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
 
     private void initDates() {
         //测试
-        PreferenceUtils.putString(MainActivity.this.getApplicationContext(),
-                PreferenceUtils.Key.ACCESS, "e75d1024-8155-11e5-a16f-00163e021195");
+//        PreferenceUtils.putString(MainActivity.this.getApplicationContext(),
+//                PreferenceUtils.Key.ACCESS, "e75d1024-8155-11e5-a16f-00163e021195");
         HomeFragment firstFragment = new HomeFragment();
         MarketFragment secondFragment = new MarketFragment();
         PersonCenterFragment thirdFragment = new PersonCenterFragment();

@@ -25,7 +25,7 @@ public final class ApiManager {
                     RequestInterceptor requestInterceptor = new RequestInterceptor() {
                         @Override
                         public void intercept(RequestFacade request) {
-                            request.addHeader(PreferenceUtils.Key.ACCESS, PreferenceUtils.getString(mContext, "access_token"));
+                            request.addHeader(PreferenceUtils.Key.ACCESS, PreferenceUtils.getString(mContext, PreferenceUtils.Key.ACCESS));
                         }
                     };
                     restAdapter = new RestAdapter.Builder().setEndpoint(ApiManager.BASE_URL).setLogLevel(RestAdapter.LogLevel.FULL).setRequestInterceptor(requestInterceptor)

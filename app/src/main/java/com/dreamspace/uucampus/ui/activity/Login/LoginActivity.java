@@ -251,15 +251,18 @@ public class LoginActivity extends AbsActivity {
     }
 
     //登录操作
-    private void login(LoginReq loginReq){
+    private void login(final LoginReq loginReq){
         progressDialog = ProgressDialog.show(this,"","正在登录",true,false);
         if(NetUtils.isNetworkConnected(this)){
             ApiManager.getService(this.getApplicationContext()).createAccessToken(loginReq,new Callback<LoginRes>(){
                 @Override
                 public void success(LoginRes loginRes, Response response) {
                     progressDialog.dismiss();
-                    PreferenceUtils.putString(LoginActivity.this.getApplicationContext(),
-                            PreferenceUtils.Key.ACCESS,loginRes.getAccess_token());
+                    System.out.println(loginRes.getAccess_token());
+                    PreferenceUtils.putString(LoginActivity.this,
+                            PreferenceUtils.Key.ACCESS, loginRes.getAccess_token());
+                    PreferenceUtils.putString(LoginActivity.this,PreferenceUtils.Key.PHONE,loginReq.getPhone_num());
+                    PreferenceUtils.putString(LoginActivity.this,PreferenceUtils.Key.PASSWORD,loginReq.getPassword());
                     ApiManager.clear();
                     getUserInfo();
                 }
