@@ -58,6 +58,7 @@ public class PersonCenterFragment extends BaseLazyFragment {
 
     public static final String USER_INFO = "user_info";
     public static final int AVATAR_OR_NAME_CHANGE = 1;
+    private static final int SETTING = 2;
 
     @Override
     protected void onFirstUserVisible() {
@@ -125,7 +126,7 @@ public class PersonCenterFragment extends BaseLazyFragment {
         settingLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGo(SettingAct.class);
+                readyGoForResult(SettingAct.class,SETTING);
             }
         });
 
@@ -154,6 +155,9 @@ public class PersonCenterFragment extends BaseLazyFragment {
             Bundle changeData = data.getExtras();
             UserInfoRes userInfo = changeData.getParcelable(USER_INFO);
             showUserInfoIntoViews(userInfo);
+        }else if(requestCode == SETTING && resultCode == getActivity().RESULT_OK){
+            //当用户选择登出时，此activity也应结束
+            getActivity().finish();
         }
     }
 

@@ -3,28 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <include
-        layout="@layout/custom_toolbar"></include>
-    <ImageView
-        android:id="@+id/login_page_top_img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
-        android:src="@drawable/register_icon_just_a_sign" />
+    <LinearLayout
+        android:id="@+id/icon_ll"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include
+            layout="@layout/custom_toolbar"/>
+        <ImageView
+            android:id="@+id/login_page_top_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tl_custom"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/register_icon_just_a_sign" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/login_page_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_page_top_img"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/icon_ll"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/Login_userName"
@@ -85,7 +91,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="37dp"
         android:layout_marginRight="37dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button_round"
         android:gravity="center"
         android:text="@string/login_button"
@@ -122,90 +128,99 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/login_page_fast_layout"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/login_page_text_layout"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal">
-
-        <View
-            android:layout_width="100dp"
-            android:layout_height="0.5dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="35dp"
-            android:layout_weight="1"
-            android:background="@color/grey_line"></View>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:text="@string/text_login_fast"
-            android:textColor="@color/grey_line"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="100dp"
-            android:layout_height="0.5dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="35dp"
-            android:layout_weight="1"
-            android:background="@color/grey_line"></View>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/login_page_fast_layout"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:id="@+id/login_page_fast_layout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/login_page_text_layout"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/login_page_weichat_img"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/register_button_wechat"/>
+            <View
+                android:layout_width="100dp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="35dp"
+                android:layout_weight="1"
+                android:background="@color/grey_line"></View>
 
             <TextView
-                android:id="@+id/login_page_weichat"
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:gravity="center"
-                android:text="@string/text_weichat_login"
-                android:textSize="14sp" />
+                android:text="@string/text_login_fast"
+                android:textColor="@color/grey_line"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="35dp"
+                android:layout_weight="1"
+                android:background="@color/grey_line"></View>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_below="@id/login_page_fast_layout"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/login_page_weibo_img"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/register_button_sina"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:paddingBottom="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/login_page_weibo"
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center"
-                android:text="@string/text_weibo_login"
-                android:textSize="14sp" />
+                <ImageView
+                    android:id="@+id/login_page_weichat_img"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/register_button_wechat"/>
+
+                <TextView
+                    android:id="@+id/login_page_weichat"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/text_weichat_login"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:paddingBottom="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/login_page_weibo_img"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/register_button_sina"/>
+
+                <TextView
+                    android:id="@+id/login_page_weibo"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/text_weibo_login"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

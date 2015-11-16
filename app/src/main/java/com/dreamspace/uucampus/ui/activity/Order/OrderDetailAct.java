@@ -41,6 +41,8 @@ import retrofit.client.Response;
 public class OrderDetailAct extends AbsActivity{
     @Bind(R.id.good_ll)
     LinearLayout goodLl;
+    @Bind(R.id.good_rl)
+    RelativeLayout goodRl;
     @Bind(R.id.shop_name_rl)
     RelativeLayout shopRl;
     @Bind(R.id.comment_ll)
@@ -210,7 +212,6 @@ public class OrderDetailAct extends AbsActivity{
     }
 
     private void initRefundListeners(){
-
     }
 
     //初始化已评价订单状态视图（无控件需要添加监听器）
@@ -329,7 +330,7 @@ public class OrderDetailAct extends AbsActivity{
                         mOrderDetail.getTotal_price()));
         remarkTv.setText(mOrderDetail.getRemark());
 
-        goodLl.setOnClickListener(new View.OnClickListener() {
+        goodRl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();

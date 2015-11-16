@@ -5,7 +5,6 @@
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include layout="@layout/custom_toolbar"/>
 
     <RelativeLayout
         android:layout_below="@+id/tl_custom"

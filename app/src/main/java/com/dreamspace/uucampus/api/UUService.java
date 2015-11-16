@@ -32,6 +32,7 @@ import com.dreamspace.uucampus.model.api.CreateShopCategoryRes;
 import com.dreamspace.uucampus.model.api.CreateShopDiscountRes;
 import com.dreamspace.uucampus.model.api.CreateShopReq;
 import com.dreamspace.uucampus.model.api.CreateShopRes;
+import com.dreamspace.uucampus.model.api.DeleteAccessTokenRes;
 import com.dreamspace.uucampus.model.api.GetIdleInfoRes;
 import com.dreamspace.uucampus.model.api.GoodsInfoRes;
 import com.dreamspace.uucampus.model.api.IdleAllCommentRes;
@@ -127,7 +128,7 @@ public interface UUService {
 
     //删除用户访问凭证(注销)
     @DELETE("/auth/logout/")
-    void deleteAccessToken(Callback<Response> cb);
+    void deleteAccessToken(Callback<DeleteAccessTokenRes> cb);
 
     //用户创建
     @POST("/user/")

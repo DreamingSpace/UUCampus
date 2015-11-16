@@ -1,6 +1,5 @@
 package com.dreamspace.uucampus.ui.activity.Login;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -23,6 +22,7 @@ import com.dreamspace.uucampus.model.api.LoginRes;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
 import com.dreamspace.uucampus.ui.MainActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
+import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
@@ -77,10 +77,13 @@ public class LoginActivity extends AbsActivity {
     @Override
     protected void initViews() {
         LoginUserName.setText(PreferenceUtils.getString(LoginActivity.this,PreferenceUtils.Key.PHONE));
-        LoginPwd.setText(PreferenceUtils.getString(LoginActivity.this,PreferenceUtils.Key.PASSWORD));
+//        LoginPwd.setText(PreferenceUtils.getString(LoginActivity.this, PreferenceUtils.Key.PASSWORD));
         initListener();
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setTitle("登录");
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        TextView titleTv = (TextView) mToolBar.findViewById(R.id.custom_title_tv);
+        titleTv.setText(getString(R.string.login));
+
         // 添加微信平台
         UMWXHandler wxHandler = new UMWXHandler(LoginActivity.this,ShareData.WechatAppId,
                 ShareData.WechatAppSecret);
@@ -124,7 +127,6 @@ public class LoginActivity extends AbsActivity {
         loginPageWeiboImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showToast("开始授权");
                 //设置新浪SSO handler
                 mController.getConfig().setSsoHandler(new SinaSsoHandler());
                 //授权接口
@@ -227,7 +229,9 @@ public class LoginActivity extends AbsActivity {
                                     Log.d("TestData",sb.toString());
 
                                     //授权成功获取用户信息之后跳转到微信绑定界面
-                                    readyGo(WechatActivity.class);
+                                    Bundle bundle1 = new Bundle();
+                                    bundle1.putParcelable(WechatActivity.WECHAT_USER,weChatUser);
+                                    readyGo(WechatActivity.class,bundle1);
 
                                 }else{
                                     Log.d("TestData","发生错误："+i);
@@ -252,7 +256,9 @@ public class LoginActivity extends AbsActivity {
 
     //登录操作
     private void login(final LoginReq loginReq){
-        progressDialog = ProgressDialog.show(this,"","正在登录",true,false);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setContent(getString(R.string.in_login));
+        progressDialog.show();
         if(NetUtils.isNetworkConnected(this)){
             ApiManager.getService(this.getApplicationContext()).createAccessToken(loginReq,new Callback<LoginRes>(){
                 @Override
@@ -262,7 +268,6 @@ public class LoginActivity extends AbsActivity {
                     PreferenceUtils.putString(LoginActivity.this,
                             PreferenceUtils.Key.ACCESS, loginRes.getAccess_token());
                     PreferenceUtils.putString(LoginActivity.this,PreferenceUtils.Key.PHONE,loginReq.getPhone_num());
-                    PreferenceUtils.putString(LoginActivity.this,PreferenceUtils.Key.PASSWORD,loginReq.getPassword());
                     ApiManager.clear();
                     getUserInfo();
                 }

@@ -23,11 +23,4 @@ public class ShareData {
     public static WeChatUser weChatUser;
     //登录后获取的用户信息保存的实体类
     public static UserInfoRes user;
-
-    public static final String[] popupWindowOrder = new String[]{
-            "人气最高",
-            "评价最高",
-            "最新发布",
-            "价格最低",
-    };
 }

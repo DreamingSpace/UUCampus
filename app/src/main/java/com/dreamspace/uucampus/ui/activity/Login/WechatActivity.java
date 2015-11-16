@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.common.ShareData;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
+import com.dreamspace.uucampus.model.WeChatUser;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
 import butterknife.Bind;
@@ -27,6 +28,10 @@ public class WechatActivity extends AbsActivity {
     @Bind(R.id.weixin_bound)
     Button weixinBound;
 
+    WeChatUser weChatUser;
+
+    public static final String WECHAT_USER = "WECHAT_USER";
+
     @Override
     protected int getContentView() {
         Log.d("TestData","eeeee");
@@ -35,6 +40,7 @@ public class WechatActivity extends AbsActivity {
 
     @Override
     protected void prepareDatas() {
+        weChatUser = getIntent().getExtras().getParcelable(WECHAT_USER);
     }
 
     @Override

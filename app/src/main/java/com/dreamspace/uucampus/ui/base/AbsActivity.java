@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.common.VaryViewHelperController;
@@ -73,6 +74,7 @@ public abstract class AbsActivity extends AppCompatActivity {
     protected void readyGo(Class<?> clazz) {
         Intent intent = new Intent(this, clazz);
         startActivity(intent);
+        overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
     }
 
     /**
@@ -87,6 +89,7 @@ public abstract class AbsActivity extends AppCompatActivity {
             intent.putExtras(bundle);
         }
         startActivity(intent);
+        overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
     }
 
     /**
@@ -97,6 +100,7 @@ public abstract class AbsActivity extends AppCompatActivity {
     protected void readyGoThenKill(Class<?> clazz) {
         Intent intent = new Intent(this, clazz);
         startActivity(intent);
+        overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
         finish();
     }
 
@@ -112,6 +116,7 @@ public abstract class AbsActivity extends AppCompatActivity {
             intent.putExtras(bundle);
         }
         startActivity(intent);
+        overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
         finish();
     }
 
@@ -124,6 +129,7 @@ public abstract class AbsActivity extends AppCompatActivity {
     protected void readyGoForResult(Class<?> clazz, int requestCode) {
         Intent intent = new Intent(this, clazz);
         startActivityForResult(intent, requestCode);
+        overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
     }
 
     /**
@@ -139,6 +145,7 @@ public abstract class AbsActivity extends AppCompatActivity {
             intent.putExtras(bundle);
         }
         startActivityForResult(intent, requestCode);
+        overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
     }
 
     /**
@@ -148,7 +155,8 @@ public abstract class AbsActivity extends AppCompatActivity {
      */
     protected void showToast(String msg) {
         if (null != msg && !CommonUtils.isEmpty(msg)) {
-            Snackbar.make(getWindow().getDecorView(), msg, Snackbar.LENGTH_SHORT).show();
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+//            Snackbar.make(getWindow().getDecorView(), msg, Snackbar.LENGTH_SHORT).show();
         }
     }
     protected void showNetWorkError() {
@@ -235,5 +243,11 @@ public abstract class AbsActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
     }
 }

@@ -167,6 +167,10 @@ public class ShopShowGoodsAct extends AbsActivity {
             @Override
             public void success(ShopAllGroupRes shopAllGroupRes, Response response) {
                 if (shopAllGroupRes != null && !actDestory) {
+                    if(shopAllGroupRes.getGroup().size() == 0){
+                        toggleShowEmpty(true,getString(R.string.shop_with_no_good),null);
+                        return;
+                    }
                     mShopGroup = shopAllGroupRes;
                     getShopInfo();//获取到group后紧接着获取商铺信息
                 }

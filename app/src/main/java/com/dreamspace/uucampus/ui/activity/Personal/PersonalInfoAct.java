@@ -393,7 +393,7 @@ public class PersonalInfoAct extends AbsActivity {
                     @Override
                     public void complete(String key, ResponseInfo info, JSONObject response) {
                         if(info.isOK()){
-                            modifyUserInfo(key,userInfo.getName(),userInfo.getLocation(),userInfo.getEnroll_year());
+                            modifyUserInfo(key,null,null,null);
                         }
                     }
                 },null);
@@ -401,7 +401,7 @@ public class PersonalInfoAct extends AbsActivity {
 
             @Override
             public void failure(RetrofitError error) {
-
+                showToast(getString(R.string.image_upload_failed));
             }
         });
     }

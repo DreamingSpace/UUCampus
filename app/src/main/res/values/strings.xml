@@ -185,6 +185,7 @@
     <string name="report_shop_hint">我们会根据您的反馈及时处理，保证您的权益</string>
     <string name="report_success">举报成功</string>
     <string name="report_cant_less_than_10">举报内容不能小于10个字~</string>
+    <string name="shop_with_no_good">该商家暂时没有商品</string>
 
     <!-- mine strings used-->
     <string name="personal_center">个人中心</string>
@@ -229,6 +230,7 @@
     <string name="in_on_sale">上架中</string>
     <string name="thx_your_feedback">感谢您的意见反馈，我们会更加努力~</string>
     <string name="feed_back_cant_less_than_10">反馈不能少于10字~</string>
+    <string name="image_upload_failed">图片上传失败</string>
 
     <!-- login strings used-->
     <string name="login_username_hint">请输入您的手机号</string>
@@ -248,6 +250,9 @@
     <string name="register_input_school">请选择你的学校</string>
     <string name="register_input_entertime">2015</string>
     <string name="register_succeed">返回登录界面</string>
+    <string name="login">登录</string>
+    <string name="in_login">正在登录</string>
+    <string name="begin_enpower">开始授权</string>
 
     <!-- order-->
     <string name="number">数量</string>

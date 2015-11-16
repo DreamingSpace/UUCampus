@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.common.VaryViewHelperController;
@@ -59,6 +60,7 @@ public abstract class BaseFragment extends Fragment {
             intent.putExtras(bundle);
         }
         startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
     }
     /**
      * startActivity
@@ -68,6 +70,7 @@ public abstract class BaseFragment extends Fragment {
     protected void readyGo(Class<?> clazz) {
         Intent intent = new Intent(getActivity(), clazz);
         startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
     }
 
     /**
@@ -79,6 +82,7 @@ public abstract class BaseFragment extends Fragment {
     protected void readyGoForResult(Class<?> clazz, int requestCode) {
         Intent intent = new Intent(getActivity(), clazz);
         startActivityForResult(intent, requestCode);
+        getActivity().overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
     }
 
     /**
@@ -94,10 +98,13 @@ public abstract class BaseFragment extends Fragment {
             intent.putExtras(bundle);
         }
         startActivityForResult(intent, requestCode);
+        getActivity().overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
     }
+
     protected void showToast(String msg) {
         if (null != msg && !CommonUtils.isEmpty(msg)) {
-            Snackbar.make(((Activity) getActivity()).getWindow().getDecorView(), msg, Snackbar.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+//            Snackbar.make(((Activity) getActivity()).getWindow().getDecorView(), msg, Snackbar.LENGTH_SHORT).show();
         }
     }
 
