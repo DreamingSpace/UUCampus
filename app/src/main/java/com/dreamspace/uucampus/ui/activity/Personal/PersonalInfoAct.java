@@ -35,6 +35,8 @@ import com.qiniu.android.storage.UpCompletionHandler;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.Bind;
@@ -51,16 +53,10 @@ public class PersonalInfoAct extends AbsActivity {
     RelativeLayout avaterRl;
     @Bind(R.id.nickname_rl)
     RelativeLayout nicknameRl;
-    @Bind(R.id.bundling_phone_rl)
-    RelativeLayout phoneRl;
     @Bind(R.id.school_rl)
     RelativeLayout schoolRl;
     @Bind(R.id.year_rl)
     RelativeLayout yearRl;
-    //    @Bind(R.id.weibo_rl)
-//    RelativeLayout weiboRl;
-//    @Bind(R.id.wechat_rl)
-//    RelativeLayout wechatRl;
     @Bind(R.id.personal_info_avater)
     CircleImageView avaterCiv;
     @Bind(R.id.nickname_tv)
@@ -73,7 +69,6 @@ public class PersonalInfoAct extends AbsActivity {
     TextView loactionTv;
 
     public static final int AVATER = 1;
-    private UserInfoRes userInfo;
     private ChangNameDialog changNameDialog;
     private ProgressDialog progressDialog;
     private MsgDialog msgDialog;
@@ -89,9 +84,6 @@ public class PersonalInfoAct extends AbsActivity {
 
     @Override
     protected void prepareDatas() {
-        Bundle data = getIntent().getExtras();
-        userInfo = data.getParcelable(PersonCenterFragment.USER_INFO);
-
         //获取所有校区
         getLoactions();
     }
@@ -101,11 +93,11 @@ public class PersonalInfoAct extends AbsActivity {
         getSupportActionBar().setTitle(getString(R.string.personal_info));
 
         //将从personalcenterframgent传递过来的userinfo显示到view
-        CommonUtils.showImageWithGlideInCiv(this, avaterCiv, userInfo.getImage());
-        nickNameTv.setText(userInfo.getName());
+        CommonUtils.showImageWithGlideInCiv(this, avaterCiv, PreferenceUtils.getString(this,PreferenceUtils.Key.AVATAR));
+        nickNameTv.setText(PreferenceUtils.getString(this,PreferenceUtils.Key.NAME));
         phoneTv.setText(PreferenceUtils.getString(this, PreferenceUtils.Key.PHONE));
-        loactionTv.setText(userInfo.getLocation());
-        yearTv.setText(userInfo.getEnroll_year());
+        loactionTv.setText(PreferenceUtils.getString(this,PreferenceUtils.Key.LOCATION));
+        yearTv.setText(PreferenceUtils.getString(this,PreferenceUtils.Key.ENROLL_YEAR));
 
         initListeners();
     }
@@ -127,7 +119,7 @@ public class PersonalInfoAct extends AbsActivity {
             @Override
             public void onClick(View v) {
                 initChangeNameDialog();
-                changNameDialog.setText(userInfo.getName());
+                changNameDialog.setText(PreferenceUtils.getString(PersonalInfoAct.this,PreferenceUtils.Key.NAME));
                 changNameDialog.show();
             }
         });
@@ -152,20 +144,6 @@ public class PersonalInfoAct extends AbsActivity {
                 yearDialog.show();
             }
         });
-
-//        weiboRl.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
-//        wechatRl.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
     }
 
     @Override
@@ -223,12 +201,17 @@ public class PersonalInfoAct extends AbsActivity {
             @Override
             public void success(UserInfoRes userInfoRes, Response response) {
                 //获取到最新的用户信息后将信息显示于界面
-                userInfo = userInfoRes;
                 if (userInfoRes != null && !actDestory) {
-                    CommonUtils.showImageWithGlideInCiv(PersonalInfoAct.this, avaterCiv, userInfo.getImage());
-                    nickNameTv.setText(userInfo.getName());
-                    yearTv.setText(userInfo.getEnroll_year());
-                    loactionTv.setText(userInfo.getLocation());
+                    CommonUtils.showImageWithGlideInCiv(PersonalInfoAct.this, avaterCiv, userInfoRes.getImage());
+                    nickNameTv.setText(userInfoRes.getName());
+                    yearTv.setText(userInfoRes.getEnroll_year());
+                    loactionTv.setText(userInfoRes.getLocation());
+                    //将最新信息缓存到本地
+                    PreferenceUtils.putString(PersonalInfoAct.this, PreferenceUtils.Key.AVATAR, userInfoRes.getImage());
+                    PreferenceUtils.putString(PersonalInfoAct.this, PreferenceUtils.Key.NAME, userInfoRes.getName());
+                    PreferenceUtils.putString(PersonalInfoAct.this, PreferenceUtils.Key.ENROLL_YEAR, userInfoRes.getEnroll_year());
+                    PreferenceUtils.putString(PersonalInfoAct.this, PreferenceUtils.Key.PHONE, userInfoRes.getPhone_num());
+                    PreferenceUtils.putString(PersonalInfoAct.this,PreferenceUtils.Key.LOCATION,userInfoRes.getLocation());
                     progressDialog.dismiss();
                     showToast(getString(R.string.modify_success));
                 }
@@ -304,8 +287,12 @@ public class PersonalInfoAct extends AbsActivity {
         if(yearDialog != null){
             return;
         }
+        //获取当前时间
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int yearEnd = year + 5;
         ArrayList<String> years = new ArrayList<>();
-        for(int i = 2010;i < 2020;i++){
+        for(int i = year - 10;i < yearEnd;i++){
             years.add(i + "");
         }
         yearDialog = new WheelDialog(this);
@@ -415,11 +402,7 @@ public class PersonalInfoAct extends AbsActivity {
     @Override
     public void onBackPressed() {
         //返回最新的用户数据
-        Intent data = new Intent();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(PersonCenterFragment.USER_INFO,userInfo);
-        data.putExtras(bundle);
-        setResult(RESULT_OK,data);
+        setResult(RESULT_OK);
         super.onBackPressed();
     }
 }

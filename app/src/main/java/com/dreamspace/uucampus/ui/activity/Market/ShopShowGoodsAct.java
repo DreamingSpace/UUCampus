@@ -16,10 +16,13 @@ import android.widget.RelativeLayout;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
+import com.dreamspace.uucampus.model.ErrorRes;
 import com.dreamspace.uucampus.model.api.AddShopCollectionRes;
 import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.ShopAllGroupRes;
 import com.dreamspace.uucampus.model.api.ShopInfoRes;
+import com.dreamspace.uucampus.ui.activity.Login.LoginActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
 import com.dreamspace.uucampus.ui.fragment.Market.ShopShowGoodsFragment;
@@ -124,11 +127,17 @@ public class ShopShowGoodsAct extends AbsActivity {
         collectLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mShopInfo != null){
-                    if(mShopInfo.getIs_collected() == 1){
-                        cancelShopCollection();
-                    }else{
-                        addShopCollection();
+                if (mShopInfo != null) {
+                    if (!PreferenceUtils.hasKey(ShopShowGoodsAct.this, PreferenceUtils.Key.LOGIN) ||
+                            !PreferenceUtils.getBoolean(ShopShowGoodsAct.this, PreferenceUtils.Key.LOGIN)) {
+                        //未登录
+                        readyGo(LoginActivity.class);
+                    } else {
+                        if (mShopInfo.getIs_collected() == 1) {
+                            cancelShopCollection();
+                        } else {
+                            addShopCollection();
+                        }
                     }
                 }
             }
@@ -167,8 +176,8 @@ public class ShopShowGoodsAct extends AbsActivity {
             @Override
             public void success(ShopAllGroupRes shopAllGroupRes, Response response) {
                 if (shopAllGroupRes != null && !actDestory) {
-                    if(shopAllGroupRes.getGroup().size() == 0){
-                        toggleShowEmpty(true,getString(R.string.shop_with_no_good),null);
+                    if (shopAllGroupRes.getGroup().size() == 0) {
+                        toggleShowEmpty(true, getString(R.string.shop_with_no_good), null);
                         return;
                     }
                     mShopGroup = shopAllGroupRes;
@@ -188,7 +197,7 @@ public class ShopShowGoodsAct extends AbsActivity {
     private void getShopInfo(){
         if(!NetUtils.isNetworkConnected(this)){
             showNetWorkError();
-            toggleNetworkError(true,getGroupClickListener);
+            toggleNetworkError(true, getGroupClickListener);
             return;
         }
 
@@ -229,7 +238,15 @@ public class ShopShowGoodsAct extends AbsActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                showInnerError(error);
+                ErrorRes errorRes = (ErrorRes) error.getBodyAs(ErrorRes.class);
+                //已收藏，不会发生已收藏但图标不变的情况(发生在未登录的情况下在此页面登录）
+                if(errorRes.getCode() == 406){
+                    showToast(getString(R.string.collect_success));
+                    collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_p));
+                    mShopInfo.setIs_collected(1);//使本地数据与服务器同步
+                }else{
+                    showInnerError(error);
+                }
             }
         });
     }

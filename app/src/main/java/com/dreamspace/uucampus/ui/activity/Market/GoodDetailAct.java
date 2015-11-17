@@ -22,10 +22,13 @@ import com.dreamspace.uucampus.common.Share;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.DensityUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
+import com.dreamspace.uucampus.model.ErrorRes;
 import com.dreamspace.uucampus.model.api.AddGoodsCollectionRes;
 import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.GoodsInfoRes;
+import com.dreamspace.uucampus.ui.activity.Login.LoginActivity;
 import com.dreamspace.uucampus.ui.activity.Order.OrderConfirmAct;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
@@ -168,27 +171,13 @@ public class GoodDetailAct extends AbsActivity {
             }
         });
 
-        collect_ll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("collect " + goodInfo.getIs_collected());
-                if(goodInfo != null){
-                    if(goodInfo.getIs_collected() == 0){
-                        addGoodCollection();
-                    }else{
-                        cancelGoodCollection();
-                    }
-                }
-            }
-        });
-
         shopNameLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(ShopShowGoodsAct.SHOP_ID,goodInfo.getShop_id());
-                bundle.putString(ShopShowGoodsAct.SHOP_NAME,goodInfo.getShop_name());
-                readyGo(ShopShowGoodsAct.class,bundle);
+                bundle.putString(ShopShowGoodsAct.SHOP_ID, goodInfo.getShop_id());
+                bundle.putString(ShopShowGoodsAct.SHOP_NAME, goodInfo.getShop_name());
+                readyGo(ShopShowGoodsAct.class, bundle);
             }
         });
 
@@ -197,21 +186,46 @@ public class GoodDetailAct extends AbsActivity {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(ShopShowGoodsAct.SHOP_ID,goodInfo.getShop_id());
-                bundle.putString(ShopShowGoodsAct.SHOP_NAME,goodInfo.getShop_name());
-                readyGo(ShopShowGoodsAct.class,bundle);
+                bundle.putString(ShopShowGoodsAct.SHOP_ID, goodInfo.getShop_id());
+                bundle.putString(ShopShowGoodsAct.SHOP_NAME, goodInfo.getShop_name());
+                readyGo(ShopShowGoodsAct.class, bundle);
             }
         });
 
         buyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString(OrderConfirmAct.GOOD_NAME,goodInfo.getName());
-                bundle.putString(OrderConfirmAct.PRICE,goodInfo.getPrice());
-                bundle.putString(OrderConfirmAct.DISCOUNT,goodInfo.getDiscount());
-                bundle.putString(OrderConfirmAct.GOOD_ID,goodId);
-                readyGo(OrderConfirmAct.class, bundle);
+                if(!PreferenceUtils.hasKey(GoodDetailAct.this, PreferenceUtils.Key.LOGIN) ||
+                        !PreferenceUtils.getBoolean(GoodDetailAct.this,PreferenceUtils.Key.LOGIN)){
+                    //未登录
+                    readyGo(LoginActivity.class);
+                }else{
+                    Bundle bundle = new Bundle();
+                    bundle.putString(OrderConfirmAct.GOOD_NAME, goodInfo.getName());
+                    bundle.putString(OrderConfirmAct.PRICE, goodInfo.getPrice());
+                    bundle.putString(OrderConfirmAct.DISCOUNT, goodInfo.getDiscount());
+                    bundle.putString(OrderConfirmAct.GOOD_ID, goodId);
+                    readyGo(OrderConfirmAct.class, bundle);
+                }
+            }
+        });
+
+        collect_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(goodInfo != null){
+                    if(!PreferenceUtils.hasKey(GoodDetailAct.this, PreferenceUtils.Key.LOGIN) ||
+                            !PreferenceUtils.getBoolean(GoodDetailAct.this,PreferenceUtils.Key.LOGIN)){
+                        //未登录
+                        readyGo(LoginActivity.class);
+                    }else{
+                        if(goodInfo.getIs_collected() == 0){
+                            addGoodCollection();
+                        }else{
+                            cancelGoodCollection();
+                        }
+                    }
+                }
             }
         });
     }
@@ -236,7 +250,6 @@ public class GoodDetailAct extends AbsActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         /**使用SSO授权必须添加如下代码 */
         UMSsoHandler ssoHandler = share.getController().getConfig().getSsoHandler(requestCode) ;
         if(ssoHandler != null){
@@ -291,7 +304,15 @@ public class GoodDetailAct extends AbsActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                showInnerError(error);
+                ErrorRes errorRes = (ErrorRes) error.getBodyAs(ErrorRes.class);
+                //已收藏，不会发生已收藏但图标不变的情况(发生在未登录的情况下在此页面登录）
+                if(errorRes.getCode() == 406){
+                    showToast(getString(R.string.collect_success));
+                    goodInfo.setIs_collected(1);//更改本地数据，使其与服务器同步
+                    collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_p));
+                }else{
+                    showInnerError(error);
+                }
             }
         });
     }
@@ -337,6 +358,7 @@ public class GoodDetailAct extends AbsActivity {
             collectIv.setImageDrawable(getResources().getDrawable(R.drawable.xiangqing_tab_bar_collect_n));
         }
     }
+
 
     @Override
     public void onBackPressed() {

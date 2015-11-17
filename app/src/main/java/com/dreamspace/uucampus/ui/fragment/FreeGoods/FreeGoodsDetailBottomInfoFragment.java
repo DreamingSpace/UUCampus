@@ -11,9 +11,11 @@ import android.widget.TextView;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.api.AddIdleCollectionRes;
 import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsDetailActivity;
+import com.dreamspace.uucampus.ui.activity.Login.LoginActivity;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
 import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
@@ -101,16 +103,22 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
         mCollect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(bCollect){
-                    mCollectIv.setImageResource(R.drawable.xiangqing_tab_bar_collect_n);
-                    mCollectTv.setTextColor(getResources().getColor(R.color.text_normal));
-                    bCollect = false;
-                    updateCollect(bCollect);
+                if(!PreferenceUtils.hasKey(mContext,PreferenceUtils.Key.LOGIN) ||
+                        !PreferenceUtils.getBoolean(mContext,PreferenceUtils.Key.LOGIN)){
+                    //未登录
+                    readyGo(LoginActivity.class);
                 }else{
-                    mCollectIv.setImageResource(R.drawable.xiangqing_tab_bar_collect_p);
-                    mCollectTv.setTextColor(getResources().getColor(R.color.text_pressed));
-                    bCollect=true;
-                    updateCollect(bCollect);
+                    if(bCollect){
+                        mCollectIv.setImageResource(R.drawable.xiangqing_tab_bar_collect_n);
+                        mCollectTv.setTextColor(getResources().getColor(R.color.text_normal));
+                        bCollect = false;
+                        updateCollect(bCollect);
+                    }else{
+                        mCollectIv.setImageResource(R.drawable.xiangqing_tab_bar_collect_p);
+                        mCollectTv.setTextColor(getResources().getColor(R.color.text_pressed));
+                        bCollect=true;
+                        updateCollect(bCollect);
+                    }
                 }
             }
         });

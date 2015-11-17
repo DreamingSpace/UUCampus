@@ -5,13 +5,16 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.CategoryItem;
 import com.dreamspace.uucampus.model.api.AllCategoryRes;
+import com.dreamspace.uucampus.ui.activity.Login.LoginActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsLazyDataFragment;
 import com.dreamspace.uucampus.ui.popupwindow.FreeGoodsSortPopupWindow;
@@ -42,6 +45,8 @@ public class FreeGoodsActivity extends AbsActivity {
     ViewPager mViewPager;
     @Bind(R.id.free_goods_smart_tab)
     SmartTabLayout mSmartTabLayout;
+    @Bind(R.id.content_rl)
+    RelativeLayout contentRl;
 
     FreeGoodsSortPopupWindow popupWindow;
 
@@ -70,7 +75,13 @@ public class FreeGoodsActivity extends AbsActivity {
         mPublishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGo(FreeGoodsPublishFirstActivity.class);
+                if(!PreferenceUtils.hasKey(FreeGoodsActivity.this,PreferenceUtils.Key.LOGIN) ||
+                        !PreferenceUtils.getBoolean(FreeGoodsActivity.this,PreferenceUtils.Key.LOGIN)){
+                    //未登录，需先登录
+                    readyGo(LoginActivity.class);
+                }else{
+                    readyGo(FreeGoodsPublishFirstActivity.class);
+                }
             }
         });
     }
@@ -78,7 +89,7 @@ public class FreeGoodsActivity extends AbsActivity {
 
     @Override
     protected View getLoadingTargetView() {
-        return null;
+        return contentRl;
     }
 
     private void initListeners() {
@@ -137,6 +148,7 @@ public class FreeGoodsActivity extends AbsActivity {
     }
 
     private void initTabs() {
+        toggleShowLoading(true, null);
         final List<String> items = new ArrayList<String>();
         if(NetUtils.isNetworkConnected(getApplicationContext())){
             ApiManager.getService(getApplicationContext()).getAllIdleCategory(new Callback<AllCategoryRes>() {
@@ -147,15 +159,18 @@ public class FreeGoodsActivity extends AbsActivity {
                         items.add(categoryItem.getName());
                     }
                     initFragment(items);   //初始化viewpager与smartLayout
+                    toggleRestore();
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
                     showInnerError(error);
+                    toggleShowEmpty(true,getString(R.string.no_such_good),null);
                 }
             });
         }else {
             showNetWorkError();
+            toggleNetworkError(true,getIdleCategoryClickListener);
         }
     }
 
@@ -176,4 +191,11 @@ public class FreeGoodsActivity extends AbsActivity {
         mViewPager.setAdapter(pagerAdpater);
         mSmartTabLayout.setViewPager(mViewPager);
     }
+
+    private View.OnClickListener getIdleCategoryClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            initTabs();
+        }
+    };
 }

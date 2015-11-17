@@ -9,10 +9,12 @@ import com.dreamspace.uucampus.adapter.market.GoodDetailCommentListAdapter;
 import com.dreamspace.uucampus.adapter.market.GoodDetailInstListAdapter;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.model.AllGoodsCommentRes;
 import com.dreamspace.uucampus.model.api.AllGoodsCommentItemRes;
 import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.DescriptionItem;
+import com.dreamspace.uucampus.ui.activity.Login.LoginActivity;
 import com.dreamspace.uucampus.ui.activity.Market.GoodDetailAct;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.widget.LoadMoreListView;
@@ -20,6 +22,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import retrofit.Callback;
@@ -115,24 +118,13 @@ public class GoodDetailPagerFragment extends BaseLazyFragment{
                     listView.setLoading(false);
 
                     //没有评论，无需进行下列步骤
-                    if(allGoodsCommentRes.getGoods_comment().size() == 0){
+                    if (allGoodsCommentRes.getGoods_comment().size() == 0) {
                         return;
                     }
 
                     if (firstGetComment) {
                         //第一次获取评论
-                        adapter = new GoodDetailCommentListAdapter(mContext, allGoodsCommentRes.getGoods_comment(), GoodDetailCommentListAdapter.ViewHolder.class);
-                        listView.setAdapter(adapter);
-                        adapter.setOnUsefulClickListener(new GoodDetailCommentListAdapter.OnUsefulClickListener() {
-                            @Override
-                            public void onUserfulClick(String commentId, int usefulClick, ImageView likeIv, TextView likeTv, AllGoodsCommentItemRes entity) {
-                                if (usefulClick == 1) {
-                                    commentUsefulCancel(commentId, likeIv, likeTv, entity);
-                                } else {
-                                    commentUsefulAdd(commentId, likeIv, likeTv, entity);
-                                }
-                            }
-                        });
+                        initAdatper(allGoodsCommentRes.getGoods_comment());
                         firstGetComment = false;
                     } else {
                         adapter.addEntities(allGoodsCommentRes.getGoods_comment());
@@ -187,7 +179,7 @@ public class GoodDetailPagerFragment extends BaseLazyFragment{
         ApiManager.getService(mContext).cancelGoodsUseful(goodId, commentId, new Callback<CommonStatusRes>() {
             @Override
             public void success(CommonStatusRes commonStatusRes, Response response) {
-                if(commonStatusRes != null && !fragmentDestory){
+                if (commonStatusRes != null && !fragmentDestory) {
                     likeIv.setImageDrawable(getResources().getDrawable(R.drawable.comment_like_icon));
                     likeTv.setTextColor(getResources().getColor(R.color.text_normal));
                     int num = entity.getUseful_number() - 1;
@@ -201,6 +193,27 @@ public class GoodDetailPagerFragment extends BaseLazyFragment{
             @Override
             public void failure(RetrofitError error) {
                 showInnerError(error);
+            }
+        });
+    }
+
+    private void initAdatper(ArrayList<AllGoodsCommentItemRes> allGoodsCommentRes){
+        adapter = new GoodDetailCommentListAdapter(mContext, allGoodsCommentRes, GoodDetailCommentListAdapter.ViewHolder.class);
+        listView.setAdapter(adapter);
+        adapter.setOnUsefulClickListener(new GoodDetailCommentListAdapter.OnUsefulClickListener() {
+            @Override
+            public void onUserfulClick(String commentId, int usefulClick, ImageView likeIv, TextView likeTv, AllGoodsCommentItemRes entity) {
+                if(!PreferenceUtils.hasKey(mContext, PreferenceUtils.Key.LOGIN) ||
+                        !PreferenceUtils.getBoolean(mContext,PreferenceUtils.Key.LOGIN)){
+                    //未登录
+                    readyGo(LoginActivity.class);
+                }else{
+                    if (usefulClick == 1) {
+                        commentUsefulCancel(commentId, likeIv, likeTv, entity);
+                    } else {
+                        commentUsefulAdd(commentId, likeIv, likeTv, entity);
+                    }
+                }
             }
         });
     }

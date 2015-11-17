@@ -188,6 +188,7 @@
     <string name="shop_with_no_good">该商家暂时没有商品</string>
 
     <!-- mine strings used-->
+    <string name="no_login">未登录</string>
     <string name="personal_center">个人中心</string>
     <string name="my_free_goods">我的闲置</string>
     <string name="my_collection">我的收藏</string>
