@@ -2,6 +2,7 @@ package com.dreamspace.uucampus.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,13 +13,21 @@ import com.bigkoo.convenientbanner.CBPageAdapter;
 import com.bigkoo.convenientbanner.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.api.ApiManager;
+import com.dreamspace.uucampus.common.utils.CommonUtils;
+import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.model.AdItem;
+import com.dreamspace.uucampus.model.api.GetAdRes;
 import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsActivity;
-import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.ui.activity.Market.FastInAct;
+import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 
 import java.util.ArrayList;
 
 import butterknife.Bind;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Created by money on 2015/9/14.
@@ -50,9 +59,11 @@ public class HomeFragment extends BaseLazyFragment {
     @Bind(R.id.personal_shop_rl)
     RelativeLayout personalShopRl;
 
+    private ArrayList<AdItem> ads;
+
     @Override
     protected void onFirstUserVisible() {
-        initBanner();
+        getAd();
     }
 
     @Override
@@ -172,16 +183,16 @@ public class HomeFragment extends BaseLazyFragment {
     }
 
     private void initBanner(){
-        ArrayList<Integer> list = new ArrayList<>();
-        list.add(R.drawable.banner1);
-        list.add(R.drawable.banner2);
-        list.add(R.drawable.banner1);
-        list.add(R.drawable.banner2);
+        Log.d("Test",String.valueOf(ads.size()));
+        ArrayList<String> list = new ArrayList<>();
+        for(int i=0;i<ads.size();i++){
+            list.add(ads.get(i).getImage());
+        }
         banner.setPages(
-                new CBViewHolderCreator<LocalImageHolderView>() {
+                new CBViewHolderCreator<NetworkImageHolderView>() {
                     @Override
-                    public LocalImageHolderView createHolder() {
-                        return new LocalImageHolderView();
+                    public NetworkImageHolderView createHolder() {
+                        return new NetworkImageHolderView();
                     }
                 }
         ,list)
@@ -190,7 +201,7 @@ public class HomeFragment extends BaseLazyFragment {
         banner.startTurning(3000);
     }
 
-    public class LocalImageHolderView implements CBPageAdapter.Holder<Integer>{
+    public class NetworkImageHolderView implements CBPageAdapter.Holder<String>{
         private ImageView imageView;
         @Override
         public View createView(Context context) {
@@ -200,8 +211,9 @@ public class HomeFragment extends BaseLazyFragment {
         }
 
         @Override
-        public void UpdateUI(Context context, final int position, Integer data) {
-            imageView.setImageResource(data);
+        public void UpdateUI(Context context, final int position, String data) {
+            imageView.setImageResource(R.drawable.banner1);
+            CommonUtils.showImageWithGlide(context,imageView,data);
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -209,6 +221,29 @@ public class HomeFragment extends BaseLazyFragment {
                     Toast.makeText(view.getContext(), "点击了第" + (position + 1) + "图片", Toast.LENGTH_SHORT).show();
                 }
             });
+        }
+    }
+
+    //获取广告栏信息
+    private void getAd(){
+        if(NetUtils.isNetworkConnected(getActivity())){
+            ApiManager.getService(getActivity()).getAd(new Callback<GetAdRes>() {
+                @Override
+                public void success(GetAdRes getAdRes, Response response) {
+                    ads = new ArrayList<AdItem>();
+                    ads = getAdRes.getAdvertisement();
+                    //initBanner();
+                    Log.d("Test",getAdRes.getAdvertisement().get(0).getImage());
+                    Log.d("Test",String.valueOf(getAdRes.getAdvertisement().size()));
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    showInnerError(error);
+                }
+            });
+        }else{
+            showNetWorkError();
         }
     }
 }

@@ -34,17 +34,17 @@
                     android:textSize="18sp" />
 
                 <ListView
-                    android:footerDividersEnabled="false"
-                    android:divider="@color/white"
                     android:id="@+id/search_goods_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></ListView>
+                    android:layout_height="wrap_content"
+                    android:divider="@color/white"
+                    android:footerDividersEnabled="false"></ListView>
 
                 <LinearLayout
                     android:id="@+id/search_goods_more"
-                    android:background="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="26dp"
+                    android:background="@color/white"
                     android:orientation="vertical">
 
                     <View
@@ -85,17 +85,17 @@
                     android:textSize="18sp" />
 
                 <ListView
-                    android:footerDividersEnabled="false"
-                    android:divider="@color/white"
                     android:id="@+id/search_idle_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></ListView>
+                    android:layout_height="wrap_content"
+                    android:divider="@color/white"
+                    android:footerDividersEnabled="false"></ListView>
 
                 <LinearLayout
                     android:id="@+id/search_idle_more"
-                    android:background="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="26dp"
+                    android:background="@color/white"
                     android:orientation="vertical">
 
                     <View
@@ -138,16 +138,16 @@
 
                 <ListView
                     android:id="@+id/search_shop_list"
-                    android:footerDividersEnabled="false"
-                    android:divider="@color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></ListView>
+                    android:layout_height="wrap_content"
+                    android:divider="@color/white"
+                    android:footerDividersEnabled="false"></ListView>
 
                 <LinearLayout
                     android:id="@+id/search_shop_more"
-                    android:background="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="26dp"
+                    android:background="@color/white"
                     android:orientation="vertical">
 
                     <View
@@ -174,19 +174,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_marginTop="90dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/srarch_icon_search"/>
+                    android:layout_marginTop="90dp"
+                    android:src="@drawable/srarch_icon_search" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:text="没有找到相关商品、闲置或店铺"
-                    android:layout_marginTop="15dp"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="16sp"/>
+                    android:layout_marginTop="15dp"
+                    android:text="没有找到相关商品、闲置或店铺"
+                    android:textSize="16sp" />
             </LinearLayout>
 
         </LinearLayout>

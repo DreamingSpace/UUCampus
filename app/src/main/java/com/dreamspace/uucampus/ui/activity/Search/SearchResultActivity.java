@@ -98,43 +98,42 @@ public class SearchResultActivity extends AbsActivity {
         searchImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //pd.show();
+                pd.show();
                 //判断是否有匹配结果
                 haveResult = false;
                 keyWord = searchText.getText().toString();
                 searchFailedLinear.setVisibility(View.GONE);
-                searchGoods(false);
+                searchGoods();
             }
         });
         searchGoodsMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                searchGoods(true);
+
             }
         });
         searchIdleMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                searchIdle(true);
+
             }
         });
         searchShopMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                searchShop(true);
+
             }
         });
 
     }
 
     //搜索商品
-    private void searchGoods(final boolean ifAll) {
+    private void searchGoods() {
         if (!CommonUtils.isEmpty(keyWord)) {
             if (NetUtils.isNetworkConnected(this)) {
-                ApiManager.getService(this).searchGoods(keyWord, null, null,null,null,null,1,"东南大学九龙湖校区", new Callback<SearchGoodsRes>() {
+                ApiManager.getService(this).searchGoods(keyWord, null, null, null, null, null, 1, "东南大学九龙湖校区", new Callback<SearchGoodsRes>() {
                     @Override
                     public void success(SearchGoodsRes searchGoodsRes, Response response) {
-                        searchGoodsMore.setVisibility(View.GONE);
                         searchGoodsLinear.setVisibility(View.GONE);
                         int size = searchGoodsRes.getResult().size();
                         if (size != 0) {
@@ -142,112 +141,93 @@ public class SearchResultActivity extends AbsActivity {
                             haveResult = true;
                         }
                         List<GoodsItem> temp = new ArrayList<GoodsItem>();
-                        if (!ifAll) {
-                            if (size > 2) {
-                                temp.add(searchGoodsRes.getResult().get(0));
-                                temp.add(searchGoodsRes.getResult().get(1));
-                                searchGoodsMore.setVisibility(View.VISIBLE);
-                            } else {
-                                temp = searchGoodsRes.getResult();
-                            }
+                        if (size > 2) {
+                            temp.add(searchGoodsRes.getResult().get(0));
+                            temp.add(searchGoodsRes.getResult().get(1));
+                            searchGoodsMore.setVisibility(View.VISIBLE);
                         } else {
                             temp = searchGoodsRes.getResult();
                         }
                         searchGoodsAdapter = new SearchGoodsAdapter(getApplicationContext(), temp, SearchGoodsAdapter.ViewHolder.class);
                         searchGoodsList.setAdapter(searchGoodsAdapter);
                         fixListViewHeight(searchGoodsList);
-                        if(!ifAll){
-                            searchIdle(ifAll);
-                        }
+                        searchIdle();
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
                         showInnerError(error);
-                        //pd.dismiss();
+                        pd.dismiss();
                     }
                 });
             } else {
                 showNetWorkError();
-                //pd.dismiss();
+                pd.dismiss();
             }
         } else {
             showToast("搜索关键字不能为空");
-            //pd.dismiss();
+            pd.dismiss();
         }
     }
 
     //搜索闲置
-    private void searchIdle(final boolean ifAll) {
-        ApiManager.getService(this).searchIdle(keyWord,null,null,1, "东南大学九龙湖校区", new Callback<SearchIdleRes>() {
+    private void searchIdle() {
+        ApiManager.getService(this).searchIdle(keyWord, null, null, 1, "东南大学九龙湖校区", new Callback<SearchIdleRes>() {
             @Override
             public void success(SearchIdleRes searchIdleRes, Response response) {
                 searchIdleLinear.setVisibility(View.GONE);
-                searchIdleMore.setVisibility(View.GONE);
                 int size = searchIdleRes.getResult().size();
                 if (size != 0) {
                     searchIdleLinear.setVisibility(View.VISIBLE);
                     haveResult = true;
                 }
                 List<IdleItem> temp = new ArrayList<IdleItem>();
-                if (!ifAll) {
-                    if (size > 2) {
-                        temp.add(searchIdleRes.getResult().get(0));
-                        temp.add(searchIdleRes.getResult().get(1));
-                        searchIdleMore.setVisibility(View.VISIBLE);
-                    } else {
-                        temp = searchIdleRes.getResult();
-                    }
+                if (size > 2) {
+                    temp.add(searchIdleRes.getResult().get(0));
+                    temp.add(searchIdleRes.getResult().get(1));
+                    searchIdleMore.setVisibility(View.VISIBLE);
                 } else {
                     temp = searchIdleRes.getResult();
                 }
                 searchIdleAdapter = new SearchIdleAdapter(getApplicationContext(), temp, SearchIdleAdapter.ViewHolder.class);
                 searchIdleList.setAdapter(searchIdleAdapter);
                 fixListViewHeight(searchIdleList);
-                //pd.dismiss();
-                if(!ifAll){
-                    searchShop(ifAll);
-                }
+                searchGoods();
             }
 
             @Override
             public void failure(RetrofitError error) {
                 showInnerError(error);
-                //pd.dismiss();
+                pd.dismiss();
             }
         });
     }
 
     //搜索店铺
     private void searchShop(final boolean ifAll) {
-        ApiManager.getService(this).searchShop(keyWord,null,null,1, "东南大学九龙湖校区", new Callback<SearchShopRes>() {
+        ApiManager.getService(this).searchShop(keyWord, null, null, 1, "东南大学九龙湖校区", new Callback<SearchShopRes>() {
             @Override
             public void success(SearchShopRes searchShopRes, Response response) {
                 searchShopLinear.setVisibility(View.GONE);
-                searchShopMore.setVisibility(View.GONE);
                 int size = searchShopRes.getResult().size();
-                if(size!=0){
+                if (size != 0) {
                     searchShopLinear.setVisibility(View.VISIBLE);
                     haveResult = true;
                 }
                 List<ShopItem> temp = new ArrayList<ShopItem>();
-                if(!ifAll){
-                    if(size>2){
-                        temp.add(searchShopRes.getResult().get(0));
-                        temp.add(searchShopRes.getResult().get(1));
-                        searchShopMore.setVisibility(View.VISIBLE);
-                    }else{
-                        temp = searchShopRes.getResult();
-                    }
-                }else{
+                if (size > 2) {
+                    temp.add(searchShopRes.getResult().get(0));
+                    temp.add(searchShopRes.getResult().get(1));
+                    searchShopMore.setVisibility(View.VISIBLE);
+                } else {
                     temp = searchShopRes.getResult();
                 }
-                searchShopAdapter = new SearchShopAdapter(getApplicationContext(),temp,SearchShopAdapter.ViewHolder.class);
+                searchShopAdapter = new SearchShopAdapter(getApplicationContext(), temp, SearchShopAdapter.ViewHolder.class);
                 searchShopList.setAdapter(searchShopAdapter);
                 fixListViewHeight(searchShopList);
-                //pd.dismiss();
+                pd.dismiss();
 
-                if(!haveResult){
+                if (!haveResult) {
                     searchFailedLinear.setVisibility(View.VISIBLE);
                 }
 
@@ -256,7 +236,7 @@ public class SearchResultActivity extends AbsActivity {
             @Override
             public void failure(RetrofitError error) {
                 showInnerError(error);
-                //pd.dismiss();
+                pd.dismiss();
             }
         });
     }
