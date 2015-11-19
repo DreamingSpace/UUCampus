@@ -232,7 +232,7 @@ public class HomeFragment extends BaseLazyFragment {
                 public void success(GetAdRes getAdRes, Response response) {
                     ads = new ArrayList<AdItem>();
                     ads = getAdRes.getAdvertisement();
-                    //initBanner();
+                    initBanner();
                     Log.d("Test",getAdRes.getAdvertisement().get(0).getImage());
                     Log.d("Test",String.valueOf(getAdRes.getAdvertisement().size()));
                 }

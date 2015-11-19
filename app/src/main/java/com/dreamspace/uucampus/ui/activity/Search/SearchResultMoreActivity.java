@@ -56,7 +56,7 @@ public class SearchResultMoreActivity extends AbsActivity {
     private void searchGood(){
 
     }
-    
+
     private void searchIdle(){
 
     }
