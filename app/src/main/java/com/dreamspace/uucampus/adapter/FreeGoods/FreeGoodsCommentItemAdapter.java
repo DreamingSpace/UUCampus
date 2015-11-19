@@ -60,7 +60,7 @@ public class FreeGoodsCommentItemAdapter extends BasisAdapter<FreeGoodsCommentIt
                     holder.mUseful-=1;
                     //界面更新
                     holder.mUsefulTv.setText(String.valueOf(holder.mUseful));
-                    holder.mUsefulIv.setImageResource(R.drawable.xiangqing_comment_btn_dianzan);
+                    holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon);
                     //缓冲数据更新
                     entity.setUseful_clicked(holder.bUseful);
                     entity.setUseful_number(holder.mUseful);
@@ -72,7 +72,7 @@ public class FreeGoodsCommentItemAdapter extends BasisAdapter<FreeGoodsCommentIt
                     holder.bUseful = true;
                     holder.mUseful += 1;
                     holder.mUsefulTv.setText(String.valueOf(holder.mUseful));
-                    holder.mUsefulIv.setImageResource(R.drawable.xiangqing_comment_btn_dianzan_p);
+                    holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon_p);
                     entity.setUseful_clicked(holder.bUseful);
                     entity.setUseful_number(holder.mUseful);
                     if (updateData != null) {

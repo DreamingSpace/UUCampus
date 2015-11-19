@@ -18,7 +18,6 @@ import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsDetailActivity;
 import com.dreamspace.uucampus.ui.activity.Login.LoginActivity;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
-import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
 
 import butterknife.Bind;
 import retrofit.Callback;
@@ -43,9 +42,14 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
     private boolean bCollect=false;
     public static final String EXTRA_CONTENT="content";
     public static final String EXTRA_IS_COLLECTION="is_collection";
+    public static final String EXTRA_GOODS_NAME="goods_name";
+    public static final String EXTRA_PHONE_NUM="phone_num";
     private String idle_id=null;
     private String content=null;
     private String is_collection=null;
+    private String mGoodsName;
+    private String mPhoneNum;
+
 
     public static FreeGoodsDetailBottomInfoFragment newInstance() {
         FreeGoodsDetailBottomInfoFragment fragment = new FreeGoodsDetailBottomInfoFragment();
@@ -74,8 +78,11 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
 
     @Override
     protected void initViewsAndEvents() {
+        //获取DetailActivity中的数据
         content =getArguments().getString(EXTRA_CONTENT);
         is_collection=getArguments().getString(EXTRA_IS_COLLECTION);
+        mGoodsName=getArguments().getString(EXTRA_GOODS_NAME);
+        mPhoneNum =getArguments().getString(EXTRA_PHONE_NUM);
         mDetailTv.setText(content);
         if(Integer.parseInt(is_collection)==1){  //已收藏状态
             mCollectIv.setImageResource(R.drawable.xiangqing_tab_bar_collect_p);
@@ -91,7 +98,7 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 ConnectSellerDialog dialog = dialog = new ConnectSellerDialog(getActivity(),
-                        R.style.UpDialog, "good name", "phone number");
+                        R.style.UpDialog, mGoodsName,mPhoneNum);
                 Window window = dialog.getWindow();
                 WindowManager.LayoutParams layoutParams = window.getAttributes();
                 layoutParams.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
@@ -127,40 +134,40 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
     private void updateCollect(boolean bCollect) {
         if(NetUtils.isNetworkConnected(getActivity().getApplicationContext())){
             if(bCollect) {
-                final ProgressDialog pd = new ProgressDialog(mContext);
-                pd.setContent("正在收藏");
-                pd.show();
+//                final ProgressDialog pd = new ProgressDialog(mContext);
+//                pd.setContent("正在收藏");
+//                pd.show();
 //                final ProgressDialog pd =ProgressDialog.show(getActivity(), "", "正在收藏", true, false);
                 ApiManager.getService(getActivity().getApplicationContext()).addIdleCollection(idle_id, new Callback<AddIdleCollectionRes>() {
                     @Override
                     public void success(AddIdleCollectionRes addIdleCollectionRes, Response response) {
                         showToast("成功收藏");
-                        pd.dismiss();
+//                        pd.dismiss();
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
                         TLog.i("error:", error.getMessage());
                         showInnerError(error);
-                        pd.dismiss();
+//                        pd.dismiss();
                     }
                 });
             }else{
-                final ProgressDialog pd = new ProgressDialog(mContext);
-                pd.setContent("取消收藏");
-                pd.show();
+//                final ProgressDialog pd = new ProgressDialog(mContext);
+//                pd.setContent("取消收藏");
+//                pd.show();
 //                final ProgressDialog pd =ProgressDialog.show(getActivity(), "", "取消收藏", true, false);
                 ApiManager.getService(getActivity().getApplicationContext()).deleteIdleCollection(idle_id, new Callback<Response>() {
                     @Override
                     public void success(Response response, Response response2) {
                         showToast("取消收藏");
-                        pd.dismiss();
+//                        pd.dismiss();
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
                         showInnerError(error);
-                        pd.dismiss();
+//                        pd.dismiss();
                     }
                 });
             }

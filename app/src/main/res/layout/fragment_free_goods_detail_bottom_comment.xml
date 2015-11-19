@@ -66,7 +66,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginBottom="4dp"
                     android:layout_marginTop="4dp"
-                    android:background="@color/white"
+                    android:background="@drawable/button_publish_selectable"
                     android:text="@string/publish"
                     android:textColor="@color/app_theme_color2"
                     android:textSize="16sp"/>

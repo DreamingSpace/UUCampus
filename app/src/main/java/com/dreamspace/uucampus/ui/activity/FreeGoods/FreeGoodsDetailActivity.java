@@ -1,6 +1,5 @@
 package com.dreamspace.uucampus.ui.activity.FreeGoods;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -68,6 +67,8 @@ public class FreeGoodsDetailActivity extends AbsActivity {
     private String idle_id=null;
     private String content=null;
     private String is_collection=null;
+    private String goodsName=null;
+    private String phoneNum=null;
     private boolean bLike=false;
     private int likeNum=0;
     private Share share;
@@ -181,9 +182,9 @@ public class FreeGoodsDetailActivity extends AbsActivity {
 
     private void likeIdle(boolean bLike) {
 //        final ProgressDialog pd =ProgressDialog.show(this, "", "正在点赞", true, false);
-        final com.dreamspace.uucampus.ui.dialog.ProgressDialog pd = new com.dreamspace.uucampus.ui.dialog.ProgressDialog(this);
-        pd.setContent("正在点赞");
-        pd.show();
+//        final com.dreamspace.uucampus.ui.dialog.ProgressDialog pd = new com.dreamspace.uucampus.ui.dialog.ProgressDialog(this);
+//        pd.setContent("正在点赞");
+//        pd.show();
         if(NetUtils.isNetworkConnected(this.getApplicationContext())){
             if(bLike) {
                 ApiManager.getService(this.getApplicationContext()).likeIdle(idle_id, new Callback<LikeIdleRes>() {
@@ -192,13 +193,13 @@ public class FreeGoodsDetailActivity extends AbsActivity {
                         showToast("成功点赞");
                         likeNum+=1;
                         updateLikeNum(likeNum);
-                        pd.dismiss();
+//                        pd.dismiss();
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
                         showInnerError(error);
-                        pd.dismiss();
+//                        pd.dismiss();
                     }
                 });
             }else{
@@ -208,19 +209,19 @@ public class FreeGoodsDetailActivity extends AbsActivity {
                         likeNum-=1;
                         updateLikeNum(likeNum);
                         showToast("取消点赞");
-                        pd.dismiss();
+//                        pd.dismiss();
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
                         showInnerError(error);
-                        pd.dismiss();
+//                        pd.dismiss();
                     }
                 });
             }
         }else{
             showNetWorkError();
-            pd.dismiss();
+//            pd.dismiss();
         }
     }
 
@@ -233,6 +234,8 @@ public class FreeGoodsDetailActivity extends AbsActivity {
                 bundle.putString(EXTRA_IDLE_ID,idle_id);
                 bundle.putString(FreeGoodsDetailBottomInfoFragment.EXTRA_CONTENT,content);
                 bundle.putString(FreeGoodsDetailBottomInfoFragment.EXTRA_IS_COLLECTION,is_collection);
+                bundle.putString(FreeGoodsDetailBottomInfoFragment.EXTRA_GOODS_NAME,goodsName);
+                bundle.putString(FreeGoodsDetailBottomInfoFragment.EXTRA_PHONE_NUM,phoneNum);
             }else{
                 bundle.putString(TYPE,COMMENT);
                 bundle.putString(EXTRA_IDLE_ID,idle_id);
@@ -264,7 +267,8 @@ public class FreeGoodsDetailActivity extends AbsActivity {
         //保存信息传到子fragment中显示与请求
         content =getIdleInfoRes.getDescription();
         is_collection=getIdleInfoRes.getIs_collected();
-
+        goodsName=getIdleInfoRes.getName();
+        phoneNum=getIdleInfoRes.getPhone_num();
 //        TLog.i("闲置详情初始化：","image:"+getIdleInfoRes.getUser_image()+"  like_clicked:"+getIdleInfoRes.getLike_clicked()
 //                +"  is_collected:"+getIdleInfoRes.getIs_collected());
         initStl();  //必须在idle_id和content，is_collection都拿到后再传给fragment

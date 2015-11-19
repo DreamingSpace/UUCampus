@@ -8,7 +8,7 @@
     </item>
     <item>
         <shape>
-            <solid android:color="@color/near_white" />
+            <solid android:color="#F0EFED" />
         </shape>
     </item>
 

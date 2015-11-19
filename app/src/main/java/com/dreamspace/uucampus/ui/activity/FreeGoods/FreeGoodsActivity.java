@@ -15,6 +15,7 @@ import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.CategoryItem;
 import com.dreamspace.uucampus.model.api.AllCategoryRes;
 import com.dreamspace.uucampus.ui.activity.Login.LoginActivity;
+import com.dreamspace.uucampus.ui.activity.Search.SearchResultActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsLazyDataFragment;
 import com.dreamspace.uucampus.ui.popupwindow.FreeGoodsSortPopupWindow;
@@ -132,6 +133,9 @@ public class FreeGoodsActivity extends AbsActivity {
             if (popupWindow != null) {
                 popupWindow.showAsDropDown(mToolBar);
             }
+        }
+        if(id==R.id.free_goods_action_search){
+            readyGo(SearchResultActivity.class);
         }
 
         return super.onOptionsItemSelected(item);
