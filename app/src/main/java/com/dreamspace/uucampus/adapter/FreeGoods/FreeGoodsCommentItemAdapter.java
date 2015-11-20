@@ -9,8 +9,6 @@ import android.widget.TextView;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.base.BasisAdapter;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
-import com.dreamspace.uucampus.common.utils.NetUtils;
-import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.FreeGoodsCommentItem;
 
 import java.util.ArrayList;
@@ -41,51 +39,46 @@ public class FreeGoodsCommentItemAdapter extends BasisAdapter<FreeGoodsCommentIt
         holder.mUsefulTv.setText(String.valueOf(entity.getUseful_number()));
         holder.mDateTv.setText(entity.getDate());
         //初始化图标
-        holder.bUseful = entity.isUseful_clicked();    //获取当前评论是否点击
-        if (holder.bUseful) {
+        if (entity.isUseful_clicked()) {   //当前评论是否点击
             holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon_p);
 
         } else {
             holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon);
         }
 
-        holder.mUseful = entity.getUseful_number();
         holder.mUsefulLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TLog.i("当前评论状态:", " comment_id" + entity.getId() + "评论是否点击" + holder.bUseful + " number" + holder.mUseful);
-                boolean buse = holder.bUseful;
-                if (holder.bUseful) {    //取消有用
-                    //后端数据更新
-                    buse = false;
-                    if (updateData != null) {
-                        updateData.updateUsefulData(entity.getId(), buse);
-                    }
-                    if (NetUtils.isNetworkConnected(getmContext())) {
-                        holder.bUseful = false;
-                        holder.mUseful -= 1;
-                        //界面更新
-                        holder.mUsefulTv.setText(String.valueOf(holder.mUseful));
-                        holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon);
-                        //缓冲数据更新
-                        entity.setUseful_clicked(holder.bUseful);
-                        entity.setUseful_number(holder.mUseful);
-                    }
-
-                } else {          //添加有用
-                    buse = true;
-                    if (updateData != null) {
-                        updateData.updateUsefulData(entity.getId(), buse);
-                    }
-                    if (NetUtils.isNetworkConnected(getmContext())) {
-                        holder.bUseful = true;
-                        holder.mUseful += 1;
-                        holder.mUsefulTv.setText(String.valueOf(holder.mUseful));
-                        holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon_p);
-                        entity.setUseful_clicked(holder.bUseful);
-                        entity.setUseful_number(holder.mUseful);
-                    }
-                }
+                updateData.updateUsefulData(entity.getId(),entity.isUseful_clicked(), holder.mUsefulTv, holder.mUsefulIv, entity);
+//                if (holder.bUseful) {    //取消有用
+//                    //后端数据更新
+//                    if (updateData != null) {
+//                        updateData.updateUsefulData(entity.getId(), holder.bUseful,holder.mUseful,holder.mUsefulTv,holder.mUserIv,entity);
+//                    }
+//                    if (NetUtils.isNetworkConnected(getmContext())) {
+//                        holder.bUseful = false;
+//                        holder.mUseful -= 1;
+//                        //界面更新
+//                        holder.mUsefulTv.setText(String.valueOf(holder.mUseful));
+//                        holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon);
+//                        //缓冲数据更新
+//                        entity.setUseful_clicked(holder.bUseful);
+//                        entity.setUseful_number(holder.mUseful);
+//                    }
+//
+//                } else {          //添加有用
+//                    if (updateData != null) {
+//                        updateData.updateUsefulData(entity.getId(), buse, holder.mUseful, holder.mUsefulTv, holder.mUserIv, entity);
+//                    }
+//                    if (NetUtils.isNetworkConnected(getmContext())) {
+//                        holder.bUseful = true;
+//                        holder.mUseful += 1;
+//                        holder.mUsefulTv.setText(String.valueOf(holder.mUseful));
+//                        holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon_p);
+//                        entity.setUseful_clicked(holder.bUseful);
+//                        entity.setUseful_number(holder.mUseful);
+//                    }
+//                }
             }
         });
     }
@@ -114,13 +107,10 @@ public class FreeGoodsCommentItemAdapter extends BasisAdapter<FreeGoodsCommentIt
         private TextView mUsefulTv;
         private LinearLayout mUsefulLl;
         private ImageView mUsefulIv;
-
-        private Boolean bUseful;
-        private int mUseful;
     }
 
     public interface UpdateData {
-        void updateUsefulData(String comment_id, boolean bUseful);
+        void updateUsefulData(String comment_id, boolean useful_clicked, TextView mUsefulTv, ImageView mUserIv, FreeGoodsCommentItem entity);
     }
 
     public void setUpdateData(UpdateData updateData) {
