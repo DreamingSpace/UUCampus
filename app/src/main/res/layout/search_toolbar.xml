@@ -9,18 +9,37 @@
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <EditText
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
         android:id="@+id/search_text"
-        android:layout_width="280dp"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"
+        android:background="@null"
         android:hint="请输入商品名，店铺名"
+        android:layout_toLeftOf="@+id/search_img"
         android:singleLine="true" />
 
-    <ImageView
-        android:id="@+id/search_img"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:padding="10dp"
-        android:src="@drawable/xianzhi_status_bar_search"/>
+        <ImageView
+            android:background="@color/white"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="50dp"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/search_text"
+            android:layout_height="2px" />
+
+        <ImageView
+            android:id="@+id/search_img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:padding="10dp"
+            android:src="@drawable/xianzhi_status_bar_search"/></RelativeLayout>
+
 
 </android.support.v7.widget.Toolbar>

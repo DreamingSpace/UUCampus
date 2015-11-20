@@ -1,13 +1,14 @@
 package com.dreamspace.uucampus.ui;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.bigkoo.convenientbanner.CBPageAdapter;
 import com.bigkoo.convenientbanner.CBViewHolderCreator;
@@ -183,7 +184,6 @@ public class HomeFragment extends BaseLazyFragment {
     }
 
     private void initBanner(){
-        Log.d("Test",String.valueOf(ads.size()));
         ArrayList<String> list = new ArrayList<>();
         for(int i=0;i<ads.size();i++){
             list.add(ads.get(i).getImage());
@@ -212,13 +212,14 @@ public class HomeFragment extends BaseLazyFragment {
 
         @Override
         public void UpdateUI(Context context, final int position, String data) {
-            imageView.setImageResource(R.drawable.banner1);
             CommonUtils.showImageWithGlide(context,imageView,data);
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //点击事件
-                    Toast.makeText(view.getContext(), "点击了第" + (position + 1) + "图片", Toast.LENGTH_SHORT).show();
+                    //点击广告栏，打开相应的网址
+                    Uri uri = Uri.parse(ads.get(position).getLink());
+                    Log.d("Test",ads.get(position).getLink());
+                    startActivity(new Intent(Intent.ACTION_VIEW, uri));
                 }
             });
         }
@@ -233,8 +234,6 @@ public class HomeFragment extends BaseLazyFragment {
                     ads = new ArrayList<AdItem>();
                     ads = getAdRes.getAdvertisement();
                     initBanner();
-                    Log.d("Test",getAdRes.getAdvertisement().get(0).getImage());
-                    Log.d("Test",String.valueOf(getAdRes.getAdvertisement().size()));
                 }
 
                 @Override

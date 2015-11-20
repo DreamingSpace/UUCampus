@@ -1,5 +1,6 @@
 package com.dreamspace.uucampus.ui.activity.Search;
 
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ import com.dreamspace.uucampus.model.api.SearchGoodsRes;
 import com.dreamspace.uucampus.model.api.SearchIdleRes;
 import com.dreamspace.uucampus.model.api.SearchShopRes;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
+import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +70,10 @@ public class SearchResultActivity extends AbsActivity {
     private SearchIdleAdapter searchIdleAdapter;
     private SearchShopAdapter searchShopAdapter;
     private String keyWord;
+    //保存搜索结果
+    private List<GoodsItem> goodsItems;
+    private List<IdleItem> idleItems;
+    private List<ShopItem> shopItems;
 
     @Override
     protected int getContentView() {
@@ -77,6 +83,10 @@ public class SearchResultActivity extends AbsActivity {
     @Override
     protected void prepareDatas() {
         ButterKnife.bind(this);
+        pd = new ProgressDialog(this);
+        goodsItems = new ArrayList<>();
+        idleItems = new ArrayList<>();
+        shopItems = new ArrayList<>();
     }
 
     @Override
@@ -85,7 +95,6 @@ public class SearchResultActivity extends AbsActivity {
         searchIdleLinear.setVisibility(View.GONE);
         searchShopLinear.setVisibility(View.GONE);
         searchFailedLinear.setVisibility(View.GONE);
-        pd = new com.dreamspace.uucampus.ui.dialog.ProgressDialog(this);
         initListeners();
     }
 
@@ -109,19 +118,28 @@ public class SearchResultActivity extends AbsActivity {
         searchGoodsMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Bundle bundle = new Bundle();
+                bundle.putInt("category",0);
+                bundle.putString("key",keyWord);
+                readyGo(SearchResultMoreActivity.class, bundle);
             }
         });
         searchIdleMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Bundle bundle = new Bundle();
+                bundle.putInt("category",1);
+                bundle.putString("key", keyWord);
+                readyGo(SearchResultMoreActivity.class,bundle);
             }
         });
         searchShopMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Bundle bundle = new Bundle();
+                bundle.putInt("category",2);
+                bundle.putString("key",keyWord);
+                readyGo(SearchResultMoreActivity.class,bundle);
             }
         });
 
@@ -134,19 +152,21 @@ public class SearchResultActivity extends AbsActivity {
                 ApiManager.getService(this).searchGoods(keyWord, null, null, null, null, null, 1, "东南大学九龙湖校区", new Callback<SearchGoodsRes>() {
                     @Override
                     public void success(SearchGoodsRes searchGoodsRes, Response response) {
+                        goodsItems = searchGoodsRes.getResult();
                         searchGoodsLinear.setVisibility(View.GONE);
-                        int size = searchGoodsRes.getResult().size();
+                        int size = goodsItems.size();
                         if (size != 0) {
                             searchGoodsLinear.setVisibility(View.VISIBLE);
+                            searchGoodsMore.setVisibility(View.GONE);
                             haveResult = true;
                         }
                         List<GoodsItem> temp = new ArrayList<GoodsItem>();
                         if (size > 2) {
-                            temp.add(searchGoodsRes.getResult().get(0));
-                            temp.add(searchGoodsRes.getResult().get(1));
+                            temp.add(goodsItems.get(0));
+                            temp.add(goodsItems.get(1));
                             searchGoodsMore.setVisibility(View.VISIBLE);
                         } else {
-                            temp = searchGoodsRes.getResult();
+                            temp = goodsItems;
                         }
                         searchGoodsAdapter = new SearchGoodsAdapter(getApplicationContext(), temp, SearchGoodsAdapter.ViewHolder.class);
                         searchGoodsList.setAdapter(searchGoodsAdapter);
@@ -175,24 +195,26 @@ public class SearchResultActivity extends AbsActivity {
         ApiManager.getService(this).searchIdle(keyWord, null, null, 1, "东南大学九龙湖校区", new Callback<SearchIdleRes>() {
             @Override
             public void success(SearchIdleRes searchIdleRes, Response response) {
+                idleItems = searchIdleRes.getResult();
                 searchIdleLinear.setVisibility(View.GONE);
-                int size = searchIdleRes.getResult().size();
+                int size = idleItems.size();
                 if (size != 0) {
                     searchIdleLinear.setVisibility(View.VISIBLE);
+                    searchIdleMore.setVisibility(View.GONE);
                     haveResult = true;
                 }
                 List<IdleItem> temp = new ArrayList<IdleItem>();
                 if (size > 2) {
-                    temp.add(searchIdleRes.getResult().get(0));
-                    temp.add(searchIdleRes.getResult().get(1));
+                    temp.add(idleItems.get(0));
+                    temp.add(idleItems.get(1));
                     searchIdleMore.setVisibility(View.VISIBLE);
                 } else {
-                    temp = searchIdleRes.getResult();
+                    temp = idleItems;
                 }
                 searchIdleAdapter = new SearchIdleAdapter(getApplicationContext(), temp, SearchIdleAdapter.ViewHolder.class);
                 searchIdleList.setAdapter(searchIdleAdapter);
                 fixListViewHeight(searchIdleList);
-                searchGoods();
+                searchShop();
             }
 
             @Override
@@ -204,33 +226,35 @@ public class SearchResultActivity extends AbsActivity {
     }
 
     //搜索店铺
-    private void searchShop(final boolean ifAll) {
+    private void searchShop() {
         ApiManager.getService(this).searchShop(keyWord, null, null, 1, "东南大学九龙湖校区", new Callback<SearchShopRes>() {
             @Override
             public void success(SearchShopRes searchShopRes, Response response) {
+                shopItems = searchShopRes.getResult();
                 searchShopLinear.setVisibility(View.GONE);
-                int size = searchShopRes.getResult().size();
+                int size = shopItems.size();
                 if (size != 0) {
                     searchShopLinear.setVisibility(View.VISIBLE);
+                    searchShopMore.setVisibility(View.GONE);
                     haveResult = true;
                 }
                 List<ShopItem> temp = new ArrayList<ShopItem>();
                 if (size > 2) {
-                    temp.add(searchShopRes.getResult().get(0));
-                    temp.add(searchShopRes.getResult().get(1));
+                    temp.add(shopItems.get(0));
+                    temp.add(shopItems.get(1));
                     searchShopMore.setVisibility(View.VISIBLE);
                 } else {
-                    temp = searchShopRes.getResult();
+                    temp = shopItems;
                 }
                 searchShopAdapter = new SearchShopAdapter(getApplicationContext(), temp, SearchShopAdapter.ViewHolder.class);
                 searchShopList.setAdapter(searchShopAdapter);
                 fixListViewHeight(searchShopList);
                 pd.dismiss();
 
+                //显示没有搜索结果的界面
                 if (!haveResult) {
                     searchFailedLinear.setVisibility(View.VISIBLE);
                 }
-
             }
 
             @Override

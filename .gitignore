@@ -2,9 +2,6 @@
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
-/.idea/gradle.xml
 /.idea/misc.xml
-/build
-.gradle
 /captures
 app/app.iml
