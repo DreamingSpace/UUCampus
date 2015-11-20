@@ -25,7 +25,14 @@ public final class ApiManager {
                     RequestInterceptor requestInterceptor = new RequestInterceptor() {
                         @Override
                         public void intercept(RequestFacade request) {
-                            request.addHeader(PreferenceUtils.Key.ACCESS, PreferenceUtils.getString(mContext, PreferenceUtils.Key.ACCESS));
+                            if(!PreferenceUtils.hasKey(mContext,PreferenceUtils.Key.LOGIN)
+                                    || !PreferenceUtils.getBoolean(mContext,PreferenceUtils.Key.LOGIN)) {
+                                //没有登录,游客身份访问
+                                request.addHeader(PreferenceUtils.Key.ACCESS,"guest");
+                            }else{
+                                //登录过
+                                request.addHeader(PreferenceUtils.Key.ACCESS, PreferenceUtils.getString(mContext, PreferenceUtils.Key.ACCESS));
+                            }
                         }
                     };
                     restAdapter = new RestAdapter.Builder().setEndpoint(ApiManager.BASE_URL).setLogLevel(RestAdapter.LogLevel.FULL).setRequestInterceptor(requestInterceptor)

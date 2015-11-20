@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
-import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.ui.activity.Search.SearchResultActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
@@ -80,12 +79,9 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
     }
 
     private void initDates() {
-        //测试
-//        PreferenceUtils.putString(MainActivity.this.getApplicationContext(),
-//                PreferenceUtils.Key.ACCESS, "e75d1024-8155-11e5-a16f-00163e021195");
         HomeFragment firstFragment = new HomeFragment();
         MarketFragment secondFragment = new MarketFragment();
-        PersonCenterFragment thirdFragment = new PersonCenterFragment();
+        final PersonCenterFragment thirdFragment = new PersonCenterFragment();
         mFragments.add(firstFragment);
         mFragments.add(secondFragment);
         mFragments.add(thirdFragment);
@@ -128,6 +124,7 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
 
                     case 2:
                         currentIndex = 2;
+                        thirdFragment.updateView();
                         break;
                 }
                 //重新加载menu item

@@ -13,9 +13,12 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
+import com.dreamspace.uucampus.model.ErrorRes;
 import com.dreamspace.uucampus.model.api.AddShopCollectionRes;
 import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.ShopInfoRes;
+import com.dreamspace.uucampus.ui.activity.Login.LoginActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
 import butterknife.Bind;
@@ -82,10 +85,16 @@ public class ShopDetailAct extends AbsActivity {
         reportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //进入举报商家页面，并传入shopid
-                Bundle bundle = new Bundle();
-                bundle.putString(ReportShopAct.SHOP_ID,shopId);
-                readyGo(ReportShopAct.class,bundle);
+                if(!PreferenceUtils.hasKey(ShopDetailAct.this,PreferenceUtils.Key.LOGIN) ||
+                        !PreferenceUtils.getBoolean(ShopDetailAct.this,PreferenceUtils.Key.LOGIN)){
+                    //未登录
+                    readyGo(LoginActivity.class);
+                }else{
+                    //进入举报商家页面，并传入shopid
+                    Bundle bundle = new Bundle();
+                    bundle.putString(ReportShopAct.SHOP_ID,shopId);
+                    readyGo(ReportShopAct.class,bundle);
+                }
             }
         });
     }
@@ -106,10 +115,16 @@ public class ShopDetailAct extends AbsActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.action_collect && shopInfo != null){
-            if(shopInfo.getIs_collected() == 1){
-                cancelShopCollection(item);
+            if(!PreferenceUtils.hasKey(this,PreferenceUtils.Key.LOGIN) ||
+                    !PreferenceUtils.getBoolean(this,PreferenceUtils.Key.LOGIN)){
+                //未登录
+                readyGo(LoginActivity.class);
             }else{
-                addShopCollection(item);
+                if(shopInfo.getIs_collected() == 1){
+                    cancelShopCollection(item);
+                }else{
+                    addShopCollection(item);
+                }
             }
         }
         return super.onOptionsItemSelected(item);
@@ -117,7 +132,7 @@ public class ShopDetailAct extends AbsActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_shop_detail,menu);
+        getMenuInflater().inflate(R.menu.menu_shop_detail, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -128,7 +143,7 @@ public class ShopDetailAct extends AbsActivity {
             return;
         }
 
-        ApiManager.getService(this).addCollection(shopId , new Callback<AddShopCollectionRes>() {
+        ApiManager.getService(this).addCollection(shopId, new Callback<AddShopCollectionRes>() {
             @Override
             public void success(AddShopCollectionRes addShopCollectionRes, Response response) {
                 if (addShopCollectionRes != null && !actDestory) {
@@ -140,7 +155,15 @@ public class ShopDetailAct extends AbsActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                showInnerError(error);
+                ErrorRes errorRes = (ErrorRes) error.getBodyAs(ErrorRes.class);
+                //已收藏，不会发生已收藏但图标不变的情况(发生在未登录的情况下在此页面登录）
+                if(errorRes.getCode() == 406){
+                    showToast(getString(R.string.collect_success));
+                    item.setIcon(getResources().getDrawable(R.drawable.xiangqing_btn_shoucang_n));
+                    shopInfo.setIs_collected(1);//使本地数据与服务器同步
+                }else{
+                    showInnerError(error);
+                }
             }
         });
     }

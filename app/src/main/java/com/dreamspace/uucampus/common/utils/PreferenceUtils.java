@@ -14,12 +14,14 @@ import android.preference.PreferenceManager;
 public class PreferenceUtils {
 
     public static class Key {
-        public static final String ACCOUNT = "ACCOUNT";
         public static final String AVATAR = "AVATAR";
         public static final String ACCESS="ACCESS_token";
         public static final String PHONE="PHONE";
-        public static final String IS_ACTIVE="IS_ACTIVE";
         public static final String LOCATION="location";
+        public static final String ENROLL_YEAR="ENROLL_YEAR";
+        public static final String NAME = "NAME";
+        public static final String FIRST_USE = "FIRST_USE";
+        public static final String LOGIN = "LOGIN";
     }
 
     public static final String DEFAULT_STRING = "";

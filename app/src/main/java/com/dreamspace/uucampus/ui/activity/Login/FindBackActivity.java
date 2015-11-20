@@ -126,7 +126,6 @@ public class FindBackActivity extends AbsActivity implements View.OnClickListene
                     @Override
                     public void success(Response response, Response response2) {
                         if (response.getStatus() == 200) {
-                            readyGo(LoginActivity.class);
                             mHandler.removeMessages(BEGIN_TIMER);
                             showToast("密码重置成功，请重新登录~");
                             finish();

@@ -33,7 +33,7 @@ public class RegisterSucceedActivity extends AbsActivity {
         registerSucceedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                readyGoThenKill(LoginActivity.class);
+                finish();
             }
         });
     }

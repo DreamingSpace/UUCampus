@@ -269,7 +269,8 @@ public class LoginActivity extends AbsActivity {
                     System.out.println(loginRes.getAccess_token());
                     PreferenceUtils.putString(LoginActivity.this,
                             PreferenceUtils.Key.ACCESS, loginRes.getAccess_token());
-                    PreferenceUtils.putString(LoginActivity.this,PreferenceUtils.Key.PHONE,loginReq.getPhone_num());
+                    //设置为已登录
+                    PreferenceUtils.putBoolean(LoginActivity.this, PreferenceUtils.Key.LOGIN, true);
                     ApiManager.clear();
                     getUserInfo();
                 }
@@ -297,7 +298,10 @@ public class LoginActivity extends AbsActivity {
                     saveUserInfo(userInfoRes);
                     progressDialog.dismiss();
                     showToast("登录成功");
-                    readyGoThenKill(MainActivity.class);
+                    //当用户游客身份用APP时选择登录，登录成功后要给进入登录界面的activity返回一个登录成功状态，好让那个activity结束
+                    setResult(RESULT_OK);
+                    finish();
+//                    readyGoThenKill(MainActivity.class);
                 }
             }
 
@@ -311,7 +315,12 @@ public class LoginActivity extends AbsActivity {
 
     //保存用户信息到本地
     private void saveUserInfo(UserInfoRes userInfoRes){
-        ShareData.user = userInfoRes;
+//        ShareData.user = userInfoRes;
+        PreferenceUtils.putString(this,PreferenceUtils.Key.AVATAR,userInfoRes.getImage());
+        PreferenceUtils.putString(this,PreferenceUtils.Key.NAME,userInfoRes.getName());
+        PreferenceUtils.putString(this,PreferenceUtils.Key.ENROLL_YEAR,userInfoRes.getEnroll_year());
+        PreferenceUtils.putString(this,PreferenceUtils.Key.PHONE,userInfoRes.getPhone_num());
+        PreferenceUtils.putString(this,PreferenceUtils.Key.LOCATION,userInfoRes.getLocation());
     }
 
     //输入有效性判断

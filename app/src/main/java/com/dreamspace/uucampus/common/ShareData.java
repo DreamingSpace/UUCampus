@@ -22,5 +22,5 @@ public class ShareData {
     //微信授权后获取的用户信息保存的实体类
     public static WeChatUser weChatUser;
     //登录后获取的用户信息保存的实体类
-    public static UserInfoRes user;
+//    public static UserInfoRes user;
 }
