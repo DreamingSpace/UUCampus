@@ -33,6 +33,7 @@ import com.dreamspace.uucampus.model.api.CreateShopDiscountRes;
 import com.dreamspace.uucampus.model.api.CreateShopReq;
 import com.dreamspace.uucampus.model.api.CreateShopRes;
 import com.dreamspace.uucampus.model.api.DeleteAccessTokenRes;
+import com.dreamspace.uucampus.model.api.GetAdRes;
 import com.dreamspace.uucampus.model.api.GetIdleInfoRes;
 import com.dreamspace.uucampus.model.api.GoodsInfoRes;
 import com.dreamspace.uucampus.model.api.IdleAllCommentRes;
@@ -386,7 +387,6 @@ public interface UUService {
     @DELETE("/location/{location_id}")
     void deleteLocation(Callback<Response> cb);
 
-
     //分类
     //类目创建
     @POST("/category/")
@@ -432,6 +432,9 @@ public interface UUService {
     @GET("/card/")
     void checkCard(Callback<Card> cb);
 
+    //广告
+    @GET("/advertisement/")
+    void getAd(Callback<GetAdRes> cb);
     //订单
     @POST("/user/order/")
     void createOrder(@Body CreateOrderReq orderReq,Callback<CreateOrderRes> cb);

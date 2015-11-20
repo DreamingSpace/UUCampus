@@ -94,6 +94,8 @@
             android:label="搜索结果"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".ui.activity.Search.SearchResultMoreActivity"/>
+        <activity
             android:name=".ui.activity.Market.ShopHostActivity"
             android:screenOrientation="portrait"/>
         <activity

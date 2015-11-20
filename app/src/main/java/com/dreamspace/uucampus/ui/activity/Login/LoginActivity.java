@@ -76,9 +76,10 @@ public class LoginActivity extends AbsActivity {
 
     @Override
     protected void initViews() {
-        LoginUserName.setText(PreferenceUtils.getString(LoginActivity.this,PreferenceUtils.Key.PHONE));
+        LoginUserName.setText(PreferenceUtils.getString(LoginActivity.this, PreferenceUtils.Key.PHONE));
 //        LoginPwd.setText(PreferenceUtils.getString(LoginActivity.this, PreferenceUtils.Key.PASSWORD));
         initListener();
+        progressDialog = new ProgressDialog(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         TextView titleTv = (TextView) mToolBar.findViewById(R.id.custom_title_tv);
@@ -190,13 +191,13 @@ public class LoginActivity extends AbsActivity {
                     @Override
                     public void onStart(SHARE_MEDIA share_media) {
                         showToast("授权开始");
-                        Log.d("TestData", "aaaa");
+                        progressDialog.setContent("正在授权");
+                        progressDialog.show();
                     }
 
                     @Override
                     public void onComplete(final Bundle bundle, SHARE_MEDIA share_media) {
-                        Log.d("TestData", "bbbb");
-                        Log.d("TestData",bundle.toString());
+                        progressDialog.dismiss();
                         //获取相关授权信息
                         mController.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.WEIXIN, new SocializeListeners.UMDataListener() {
                             @Override
@@ -243,11 +244,13 @@ public class LoginActivity extends AbsActivity {
                     @Override
                     public void onError(SocializeException e, SHARE_MEDIA share_media) {
                         showToast("授权错误");
+                        progressDialog.dismiss();
                     }
 
                     @Override
                     public void onCancel(SHARE_MEDIA share_media) {
                         showToast("授权取消");
+                        progressDialog.dismiss();
                     }
                 });
             }
@@ -256,7 +259,6 @@ public class LoginActivity extends AbsActivity {
 
     //登录操作
     private void login(final LoginReq loginReq){
-        progressDialog = new ProgressDialog(this);
         progressDialog.setContent(getString(R.string.in_login));
         progressDialog.show();
         if(NetUtils.isNetworkConnected(this)){
