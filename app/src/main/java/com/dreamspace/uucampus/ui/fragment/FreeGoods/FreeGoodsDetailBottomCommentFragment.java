@@ -8,12 +8,14 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.FreeGoods.FreeGoodsCommentItemAdapter;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.model.FreeGoodsCommentItem;
 import com.dreamspace.uucampus.model.api.AddIdleCommentRes;
 import com.dreamspace.uucampus.model.api.CommentItem;
 import com.dreamspace.uucampus.model.api.ContentReq;
 import com.dreamspace.uucampus.model.api.IdleAllCommentRes;
 import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsDetailActivity;
+import com.dreamspace.uucampus.ui.activity.Login.LoginActivity;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
 import com.dreamspace.uucampus.widget.LoadMoreListView;
@@ -88,6 +90,17 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
             }
         });
 
+        mPublishBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!PreferenceUtils.hasKey(getActivity(),PreferenceUtils.Key.LOGIN) ||
+                        !PreferenceUtils.getBoolean(getActivity(),PreferenceUtils.Key.LOGIN)){
+                    readyGo(LoginActivity.class);
+                }else{
+                    publishComment();
+                }
+            }
+        });
     }
 
 
@@ -96,8 +109,7 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
         return R.layout.fragment_free_goods_detail_bottom_comment;
     }
 
-    @OnClick(R.id.free_goods_detail_comment_publish_button)
-    void publishComment() {
+    private void publishComment() {
 
         if (mCommentEditText.length() == 0) {
             showToast("请写评论");
@@ -217,56 +229,61 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
         mAdapter.setUpdateData(new FreeGoodsCommentItemAdapter.UpdateData() {
             @Override
             public void updateUsefulData(String comment_id, boolean bUseful) {
-                if (NetUtils.isNetworkConnected(getActivity().getApplicationContext())) {
-                    if (bUseful) {  //评论有用
-                        final ProgressDialog pd = new ProgressDialog(mContext);
-                        pd.setContent("有用评论添加");
-                        pd.show();
-//                        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "有用评论添加", true, false);
-                        ApiManager.getService(getActivity().getApplicationContext()).addIdleCommentUseful(idle_id, comment_id, new Callback<Response>() {
-                            @Override
-                            public void success(Response response, Response response2) {
-                                //重新加载当前页面的数据
-                                loadingCommentByPage(page, new OnRefreshListener() {
-                                    @Override
-                                    public void onFinish(List mEntities) {
-//                                        refreshDate(mEntities,ADD);
-                                    }
+                if(!PreferenceUtils.hasKey(getActivity(),PreferenceUtils.Key.LOGIN) ||
+                        !PreferenceUtils.getBoolean(getActivity(),PreferenceUtils.Key.LOGIN)){
+                    readyGo(LoginActivity.class);
+                }else{
+                    if (NetUtils.isNetworkConnected(getActivity().getApplicationContext())) {
+                        if (bUseful) {  //评论有用
+                            final ProgressDialog pd = new ProgressDialog(mContext);
+                            pd.setContent("有用评论添加");
+                            pd.show();
+    //                        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "有用评论添加", true, false);
+                            ApiManager.getService(getActivity().getApplicationContext()).addIdleCommentUseful(idle_id, comment_id, new Callback<Response>() {
+                                @Override
+                                public void success(Response response, Response response2) {
+                                    //重新加载当前页面的数据
+                                    loadingCommentByPage(page, new OnRefreshListener() {
+                                        @Override
+                                        public void onFinish(List mEntities) {
+    //                                        refreshDate(mEntities,ADD);
+                                        }
 
-                                    @Override
-                                    public void onError() {
+                                        @Override
+                                        public void onError() {
 
-                                    }
-                                });
-                                pd.dismiss();
-                            }
+                                        }
+                                    });
+                                    pd.dismiss();
+                                }
 
-                            @Override
-                            public void failure(RetrofitError error) {
-                                showInnerError(error);
-                                pd.dismiss();
-                            }
-                        });
-                    } else {  //评论无用
-                        final ProgressDialog pd = new ProgressDialog(mContext);
-                        pd.setContent("有用评取消");
-                        pd.show();
-//                        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "有用评取消", true, false);
-                        ApiManager.getService(getActivity().getApplicationContext()).cancelIdleCommentUseful(idle_id, comment_id, new Callback<Response>() {
-                            @Override
-                            public void success(Response response, Response response2) {
-                                pd.dismiss();
-                            }
+                                @Override
+                                public void failure(RetrofitError error) {
+                                    showInnerError(error);
+                                    pd.dismiss();
+                                }
+                            });
+                        } else {  //评论无用
+                            final ProgressDialog pd = new ProgressDialog(mContext);
+                            pd.setContent("有用评取消");
+                            pd.show();
+    //                        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "有用评取消", true, false);
+                            ApiManager.getService(getActivity().getApplicationContext()).cancelIdleCommentUseful(idle_id, comment_id, new Callback<Response>() {
+                                @Override
+                                public void success(Response response, Response response2) {
+                                    pd.dismiss();
+                                }
 
-                            @Override
-                            public void failure(RetrofitError error) {
-                                showInnerError(error);
-                                pd.dismiss();
-                            }
-                        });
+                                @Override
+                                public void failure(RetrofitError error) {
+                                    showInnerError(error);
+                                    pd.dismiss();
+                                }
+                            });
+                        }
+                    } else {
+                        showNetWorkError();
                     }
-                } else {
-                    showNetWorkError();
                 }
             }
         });

@@ -3,6 +3,7 @@ package com.dreamspace.uucampus.ui.activity.Search;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,6 +23,9 @@ import com.dreamspace.uucampus.model.ShopItem;
 import com.dreamspace.uucampus.model.api.SearchGoodsRes;
 import com.dreamspace.uucampus.model.api.SearchIdleRes;
 import com.dreamspace.uucampus.model.api.SearchShopRes;
+import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsDetailActivity;
+import com.dreamspace.uucampus.ui.activity.Market.GoodDetailAct;
+import com.dreamspace.uucampus.ui.activity.Market.ShopShowGoodsAct;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
 
@@ -120,7 +124,7 @@ public class SearchResultActivity extends AbsActivity {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("category",0);
-                bundle.putString("key",keyWord);
+                bundle.putString("key", keyWord);
                 readyGo(SearchResultMoreActivity.class, bundle);
             }
         });
@@ -143,6 +147,39 @@ public class SearchResultActivity extends AbsActivity {
             }
         });
 
+        searchGoodsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(searchGoodsAdapter != null){
+                    Bundle bundle = new Bundle();
+                    bundle.putString(GoodDetailAct.GOOD_ID, searchGoodsAdapter.getItem(i).getGoods_id());
+                    readyGo(GoodDetailAct.class,bundle);
+                }
+            }
+        });
+
+        searchShopList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(searchShopAdapter != null){
+                    Bundle bundle = new Bundle();
+                    bundle.putString(ShopShowGoodsAct.SHOP_ID,searchShopAdapter.getItem(i).getShop_id());
+                    bundle.putString(ShopShowGoodsAct.SHOP_NAME,searchShopAdapter.getItem(i).getName());
+                    readyGo(ShopShowGoodsAct.class,bundle);
+                }
+            }
+        });
+
+        searchIdleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(searchIdleAdapter != null){
+                    Bundle bundle = new Bundle();
+                    bundle.putString(FreeGoodsDetailActivity.EXTRA_IDLE_ID,searchIdleAdapter.getItem(i).getIdle_id());
+                    readyGo(FreeGoodsDetailActivity.class,bundle);
+                }
+            }
+        });
     }
 
     //搜索商品

@@ -15,8 +15,10 @@ import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.Share;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.model.api.GetIdleInfoRes;
 import com.dreamspace.uucampus.model.api.LikeIdleRes;
+import com.dreamspace.uucampus.ui.activity.Login.LoginActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsDetailBottomCommentFragment;
 import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsDetailBottomInfoFragment;
@@ -32,6 +34,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+//进入此activity需要传入idle_id
 public class FreeGoodsDetailActivity extends AbsActivity {
     @Bind(R.id.free_good_detail_comment_stl)
     SmartTabLayout tabLayout;
@@ -97,7 +100,29 @@ public class FreeGoodsDetailActivity extends AbsActivity {
 
     @Override
     protected void initViews() {
+        initListeners();
+    }
 
+    private void initListeners(){
+        mLikeIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!PreferenceUtils.hasKey(FreeGoodsDetailActivity.this, PreferenceUtils.Key.LOGIN) ||
+                        !PreferenceUtils.getBoolean(FreeGoodsDetailActivity.this, PreferenceUtils.Key.LOGIN)) {
+                    readyGo(LoginActivity.class);
+                }else{
+                    if (bLike) {
+                        mLikeIv.setImageResource(R.drawable.xiangqing_btn_dianzan_p);
+                        bLike = false;
+                        likeIdle(bLike);  //取消点赞
+                    } else {
+                        mLikeIv.setImageResource(R.drawable.xiangqing_btn_dianzan);
+                        bLike = true;
+                        likeIdle(bLike);  //点赞
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -164,20 +189,6 @@ public class FreeGoodsDetailActivity extends AbsActivity {
         tabLayout.setCustomTabView(R.layout.good_detail_stl_title_tab, R.id.detail_stl_title_tv);
         detailViewPager.setAdapter(pagerAdapter);
         tabLayout.setViewPager(detailViewPager);
-    }
-
-
-    @OnClick(R.id.free_good_detail_like_no_click_iv)
-    void like(){
-        if(bLike){
-            mLikeIv.setImageResource(R.drawable.xiangqing_btn_dianzan_p);
-            bLike=false;
-            likeIdle(bLike);  //取消点赞
-        }else{
-            mLikeIv.setImageResource(R.drawable.xiangqing_btn_dianzan);
-            bLike=true;
-            likeIdle(bLike);  //点赞
-        }
     }
 
     private void likeIdle(boolean bLike) {

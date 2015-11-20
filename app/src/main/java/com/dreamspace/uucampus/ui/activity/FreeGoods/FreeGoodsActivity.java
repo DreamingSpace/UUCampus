@@ -52,6 +52,7 @@ public class FreeGoodsActivity extends AbsActivity {
     FreeGoodsSortPopupWindow popupWindow;
 
     private FragmentStatePagerItemAdapter pagerAdpater;
+    public static final String CATEGORY = "category";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,11 +180,13 @@ public class FreeGoodsActivity extends AbsActivity {
     }
 
     void initFragment(List<String> items) {
-        FragmentPagerItems pages =new FragmentPagerItems((this));
+        FragmentPagerItems.Creator creator = FragmentPagerItems.with(this);
         for(String titleTab:items){
-            pages.add(FragmentPagerItem.of(titleTab, FreeGoodsLazyDataFragment.class));
+            Bundle bundle = new Bundle();
+            bundle.putString(CATEGORY, titleTab);
+            creator.add(titleTab, FreeGoodsLazyDataFragment.class, bundle);
         }
-        pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(),pages);
+        pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(), creator.create());
 //        items = Arrays.asList(ShareData.freeGoodsCategorys);
 //        pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(),
 //                FragmentPagerItems.with(this)

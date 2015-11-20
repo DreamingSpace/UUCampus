@@ -30,6 +30,7 @@ public class MyFreeGoodsAct extends AbsActivity{
     private MyFreeGoodsFragment pullOffFragment;
 
     private int currentIndex = 0;
+    private boolean pulloffOrSale = false;//用来判断用户是否上架了或下架了商品，根据此值来判断对切换的fragment是否需要刷新数据
 
     @Override
     protected int getContentView() {
@@ -98,5 +99,13 @@ public class MyFreeGoodsAct extends AbsActivity{
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,onSaleFragment)
                 .commit();
+    }
+
+    public void setPulloffOrSale(boolean pulloffOrSale) {
+        this.pulloffOrSale = pulloffOrSale;
+    }
+
+    public boolean isPulloffOrSale() {
+        return pulloffOrSale;
     }
 }
