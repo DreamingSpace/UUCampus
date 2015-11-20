@@ -1,6 +1,9 @@
 package com.dreamspace.uucampus.ui.activity.FreeGoods;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -93,5 +96,28 @@ public class FreeGoodsPublishFirstActivity extends AbsActivity {
             photoReady = true;
         }
         return photoReady;
+    }
+
+    BroadcastReceiver broadcastReceiver =new BroadcastReceiver(){
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            finish();             //接收销毁该activity时销毁此activity
+        }
+    };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //在当前activity中注册广播
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("destroyActivity");
+        this.registerReceiver(this.broadcastReceiver,filter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.unregisterReceiver(this.broadcastReceiver);
     }
 }

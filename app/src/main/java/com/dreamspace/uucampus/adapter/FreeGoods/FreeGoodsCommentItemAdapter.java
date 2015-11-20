@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.base.BasisAdapter;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
+import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.FreeGoodsCommentItem;
 
@@ -22,8 +23,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class FreeGoodsCommentItemAdapter extends BasisAdapter<FreeGoodsCommentItem, FreeGoodsCommentItemAdapter.viewHolder> {
 
-//    private int mUseful;
-//    private boolean bUseful = false;
     private UpdateData updateData = null;
 
     public FreeGoodsCommentItemAdapter(Context context) {
@@ -42,8 +41,8 @@ public class FreeGoodsCommentItemAdapter extends BasisAdapter<FreeGoodsCommentIt
         holder.mUsefulTv.setText(String.valueOf(entity.getUseful_number()));
         holder.mDateTv.setText(entity.getDate());
         //初始化图标
-        holder.bUseful =entity.isUseful_clicked();    //获取当前评论是否点击
-        if ( holder.bUseful) {
+        holder.bUseful = entity.isUseful_clicked();    //获取当前评论是否点击
+        if (holder.bUseful) {
             holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon_p);
 
         } else {
@@ -54,29 +53,37 @@ public class FreeGoodsCommentItemAdapter extends BasisAdapter<FreeGoodsCommentIt
         holder.mUsefulLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TLog.i("当前评论状态:", " comment_id" + entity.getId() + "评论是否点击" +  holder.bUseful + " number" + holder.mUseful);
-                if ( holder.bUseful) {    //取消有用
-                    holder.bUseful = false;
-                    holder.mUseful-=1;
-                    //界面更新
-                    holder.mUsefulTv.setText(String.valueOf(holder.mUseful));
-                    holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon);
-                    //缓冲数据更新
-                    entity.setUseful_clicked(holder.bUseful);
-                    entity.setUseful_number(holder.mUseful);
+                TLog.i("当前评论状态:", " comment_id" + entity.getId() + "评论是否点击" + holder.bUseful + " number" + holder.mUseful);
+                boolean buse = holder.bUseful;
+                if (holder.bUseful) {    //取消有用
                     //后端数据更新
+                    buse = false;
                     if (updateData != null) {
-                        updateData.updateUsefulData(entity.getId(),  holder.bUseful);
+                        updateData.updateUsefulData(entity.getId(), buse);
                     }
+                    if (NetUtils.isNetworkConnected(getmContext())) {
+                        holder.bUseful = false;
+                        holder.mUseful -= 1;
+                        //界面更新
+                        holder.mUsefulTv.setText(String.valueOf(holder.mUseful));
+                        holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon);
+                        //缓冲数据更新
+                        entity.setUseful_clicked(holder.bUseful);
+                        entity.setUseful_number(holder.mUseful);
+                    }
+
                 } else {          //添加有用
-                    holder.bUseful = true;
-                    holder.mUseful += 1;
-                    holder.mUsefulTv.setText(String.valueOf(holder.mUseful));
-                    holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon_p);
-                    entity.setUseful_clicked(holder.bUseful);
-                    entity.setUseful_number(holder.mUseful);
+                    buse = true;
                     if (updateData != null) {
-                        updateData.updateUsefulData(entity.getId(),  holder.bUseful);
+                        updateData.updateUsefulData(entity.getId(), buse);
+                    }
+                    if (NetUtils.isNetworkConnected(getmContext())) {
+                        holder.bUseful = true;
+                        holder.mUseful += 1;
+                        holder.mUsefulTv.setText(String.valueOf(holder.mUseful));
+                        holder.mUsefulIv.setImageResource(R.drawable.comment_like_icon_p);
+                        entity.setUseful_clicked(holder.bUseful);
+                        entity.setUseful_number(holder.mUseful);
                     }
                 }
             }
