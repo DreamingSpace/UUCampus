@@ -48,7 +48,9 @@ public class FreeGoodsPublishSuccessActivity extends AbsActivity {
         mBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGoThenKill(FreeGoodsActivity.class);
+//                readyGoThenKill(FreeGoodsActivity.class);
+                finish();
+                onBackPressed();
             }
         });
     }
