@@ -1,5 +1,6 @@
 package com.dreamspace.uucampus.ui.activity.FreeGoods;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -156,7 +157,11 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
                     bundle.putString(FreeGoodsPublishSuccessActivity.EXTRA_IDLE_ID, idle_id);
                     finish();
                     pd.dismiss();
-                    readyGo(FreeGoodsPublishSuccessActivity.class, bundle);
+                    //发送广播，销毁前一个activity
+                    Intent intent = new Intent();
+                    intent.setAction("destroyActivity");
+                    sendBroadcast(intent);
+                    readyGoThenKill(FreeGoodsPublishSuccessActivity.class, bundle);
                 }
 
                 @Override
@@ -189,8 +194,6 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
             }
         });
     }
-
-
 
     public void showClassify() {
         final ArrayList<String> classifys = new ArrayList<String>();

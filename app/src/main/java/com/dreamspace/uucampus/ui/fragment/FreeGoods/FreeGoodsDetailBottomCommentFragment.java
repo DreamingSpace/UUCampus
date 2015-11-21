@@ -3,12 +3,15 @@ package com.dreamspace.uucampus.ui.fragment.FreeGoods;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.FreeGoods.FreeGoodsCommentItemAdapter;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
+import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.FreeGoodsCommentItem;
 import com.dreamspace.uucampus.model.api.AddIdleCommentRes;
 import com.dreamspace.uucampus.model.api.CommentItem;
@@ -23,7 +26,6 @@ import com.dreamspace.uucampus.widget.LoadMoreListView;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.OnClick;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -48,11 +50,6 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
 
     public static final int ADD = 2;
     public static final int LOAD = 1;
-
-    public static FreeGoodsDetailBottomCommentFragment newInstance() {
-        FreeGoodsDetailBottomCommentFragment fragment = new FreeGoodsDetailBottomCommentFragment();
-        return fragment;
-    }
 
     @Override
     protected void onFirstUserVisible() {
@@ -93,10 +90,10 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
         mPublishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!PreferenceUtils.hasKey(getActivity(),PreferenceUtils.Key.LOGIN) ||
-                        !PreferenceUtils.getBoolean(getActivity(),PreferenceUtils.Key.LOGIN)){
+                if (!PreferenceUtils.hasKey(getActivity(), PreferenceUtils.Key.LOGIN) ||
+                        !PreferenceUtils.getBoolean(getActivity(), PreferenceUtils.Key.LOGIN)) {
                     readyGo(LoginActivity.class);
-                }else{
+                } else {
                     publishComment();
                 }
             }
@@ -185,7 +182,7 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
         loadingCommentByPage(++page, new OnRefreshListener<FreeGoodsCommentItem>() {
             @Override
             public void onFinish(List mEntities) {
-                refreshDate(mEntities,ADD);
+                refreshDate(mEntities, ADD);
                 onPullUpFinished();
             }
 
@@ -228,32 +225,27 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
     private void adapterUsefulCallBack() {
         mAdapter.setUpdateData(new FreeGoodsCommentItemAdapter.UpdateData() {
             @Override
-            public void updateUsefulData(String comment_id, boolean bUseful) {
-                if(!PreferenceUtils.hasKey(getActivity(),PreferenceUtils.Key.LOGIN) ||
-                        !PreferenceUtils.getBoolean(getActivity(),PreferenceUtils.Key.LOGIN)){
+            public void updateUsefulData(String comment_id, boolean useful_clicked, final TextView mUsefulTv, final ImageView mUserIv, final FreeGoodsCommentItem entity) {
+                if (!PreferenceUtils.hasKey(getActivity(), PreferenceUtils.Key.LOGIN) ||
+                        !PreferenceUtils.getBoolean(getActivity(), PreferenceUtils.Key.LOGIN)) {
                     readyGo(LoginActivity.class);
-                }else{
+                } else {
                     if (NetUtils.isNetworkConnected(getActivity().getApplicationContext())) {
-                        if (bUseful) {  //评论有用
+                        if (useful_clicked) {  //评论有用 取消 转 评论无用
                             final ProgressDialog pd = new ProgressDialog(mContext);
-                            pd.setContent("有用评论添加");
+                            pd.setContent("有用评取消");
                             pd.show();
-    //                        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "有用评论添加", true, false);
-                            ApiManager.getService(getActivity().getApplicationContext()).addIdleCommentUseful(idle_id, comment_id, new Callback<Response>() {
+                            ApiManager.getService(getActivity().getApplicationContext()).cancelIdleCommentUseful(idle_id, comment_id, new Callback<Response>() {
                                 @Override
                                 public void success(Response response, Response response2) {
-                                    //重新加载当前页面的数据
-                                    loadingCommentByPage(page, new OnRefreshListener() {
-                                        @Override
-                                        public void onFinish(List mEntities) {
-    //                                        refreshDate(mEntities,ADD);
-                                        }
+                                    TLog.i("有用评论取消：", "true");
+                                    // 更新adapter中的ui
+                                    mUsefulTv.setText(String.valueOf(entity.getUseful_number()-1));
+                                    mUserIv.setImageResource(R.drawable.comment_like_icon);
+                                    // 更新缓存
+                                    entity.setUseful_number(entity.getUseful_number()-1);
+                                    entity.setUseful_clicked(false);
 
-                                        @Override
-                                        public void onError() {
-
-                                        }
-                                    });
                                     pd.dismiss();
                                 }
 
@@ -263,14 +255,22 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
                                     pd.dismiss();
                                 }
                             });
-                        } else {  //评论无用
+
+                        } else {  //评论无用 转 评论有用
                             final ProgressDialog pd = new ProgressDialog(mContext);
-                            pd.setContent("有用评取消");
+                            pd.setContent("有用评论添加");
                             pd.show();
-    //                        final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "有用评取消", true, false);
-                            ApiManager.getService(getActivity().getApplicationContext()).cancelIdleCommentUseful(idle_id, comment_id, new Callback<Response>() {
+                            ApiManager.getService(getActivity().getApplicationContext()).addIdleCommentUseful(idle_id, comment_id, new Callback<Response>() {
                                 @Override
                                 public void success(Response response, Response response2) {
+                                    TLog.i("有用评论添加：", "true");
+                                    // 更新adapter中的ui
+                                    mUsefulTv.setText(String.valueOf(entity.getUseful_number()+1));
+                                    mUserIv.setImageResource(R.drawable.comment_like_icon_p);
+                                    // 更新缓存
+                                    entity.setUseful_number(entity.getUseful_number()+1);
+                                    entity.setUseful_clicked(true);
+
                                     pd.dismiss();
                                 }
 

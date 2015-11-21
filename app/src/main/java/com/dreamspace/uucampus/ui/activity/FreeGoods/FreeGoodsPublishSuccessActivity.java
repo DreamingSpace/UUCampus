@@ -41,15 +41,14 @@ public class FreeGoodsPublishSuccessActivity extends AbsActivity {
             public void onClick(View v) {
                 Bundle bundle=new Bundle();
                 bundle.putString(FreeGoodsDetailActivity.EXTRA_IDLE_ID,idle_id);
-                readyGo(FreeGoodsDetailActivity.class, bundle);
+                readyGoThenKill(FreeGoodsDetailActivity.class, bundle);
             }
         });
 
         mBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGo(FreeGoodsActivity.class);
-                finish();
+                readyGoThenKill(FreeGoodsActivity.class);
             }
         });
     }

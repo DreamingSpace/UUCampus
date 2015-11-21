@@ -8,14 +8,12 @@ import android.view.View;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
-import com.dreamspace.uucampus.common.ShareData;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.IdleItem;
 import com.dreamspace.uucampus.model.api.SearchIdleRes;
 import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsActivity;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 
 import java.util.List;
 
@@ -33,6 +31,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     private String order = null;   //popupWindow对应选中的order
     private boolean isFragDestroy = false;
     private String location = null;
+    private boolean isSecondResume = false;
 
     public FreeGoodsLazyDataFragment() {
     }
@@ -158,5 +157,20 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     public void onDestroy() {
         super.onDestroy();
         isFragDestroy = true;
+    }
+
+    @Override
+    public void onResume() {    //当从其他页面回来时重新加载
+        super.onResume();
+        if(isSecondResume){
+            location = PreferenceUtils.getString(getActivity().getApplicationContext(), PreferenceUtils.Key.LOCATION);
+            loadingInitData();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        isSecondResume = true;
     }
 }

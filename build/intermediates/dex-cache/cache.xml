@@ -2,270 +2,270 @@
 <items version="2" >
 
     <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\classes-47509a29088a8791e36673657b97665e54a28fc5.jar" />
-    </item>
-    <item
-        jar="C:\Users\Lx\.gradle\caches\modules-2\files-2.1\net.glxn.qrgen\core\2.0\a4768205c0fa814b35374bb26586900d0ef8d4fe\core-2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="a4768205c0fa814b35374bb26586900d0ef8d4fe">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\core-2.0-e1c54244fd33ced53b53535c81a7a0fedd7859c3.jar" />
-    </item>
-    <item
-        jar="C:\Users\Lx\.gradle\caches\modules-2\files-2.1\com.qiniu\happy-dns\0.2.1\b9a617ab7630ca6cf841becd35e3a74ffbfeb56f\happy-dns-0.2.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="b9a617ab7630ca6cf841becd35e3a74ffbfeb56f">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\happy-dns-0.2.1-3a27554e9eb479e59f492a12cebcd22df974fcfa.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\src\main\libs\umeng_social_sdk.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="4688dc44ccef22b7f057301ee6abbe187a8d35ea">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\umeng_social_sdk-a4b68b4bccd2ef835bcbf8bca025ec7a1607fe3f.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\src\main\libs\SocialSDK_WeiXin_2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="b651be701cb256e3972e7c5a07119f26bb7b44a4">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\SocialSDK_WeiXin_2-d3bd889568b03ac63a052f7a156563966aaaaaaf.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\src\main\libs\libpingpp-2.0.6.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1706efc4c9e1f28f9527ce1873d388a82f2d2a1c">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\libpingpp-2.0.6-f0cac78c292b485f0da9734bf1d2c43c3caa7afb.jar" />
-    </item>
-    <item
-        jar="C:\Users\Lx\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\library-2.4.0-9a404f242664d62ffea98b0bce044f7cf650bd38.jar" />
-    </item>
-    <item
-        jar="C:\Users\Lx\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.4\695b63d702f505b9b916e02272e3b6381bade7f\gson-2.4.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="0695b63d702f505b9b916e02272e3b6381bade7f">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\gson-2.4-3675f1cfb3da3b5eecea87b3d4bdb22d43334846.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\src\main\libs\SocialSDK_QQZone_1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c184c69f43b1fe46390f7123717c65bd844bccb6">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\SocialSDK_QQZone_1-e53b9510b0a890609c817501ad0a736d59a36829.jar" />
-    </item>
-    <item
-        jar="C:\Users\Lx\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.6.0\a7537446a030da8eb0da4c71424d16c2589f6c4a\glide-3.6.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="a7537446a030da8eb0da4c71424d16c2589f6c4a">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\glide-3.6.0-4a9576b1140c75faf2944370b9e838b52f51f3c0.jar" />
-    </item>
-    <item
-        jar="C:\Users\Lx\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\1.9.0\a681c044244d9fc375198588297a39ba78028423\retrofit-1.9.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="a681c044244d9fc375198588297a39ba78028423">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\retrofit-1.9.0-f05b2b39a56b5526af4e1b9f55fc3afd0de3b888.jar" />
-    </item>
-    <item
-        jar="C:\Users\Lx\.gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.1.0\908e18674f895e3e1fa8f4a954b8c637a23d2801\core-3.1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="908e18674f895e3e1fa8f4a954b8c637a23d2801">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\core-3.1.0-d93bf25f18962dcbc6e5ad5ec5c7602c39179e9d.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\internal_impl-22.2.0-9e46b71c8f4cae6a1cd0f180fe28f0879d48a5f7.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\classes-af22378dae4b138da541404dc4f1f09b73416847.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\src\main\libs\httpmime-4.1.3.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="e70d34d98f7f7f3b2b92105b9f2fe2a7a7184461">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\httpmime-4.1.3-b2599475169f3cbecf181d385d284dcec972e27e.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\src\main\libs\alipaySDK-20150818.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="6dde19fc34adb03c637b17fdaa754e0c02cf75a0">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\alipaySDK-20150818-ecf29ccd38e62d16cf86d6441b67464d9ec3762e.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\src\main\libs\SocialSDK_WeiXin_1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="47f4993168154fa73377d7470b9f6887d48a8023">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\SocialSDK_WeiXin_1-c7f8e3d6f7c09d4ff5e1bb85e2afacdce76299e5.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\classes-cbed6be557aa7f3d1acf35d82f9ada6f9c27b1a2.jar" />
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\classes-b9d096be0e01c48c939c83d58ec19f33e973fdcd.jar" />
     </item>
     <item
-        jar="C:\Users\Lx\.gradle\caches\modules-2\files-2.1\com.qiniu\qiniu-android-sdk\7.0.7.1\58abe32c29dc47db951ac5227f683cda0df75f83\qiniu-android-sdk-7.0.7.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="58abe32c29dc47db951ac5227f683cda0df75f83">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\qiniu-android-sdk-7.0.7.1-f8cb36375edd9f92ff30ac1dd4f96df3a06df61f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Lx\.gradle\caches\modules-2\files-2.1\net.glxn.qrgen\android\2.0\e193fae1a38d614a6cd2a2cc6d5cc4fb63ca6732\android-2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="e193fae1a38d614a6cd2a2cc6d5cc4fb63ca6732">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\android-2.0-d3b44c14fefe65524166fea347647994938a327f.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\src\main\libs\SocialSDK_QQZone_2.jar"
+        jar="I:\personal document\Android\project\UUCampus\app\src\main\libs\SocialSDK_QQZone_2.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="4a69b33758dcba3ef519cbd4b6c8af5f41603c4f">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\SocialSDK_QQZone_2-db70a91c3eb73dc16ab0b552008d5a133641f63b.jar" />
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\SocialSDK_QQZone_2-8c6bd94394a51af98e32772e4985283224aa3b32.jar" />
     </item>
     <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\com.pnikosis\materialish-progress\1.7\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="41a4edf3c43fdbce6eba27da50b17ff9933987f1">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\classes-6f4638c88a50c270b0cbae896e2aae98766e7537.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\com.bigkoo\convenientbanner\1.1.4\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c4e5766aee236cdf50ea20f51b6cd23e33087c2c">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\classes-607857f6591640805c9b62696bfce03319ba2516.jar" />
-    </item>
-    <item
-        jar="C:\Users\Lx\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.7\cd78109020f9ec803ef4e652c17ee4615b03e20a\android-async-http-1.4.7.jar"
+        jar="C:\Users\wufan\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.7\cd78109020f9ec803ef4e652c17ee4615b03e20a\android-async-http-1.4.7.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="cd78109020f9ec803ef4e652c17ee4615b03e20a">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\android-async-http-1.4.7-03e384913785793e8533d36f986863982ac23326.jar" />
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.7-0fb69e70156700d97173bc684c11b834e1dec039.jar" />
     </item>
     <item
-        jar="G:\projects\Android\UUCampus\app\src\main\libs\SocialSDK_Sina.jar"
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\com.bigkoo\convenientbanner\1.1.4\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="a6eee0ece63ba5e74411057d09eda1a5a01ca940">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\SocialSDK_Sina-f089e266d000d1f67eb4f28832fbd973241bd990.jar" />
+        sha1="c4e5766aee236cdf50ea20f51b6cd23e33087c2c">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\classes-7b0014ed2f7b1995ad29364d4046c7a96f31583f.jar" />
     </item>
     <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\com.baoyz.swipemenulistview\library\1.3.0\jars\classes.jar"
+        jar="I:\personal document\Android\project\UUCampus\app\src\main\libs\SocialSDK_WeiXin_2.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="8ec8378e8d7aa3104f60823e6350f2728d3609ba">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\classes-b2be2bbdf886ac9d38ecf8863a54005f08a6f162.jar" />
+        sha1="b651be701cb256e3972e7c5a07119f26bb7b44a4">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\SocialSDK_WeiXin_2-11eab77243181586cc3c98c1508be7b957ecfe81.jar" />
     </item>
     <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\classes-e4bb80c538bba4575fea4d009380eee603de8003.jar" />
-    </item>
-    <item
-        jar="C:\Users\Lx\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\butterknife-7.0.1-2cfafae7b91ba3cf5dd39c09c7b61358557653d8.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\me.iwf.photopicker\PhotoPicker\0.2.7\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="0b38e8f65399bc4c33b38219eef6200ac38aa500">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\classes-f73f69c125f4e6d692caf703e2ab7f806fb67bbf.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\src\main\libs\SocialSDK_QQZone_3.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="931ab461b91c2a2fd5c697e7f622cdca8c2b3ac5">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\SocialSDK_QQZone_3-55ee6b7e6bc78916ece2facec79d7364f1519496.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.0\jars\classes.jar"
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="97f7e239e86ef994de894818fdd8a71d2e89d6aa">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\classes-dc7c87ef4522410efbd8b7d6b984c0d36bfbe53d.jar" />
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\classes-4f30c42a9ad21e51f68ccfeeaedbf76753bfb451.jar" />
     </item>
     <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\1.3.0\jars\classes.jar"
+        jar="I:\personal document\Android\project\UUCampus\app\src\main\libs\SocialSDK_WeiXin_1.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\classes-cd8c05d4ec75e382cc95a709a75749133938db5d.jar" />
+        sha1="47f4993168154fa73377d7470b9f6887d48a8023">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\SocialSDK_WeiXin_1-93c251359028ac62688e5dede2d7b5fa2c0885b2.jar" />
     </item>
     <item
-        jar="G:\projects\Android\UUCampus\app\src\main\libs\UPPayAssistEx.jar"
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\com.baoyz.swipemenulistview\library\1.3.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="d63c415d9b8c8d48677fe2253b21180ccc1afa0f">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\UPPayAssistEx-a810b8afb4ca71a857e2c8889eee46614ad640a0.jar" />
+        sha1="8ec8378e8d7aa3104f60823e6350f2728d3609ba">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\classes-6bdea4abf6cb8820b1f7b6173aaa697564059c3d.jar" />
     </item>
     <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\com.ogaclejapan.smarttablayout\library\1.4.1\jars\classes.jar"
+        jar="C:\Users\wufan\.gradle\caches\modules-2\files-2.1\net.glxn.qrgen\core\2.0\a4768205c0fa814b35374bb26586900d0ef8d4fe\core-2.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="1ccc48d671038e7f5ab1c79092ec33bca77c2311">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\classes-33b576229cec1d1981c2d5069dd9a87c351eecbb.jar" />
+        sha1="a4768205c0fa814b35374bb26586900d0ef8d4fe">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\core-2.0-d2db74296d59a40b147a295c799f5d1a64393618.jar" />
     </item>
     <item
-        jar="G:\projects\Android\UUCampus\app\src\main\libs\UPPayPluginEx.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="2adb7d37c28757220e1a455dbd5722988aa6c73d">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\UPPayPluginEx-2f6e8267deaee604db17b385c007aaf9ba046567.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\com.melnykov\floatingactionbutton\1.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8c6ebb7d087d1a30bf84356bd2aecf85309fc024">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\classes-7c3afe3bbe51f4aa2186dd7a9affbdf702e6a734.jar" />
-    </item>
-    <item
-        jar="D:\develop tools\Android SDK\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\support-annotations-22.2.0-b062a574cf5bebd9cd72f38d5476d0b79bf07108.jar" />
-    </item>
-    <item
-        jar="G:\projects\Android\UUCampus\app\build\intermediates\exploded-aar\com.ogaclejapan.smarttablayout\utils-v4\1.4.1\jars\classes.jar"
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\com.ogaclejapan.smarttablayout\utils-v4\1.4.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="9c84d62598d02dc93751480fd070f625167ac1ad">
-        <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\classes-0d372b600b478e244231648408675edaccea8c0c.jar" />
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\classes-0769ba550cfab27194897f4e66c242eef7f57fc7.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\src\main\libs\alipaySDK-20150818.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6dde19fc34adb03c637b17fdaa754e0c02cf75a0">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\alipaySDK-20150818-1d910f67302ef12e7ca258df2db6e7ffd8a417ec.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\1.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\classes-cf2187335006100fee825cb937cb654111fde0de.jar" />
+    </item>
+    <item
+        jar="C:\Users\wufan\.gradle\caches\modules-2\files-2.1\net.glxn.qrgen\android\2.0\e193fae1a38d614a6cd2a2cc6d5cc4fb63ca6732\android-2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e193fae1a38d614a6cd2a2cc6d5cc4fb63ca6732">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\android-2.0-c20b11f7ffc16abc5f81e173b00b476b1a5385f1.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\classes-01bffe7df09d324a02e04ce39ee435b7bb27eb8b.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\src\main\libs\UPPayPluginEx.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2adb7d37c28757220e1a455dbd5722988aa6c73d">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\UPPayPluginEx-f96b4c7fa73cd31ec5c9fb7aa1961d894a49a7c0.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\src\main\libs\umeng_social_sdk.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4688dc44ccef22b7f057301ee6abbe187a8d35ea">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\umeng_social_sdk-c2b6d24fa966567b41173c3afce5caaa4a8bb5b0.jar" />
+    </item>
+    <item
+        jar="C:\Users\wufan\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\library-2.4.0-d16d596256860f7b439efb09ee60052a2a726aa7.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\src\main\libs\SocialSDK_Sina.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a6eee0ece63ba5e74411057d09eda1a5a01ca940">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\SocialSDK_Sina-dd4c57eb7dc7e05a1a64617cb79092a964a6eb80.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\src\main\libs\SocialSDK_QQZone_1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c184c69f43b1fe46390f7123717c65bd844bccb6">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\SocialSDK_QQZone_1-1107119cfa40ab8882f6df62f702e214e11070d7.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\com.melnykov\floatingactionbutton\1.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8c6ebb7d087d1a30bf84356bd2aecf85309fc024">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\classes-2c6dc80eb9cd146dcd2109326f3e89509d217cf7.jar" />
+    </item>
+    <item
+        jar="C:\Users\wufan\.gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.1.0\908e18674f895e3e1fa8f4a954b8c637a23d2801\core-3.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="908e18674f895e3e1fa8f4a954b8c637a23d2801">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\core-3.1.0-5f1a01475ad14f486fd029eab17eeabc1daf744b.jar" />
+    </item>
+    <item
+        jar="C:\Users\wufan\.gradle\caches\modules-2\files-2.1\com.qiniu\qiniu-android-sdk\7.0.7.1\58abe32c29dc47db951ac5227f683cda0df75f83\qiniu-android-sdk-7.0.7.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="58abe32c29dc47db951ac5227f683cda0df75f83">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\qiniu-android-sdk-7.0.7.1-1f85df2e7b125e1e05ebdfa16913bcc940a5c424.jar" />
+    </item>
+    <item
+        jar="C:\Users\wufan\.gradle\caches\modules-2\files-2.1\com.qiniu\happy-dns\0.2.1\b9a617ab7630ca6cf841becd35e3a74ffbfeb56f\happy-dns-0.2.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b9a617ab7630ca6cf841becd35e3a74ffbfeb56f">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\happy-dns-0.2.1-4d39a13daaaf91728523e8e7595b894e87f58214.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\classes-c7e0ca159785e3c21323c4ecd267e51b63e2b251.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-af3209a3faa7e6c678c04bd06a243bcb4cda2ae3.jar" />
+    </item>
+    <item
+        jar="C:\Users\wufan\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.6.0\a7537446a030da8eb0da4c71424d16c2589f6c4a\glide-3.6.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a7537446a030da8eb0da4c71424d16c2589f6c4a">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\glide-3.6.0-57761c5bf93b96d5d27417713aacad4eee99469b.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\com.pnikosis\materialish-progress\1.7\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="41a4edf3c43fdbce6eba27da50b17ff9933987f1">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\classes-2a70d39db58f21fe5f1b731f31fe0068990b00af.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\classes-ea090712716bec0dfc826cbd6f52c350e84ccc15.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\me.iwf.photopicker\PhotoPicker\0.2.7\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="0b38e8f65399bc4c33b38219eef6200ac38aa500">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\classes-8bd6ee39e62198b7ba7e13047dfd8f95a70060e9.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\src\main\libs\httpmime-4.1.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e70d34d98f7f7f3b2b92105b9f2fe2a7a7184461">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\httpmime-4.1.3-a94943e90dad2988f2b420e5cf62700225b7dcc8.jar" />
+    </item>
+    <item
+        jar="C:\Users\wufan\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\butterknife-7.0.1-c4fe861bd47f7f2eecb24cb686dc8f6715669408.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\src\main\libs\UPPayAssistEx.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d63c415d9b8c8d48677fe2253b21180ccc1afa0f">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\UPPayAssistEx-fc61454849b39ccb6e8c7d51af05fb9e10c756c1.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\src\main\libs\SocialSDK_QQZone_3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="931ab461b91c2a2fd5c697e7f622cdca8c2b3ac5">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\SocialSDK_QQZone_3-fe3732b35e5f4eb8cdd45fb9c6948fbb13b67b8b.jar" />
+    </item>
+    <item
+        jar="F:\Android\studio sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-0095e49c8e2bced1d6b2d6bc4cdc3b0efa50df89.jar" />
+    </item>
+    <item
+        jar="C:\Users\wufan\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\1.9.0\a681c044244d9fc375198588297a39ba78028423\retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\retrofit-1.9.0-b40cfa99fda5e1a247157da06a456711d2a96e70.jar" />
+    </item>
+    <item
+        jar="C:\Users\wufan\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.4\695b63d702f505b9b916e02272e3b6381bade7f\gson-2.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="0695b63d702f505b9b916e02272e3b6381bade7f">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\gson-2.4-150ac7355b5068f58602b61b9c2f65aaf230de42.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\build\intermediates\exploded-aar\com.ogaclejapan.smarttablayout\library\1.4.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1ccc48d671038e7f5ab1c79092ec33bca77c2311">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\classes-ec4a4b9c32d989607b41ae4b4d1bf4fed5ac20cb.jar" />
+    </item>
+    <item
+        jar="I:\personal document\Android\project\UUCampus\app\src\main\libs\libpingpp-2.0.6.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1706efc4c9e1f28f9527ce1873d388a82f2d2a1c">
+        <dex dex="I:\personal document\Android\project\UUCampus\app\build\intermediates\pre-dexed\debug\libpingpp-2.0.6-07b4fefbb32fc7a85b9cd5c72bdbca791866d8e7.jar" />
     </item>
 
 </items>
