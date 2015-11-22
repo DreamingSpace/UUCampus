@@ -30,7 +30,7 @@ public class FreeGoodsItemAdapter extends BasisAdapter<IdleItem, FreeGoodsItemAd
         CommonUtils.showImageWithGlide(getmContext(), holder.image, entity.getImage());
         holder.nameTv.setText(entity.getName());
         holder.userNameTv.setText(entity.getUser_name());
-        holder.priceTv.setText("￥"+String.valueOf(entity.getPrice()));
+        holder.priceTv.setText("￥"+String.valueOf(entity.getPrice() / Float.valueOf(100)));
         holder.viewNumTv.setText(String.valueOf(entity.getView_number())+"人感兴趣");
     }
 

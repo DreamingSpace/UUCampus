@@ -1,6 +1,7 @@
 package com.dreamspace.uucampus.ui.fragment.FreeGoods;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -31,7 +32,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     private String order = null;   //popupWindow对应选中的order
     private boolean isFragDestroy = false;
     private String location = null;
-    private boolean isSecondResume = false;
+    private boolean isDetailBack= false;
 
     public FreeGoodsLazyDataFragment() {
     }
@@ -160,17 +161,23 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     }
 
     @Override
-    public void onResume() {    //当从其他页面回来时重新加载
+    public void onResume() {
         super.onResume();
-        if(isSecondResume){
+        if(!isDetailBack){      //当从其他页面回来时(不是直接从detail界面回来)重新加载
             location = PreferenceUtils.getString(getActivity().getApplicationContext(), PreferenceUtils.Key.LOCATION);
             loadingInitData();
         }
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        isSecondResume = true;
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.i("Result:", "onActivityResult"+"requestCode"+requestCode+"\n resultCode="+resultCode);
+        if(requestCode==REQUEST_CODE) {
+            if(resultCode==RESULT_CODE) {
+                //直接进入detail界面，不需要刷新
+                isDetailBack =true;
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

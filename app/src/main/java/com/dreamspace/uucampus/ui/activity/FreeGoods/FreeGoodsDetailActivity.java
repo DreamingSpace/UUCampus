@@ -22,13 +22,13 @@ import com.dreamspace.uucampus.ui.activity.Login.LoginActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsDetailBottomCommentFragment;
 import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsDetailBottomInfoFragment;
+import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsLazyListFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.umeng.socialize.sso.UMSsoHandler;
 
 import butterknife.Bind;
-import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -260,7 +260,7 @@ public class FreeGoodsDetailActivity extends AbsActivity {
         mGoodsNameTv.setText(getIdleInfoRes.getName());
         mUserNameTv.setText(getIdleInfoRes.getUser_name());
         CommonUtils.showImageWithGlide(this, mUserImage, getIdleInfoRes.getUser_image());
-        mPriceTv.setText(String.valueOf(getIdleInfoRes.getPrice())+getResources().getString(R.string.yuan));
+        mPriceTv.setText(String.valueOf(getIdleInfoRes.getPrice()/ Float.valueOf(100))+getResources().getString(R.string.yuan));
         mViewTv.setText(String.valueOf(getIdleInfoRes.getView_number())+getResources().getString(R.string.interest)); //感兴趣的人
         mLikeTv.setText(String.valueOf(getIdleInfoRes.getLike_number())+getResources().getString(R.string.like));
         mDateTv.setText(getIdleInfoRes.getLast_update());
@@ -303,6 +303,7 @@ public class FreeGoodsDetailActivity extends AbsActivity {
             data.putExtra(IDLE_CURRENT_COLLECT_STATE, Integer.parseInt(is_collection));
             setResult(RESULT_OK,data);
         }
+        setResult(FreeGoodsLazyListFragment.RESULT_CODE);
         super.onBackPressed();
     }
 
