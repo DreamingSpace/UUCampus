@@ -19,6 +19,7 @@ import java.util.List;
 public class FreeGoodsPullOffListAdapter extends BasisAdapter<MyIdleItem,FreeGoodsPullOffListAdapter.ViewHolder>{
     private Context mContext;
     private OnGoodSaleClickListener onGoodSaleClickListener;
+    private OnEditClickListener onEditClickListener;
 
     public FreeGoodsPullOffListAdapter(Context mContext, List<MyIdleItem> mEntities, Class<ViewHolder> classType) {
         super(mContext, mEntities, classType);
@@ -29,11 +30,13 @@ public class FreeGoodsPullOffListAdapter extends BasisAdapter<MyIdleItem,FreeGoo
     protected void setDataIntoView(ViewHolder holder, final MyIdleItem entity) {
         CommonUtils.showImageWithGlide(mContext,holder.image,entity.getImage());
         holder.name.setText(entity.getName());
-        holder.price.setText(mContext.getString(R.string.RMB) + entity.getPrice());
+        holder.price.setText(mContext.getString(R.string.RMB) + (float)entity.getPrice() / 100);
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(onEditClickListener != null){
+                    onEditClickListener.onEditClick(entity.getIdle_id());
+                }
             }
         });
 
@@ -75,5 +78,13 @@ public class FreeGoodsPullOffListAdapter extends BasisAdapter<MyIdleItem,FreeGoo
 
     public void setOnGoodSaleClickListener(OnGoodSaleClickListener onGoodSaleClickListener) {
         this.onGoodSaleClickListener = onGoodSaleClickListener;
+    }
+
+    public interface OnEditClickListener{
+        void onEditClick(String idle_id);
+    }
+
+    public void setOnEditClickListener(OnEditClickListener onEditClickListener) {
+        this.onEditClickListener = onEditClickListener;
     }
 }

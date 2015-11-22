@@ -7,7 +7,7 @@ public class IdleCollectionItem {
     private String idle_id;
     private String name;
     private String image;
-    private String price;
+    private int price;
     private String user_name;
     private String view_number;
 
@@ -35,11 +35,11 @@ public class IdleCollectionItem {
         this.image = image;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

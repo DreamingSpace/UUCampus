@@ -317,8 +317,8 @@ public class OrderDetailAct extends AbsActivity{
             goodNameTv.setText(mOrderDetail.getGood().getName());
         }
         priceBeforeReduceTv.setText(getString(R.string.RMB) +
-                mOrderDetail.getGood().getOriginal_price() * mOrderDetail.getQuantity());
-        totalPriceTv.setText(getString(R.string.RMB) + mOrderDetail.getTotal_price());
+                mOrderDetail.getGood().getOriginal_price() /100 * mOrderDetail.getQuantity());
+        totalPriceTv.setText(getString(R.string.RMB) + mOrderDetail.getTotal_price() / 100);
         CommonUtils.showImageWithGlideInCiv(this, shopImageCiv, mOrderDetail.getShop().getShop_image());
         shopNameTv.setText(mOrderDetail.getShop().getName());
         orderIdTv.setText(mOrderDetail.get_id());
@@ -326,8 +326,8 @@ public class OrderDetailAct extends AbsActivity{
         buyerPhoneTv.setText(mOrderDetail.getBuyer().getPhone_num());
         locationTv.setText(mOrderDetail.getBuyer().getLocation());
         discountTv.setText(getString(R.string.RMB) +
-                (mOrderDetail.getGood().getOriginal_price() * mOrderDetail.getQuantity() -
-                        mOrderDetail.getTotal_price()));
+                (mOrderDetail.getGood().getOriginal_price() / 100 * mOrderDetail.getQuantity() -
+                        mOrderDetail.getTotal_price() / 100 ));
         remarkTv.setText(mOrderDetail.getRemark());
 
         goodRl.setOnClickListener(new View.OnClickListener() {

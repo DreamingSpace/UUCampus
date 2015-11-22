@@ -5,7 +5,7 @@ package com.dreamspace.uucampus.model.api;
  */
 public class MyIdleItem {
     private String idle_id;
-    private String price;
+    private float price;
     private String name;
     private String image;
 
@@ -25,11 +25,11 @@ public class MyIdleItem {
         this.name = name;
     }
 
-    public String getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

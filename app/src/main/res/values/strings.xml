@@ -232,6 +232,7 @@
     <string name="thx_your_feedback">感谢您的意见反馈，我们会更加努力~</string>
     <string name="feed_back_cant_less_than_10">反馈不能少于10字~</string>
     <string name="image_upload_failed">图片上传失败</string>
+    <string name="not_get_idle_category">没有获取到闲置分类，是否重新获取？</string>
 
     <!-- login strings used-->
     <string name="login_username_hint">请输入您的手机号</string>

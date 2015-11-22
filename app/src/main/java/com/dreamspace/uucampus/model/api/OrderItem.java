@@ -16,7 +16,7 @@ public class OrderItem {
     private int status;
     private OrderShopItem shop;
     private OrderGood good;
-    private float total_price;
+    private int total_price;
     private String _id;
     private int quantity;
 
@@ -44,11 +44,11 @@ public class OrderItem {
         this.good = good;
     }
 
-    public float getTotal_price() {
+    public int getTotal_price() {
         return total_price;
     }
 
-    public void setTotal_price(float total_price) {
+    public void setTotal_price(int total_price) {
         this.total_price = total_price;
     }
 

@@ -84,9 +84,9 @@ public class OrderPayAct extends AbsActivity{
     protected void initViews() {
         getSupportActionBar().setTitle(getString(R.string.order_confirm ));
         orderNameTv.setText(orderName);
-        orderPriceTv.setText(getString(R.string.RMB) + orderPrice);
-        restPayTv.setText(getString(R.string.RMB) + restToPay);
-        reduceTv.setText(getString(R.string.already_reduce) + getString(R.string.RMB) + (orderPrice - restToPay));
+        orderPriceTv.setText(getString(R.string.RMB) + orderPrice / 100);
+        restPayTv.setText(getString(R.string.RMB) + restToPay / 100);
+        reduceTv.setText(getString(R.string.already_reduce) + getString(R.string.RMB) + (orderPrice - restToPay) / 100);
         initListeners();
     }
 

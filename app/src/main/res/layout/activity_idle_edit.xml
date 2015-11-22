@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/custom_toolbar"/>
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/view_round_corner"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <ImageView
+                    android:id="@+id/good_image_iv"
+                    android:src="@color/search_opaque"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp" />
+
+                <RelativeLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+
+                    <EditText
+                        android:id="@+id/free_goods_name_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:textSize="14sp"
+                        android:drawableLeft="@drawable/add_product_icon_name"
+                        android:drawablePadding="4dp"
+                        android:hint="@string/goods_name"
+                        android:inputType="text"
+                        android:padding="4dp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_normal" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#cccccc" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+
+                    <EditText
+                        android:id="@+id/free_goods_price_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:textSize="14sp"
+                        android:drawableLeft="@drawable/add_product_icon_price"
+                        android:drawablePadding="4dp"
+                        android:hint="@string/goods_price"
+                        android:inputType="numberDecimal"
+                        android:padding="4dp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_normal" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#cccccc" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+
+                    <EditText
+                        android:id="@+id/free_goods_classify_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:textSize="14sp"
+                        android:drawableLeft="@drawable/add_product_icon_classify"
+                        android:drawablePadding="4dp"
+                        android:editable="false"
+                        android:hint="@string/goods_classify"
+                        android:padding="4dp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_normal" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#cccccc" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="4.5dp"
+                        android:src="@drawable/add_product_icon_depict"/>
+
+                    <EditText
+                        android:id="@+id/free_goods_detail_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="@null"
+                        android:gravity="start"
+                        android:layout_marginTop="10dp"
+                        android:textSize="14sp"
+                        android:layout_marginLeft="6dp"
+                        android:hint="@string/goods_detail_describe"
+                        android:inputType="textMultiLine"
+                        android:textColor="@color/text_normal" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/confirm_btn"
+                android:background="@drawable/button_round"
+                android:text="@string/confirm"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="45dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
