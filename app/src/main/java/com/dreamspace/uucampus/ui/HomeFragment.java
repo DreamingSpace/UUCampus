@@ -225,7 +225,7 @@ public class HomeFragment extends BaseLazyFragment {
 
     //获取广告栏信息
     private void getAd(){
-        if(NetUtils.isNetworkConnected(getActivity())){
+        if(NetUtils.isNetworkAvailable(getActivity())){
             ApiManager.getService(getActivity()).getAd(new Callback<GetAdRes>() {
                 @Override
                 public void success(GetAdRes getAdRes, Response response) {
