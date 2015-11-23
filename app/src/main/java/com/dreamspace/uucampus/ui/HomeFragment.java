@@ -25,7 +25,7 @@ import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.bind;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
