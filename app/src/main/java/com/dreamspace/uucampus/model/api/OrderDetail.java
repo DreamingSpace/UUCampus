@@ -10,7 +10,7 @@ public class OrderDetail {
     private String code;
     private Buyer buyer;
     private String remark;
-    private float total_price;
+    private int total_price;
     private boolean use_card;
     private String time;
     private String _id;
@@ -64,11 +64,11 @@ public class OrderDetail {
         this.remark = remark;
     }
 
-    public float getTotal_price() {
+    public int getTotal_price() {
         return total_price;
     }
 
-    public void setTotal_price(float total_price) {
+    public void setTotal_price(int total_price) {
         this.total_price = total_price;
     }
 

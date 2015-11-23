@@ -19,7 +19,7 @@
     <color name="t">#ff555555</color>
     <!-- defined color-->
     <color name="detail_background">#0096a6</color>
-    <color name="main_bg">#E6E6E6</color>
+    <color name="main_bg">#EEEEEE</color>
     <color name="text_normal">#666666</color>
     <color name="text_pressed">#059183</color>
     <color name="main_color">#06C1AE</color>
@@ -65,8 +65,8 @@
     <color name="app_theme_color">#06c1ae</color>
     <color name="app_theme_color2">#059183</color>
     <color name="smart_tab_layout_default_text_color">#666666</color>
-    <color name="market_fragments_bg_color">#F0EFED</color>
-    <color name="divider_color">#999999</color>
+    <color name="market_fragments_bg_color">#eeeeee</color>
+    <color name="divider_color">#bfbfbf</color>
     <color name="good_name_text_color">#222222</color>
     <color name="price_text_color">#f15353</color>
     <color name="buy_bg_press">#d15353</color>

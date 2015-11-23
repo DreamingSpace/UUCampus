@@ -5,8 +5,7 @@
     android:layout_height="35dp"
     android:background="?attr/selectableItemBackground"
     android:gravity="center"
-    android:textColor="@color/custom_text"
-    android:textStyle="bold"
+    android:textColor="@drawable/market_smart_tab_textcolor"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:textSize="16sp">
