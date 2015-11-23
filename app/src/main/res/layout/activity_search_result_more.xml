@@ -6,118 +6,163 @@
 
     <include layout="@layout/search_toolbar"></include>
 
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/search_more_history_linear"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:text="历史记录"
+            android:textSize="18sp" />
+
+        <ListView
+            android:id="@+id/search_more_history_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/white"
+            android:footerDividersEnabled="false"></ListView>
+
+        <View
+            android:id="@+id/search_more_history_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/divider_color" />
 
         <LinearLayout
+            android:id="@+id/search_more_history_delete_linear"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="26dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/search_goods_more_linear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:padding="5dp"
+                android:src="@drawable/my_goods_btn_delete" />
 
-                <TextView
-                    android:id="@+id/search_goods_more_head"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="5dp"
-                    android:text="商品"
-                    android:textSize="18sp" />
-
-                <ListView
-                    android:id="@+id/search_goods_more_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:divider="@color/white"
-                    android:footerDividersEnabled="false"></ListView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/search_idle_more_linear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/search_idle_more_head"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="5dp"
-                    android:text="闲置"
-                    android:textSize="18sp" />
-
-                <ListView
-                    android:id="@+id/search_idle_more_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:divider="@color/white"
-                    android:footerDividersEnabled="false"></ListView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/search_shop_more_linear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/search_shop_more_head"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="5dp"
-                    android:text="店铺"
-                    android:textSize="18sp" />
-
-                <ListView
-                    android:id="@+id/search_shop_more_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:divider="@color/white"
-                    android:footerDividersEnabled="false"></ListView>
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/search_more_failed_linear"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="90dp"
-                    android:src="@drawable/srarch_icon_search" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="15dp"
-                    android:text="没有找到相关商品、闲置或店铺"
-                    android:textSize="16sp" />
-            </LinearLayout>
+                android:gravity="center_vertical"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="清除历史记录"
+                android:textSize="12sp" />
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/search_goods_more_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/search_goods_more_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:text="商品"
+            android:textSize="18sp" />
+
+        <com.dreamspace.uucampus.widget.LoadMoreListView
+            android:id="@+id/search_goods_more_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/white"
+            android:footerDividersEnabled="false"></com.dreamspace.uucampus.widget.LoadMoreListView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search_idle_more_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/search_idle_more_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:text="闲置"
+            android:textSize="18sp" />
+
+        <com.dreamspace.uucampus.widget.LoadMoreListView
+            android:id="@+id/search_idle_more_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/white"
+            android:footerDividersEnabled="false"></com.dreamspace.uucampus.widget.LoadMoreListView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search_shop_more_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/search_shop_more_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:text="店铺"
+            android:textSize="18sp" />
+
+        <com.dreamspace.uucampus.widget.LoadMoreListView
+            android:id="@+id/search_shop_more_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/white"
+            android:footerDividersEnabled="false"></com.dreamspace.uucampus.widget.LoadMoreListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search_more_failed_linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="90dp"
+            android:src="@drawable/srarch_icon_search" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:text="没有找到相关商品、闲置或店铺"
+            android:textSize="16sp" />
+    </LinearLayout>
 </LinearLayout>

@@ -28,7 +28,7 @@ public class SearchIdleAdapter extends BasisAdapter<IdleItem, SearchIdleAdapter.
     protected void setDataIntoView(ViewHolder holder, IdleItem entity) {
         holder.searchIdleNameTv.setText(entity.getName());
         holder.searchIdleShopNameTv.setText(entity.getUser_name());
-        holder.searchIdlePriceTv.setText("￥"+String.valueOf(entity.getPrice()));
+        holder.searchIdlePriceTv.setText("￥"+String.valueOf(entity.getPrice()/100.0));
     }
 
     @Override

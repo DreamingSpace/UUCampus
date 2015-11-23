@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,7 +24,7 @@ import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 
 import java.util.ArrayList;
 
-import butterknife.bind;
+import butterknife.Bind;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -218,7 +217,6 @@ public class HomeFragment extends BaseLazyFragment {
                 public void onClick(View view) {
                     //点击广告栏，打开相应的网址
                     Uri uri = Uri.parse(ads.get(position).getLink());
-                    Log.d("Test",ads.get(position).getLink());
                     startActivity(new Intent(Intent.ACTION_VIEW, uri));
                 }
             });
