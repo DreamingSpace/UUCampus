@@ -1,19 +1,20 @@
 package com.dreamspace.uucampus.ui.fragment.FreeGoods;
 
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
-import com.dreamspace.uucampus.common.ShareData;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.IdleItem;
 import com.dreamspace.uucampus.model.api.SearchIdleRes;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
+import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsActivity;
 
 import java.util.List;
 
@@ -26,13 +27,20 @@ import retrofit.client.Response;
  * A simple {@link Fragment} subclass.
  */
 public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleItem> {
-    private String category = ShareData.freeGoodsCategorys[0];
+    private String category;
     private int page = 1;
     private String order = null;   //popupWindow对应选中的order
     private boolean isFragDestroy = false;
     private String location = null;
+    private boolean isDetailBack= false;
 
     public FreeGoodsLazyDataFragment() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        category = getArguments().getString(FreeGoodsActivity.CATEGORY);
     }
 
     @Override
@@ -76,7 +84,6 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
 
     @Override
     public void getInitData() {
-        category = ShareData.freeGoodsCategorys[FragmentPagerItem.getPosition(getArguments())];
         location = PreferenceUtils.getString(getActivity().getApplicationContext(), PreferenceUtils.Key.LOCATION);
         Log.i("INFO", "TAG IS :" + category + " Location:" + location);
 
@@ -151,5 +158,26 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     public void onDestroy() {
         super.onDestroy();
         isFragDestroy = true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(!isDetailBack){      //当从其他页面回来时(不是直接从detail界面回来)重新加载
+            location = PreferenceUtils.getString(getActivity().getApplicationContext(), PreferenceUtils.Key.LOCATION);
+            loadingInitData();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.i("Result:", "onActivityResult"+"requestCode"+requestCode+"\n resultCode="+resultCode);
+        if(requestCode==REQUEST_CODE) {
+            if(resultCode==RESULT_CODE) {
+                //直接进入detail界面，不需要刷新
+                isDetailBack =true;
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

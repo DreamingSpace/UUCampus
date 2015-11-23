@@ -56,6 +56,7 @@ public class RatingBar extends LinearLayout {
         starEmptyDrawable = mTypedArray.getDrawable(R.styleable.RatingBar_starEmpty);
         starFillDrawable = mTypedArray.getDrawable(R.styleable.RatingBar_starFill);
         mClickable = mTypedArray.getBoolean(1,false);
+        mTypedArray.recycle();
         for (int i = 0; i < starCount; ++i) {
             ImageView imageView = getStarImageView(context, attrs);
             imageView.setOnClickListener(

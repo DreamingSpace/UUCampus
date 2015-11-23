@@ -1,14 +1,15 @@
 package com.dreamspace.uucampus.ui.activity.FreeGoods;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.UploadImage;
+import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.CategoryItem;
@@ -80,7 +81,7 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
                 if (isGoodsInfoCorrect()) {    //确认填写信息无误
                     req.setName(mGoodsNameEt.getText().toString());
                     req.setCategory(mGoodsClassifyEt.getText().toString());
-                    req.setPrice(Float.parseFloat(mGoodsPriceEt.getText().toString()));
+                    req.setPrice(Float.parseFloat(mGoodsPriceEt.getText().toString())*100);
                     req.setDescription(mGoodsDetailEt.getText().toString());
                     mGoodsName = "："+mGoodsNameEt.getText().toString();
                     mGoodsClassify = "："+mGoodsClassifyEt.getText().toString();
@@ -107,10 +108,7 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
                                   //把所有信息写入后台
                         }
                     });
-                } else {
-                    Toast.makeText(FreeGoodsPublishSecondActivity.this, mGoodsInfoWrong, Toast.LENGTH_SHORT).show();  //错误提示
                 }
-
             }
         });
 
@@ -120,9 +118,8 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
                 showClassify();
             }
         });
-
+        CommonUtils.setPricePoint(mGoodsPriceEt);
     }
-
 
     @Override
     protected View getLoadingTargetView() {
@@ -156,7 +153,11 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
                     bundle.putString(FreeGoodsPublishSuccessActivity.EXTRA_IDLE_ID, idle_id);
                     finish();
                     pd.dismiss();
-                    readyGo(FreeGoodsPublishSuccessActivity.class, bundle);
+                    //发送广播，销毁前一个activity
+                    Intent intent = new Intent();
+                    intent.setAction("destroyActivity");
+                    sendBroadcast(intent);
+                    readyGoThenKill(FreeGoodsPublishSuccessActivity.class, bundle);
                 }
 
                 @Override
@@ -190,8 +191,6 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
         });
     }
 
-
-
     public void showClassify() {
         final ArrayList<String> classifys = new ArrayList<String>();
         if(NetUtils.isNetworkConnected(getApplicationContext())){
@@ -199,7 +198,7 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
                 @Override
                 public void success(AllCategoryRes allCategoryRes, Response response) {
                     TLog.i("idle tabs:", response.getReason());
-                    for(CategoryItem categoryItem :allCategoryRes.getCategory()){
+                    for (CategoryItem categoryItem : allCategoryRes.getCategory()) {
                         classifys.add(categoryItem.getName());
                     }
                     showClassifyDialog(classifys);
@@ -250,4 +249,6 @@ public class FreeGoodsPublishSecondActivity extends AbsActivity {
             showNetWorkError();
         }
     }
+
+
 }

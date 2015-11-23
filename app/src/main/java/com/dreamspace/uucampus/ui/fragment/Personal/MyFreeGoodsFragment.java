@@ -1,5 +1,6 @@
 package com.dreamspace.uucampus.ui.fragment.Personal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.dreamspace.uucampus.model.api.IdleInfoRes;
 import com.dreamspace.uucampus.model.api.MyIdleItem;
 import com.dreamspace.uucampus.model.api.UpdateIdleReq;
 import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsDetailActivity;
+import com.dreamspace.uucampus.ui.activity.Personal.IdleEditAct;
 import com.dreamspace.uucampus.ui.activity.Personal.MyFreeGoodsAct;
 import com.dreamspace.uucampus.ui.base.BaseFragment;
 import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
@@ -48,6 +50,7 @@ public class MyFreeGoodsFragment extends BaseFragment {
     private boolean firstGetData = true;
     private int is_active = -1;
     private int page = 1;
+    private static final int IDLE_EDIT = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,15 +77,22 @@ public class MyFreeGoodsFragment extends BaseFragment {
             }else if(type.equals(getString(R.string.already_pull_off))){
                 is_active = 0;
             }
+            System.out.println(is_active);
+            getIdleList();
+        }else if(((MyFreeGoodsAct)getActivity()).isPulloffOrSale()){
+            //上下架情况有变需要刷新数据
+            page = 1;
+            firstGetData = true;
             getIdleList();
         }else{
+            //起到一个缓存作用，不需要再次请求数据
             if(type.equals(getString(R.string.on_sale))){
                 freeGoodsLv.setAdapter(saleListAdapter);
             }else if(type.equals(getString(R.string.already_pull_off))){
                 freeGoodsLv.setAdapter(pullOffListAdapter);
             }
         }
-
+        ((MyFreeGoodsAct)getActivity()).setPulloffOrSale(false);//将此变量设置为false，只有当上架或下架过才会变成true
         initListeners();
     }
 
@@ -90,7 +100,6 @@ public class MyFreeGoodsFragment extends BaseFragment {
         freeGoodsLv.setOnLoadMoreListener(new SwipeMenuLoadMoreListView.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
-                System.out.println("load more");
                 page++;
                 getIdleList();
             }
@@ -132,10 +141,10 @@ public class MyFreeGoodsFragment extends BaseFragment {
                     progressDialog.show();
                     if (type.equals(getString(R.string.on_sale))) {
                         MyIdleItem idleItem = saleListAdapter.getItem(i);
-                        idleDelete(idleItem.getIdle_id(), i);
+                        idleDelete(idleItem.getIdle_id());
                     } else if (type.equals(getString(R.string.already_pull_off))) {
                         MyIdleItem idleItem = pullOffListAdapter.getItem(i);
-                        idleDelete(idleItem.getIdle_id(), i);
+                        idleDelete(idleItem.getIdle_id());
                     }
                 }
                 return false;
@@ -208,6 +217,15 @@ public class MyFreeGoodsFragment extends BaseFragment {
                                     updateIdleInfo(idle_id,0,position);
                                 }
                             });
+                            saleListAdapter.setOnGoodEditClickListener(new FreeGoodsSaleListAdapter.OnGoodEditClickListener() {
+                                @Override
+                                public void onEditClick(String idle_id) {
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString(IdleEditAct.IDLE_ID,idle_id);
+                                    bundle.putInt(IdleEditAct.IS_ACTIVE,is_active);
+                                    readyGoForResult(IdleEditAct.class, IDLE_EDIT, bundle);
+                                }
+                            });
                             firstGetData = false;
                             toggleRestore();
                         } else {
@@ -225,6 +243,15 @@ public class MyFreeGoodsFragment extends BaseFragment {
                                     progressDialog.setContent(getString(R.string.in_on_sale));
                                     progressDialog.show();
                                     updateIdleInfo(idle_id,1,position);
+                                }
+                            });
+                            pullOffListAdapter.setOnEditClickListener(new FreeGoodsPullOffListAdapter.OnEditClickListener() {
+                                @Override
+                                public void onEditClick(String idle_id) {
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString(IdleEditAct.IDLE_ID,idle_id);
+                                    bundle.putInt(IdleEditAct.IS_ACTIVE, is_active);
+                                    readyGoForResult(IdleEditAct.class,IDLE_EDIT,bundle);
                                 }
                             });
                             firstGetData = false;
@@ -251,7 +278,7 @@ public class MyFreeGoodsFragment extends BaseFragment {
     }
 
     //闲置删除
-    private void idleDelete(String idle_id, final int position){
+    private void idleDelete(String idle_id){
         if(!NetUtils.isNetworkConnected(getActivity())){
             showNetWorkError();
             progressDialog.dismiss();
@@ -264,11 +291,10 @@ public class MyFreeGoodsFragment extends BaseFragment {
                 if (commonStatusRes != null) {
                     progressDialog.dismiss();
                     showToast(getString(R.string.delete_success));
-                    if (type.equals(getString(R.string.on_sale))) {
-                        saleListAdapter.removeItem(position);
-                    } else if (type.equals(getString(R.string.already_pull_off))) {
-                        pullOffListAdapter.removeItem(position);
-                    }
+                    //刷新数据
+                    page = 1;
+                    firstGetData = true;
+                    getIdleList();
                 }
             }
 
@@ -295,13 +321,11 @@ public class MyFreeGoodsFragment extends BaseFragment {
             public void success(CommonStatusRes commonStatusRes, Response response) {
                 if(commonStatusRes != null){
                     progressDialog.dismiss();
-                    if (type.equals(getString(R.string.on_sale))) {
-                        showToast(getString(R.string.pull_off_success));
-                        saleListAdapter.removeItem(position);
-                    } else if (type.equals(getString(R.string.already_pull_off))) {
-                        showToast(getString(R.string.on_sale_success));
-                        pullOffListAdapter.removeItem(position);
-                    }
+                    //刷新数据
+                    page = 1;
+                    firstGetData = true;
+                    getIdleList();
+                    ((MyFreeGoodsAct)getActivity()).setPulloffOrSale(true);
                 }
             }
 
@@ -318,6 +342,15 @@ public class MyFreeGoodsFragment extends BaseFragment {
             return;
         }
         progressDialog = new ProgressDialog(getActivity());
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == IDLE_EDIT && resultCode == getActivity().RESULT_OK){
+            firstGetData = true;
+            page = 1;
+            getIdleList();
+        }
     }
 
     private View.OnClickListener getIdleListClickListener = new View.OnClickListener() {

@@ -88,6 +88,10 @@
         <activity
             android:name=".ui.activity.Personal.AboutAct"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.Personal.IdleEditAct"
+            android:screenOrientation="portrait"/>
+
 
         <activity
             android:name=".ui.activity.Search.SearchResultActivity"

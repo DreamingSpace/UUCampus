@@ -165,13 +165,13 @@ public class CollectionFragment extends BaseFragment {
                     progressDialog.show();
                     if(type.equals(getString(R.string.goods))){
                         GoodsItem goodsItem = goodsListAdapter.getItem(i);
-                        goodCollectionDelete(goodsItem.getGoods_id(),i);
+                        goodCollectionDelete(goodsItem.getGoods_id());
                     }else if(type.equals(getString(R.string.seller))){
                         ShopItem shopItem = shopListAdapter.getItem(i);
-                        shopCollectionDelete(shopItem.getShop_id(),i);
+                        shopCollectionDelete(shopItem.getShop_id());
                     }else if(type.equals(getString(R.string.free_goods))){
                         IdleCollectionItem idleItem = idleListAdapter.getItem(i);
-                        idleCollectionDelete(idleItem.getIdle_id(),i);
+                        idleCollectionDelete(idleItem.getIdle_id());
                     }
                 }
                 return false;
@@ -402,7 +402,7 @@ public class CollectionFragment extends BaseFragment {
     }
 
     //商品收藏删除
-    private void goodCollectionDelete(String goodId, final int position){
+    private void goodCollectionDelete(String goodId){
         if(!NetUtils.isNetworkConnected(getActivity())){
             showNetWorkError();
             progressDialog.dismiss();
@@ -415,7 +415,10 @@ public class CollectionFragment extends BaseFragment {
                 if (commonStatusRes != null) {
                     progressDialog.dismiss();
                     showToast(getString(R.string.delete_success));
-                    goodsListAdapter.removeItem(position);
+                    //刷新数据
+                    goodsPage = 1;
+                    firstGetData = true;
+                    getGoodsCollection();
                 }
             }
 
@@ -428,7 +431,7 @@ public class CollectionFragment extends BaseFragment {
     }
 
     //商铺收藏删除
-    private void shopCollectionDelete(String shopId, final int position){
+    private void shopCollectionDelete(String shopId){
         if(!NetUtils.isNetworkConnected(getActivity())){
             showNetWorkError();
             progressDialog.dismiss();
@@ -441,7 +444,10 @@ public class CollectionFragment extends BaseFragment {
                 if (commonStatusRes != null) {
                     progressDialog.dismiss();
                     showToast(getString(R.string.delete_success));
-                    shopListAdapter.removeItem(position);
+                    //刷新数据
+                    shopPage = 1;
+                    firstGetData = true;
+                    getShopCollection();
                 }
             }
 
@@ -454,7 +460,7 @@ public class CollectionFragment extends BaseFragment {
     }
 
     //闲置收藏删除
-    private void idleCollectionDelete(String idleId, final int position){
+    private void idleCollectionDelete(String idleId){
         if(!NetUtils.isNetworkConnected(getActivity())){
             showNetWorkError();
             progressDialog.dismiss();
@@ -467,7 +473,10 @@ public class CollectionFragment extends BaseFragment {
                 if (commonStatusRes != null) {
                     progressDialog.dismiss();
                     showToast(getString(R.string.delete_success));
-                    idleListAdapter.removeItem(position);
+                    //刷新数据
+                    idlePage = 1;
+                    firstGetData = true;
+                    getIdleCollection();
                 }
             }
 

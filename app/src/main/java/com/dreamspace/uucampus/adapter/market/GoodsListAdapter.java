@@ -28,12 +28,12 @@ public class GoodsListAdapter extends BasisAdapter<GoodsItem,GoodsListAdapter.Vi
         CommonUtils.showImageWithGlide(mContext,holder.image,entity.getImage());
         holder.goodName.setText(entity.getName());
         holder.shopName.setText(entity.getShop_name());
-        holder.orgPrice.setText(mContext.getString(R.string.RMB) + entity.getOriginal_price());
+        holder.orgPrice.setText(mContext.getString(R.string.RMB) + (double)entity.getOriginal_price() / 100);
         holder.orgPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        holder.price.setText(mContext.getString(R.string.RMB) + entity.getPrice());
+        holder.price.setText(mContext.getString(R.string.RMB) + (double)entity.getPrice() / 100);
         holder.likeNum.setText(entity.getView_number() + mContext.getString(R.string.x_people_like));
-        holder.perferential.setText(mContext.getString(R.string.yoyo_coupon_card_reduce) + entity.getDiscount()
-                    + mContext.getString(R.string.RMB));
+        holder.perferential.setText(mContext.getString(R.string.yoyo_coupon_card_reduce) + mContext.getString(R.string.RMB) +
+                (double)entity.getDiscount() / 100);
     }
 
     @Override

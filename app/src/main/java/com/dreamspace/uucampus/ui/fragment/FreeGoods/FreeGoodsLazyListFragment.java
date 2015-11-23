@@ -29,6 +29,8 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
 
     public static final int ADD=2;
     public static final int LOAD=1;
+    public static final int REQUEST_CODE=1;
+    public static final int RESULT_CODE=200;
 
     @Override
     protected void onFirstUserVisible() {
@@ -83,7 +85,7 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
                 String idle_id = onItemPicked((T) mAdapter.getItem(position), position);
                 Bundle bundle = new Bundle();
                 bundle.putString(FreeGoodsDetailActivity.EXTRA_IDLE_ID,idle_id);
-                readyGo(FreeGoodsDetailActivity.class, bundle);
+                readyGoForResult(FreeGoodsDetailActivity.class, REQUEST_CODE, bundle);
             }
         });
 
@@ -101,7 +103,7 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
     protected int getContentViewLayoutID() {
         return R.layout.base_list_fragment;
     }
-    public void onPullUpFinished(){
+    public void onPullUpFinished() {
         moreListView.setLoading(false);
     }
     public void onPullDownFinished(){
@@ -118,5 +120,4 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
         }
         mAdapter.notifyDataSetChanged();
     }
-
 }

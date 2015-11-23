@@ -5,15 +5,15 @@ package com.dreamspace.uucampus.model.api;
  */
 public class GoodsInfoRes {
     private String shop_image;
-    private String original_price;
+    private int original_price;
     private String phone_num;
     private String description;
     private String view_number;
     private String sales_number;
-    private String price;
+    private int price;
     private int is_active;
     private String last_update;
-    private String discount;
+    private int discount;
     private String shop_id;
     private int is_collected;
     private String shop_name;
@@ -28,11 +28,11 @@ public class GoodsInfoRes {
         this.shop_image = shop_image;
     }
 
-    public String getOriginal_price() {
+    public int getOriginal_price() {
         return original_price;
     }
 
-    public void setOriginal_price(String original_price) {
+    public void setOriginal_price(int original_price) {
         this.original_price = original_price;
     }
 
@@ -68,11 +68,11 @@ public class GoodsInfoRes {
         this.sales_number = sales_number;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -92,11 +92,11 @@ public class GoodsInfoRes {
         this.last_update = last_update;
     }
 
-    public String getDiscount() {
+    public int getDiscount() {
         return discount;
     }
 
-    public void setDiscount(String discount) {
+    public void setDiscount(int discount) {
         this.discount = discount;
     }
 

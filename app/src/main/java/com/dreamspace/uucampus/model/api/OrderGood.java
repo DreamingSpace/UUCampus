@@ -5,12 +5,12 @@ package com.dreamspace.uucampus.model.api;
  */
 public class OrderGood {
     private String category;
-    private float original_price;
+    private int original_price;
     private String group;
     private String description;
-    private float price;
+    private int price;
     private String label;
-    private float discount;
+    private int discount;
     private String _id;
     private String image;
     private String name;
@@ -23,11 +23,11 @@ public class OrderGood {
         this.category = category;
     }
 
-    public float getOriginal_price() {
+    public int getOriginal_price() {
         return original_price;
     }
 
-    public void setOriginal_price(float original_price) {
+    public void setOriginal_price(int original_price) {
         this.original_price = original_price;
     }
 
@@ -47,11 +47,11 @@ public class OrderGood {
         this.description = description;
     }
 
-    public float getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -63,11 +63,11 @@ public class OrderGood {
         this.label = label;
     }
 
-    public float getDiscount() {
+    public int getDiscount() {
         return discount;
     }
 
-    public void setDiscount(float discount) {
+    public void setDiscount(int discount) {
         this.discount = discount;
     }
 
