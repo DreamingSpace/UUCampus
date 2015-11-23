@@ -21,7 +21,6 @@ import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsLazyDataFragment;
 import com.dreamspace.uucampus.ui.popupwindow.FreeGoodsSortPopupWindow;
 import com.dreamspace.uucampus.widget.smartlayout.SmartTabLayout;
 import com.melnykov.fab.FloatingActionButton;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
 
@@ -50,9 +49,13 @@ public class FreeGoodsActivity extends AbsActivity {
     RelativeLayout contentRl;
 
     FreeGoodsSortPopupWindow popupWindow;
+    private String order="view_number";
+    private boolean bIdleAct=true;
 
     private FragmentStatePagerItemAdapter pagerAdpater;
     public static final String CATEGORY = "category";
+    public static final String EXTRA_ORDER="order";
+    public static final String EXTRA_IDLE_ACT="idle_activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +103,8 @@ public class FreeGoodsActivity extends AbsActivity {
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(0);
                 //必须调用getpage才能获取准确的fragment，getitem获取的不对
-                ((FreeGoodsLazyDataFragment) pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange("view_number");
+                order="view_number";
+                ((FreeGoodsLazyDataFragment) pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange(order);
             }
         });
 
@@ -108,7 +112,8 @@ public class FreeGoodsActivity extends AbsActivity {
             @Override
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(1);
-                ((FreeGoodsLazyDataFragment)pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange("last_update");
+                order="last_update";
+                ((FreeGoodsLazyDataFragment)pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange(order);
             }
         });
 
@@ -116,7 +121,8 @@ public class FreeGoodsActivity extends AbsActivity {
             @Override
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(2);
-                ((FreeGoodsLazyDataFragment)pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange("price");
+                order="price";
+                ((FreeGoodsLazyDataFragment)pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange(order);
             }
         });
     }
@@ -184,6 +190,8 @@ public class FreeGoodsActivity extends AbsActivity {
         for(String titleTab:items){
             Bundle bundle = new Bundle();
             bundle.putString(CATEGORY, titleTab);
+            bundle.putString(EXTRA_ORDER,order);
+            bundle.putBoolean(EXTRA_IDLE_ACT,bIdleAct);
             creator.add(titleTab, FreeGoodsLazyDataFragment.class, bundle);
         }
         pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(), creator.create());
@@ -205,4 +213,8 @@ public class FreeGoodsActivity extends AbsActivity {
             initTabs();
         }
     };
+
+    public String getOrder(){
+        return order;
+    }
 }
