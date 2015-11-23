@@ -202,8 +202,8 @@ public class GoodDetailAct extends AbsActivity {
                 }else{
                     Bundle bundle = new Bundle();
                     bundle.putString(OrderConfirmAct.GOOD_NAME, goodInfo.getName());
-                    bundle.putString(OrderConfirmAct.PRICE, goodInfo.getPrice());
-                    bundle.putString(OrderConfirmAct.DISCOUNT, goodInfo.getDiscount());
+                    bundle.putString(OrderConfirmAct.PRICE, goodInfo.getPrice() + "");
+                    bundle.putString(OrderConfirmAct.DISCOUNT, goodInfo.getDiscount() + "");
                     bundle.putString(OrderConfirmAct.GOOD_ID, goodId);
                     readyGo(OrderConfirmAct.class, bundle);
                 }
@@ -347,8 +347,8 @@ public class GoodDetailAct extends AbsActivity {
         CommonUtils.showImageWithGlideInCiv(this, shopImageCiv, goodsInfoRes.getShop_image());
         goodNameTv.setText(goodsInfoRes.getName());
         shopNameTv.setText(goodsInfoRes.getShop_name());
-        priceBeforeReduceTv.setText(getString(R.string.RMB) + goodsInfoRes.getOriginal_price());
-        priceTv.setText(getString(R.string.RMB) +  goodsInfoRes.getPrice());
+        priceBeforeReduceTv.setText(getString(R.string.RMB) + (float)goodsInfoRes.getOriginal_price() / 100);
+        priceTv.setText(getString(R.string.RMB) +  (float)goodsInfoRes.getPrice() / 100);
         peopleLikeTv.setText(goodsInfoRes.getView_number() + getString(R.string.x_people_like));
         saleNumTv.setText(goodsInfoRes.getSales_number() + getString(R.string.x_people_bought));
         lastUpdateTv.setText(goodsInfoRes.getLast_update());

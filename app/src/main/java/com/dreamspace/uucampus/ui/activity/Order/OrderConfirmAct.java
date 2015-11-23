@@ -103,7 +103,7 @@ public class OrderConfirmAct extends AbsActivity{
         campusTv.setText("东大九龙湖校区");//之后直接从preference里调用
         goodNumTv.setText(quantity + "");
         goodNameTv.setText(goodName);
-        singlePriceTv.setText(getString(R.string.RMB) + price);
+        singlePriceTv.setText(getString(R.string.RMB) + price / 100);
         initListeners();
     }
 
@@ -118,11 +118,11 @@ public class OrderConfirmAct extends AbsActivity{
             public void onClick(View v) {
                 if(quantity < 999){
                     goodNumTv.setText(++quantity+"");
-                    priceBeforeReduceTv.setText(getString(R.string.RMB) + price * quantity);
+                    priceBeforeReduceTv.setText(getString(R.string.RMB) + price / 100 * quantity);
                     if(useCard){
-                        totalPriceTv.setText(getString(R.string.RMB) + (price - discount) * quantity);
+                        totalPriceTv.setText(getString(R.string.RMB) + (price - discount) / 100 * quantity);
                     }else{
-                        totalPriceTv.setText(getString(R.string.RMB) + price * quantity);
+                        totalPriceTv.setText(getString(R.string.RMB) + price / 100 * quantity);
                     }
                 }
             }
@@ -133,11 +133,11 @@ public class OrderConfirmAct extends AbsActivity{
             public void onClick(View v) {
                 if(quantity > 1){
                     goodNumTv.setText(--quantity+"");
-                    priceBeforeReduceTv.setText(getString(R.string.RMB) + price * quantity);
+                    priceBeforeReduceTv.setText(getString(R.string.RMB) + price * quantity / 100);
                     if(useCard){
-                        totalPriceTv.setText(getString(R.string.RMB) + (price - discount) * quantity);
+                        totalPriceTv.setText(getString(R.string.RMB) + (price - discount) / 100 * quantity);
                     }else{
-                        totalPriceTv.setText(getString(R.string.RMB) + price * quantity);
+                        totalPriceTv.setText(getString(R.string.RMB) + price * quantity / 100);
                     }
                 }
             }
@@ -156,8 +156,8 @@ public class OrderConfirmAct extends AbsActivity{
     //初始化用户有优惠卡时候的视图
     private void initHasCardViews(){
         useCard = true;
-        priceBeforeReduceTv.setText(getString(R.string.RMB) + price * quantity);
-        totalPriceTv.setText(getString(R.string.RMB) + (price - discount) * quantity);
+        priceBeforeReduceTv.setText(getString(R.string.RMB) + price / 100 * quantity);
+        totalPriceTv.setText(getString(R.string.RMB) + (price - discount) / 100 * quantity);
         getCouponBtn.setVisibility(View.INVISIBLE);
 //        couponUseRl.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -181,8 +181,8 @@ public class OrderConfirmAct extends AbsActivity{
         useCard = false;
         couponUseIv.setVisibility(View.INVISIBLE);
         getCouponBtn.setVisibility(View.VISIBLE);
-        priceBeforeReduceTv.setText(getString(R.string.RMB) + price * quantity);
-        totalPriceTv.setText(getString(R.string.RMB) + price * quantity);
+        priceBeforeReduceTv.setText(getString(R.string.RMB) + price / 100 * quantity);
+        totalPriceTv.setText(getString(R.string.RMB) + price /100 * quantity);
         priceBeforeReduceTv.setVisibility(View.INVISIBLE);
         getCouponBtn.setOnClickListener(new View.OnClickListener() {
             @Override

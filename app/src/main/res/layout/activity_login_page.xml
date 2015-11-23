@@ -35,7 +35,7 @@
             <EditText
                 android:id="@+id/Login_userName"
                 android:layout_width="fill_parent"
-                android:layout_height="40dp"
+                android:layout_height="42dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="37dp"
                 android:layout_marginRight="37dp"
@@ -63,7 +63,7 @@
             <EditText
                 android:id="@+id/Login_pwd"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="42dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="37dp"
                 android:layout_marginRight="37dp"
@@ -190,12 +190,12 @@
 
                 <TextView
                     android:id="@+id/login_page_weichat"
-                    android:layout_width="60dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
                     android:text="@string/text_weichat_login"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -214,12 +214,12 @@
 
                 <TextView
                     android:id="@+id/login_page_weibo"
-                    android:layout_width="60dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
                     android:text="@string/text_weibo_login"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

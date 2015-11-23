@@ -60,7 +60,7 @@ public class MyOrderListAdapter extends BasisAdapter<OrderItem,MyOrderListAdapte
                         //调用activity注册的回调
                         if(onPayClickListener != null){
                             onPayClickListener.onPayClick(entity.getGood().getName(),entity.get_id(),
-                                    entity.getQuantity() * entity.getGood().getOriginal_price(),entity.getTotal_price());
+                                    entity.getQuantity() * ((float)entity.getGood().getOriginal_price() / 100),(float)entity.getTotal_price() / 100);
                         }
                     }
                 });
@@ -95,7 +95,7 @@ public class MyOrderListAdapter extends BasisAdapter<OrderItem,MyOrderListAdapte
                 break;
         }
 
-        holder.totalPrice.setText(mContext.getString(R.string.total_price) + entity.getTotal_price());
+        holder.totalPrice.setText(mContext.getString(R.string.total_price) + (float)entity.getTotal_price() / 100);
         holder.num.setText(mContext.getString(R.string.num) + entity.getQuantity());
         CommonUtils.showImageWithGlide(mContext,holder.orderImage,entity.getGood().getImage());
     }

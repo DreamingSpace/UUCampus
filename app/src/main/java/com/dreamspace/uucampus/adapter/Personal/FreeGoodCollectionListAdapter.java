@@ -28,7 +28,7 @@ public class FreeGoodCollectionListAdapter extends BasisAdapter<IdleCollectionIt
         holder.name.setText(entity.getName());
         holder.publisher.setText(entity.getUser_name());
         holder.interest.setText(entity.getView_number() + mContext.getString(R.string.x_people_like));
-        holder.price.setText(mContext.getString(R.string.RMB) + entity.getPrice());
+        holder.price.setText(mContext.getString(R.string.RMB) + (float)entity.getPrice() / 100);
     }
 
     @Override

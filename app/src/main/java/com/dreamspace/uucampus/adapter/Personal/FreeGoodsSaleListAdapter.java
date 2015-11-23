@@ -18,6 +18,7 @@ import java.util.List;
  */
 public class FreeGoodsSaleListAdapter extends BasisAdapter<MyIdleItem,FreeGoodsSaleListAdapter.ViewHolder>{
     private OnGoodPullOffClickListener onGoodPullOffClickListener;
+    private OnGoodEditClickListener onGoodEditClickListener;
     private Context mContext;
 
     public FreeGoodsSaleListAdapter(Context mContext, List<MyIdleItem> mEntities, Class<ViewHolder> classType) {
@@ -29,11 +30,13 @@ public class FreeGoodsSaleListAdapter extends BasisAdapter<MyIdleItem,FreeGoodsS
     protected void setDataIntoView(ViewHolder holder, final MyIdleItem entity) {
         CommonUtils.showImageWithGlide(mContext,holder.image,entity.getImage());
         holder.name.setText(entity.getName());
-        holder.price.setText(mContext.getString(R.string.RMB) + entity.getPrice());
+        holder.price.setText(mContext.getString(R.string.RMB) + (float)entity.getPrice() / 100);
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(onGoodEditClickListener != null){
+                    onGoodEditClickListener.onEditClick(entity.getIdle_id());
+                }
             }
         });
 
@@ -61,6 +64,10 @@ public class FreeGoodsSaleListAdapter extends BasisAdapter<MyIdleItem,FreeGoodsS
         return R.layout.list_item_my_free_goods_sale;
     }
 
+    public void setOnGoodEditClickListener(OnGoodEditClickListener onGoodEditClickListener) {
+        this.onGoodEditClickListener = onGoodEditClickListener;
+    }
+
     public static class ViewHolder{
         public ImageView image;
         public TextView name;
@@ -75,5 +82,9 @@ public class FreeGoodsSaleListAdapter extends BasisAdapter<MyIdleItem,FreeGoodsS
 
     public void setOnGoodPullOffClickListener(OnGoodPullOffClickListener onGoodPullOffClickListener) {
         this.onGoodPullOffClickListener = onGoodPullOffClickListener;
+    }
+
+    public interface OnGoodEditClickListener{
+        void onEditClick(String idle_id);
     }
 }

@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.ui.activity.Search.SearchResultActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 
@@ -48,6 +49,8 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
     private ViewPager mViewPager;
     private FragmentPagerAdapter mAdapter;
     private TextView centerTitleTv;
+    private LinearLayout locationLl;//校区地址
+    private TextView locationTv;
     //当前所在的fragment标号
     private int currentIndex = 0;
     @Override
@@ -141,7 +144,8 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
     private void initView() {
         centerTitleTv = (TextView) mToolBar.findViewById(R.id.custom_title_tv);
         mViewPager = (ViewPager) findViewById(R.id.id_viewpager);
-
+        locationLl = (LinearLayout) mToolBar.findViewById(R.id.location_ll);
+        locationTv = (TextView) mToolBar.findViewById(R.id.location_tv);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         initBottomBar();
@@ -161,20 +165,24 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
         switch (currentIndex){
             case 0:
                 searchItem.setVisible(true);
-                actionBar.setDisplayShowTitleEnabled(true);
+                actionBar.setDisplayShowTitleEnabled(false);
                 actionBar.setTitle(getResources().getString(R.string.app_name));
                 centerTitleTv.setText("");
+                locationLl.setVisibility(View.VISIBLE);
+                locationTv.setText(PreferenceUtils.getString(this,PreferenceUtils.Key.LOCATION,getString(R.string.seu)));
                 break;
 
             case 1:
                 searchItem.setVisible(true);
                 actionBar.setDisplayShowTitleEnabled(false);
+                locationLl.setVisibility(View.GONE);
                 centerTitleTv.setText(getResources().getString(R.string.seller));
                 break;
 
             case 2:
                 searchItem.setVisible(false);
                 actionBar.setDisplayShowTitleEnabled(false);
+                locationLl.setVisibility(View.GONE);
                 centerTitleTv.setText(getResources().getString(R.string.personal_center));
                 break;
         }

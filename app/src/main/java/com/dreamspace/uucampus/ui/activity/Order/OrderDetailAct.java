@@ -316,18 +316,17 @@ public class OrderDetailAct extends AbsActivity{
         }else{
             goodNameTv.setText(mOrderDetail.getGood().getName());
         }
-        priceBeforeReduceTv.setText(getString(R.string.RMB) +
-                mOrderDetail.getGood().getOriginal_price() * mOrderDetail.getQuantity());
-        totalPriceTv.setText(getString(R.string.RMB) + mOrderDetail.getTotal_price());
+        float pricetotalBR = (float)(mOrderDetail.getGood().getOriginal_price() * mOrderDetail.getQuantity()) / 100;
+        priceBeforeReduceTv.setText(getString(R.string.RMB) + pricetotalBR);
+        totalPriceTv.setText(getString(R.string.RMB) + (float) mOrderDetail.getTotal_price() / 100);
         CommonUtils.showImageWithGlideInCiv(this, shopImageCiv, mOrderDetail.getShop().getShop_image());
         shopNameTv.setText(mOrderDetail.getShop().getName());
         orderIdTv.setText(mOrderDetail.get_id());
         orderTimeTv.setText(mOrderDetail.getTime());
         buyerPhoneTv.setText(mOrderDetail.getBuyer().getPhone_num());
         locationTv.setText(mOrderDetail.getBuyer().getLocation());
-        discountTv.setText(getString(R.string.RMB) +
-                (mOrderDetail.getGood().getOriginal_price() * mOrderDetail.getQuantity() -
-                        mOrderDetail.getTotal_price()));
+        float priceDiscout = (float)(mOrderDetail.getGood().getOriginal_price() * mOrderDetail.getQuantity() - mOrderDetail.getTotal_price()) / 100;
+        discountTv.setText(getString(R.string.RMB) + priceDiscout);
         remarkTv.setText(mOrderDetail.getRemark());
 
         goodRl.setOnClickListener(new View.OnClickListener() {

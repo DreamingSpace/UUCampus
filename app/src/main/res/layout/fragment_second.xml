@@ -6,6 +6,7 @@
     <LinearLayout
         android:id="@+id/personal_center_content_ll"
         android:orientation="vertical"
+        android:background="@color/main_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -25,14 +26,17 @@
                 android:text="麦伊"
                 android:textColor="@color/black_40"
                 android:textSize="16sp"
-                android:textStyle="bold"
                 android:layout_marginTop="18dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
+            <View
                 android:layout_marginTop="10dp"
+                android:background="@color/divider_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -60,8 +64,8 @@
 
                 <View
                     android:background="@color/divider_color"
-                    android:layout_width="2px"
-                    android:layout_height="16dp"/>
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"/>
                 <LinearLayout
                     android:id="@+id/my_collection_ll"
                     android:background="@drawable/personal_center_item_bg"
@@ -123,8 +127,6 @@
 
             <View
                 android:background="@color/divider_color"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1px"/>
 
@@ -150,8 +152,6 @@
 
             <View
                 android:background="@color/divider_color"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1px"/>
 
@@ -219,8 +219,6 @@
 
             <View
                 android:background="@color/divider_color"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1px"/>
 
