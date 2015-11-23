@@ -97,7 +97,7 @@ public class SearchResultMoreActivity extends AbsActivity {
         category = bundle.getInt("category");
         keyWord = bundle.getString("key");
         searchText.setText(keyWord);
-
+        pd = new ProgressDialog(this);
         pd.show();
         switch (category) {
             case 0:
@@ -170,6 +170,8 @@ public class SearchResultMoreActivity extends AbsActivity {
                 //点击后显示历史记录，如果没有历史记录则不显示
                 //隐藏其他列表
                 if (SharePreference.searchHistory.size() != 0) {
+                    searchMoreHistoryDivider.setVisibility(View.VISIBLE);
+                    searchMoreHistoryDeleteLinear.setVisibility(View.VISIBLE);
                     searchHistory();
                 }
             }
@@ -192,7 +194,7 @@ public class SearchResultMoreActivity extends AbsActivity {
                 if (searchHistoryAdapter != null) {
                     String temp = searchHistoryAdapter.getItem(i);
                     searchText.setText(temp);
-
+                    keyWord = temp;
                     search();
                 }
             }
@@ -294,6 +296,10 @@ public class SearchResultMoreActivity extends AbsActivity {
                 ApiManager.getService(this).searchGoods(keyWord, null, null, null, null, null, goodPage, "东南大学九龙湖校区", new Callback<SearchGoodsRes>() {
                     @Override
                     public void success(SearchGoodsRes searchGoodsRes, Response response) {
+                        //历史记录隐藏,搜索关键词加入历史记录
+                        searchMoreHistoryLinear.setVisibility(View.GONE);
+                        SharePreference.searchHistory.add(keyWord);
+
                         goodsItems = searchGoodsRes.getResult();
                         if (goodsItems.size() != 0) {
                             searchGoodsMoreLinear.setVisibility(View.VISIBLE);
@@ -337,6 +343,10 @@ public class SearchResultMoreActivity extends AbsActivity {
                 ApiManager.getService(this).searchIdle(keyWord, null, null, idlePage, "东南大学九龙湖校区", new Callback<SearchIdleRes>() {
                     @Override
                     public void success(SearchIdleRes searchIdleRes, Response response) {
+                        //历史记录隐藏,搜索关键词加入历史记录
+                        searchMoreHistoryLinear.setVisibility(View.GONE);
+                        SharePreference.searchHistory.add(keyWord);
+
                         idleItems = searchIdleRes.getResult();
                         if (idleItems.size() != 0) {
                             searchIdleMoreLinear.setVisibility(View.VISIBLE);
@@ -379,6 +389,10 @@ public class SearchResultMoreActivity extends AbsActivity {
                 ApiManager.getService(this).searchShop(keyWord, null, null, shopPage, "东南大学九龙湖校区", new Callback<SearchShopRes>() {
                     @Override
                     public void success(SearchShopRes searchShopRes, Response response) {
+                        //历史记录隐藏,搜索关键词加入历史记录
+                        searchMoreHistoryLinear.setVisibility(View.GONE);
+                        SharePreference.searchHistory.add(keyWord);
+
                         shopItems = searchShopRes.getResult();
                         if (shopItems.size() != 0) {
                             searchShopMoreLinear.setVisibility(View.VISIBLE);

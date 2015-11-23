@@ -132,6 +132,8 @@ public class SearchResultActivity extends AbsActivity {
                 //点击后显示历史记录,如果没有历史记录则不显示
                 //隐藏其他列表
                 if (SharePreference.searchHistory.size() != 0) {
+                    searchHistoryDeleteLinear.setVisibility(View.VISIBLE);
+                    searchHistoryDivider.setVisibility(View.VISIBLE);
                     searchHistory();
                 }
             }
@@ -225,6 +227,7 @@ public class SearchResultActivity extends AbsActivity {
                 if (searchHistoryAdapter != null) {
                     String temp = searchHistoryAdapter.getItem(i);
                     searchText.setText(temp);
+                    keyWord = temp;
                     pd.show();
                     searchFailedLinear.setVisibility(View.GONE);
                     searchGoods();
