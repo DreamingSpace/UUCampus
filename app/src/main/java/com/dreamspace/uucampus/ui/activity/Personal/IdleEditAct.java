@@ -30,7 +30,6 @@ import com.qiniu.android.storage.UpCompletionHandler;
 
 import org.json.JSONObject;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -85,6 +84,7 @@ public class IdleEditAct extends AbsActivity{
 
     @Override
     protected void initViews() {
+        getSupportActionBar().setTitle(getString(R.string.idle_edit));
         initListeners();
     }
 
