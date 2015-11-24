@@ -1,270 +1,307 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <com.bigkoo.convenientbanner.ConvenientBanner
                 android:id="@+id/home_page_banner"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"/>
+                android:layout_height="160dp" />
 
             <LinearLayout
-                android:background="@color/white"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:id="@+id/free_goods_ll"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <ImageView
-                            android:src="@drawable/homepage_btn_market"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/homepage_btn_market" />
+
                         <TextView
-                            android:text="@string/free_goods"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="@string/free_goods" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/travel_ll"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_weight="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <ImageView
-                            android:src="@drawable/homepage_btn_travel"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/homepage_btn_travel" />
+
                         <TextView
-                            android:text="@string/travel"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="@string/travel" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/driver_school_ll"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_weight="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <ImageView
-                            android:src="@drawable/homepage_btn_driving_school"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/homepage_btn_driving_school" />
+
                         <TextView
-                            android:text="@string/driver_school"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="@string/driver_school" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:id="@+id/class_uniform_ll"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_weight="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <ImageView
-                            android:src="@drawable/homepage_btn_clothing"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/homepage_btn_clothing" />
+
                         <TextView
-                            android:text="@string/class_uniform"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="@string/class_uniform" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/studying_abroad_ll"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_weight="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <ImageView
-                            android:src="@drawable/homepage_btn_abroad"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/homepage_btn_abroad" />
+
                         <TextView
-                            android:text="@string/study_abroad"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="@string/study_abroad" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/personal_shop_ll"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_weight="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <ImageView
-                            android:src="@drawable/homgpage_btn_personal_shop"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/homgpage_btn_personal_shop" />
+
                         <TextView
-                            android:text="@string/personal_shop"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="@string/personal_shop" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
             <View
-                android:background="@color/divider_color"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:background="@color/divider_color" />
 
             <View
-                android:layout_marginTop="15dp"
-                android:background="@color/divider_color"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/divider_color" />
 
             <LinearLayout
-                android:background="@color/white"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
                 <RelativeLayout
-                    android:gravity="center_vertical"
                     android:id="@+id/free_goods_rl"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp">
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical">
+
                     <View
+                        android:layout_width="4dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
-                        android:background="@color/app_theme_color"
-                        android:layout_alignParentLeft="true"
-                        android:layout_width="4dp"
-                        android:layout_height="15dp"/>
+                        android:background="@color/app_theme_color" />
+
                     <TextView
-                        android:text="@string/free_goods"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="30dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:text="@string/free_goods" />
+
                     <ImageView
-                        android:layout_marginRight="20dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/homepage_btn_open"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/homepage_btn_open" />
                 </RelativeLayout>
+
                 <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@color/divider_color"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:background="@color/divider_color" />
+
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:paddingBottom="10dp"
+                    android:id="@+id/free_goods_linear"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp">
+
                     <LinearLayout
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
                         <LinearLayout
                             android:id="@+id/free_goods1"
 
-                            android:layout_marginLeft="15dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:padding="3dp"
-                                android:src="@drawable/homepage_market_advertisement1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:src="@drawable/homepage_market_advertisement1" />
+
                             <TextView
-                                android:text="数码电子"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="数码电子" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/free_goods2"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:padding="3dp"
-                                android:src="@drawable/homepage_market_advertisement2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:src="@drawable/homepage_market_advertisement2" />
+
                             <TextView
-                                android:text="书籍杂志"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="书籍杂志" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/free_goods3"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:padding="3dp"
-                                android:src="@drawable/homepage_driving_school_advertisement3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:src="@drawable/homepage_driving_school_advertisement3" />
+
                             <TextView
-                                android:text="代步工具"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="代步工具" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_marginRight="15dp"
                             android:id="@+id/free_goods4"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:padding="3dp"
-                                android:src="@drawable/homepage_driving_school_advertisement3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:src="@drawable/homepage_driving_school_advertisement3" />
+
                             <TextView
-                                android:text="生活日常"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="生活日常" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -272,273 +309,307 @@
 
 
             <View
-                android:background="@color/divider_color"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:background="@color/divider_color" />
 
             <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:layout_marginTop="15dp"
-                android:background="@color/divider_color"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:background="@color/divider_color" />
+
             <LinearLayout
-                android:background="@color/white"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
                 <RelativeLayout
-                    android:gravity="center_vertical"
                     android:id="@+id/personal_shop_rl"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp">
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical">
+
                     <View
+                        android:layout_width="4dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
-                        android:background="@color/app_theme_color"
-                        android:layout_alignParentLeft="true"
-                        android:layout_width="4dp"
-                        android:layout_height="15dp"/>
+                        android:background="@color/app_theme_color" />
+
                     <TextView
-                        android:text="@string/popular_personal_shop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="30dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:text="@string/popular_personal_shop" />
+
                     <ImageView
-                        android:layout_marginRight="20dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/homepage_btn_open"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/homepage_btn_open" />
                 </RelativeLayout>
+
                 <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@color/divider_color"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:background="@color/divider_color" />
+
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:id="@+id/person_shop_Linear"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
+
                     <LinearLayout
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
                         <LinearLayout
                             android:id="@+id/personal_shop1"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_personal_shop_advertisement1"
                                 android:layout_width="60dp"
-                                android:layout_height="60dp" />
+                                android:layout_height="60dp"
+                                android:src="@drawable/homepage_personal_shop_advertisement1" />
+
                             <TextView
-                                android:text="小绿多肉"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="小绿多肉" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/personal_shop2"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_personal_shop_advertisement2"
                                 android:layout_width="60dp"
-                                android:layout_height="60dp" />
+                                android:layout_height="60dp"
+                                android:src="@drawable/homepage_personal_shop_advertisement2" />
+
                             <TextView
-                                android:text="汉服社"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="汉服社" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/personal_shop3"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_personal_shop_advertisement3"
                                 android:layout_width="60dp"
-                                android:layout_height="60dp" />
+                                android:layout_height="60dp"
+                                android:src="@drawable/homepage_personal_shop_advertisement3" />
+
                             <TextView
-                                android:text="手工小店"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="手工小店" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/personal_shop4"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_personal_shop_advertisement4"
                                 android:layout_width="60dp"
-                                android:layout_height="60dp" />
+                                android:layout_height="60dp"
+                                android:src="@drawable/homepage_personal_shop_advertisement4" />
+
                             <TextView
-                                android:text="吉他店"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="吉他店" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
             <View
-                android:background="@color/divider_color"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:background="@color/divider_color" />
 
             <View
-                android:layout_marginTop="15dp"
-                android:background="@color/divider_color"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/divider_color" />
 
             <LinearLayout
-                android:background="@color/white"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
                 <RelativeLayout
-                    android:gravity="center_vertical"
                     android:id="@+id/travel_rl"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp">
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical">
+
                     <View
+                        android:layout_width="4dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
-                        android:background="@color/app_theme_color"
-                        android:layout_alignParentLeft="true"
-                        android:layout_width="4dp"
-                        android:layout_height="15dp"/>
+                        android:background="@color/app_theme_color" />
+
                     <TextView
-                        android:text="@string/travel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="30dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:text="@string/travel" />
+
                     <ImageView
-                        android:layout_marginRight="20dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/homepage_btn_open"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/homepage_btn_open" />
                 </RelativeLayout>
+
                 <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@color/divider_color"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:background="@color/divider_color" />
+
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:id="@+id/travel_Linear"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
+
                     <LinearLayout
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
                         <LinearLayout
                             android:id="@+id/short_distance"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_travel_btn_short_distance"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_travel_btn_short_distance" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/ancient_town"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_travel_btn_downtown"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_travel_btn_downtown" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/beach"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_travel_btn_beach"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_travel_btn_beach" />
                         </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
                         <LinearLayout
                             android:id="@+id/long_distance"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_travel_btn_long_distance"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_travel_btn_long_distance" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/park"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_travel_btn_park"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_travel_btn_park" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/camp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_travel_btn_camp"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_travel_btn_camp" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -546,256 +617,288 @@
             </LinearLayout>
 
             <View
-                android:background="@color/divider_color"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:background="@color/divider_color" />
 
             <View
-                android:layout_marginTop="15dp"
-                android:background="@color/divider_color"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/divider_color" />
 
             <LinearLayout
-                android:background="@color/white"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
                 <RelativeLayout
-                    android:gravity="center_vertical"
                     android:id="@+id/driver_school_rl"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp">
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical">
+
                     <View
+                        android:layout_width="4dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
-                        android:background="@color/app_theme_color"
-                        android:layout_alignParentLeft="true"
-                        android:layout_width="4dp"
-                        android:layout_height="15dp"/>
+                        android:background="@color/app_theme_color" />
+
                     <TextView
-                        android:text="@string/driver_school"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="30dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:text="@string/driver_school" />
+
                     <ImageView
-                        android:layout_marginRight="20dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/homepage_btn_open"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/homepage_btn_open" />
                 </RelativeLayout>
+
                 <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@color/divider_color"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:background="@color/divider_color" />
+
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:id="@+id/driver_school_Linear"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
+
                     <LinearLayout
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
                         <LinearLayout
                             android:id="@+id/driver_school1"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_driving_school_advertisement1"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_driving_school_advertisement1" />
+
                             <TextView
-                                android:text="恒通驾校"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="恒通驾校" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/driver_school2"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_driving_school_advertisement2"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_driving_school_advertisement2" />
+
                             <TextView
-                                android:text="永高驾校"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="永高驾校" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/driver_school3"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_driving_school_advertisement3"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_driving_school_advertisement3" />
+
                             <TextView
-                                android:text="保通驾校"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="保通驾校" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-            <View
-                android:background="@color/divider_color"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
 
             <View
-                android:layout_marginTop="15dp"
-                android:background="@color/divider_color"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:background="@color/divider_color" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/divider_color" />
 
             <LinearLayout
-                android:background="@color/white"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
                 <RelativeLayout
-                    android:gravity="center_vertical"
                     android:id="@+id/study_abroad_rl"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp">
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical">
+
                     <View
+                        android:layout_width="4dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
-                        android:background="@color/app_theme_color"
-                        android:layout_alignParentLeft="true"
-                        android:layout_width="4dp"
-                        android:layout_height="15dp"/>
+                        android:background="@color/app_theme_color" />
+
                     <TextView
-                        android:text="@string/study_abroad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="30dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:text="@string/study_abroad" />
+
                     <ImageView
-                        android:layout_marginRight="20dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/homepage_btn_open"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/homepage_btn_open" />
                 </RelativeLayout>
+
                 <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@color/divider_color"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:background="@color/divider_color" />
+
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:id="@+id/study_abroad_Linear"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
+
                     <LinearLayout
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
                         <LinearLayout
                             android:id="@+id/ielts"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_study_abroad_btn_ielts"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_study_abroad_btn_ielts" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/min_language"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_study_abroad_btn_language"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_study_abroad_btn_language" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/abroad_consult"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_study_abroad_btn_consult"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_study_abroad_btn_consult" />
                         </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
                         <LinearLayout
                             android:id="@+id/toefl"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_study_abroad_btn_toefl"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_study_abroad_btn_toefl" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/gre"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_study_abroad_btn_gre"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_study_abroad_btn_gre" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/abroad_others"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <ImageView
-                                android:src="@drawable/homepage_study_abroad_btn_others"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/homepage_study_abroad_btn_others" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -807,30 +910,34 @@
 
 
     <Button
-        android:text="travel"
         android:id="@+id/button1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="travel" />
+
     <Button
-        android:text="driver school"
         android:id="@+id/button2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="driver school" />
+
     <Button
-        android:text="class uniform"
         android:id="@+id/button3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="class uniform" />
+
     <Button
-        android:text="study abroad"
         android:id="@+id/button4"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="study abroad" />
+
     <Button
-        android:text="personal shop"
         android:id="@+id/button5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="personal shop" />
 
     <LinearLayout
         android:id="@+id/free_goods_linear_layout"

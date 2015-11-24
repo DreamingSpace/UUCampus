@@ -20,7 +20,6 @@ import com.dreamspace.uucampus.model.WeChatUser;
 import com.dreamspace.uucampus.model.api.LoginReq;
 import com.dreamspace.uucampus.model.api.LoginRes;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
-import com.dreamspace.uucampus.ui.MainActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -62,6 +61,7 @@ public class LoginActivity extends AbsActivity {
     ImageView loginPageWeiboImg;
 
     ProgressDialog progressDialog;
+    //添加友盟第三方登录
     final UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.login");
 
     @Override
@@ -78,7 +78,7 @@ public class LoginActivity extends AbsActivity {
     protected void initViews() {
         LoginUserName.setText(PreferenceUtils.getString(LoginActivity.this, PreferenceUtils.Key.PHONE));
 //        LoginPwd.setText(PreferenceUtils.getString(LoginActivity.this, PreferenceUtils.Key.PASSWORD));
-        initListener();
+
         progressDialog = new ProgressDialog(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -89,6 +89,8 @@ public class LoginActivity extends AbsActivity {
         UMWXHandler wxHandler = new UMWXHandler(LoginActivity.this,ShareData.WechatAppId,
                 ShareData.WechatAppSecret);
         wxHandler.addToSocialSDK();
+
+        initListener();
     }
 
     @Override
@@ -202,7 +204,6 @@ public class LoginActivity extends AbsActivity {
                         mController.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.WEIXIN, new SocializeListeners.UMDataListener() {
                             @Override
                             public void onStart() {
-                                Log.d("TestData","cccc");
                                 showToast("获取平台数据开始~~~");
                             }
 
@@ -227,7 +228,6 @@ public class LoginActivity extends AbsActivity {
                                     weChatUser.setUnionid(map.get("unionid").toString());
                                     weChatUser.setAccess_token(bundle.get("access_token").toString());
                                     ShareData.weChatUser = weChatUser;
-                                    Log.d("TestData",sb.toString());
 
                                     //授权成功获取用户信息之后跳转到微信绑定界面
                                     Bundle bundle1 = new Bundle();
@@ -266,7 +266,6 @@ public class LoginActivity extends AbsActivity {
                 @Override
                 public void success(LoginRes loginRes, Response response) {
                     progressDialog.dismiss();
-                    System.out.println(loginRes.getAccess_token());
                     PreferenceUtils.putString(LoginActivity.this,
                             PreferenceUtils.Key.ACCESS, loginRes.getAccess_token());
                     //设置为已登录
@@ -290,24 +289,20 @@ public class LoginActivity extends AbsActivity {
     //获取用户信息
     private void getUserInfo() {
         ApiManager.getService(getApplicationContext()).getUserInfo(new Callback<UserInfoRes>() {
-//            ProgressDialog progressDialog = ProgressDialog.show(getApplicationContext(),"","正在登录",true,false);
             @Override
             public void success(UserInfoRes userInfoRes, Response response) {
                 if(userInfoRes != null){
-                    Log.i("INFO", userInfoRes.toString());
                     saveUserInfo(userInfoRes);
                     progressDialog.dismiss();
                     showToast("登录成功");
                     //当用户游客身份用APP时选择登录，登录成功后要给进入登录界面的activity返回一个登录成功状态，好让那个activity结束
                     setResult(RESULT_OK);
                     finish();
-//                    readyGoThenKill(MainActivity.class);
                 }
             }
 
             @Override
             public void failure(RetrofitError error) {
-//                progressDialog.dismiss();
                 showInnerError(error);
             }
         });
@@ -315,7 +310,6 @@ public class LoginActivity extends AbsActivity {
 
     //保存用户信息到本地
     private void saveUserInfo(UserInfoRes userInfoRes){
-//        ShareData.user = userInfoRes;
         PreferenceUtils.putString(this,PreferenceUtils.Key.AVATAR,userInfoRes.getImage());
         PreferenceUtils.putString(this,PreferenceUtils.Key.NAME,userInfoRes.getName());
         PreferenceUtils.putString(this,PreferenceUtils.Key.ENROLL_YEAR,userInfoRes.getEnroll_year());
@@ -332,7 +326,7 @@ public class LoginActivity extends AbsActivity {
             return false;
         }
         if(phoneNum.length()!=11){
-            showToast("请检查您的输入格式");
+            showToast("请输入正确的手机号码");
             LoginUserName.requestFocus();
             return false;
         }

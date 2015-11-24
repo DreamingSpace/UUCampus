@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -25,6 +27,7 @@ import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import java.util.ArrayList;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -58,6 +61,16 @@ public class HomeFragment extends BaseLazyFragment {
     RelativeLayout driverSchoolRl;
     @Bind(R.id.personal_shop_rl)
     RelativeLayout personalShopRl;
+    @Bind(R.id.free_goods_linear)
+    LinearLayout freeGoodsLinear;
+    @Bind(R.id.person_shop_Linear)
+    LinearLayout personShopLinear;
+    @Bind(R.id.driver_school_Linear)
+    LinearLayout driverSchoolLinear;
+    @Bind(R.id.study_abroad_Linear)
+    LinearLayout studyAbroadLinear;
+    @Bind(R.id.travel_Linear)
+    LinearLayout travelLinear;
 
     private ArrayList<AdItem> ads;
 
@@ -80,8 +93,8 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.travel));
-                readyGo(FastInAct.class,bundle);
+                bundle.putString(FastInAct.CATEGORY, getResources().getString(R.string.travel));
+                readyGo(FastInAct.class, bundle);
             }
         });
 
@@ -89,8 +102,8 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.class_uniform));
-                readyGo(FastInAct.class,bundle);
+                bundle.putString(FastInAct.CATEGORY, getResources().getString(R.string.class_uniform));
+                readyGo(FastInAct.class, bundle);
             }
         });
 
@@ -98,8 +111,8 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.driver_school));
-                readyGo(FastInAct.class,bundle);
+                bundle.putString(FastInAct.CATEGORY, getResources().getString(R.string.driver_school));
+                readyGo(FastInAct.class, bundle);
             }
         });
 
@@ -107,8 +120,8 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.study_abroad));
-                readyGo(FastInAct.class,bundle);
+                bundle.putString(FastInAct.CATEGORY, getResources().getString(R.string.study_abroad));
+                readyGo(FastInAct.class, bundle);
             }
         });
 
@@ -116,15 +129,15 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.personal_shop));
-                readyGo(FastInAct.class,bundle);
+                bundle.putString(FastInAct.CATEGORY, getResources().getString(R.string.personal_shop));
+                readyGo(FastInAct.class, bundle);
             }
         });
 
         freeGoodsLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {     //快捷方式进入闲置页面
-               readyGo(FreeGoodsActivity.class);
+                readyGo(FreeGoodsActivity.class);
             }
         });
 
@@ -132,8 +145,8 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.travel));
-                readyGo(FastInAct.class,bundle);
+                bundle.putString(FastInAct.CATEGORY, getResources().getString(R.string.travel));
+                readyGo(FastInAct.class, bundle);
             }
         });
 
@@ -141,8 +154,8 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.driver_school));
-                readyGo(FastInAct.class,bundle);
+                bundle.putString(FastInAct.CATEGORY, getResources().getString(R.string.driver_school));
+                readyGo(FastInAct.class, bundle);
             }
         });
 
@@ -150,8 +163,8 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.study_abroad));
-                readyGo(FastInAct.class,bundle);
+                bundle.putString(FastInAct.CATEGORY, getResources().getString(R.string.study_abroad));
+                readyGo(FastInAct.class, bundle);
             }
         });
 
@@ -159,8 +172,8 @@ public class HomeFragment extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(FastInAct.CATEGORY,getResources().getString(R.string.personal_shop));
-                readyGo(FastInAct.class,bundle);
+                bundle.putString(FastInAct.CATEGORY, getResources().getString(R.string.personal_shop));
+                readyGo(FastInAct.class, bundle);
             }
         });
 
@@ -170,6 +183,50 @@ public class HomeFragment extends BaseLazyFragment {
                 readyGo(FreeGoodsActivity.class);
             }
         });
+
+        freeGoodsLinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                readyGo(FreeGoodsActivity.class);
+            }
+        });
+
+        personShopLinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString(FastInAct.CATEGORY, getResources().getString(R.string.personal_shop));
+                readyGo(FastInAct.class, bundle);
+            }
+        });
+
+        studyAbroadLinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString(FastInAct.CATEGORY, getResources().getString(R.string.study_abroad));
+                readyGo(FastInAct.class, bundle);
+            }
+        });
+
+        driverSchoolLinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString(FastInAct.CATEGORY, getResources().getString(R.string.driver_school));
+                readyGo(FastInAct.class, bundle);
+            }
+        });
+
+        travelLinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString(FastInAct.CATEGORY, getResources().getString(R.string.travel));
+                readyGo(FastInAct.class, bundle);
+            }
+        });
+
     }
 
     @Override
@@ -182,9 +239,9 @@ public class HomeFragment extends BaseLazyFragment {
         return null;
     }
 
-    private void initBanner(){
+    private void initBanner() {
         ArrayList<String> list = new ArrayList<>();
-        for(int i=0;i<ads.size();i++){
+        for (int i = 0; i < ads.size(); i++) {
             list.add(ads.get(i).getImage());
         }
         banner.setPages(
@@ -194,14 +251,29 @@ public class HomeFragment extends BaseLazyFragment {
                         return new NetworkImageHolderView();
                     }
                 }
-        ,list)
-        .setPageTransformer(ConvenientBanner.Transformer.DefaultTransformer);
+                , list)
+                .setPageTransformer(ConvenientBanner.Transformer.DefaultTransformer);
 
         banner.startTurning(3000);
     }
 
-    public class NetworkImageHolderView implements CBPageAdapter.Holder<String>{
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
+
+    public class NetworkImageHolderView implements CBPageAdapter.Holder<String> {
         private ImageView imageView;
+
         @Override
         public View createView(Context context) {
             imageView = new ImageView(context);
@@ -211,7 +283,7 @@ public class HomeFragment extends BaseLazyFragment {
 
         @Override
         public void UpdateUI(Context context, final int position, String data) {
-            CommonUtils.showImageWithGlide(context,imageView,data);
+            CommonUtils.showImageWithGlide(context, imageView, data);
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -224,8 +296,8 @@ public class HomeFragment extends BaseLazyFragment {
     }
 
     //获取广告栏信息
-    private void getAd(){
-        if(NetUtils.isNetworkAvailable(getActivity())){
+    private void getAd() {
+        if (NetUtils.isNetworkAvailable(getActivity())) {
             ApiManager.getService(getActivity()).getAd(new Callback<GetAdRes>() {
                 @Override
                 public void success(GetAdRes getAdRes, Response response) {
@@ -239,7 +311,7 @@ public class HomeFragment extends BaseLazyFragment {
                     showInnerError(error);
                 }
             });
-        }else{
+        } else {
             showNetWorkError();
         }
     }

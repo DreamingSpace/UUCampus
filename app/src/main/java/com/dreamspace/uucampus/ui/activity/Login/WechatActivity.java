@@ -1,6 +1,5 @@
 package com.dreamspace.uucampus.ui.activity.Login;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,7 +33,6 @@ public class WechatActivity extends AbsActivity {
 
     @Override
     protected int getContentView() {
-        Log.d("TestData","eeeee");
         return R.layout.acticity_weixin;
     }
 

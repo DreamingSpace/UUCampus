@@ -2,7 +2,6 @@ package com.dreamspace.uucampus.ui.activity.Login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -118,7 +117,6 @@ public class RegisterInfoActivity extends AbsActivity {
             ApiManager.getService(this).getAllLocation(new Callback<LocationAllRes>() {
                 @Override
                 public void success(LocationAllRes locationAllRes, Response response) {
-                    Log.d("TestData", locationAllRes.getLocation().toString());
                     final WheelViewDialog inSchoolDialog = new WheelViewDialog(RegisterInfoActivity.this,locationAllRes.getLocation(),"选择校区");
 
                     inSchoolDialog.setNegativeButton(getString(R.string.cancel), new View.OnClickListener() {
