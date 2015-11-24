@@ -361,7 +361,7 @@ public class SearchResultActivity extends AbsActivity {
                 int size = shopItems.size();
                 if (size != 0) {
                     searchShopLinear.setVisibility(View.VISIBLE);
-                    searchShopDivider.setVisibility(View.VISIBLE);
+                    searchShopDivider.setVisibility(View.GONE);
                     searchShopMore.setVisibility(View.GONE);
                     haveResult = true;
                 }
@@ -369,7 +369,7 @@ public class SearchResultActivity extends AbsActivity {
                 if (size > 2) {
                     temp.add(shopItems.get(0));
                     temp.add(shopItems.get(1));
-                    searchShopDivider.setVisibility(View.GONE);
+                    searchShopDivider.setVisibility(View.VISIBLE);
                     searchShopMore.setVisibility(View.VISIBLE);
                 } else {
                     temp = shopItems;

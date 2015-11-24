@@ -10,6 +10,7 @@
         android:id="@+id/search_history_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:layout_marginTop="15dp"
         android:orientation="vertical">
 
@@ -76,6 +77,7 @@
                 android:id="@+id/search_goods_linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:layout_marginTop="15dp"
                 android:orientation="vertical">
 
@@ -134,6 +136,7 @@
                 android:id="@+id/search_idle_linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:layout_marginTop="15dp"
                 android:orientation="vertical">
 
@@ -192,6 +195,7 @@
                 android:id="@+id/search_shop_linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:layout_marginBottom="50dp"
                 android:layout_marginTop="15dp"
                 android:orientation="vertical">

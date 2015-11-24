@@ -160,7 +160,12 @@ public class SearchResultMoreActivity extends AbsActivity {
                 searchMoreHistoryLinear.setVisibility(View.GONE);
                 keyWord = searchText.getText().toString();
                 searchMoreFailedLinear.setVisibility(View.GONE);
-                search();
+                if (!CommonUtils.isEmpty(keyWord)) {
+                    SharePreference.searchHistory.add(keyWord);
+                    search();
+                } else {
+                    showToast("搜索关键字不能为空");
+                }
             }
         });
 
@@ -290,140 +295,124 @@ public class SearchResultMoreActivity extends AbsActivity {
     }
 
     private void searchGood() {
-        if (!CommonUtils.isEmpty(keyWord)) {
-            if (NetUtils.isNetworkConnected(this)) {
-                searchGoodsMoreList.setLoading(false);
-                ApiManager.getService(this).searchGoods(keyWord, null, null, null, null, null, goodPage, "东南大学九龙湖校区", new Callback<SearchGoodsRes>() {
-                    @Override
-                    public void success(SearchGoodsRes searchGoodsRes, Response response) {
-                        //历史记录隐藏,搜索关键词加入历史记录
-                        searchMoreHistoryLinear.setVisibility(View.GONE);
-                        SharePreference.searchHistory.add(keyWord);
+        if (NetUtils.isNetworkConnected(this)) {
+            searchGoodsMoreList.setLoading(false);
+            ApiManager.getService(this).searchGoods(keyWord, null, null, null, null, null, goodPage, "东南大学九龙湖校区", new Callback<SearchGoodsRes>() {
+                @Override
+                public void success(SearchGoodsRes searchGoodsRes, Response response) {
+                    //历史记录隐藏,搜索关键词加入历史记录
+                    searchMoreHistoryLinear.setVisibility(View.GONE);
 
-                        goodsItems = searchGoodsRes.getResult();
-                        if (goodsItems.size() != 0) {
-                            searchGoodsMoreLinear.setVisibility(View.VISIBLE);
-                            if (goodPage == 1) {
-                                //第一次加载两页，尽量撑满屏幕
-                                searchGoodsAdapter = new SearchGoodsAdapter(getApplicationContext(), goodsItems, SearchGoodsAdapter.ViewHolder.class);
-                                goodPage++;
-                                searchGood();
-                            } else {
-                                searchGoodsAdapter.addEntities(goodsItems);
-                            }
-                            searchGoodsMoreList.setAdapter(searchGoodsAdapter);
+                    goodsItems = searchGoodsRes.getResult();
+                    if (goodsItems.size() != 0) {
+                        searchGoodsMoreLinear.setVisibility(View.VISIBLE);
+                        if (goodPage == 1) {
+                            //第一次加载两页，尽量撑满屏幕
+                            searchGoodsAdapter = new SearchGoodsAdapter(getApplicationContext(), goodsItems, SearchGoodsAdapter.ViewHolder.class);
+                            goodPage++;
+                            searchGood();
                         } else {
-                            if (goodPage == 1) {
-                                searchMoreFailedLinear.setVisibility(View.VISIBLE);
-                            }
+                            searchGoodsAdapter.addEntities(goodsItems);
                         }
-                        pd.dismiss();
+                        searchGoodsMoreList.setAdapter(searchGoodsAdapter);
+                    } else {
+                        if (goodPage == 1) {
+                            searchMoreFailedLinear.setVisibility(View.VISIBLE);
+                        }
                     }
+                    pd.dismiss();
+                }
 
-                    @Override
-                    public void failure(RetrofitError error) {
-                        showInnerError(error);
-                        pd.dismiss();
-                    }
-                });
-            } else {
-                showNetWorkError();
-                pd.dismiss();
-            }
+                @Override
+                public void failure(RetrofitError error) {
+                    showInnerError(error);
+                    pd.dismiss();
+                }
+            });
         } else {
-            showToast("搜索关键字不能为空");
+            showNetWorkError();
             pd.dismiss();
         }
     }
 
+
     private void searchIdle() {
-        if (!CommonUtils.isEmpty(keyWord)) {
-            if (NetUtils.isNetworkConnected(this)) {
-                searchIdleMoreList.setLoading(false);
-                ApiManager.getService(this).searchIdle(keyWord, null, null, idlePage, "东南大学九龙湖校区", new Callback<SearchIdleRes>() {
-                    @Override
-                    public void success(SearchIdleRes searchIdleRes, Response response) {
-                        //历史记录隐藏,搜索关键词加入历史记录
-                        searchMoreHistoryLinear.setVisibility(View.GONE);
-                        SharePreference.searchHistory.add(keyWord);
+        if (NetUtils.isNetworkConnected(this)) {
+            searchIdleMoreList.setLoading(false);
+            ApiManager.getService(this).searchIdle(keyWord, null, null, idlePage, "东南大学九龙湖校区", new Callback<SearchIdleRes>() {
+                @Override
+                public void success(SearchIdleRes searchIdleRes, Response response) {
+                    //历史记录隐藏,搜索关键词加入历史记录
+                    searchMoreHistoryLinear.setVisibility(View.GONE);
 
-                        idleItems = searchIdleRes.getResult();
-                        if (idleItems.size() != 0) {
-                            searchIdleMoreLinear.setVisibility(View.VISIBLE);
-                            if (idlePage == 1) {
-                                searchIdleAdapter = new SearchIdleAdapter(getApplicationContext(), idleItems, SearchIdleAdapter.ViewHolder.class);
-                                idlePage++;
-                                searchIdle();
-                            } else {
-                                searchIdleAdapter.addEntities(idleItems);
-                            }
-                            searchIdleMoreList.setAdapter(searchIdleAdapter);
+                    idleItems = searchIdleRes.getResult();
+                    if (idleItems.size() != 0) {
+                        searchIdleMoreLinear.setVisibility(View.VISIBLE);
+                        if (idlePage == 1) {
+                            searchIdleAdapter = new SearchIdleAdapter(getApplicationContext(), idleItems, SearchIdleAdapter.ViewHolder.class);
+                            idlePage++;
+                            searchIdle();
                         } else {
-                            if (idlePage == 1) {
-                                searchMoreFailedLinear.setVisibility(View.VISIBLE);
-                            }
+                            searchIdleAdapter.addEntities(idleItems);
                         }
-                        pd.dismiss();
+                        searchIdleMoreList.setAdapter(searchIdleAdapter);
+                    } else {
+                        if (idlePage == 1) {
+                            searchMoreFailedLinear.setVisibility(View.VISIBLE);
+                        }
                     }
+                    pd.dismiss();
+                }
 
-                    @Override
-                    public void failure(RetrofitError error) {
-                        showInnerError(error);
-                        pd.dismiss();
-                    }
-                });
-            } else {
-                showNetWorkError();
-                pd.dismiss();
-            }
+                @Override
+                public void failure(RetrofitError error) {
+                    showInnerError(error);
+                    pd.dismiss();
+                }
+            });
         } else {
-            showToast("搜索关键字不能为空");
+            showNetWorkError();
             pd.dismiss();
         }
     }
 
     private void searchShop() {
-        if (!CommonUtils.isEmpty(keyWord)) {
-            if (NetUtils.isNetworkConnected(this)) {
-                searchShopMoreList.setLoading(false);
-                ApiManager.getService(this).searchShop(keyWord, null, null, shopPage, "东南大学九龙湖校区", new Callback<SearchShopRes>() {
-                    @Override
-                    public void success(SearchShopRes searchShopRes, Response response) {
-                        //历史记录隐藏,搜索关键词加入历史记录
-                        searchMoreHistoryLinear.setVisibility(View.GONE);
-                        SharePreference.searchHistory.add(keyWord);
+        if (NetUtils.isNetworkConnected(this)) {
+            searchShopMoreList.setLoading(false);
+            ApiManager.getService(this).searchShop(keyWord, null, null, shopPage, "东南大学九龙湖校区", new Callback<SearchShopRes>() {
+                @Override
+                public void success(SearchShopRes searchShopRes, Response response) {
+                    //历史记录隐藏,搜索关键词加入历史记录
+                    searchMoreHistoryLinear.setVisibility(View.GONE);
 
-                        shopItems = searchShopRes.getResult();
-                        if (shopItems.size() != 0) {
-                            searchShopMoreLinear.setVisibility(View.VISIBLE);
-                            if (shopPage == 1) {
-                                searchShopAdapter = new SearchShopAdapter(getApplicationContext(), shopItems, SearchShopAdapter.ViewHolder.class);
-                                shopPage++;
-                                searchShop();
-                            } else {
-                                searchShopAdapter.addEntities(shopItems);
-                            }
-                            searchShopMoreList.setAdapter(searchShopAdapter);
-                            pd.dismiss();
+                    shopItems = searchShopRes.getResult();
+                    if (shopItems.size() != 0) {
+                        searchShopMoreLinear.setVisibility(View.VISIBLE);
+                        if (shopPage == 1) {
+                            searchShopAdapter = new SearchShopAdapter(getApplicationContext(), shopItems, SearchShopAdapter.ViewHolder.class);
+                            shopPage++;
+                            searchShop();
                         } else {
-                            if (shopPage == 1) {
-                                searchMoreFailedLinear.setVisibility(View.VISIBLE);
-                            }
+                            searchShopAdapter.addEntities(shopItems);
+                        }
+                        searchShopMoreList.setAdapter(searchShopAdapter);
+                        pd.dismiss();
+                    } else {
+                        if (shopPage == 1) {
+                            searchMoreFailedLinear.setVisibility(View.VISIBLE);
                         }
                     }
+                    pd.dismiss();
+                }
 
-                    @Override
-                    public void failure(RetrofitError error) {
-                        showInnerError(error);
-                        pd.dismiss();
-                    }
-                });
-            } else {
-                showNetWorkError();
-                pd.dismiss();
-            }
+                @Override
+                public void failure(RetrofitError error) {
+                    showInnerError(error);
+                    pd.dismiss();
+                }
+            });
         } else {
-            showToast("搜索关键字不能为空");
+            showNetWorkError();
             pd.dismiss();
         }
     }

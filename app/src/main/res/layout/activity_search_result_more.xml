@@ -10,6 +10,7 @@
         android:id="@+id/search_more_history_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:layout_marginTop="15dp"
         android:orientation="vertical">
 
