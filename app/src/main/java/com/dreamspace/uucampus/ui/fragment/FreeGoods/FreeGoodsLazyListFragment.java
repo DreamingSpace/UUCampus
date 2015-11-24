@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.FreeGoods.FreeGoodsItemAdapter;
 import com.dreamspace.uucampus.adapter.base.BasisAdapter;
+import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsActivity;
 import com.dreamspace.uucampus.ui.activity.FreeGoods.FreeGoodsDetailActivity;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.widget.LoadMoreListView;
@@ -31,15 +32,21 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
     public static final int LOAD=1;
     public static final int REQUEST_CODE=1;
     public static final int RESULT_CODE=200;
+    public String order = null;   //popupWindow对应选中的order
 
     @Override
     protected void onFirstUserVisible() {
+        order = ((FreeGoodsActivity)getActivity()).getOrder();
         getInitData();
     }
 
     @Override
     protected void onUserVisible() {
-
+        //排列方式变化，重新获取数据
+        if(!order.equals(((FreeGoodsActivity)getActivity()).getOrder())){
+            order = ((FreeGoodsActivity)getActivity()).getOrder();
+            getInitData();
+        }
     }
 
     @Override

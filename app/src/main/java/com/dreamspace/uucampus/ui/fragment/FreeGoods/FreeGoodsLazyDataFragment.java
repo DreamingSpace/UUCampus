@@ -29,10 +29,11 @@ import retrofit.client.Response;
 public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleItem> {
     private String category;
     private int page = 1;
-    private String order = null;   //popupWindow对应选中的order
     private boolean isFragDestroy = false;
     private String location = null;
     private boolean isDetailBack= false;
+    private boolean firstGetGoods = true;//判断是不是第一次获取数据，第一次获取数据需要显示“加载中”界面
+    private boolean bIdleAct = false;
 
     public FreeGoodsLazyDataFragment() {
     }
@@ -41,6 +42,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         category = getArguments().getString(FreeGoodsActivity.CATEGORY);
+        bIdleAct = getArguments().getBoolean(FreeGoodsActivity.EXTRA_IDLE_ACT);
     }
 
     @Override
@@ -91,7 +93,9 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     }
 
     public void loadingInitData() {
-        toggleShowLoading(true, getString(R.string.common_loading_message));
+        if(firstGetGoods) {
+            toggleShowLoading(true, getString(R.string.common_loading_message));
+        }
         page = 1;
         loadingDataByPage(page, new OnRefreshListener<IdleItem>() {
             @Override
@@ -102,6 +106,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
                     } else {
                         toggleShowLoading(false, null);
                         refreshDate(mEntities, FreeGoodsLazyListFragment.LOAD);
+                        firstGetGoods=false;
                         TLog.i("获取的闲置列表：", mEntities.get(0).getIdle_id() + " useName:" + mEntities.get(0).getUser_name());
                     }
                 }
@@ -163,7 +168,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     @Override
     public void onResume() {
         super.onResume();
-        if(!isDetailBack){      //当从其他页面回来时(不是直接从detail界面回来)重新加载
+        if(!bIdleAct && !isDetailBack){      //当从其他页面回来时(不是直接从detail界面回来)重新加载
             location = PreferenceUtils.getString(getActivity().getApplicationContext(), PreferenceUtils.Key.LOCATION);
             loadingInitData();
         }
@@ -176,6 +181,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
             if(resultCode==RESULT_CODE) {
                 //直接进入detail界面，不需要刷新
                 isDetailBack =true;
+                bIdleAct=false;
             }
         }
         super.onActivityResult(requestCode, resultCode, data);

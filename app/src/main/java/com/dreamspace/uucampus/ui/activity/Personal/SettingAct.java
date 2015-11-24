@@ -46,11 +46,11 @@ public class SettingAct extends AbsActivity {
     protected void initViews() {
         getSupportActionBar().setTitle(getResources().getString(R.string.setting));
 
-        if(!PreferenceUtils.hasKey(this,PreferenceUtils.Key.LOGIN)
-                || !PreferenceUtils.getBoolean(this,PreferenceUtils.Key.LOGIN)){
+        if (!PreferenceUtils.hasKey(this, PreferenceUtils.Key.LOGIN)
+                || !PreferenceUtils.getBoolean(this, PreferenceUtils.Key.LOGIN)) {
             //未登录
             initNoLoginViewsAndEvent();
-        }else{
+        } else {
             initLoginViewsAndEvent();
         }
 
@@ -62,7 +62,7 @@ public class SettingAct extends AbsActivity {
         return null;
     }
 
-    private void initListeners(){
+    private void initListeners() {
         updateRl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,8 +71,8 @@ public class SettingAct extends AbsActivity {
         });
     }
 
-    private void logout(){
-        if(!NetUtils.isNetworkConnected(this)){
+    private void logout() {
+        if (!NetUtils.isNetworkConnected(this)) {
             logoutOnNetErrorEnvir();
             return;
         }
@@ -97,19 +97,19 @@ public class SettingAct extends AbsActivity {
     }
 
     //无网环境或者请求错误的情况下登出
-    private void logoutOnNetErrorEnvir(){
-        PreferenceUtils.putString(this,PreferenceUtils.Key.ACCESS,"");
+    private void logoutOnNetErrorEnvir() {
+        PreferenceUtils.putString(this, PreferenceUtils.Key.ACCESS, "");
         PreferenceUtils.putBoolean(SettingAct.this, PreferenceUtils.Key.LOGIN, false);
         setResult(RESULT_OK);
         finish();
     }
 
     //未登录
-    private void initNoLoginViewsAndEvent(){
+    private void initNoLoginViewsAndEvent() {
         feedBackRl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                readyGoForResult(LoginActivity.class,LOGIN);
+                readyGoForResult(LoginActivity.class, LOGIN);
             }
         });
 
@@ -117,7 +117,7 @@ public class SettingAct extends AbsActivity {
     }
 
     //登录后
-    private void initLoginViewsAndEvent(){
+    private void initLoginViewsAndEvent() {
         logoutBtn.setVisibility(View.VISIBLE);
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +137,7 @@ public class SettingAct extends AbsActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == LOGIN && resultCode == RESULT_OK){
+        if (requestCode == LOGIN && resultCode == RESULT_OK) {
             initLoginViewsAndEvent();
         }
     }

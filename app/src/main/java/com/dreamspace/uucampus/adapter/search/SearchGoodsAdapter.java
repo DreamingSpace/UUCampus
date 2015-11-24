@@ -23,7 +23,7 @@ public class SearchGoodsAdapter extends BasisAdapter<GoodsItem, SearchGoodsAdapt
     protected void setDataIntoView(ViewHolder holder, GoodsItem entity) {
         holder.searchGoodNameTv.setText(entity.getName());
         holder.searchGoodShopNameTv.setText(entity.getShop_name());
-        holder.searchGoodPriceTv.setText("￥"+String.valueOf(entity.getPrice()));
+        holder.searchGoodPriceTv.setText("￥"+String.valueOf(entity.getPrice()/100.0));
     }
 
     @Override

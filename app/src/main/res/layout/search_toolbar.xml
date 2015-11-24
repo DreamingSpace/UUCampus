@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:background="@null"
         android:hint="请输入商品名，店铺名"
         android:layout_toLeftOf="@+id/search_img"
