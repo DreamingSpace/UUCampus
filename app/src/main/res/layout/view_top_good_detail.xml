@@ -28,7 +28,6 @@
             android:text="考研英语"
             android:textColor="@color/black_40"
             android:textSize="16sp"
-            android:textStyle="bold"
             android:singleLine="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

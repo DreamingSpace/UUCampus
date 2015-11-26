@@ -26,7 +26,6 @@
         android:text="￥30"
         android:textSize="18sp"
         android:textColor="@color/price_text_color"
-        android:textStyle="bold"
         android:layout_alignLeft="@id/good_name_tv"
         android:layout_toRightOf="@id/good_image_iv"
         android:layout_below="@id/good_name_tv"

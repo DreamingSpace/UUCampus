@@ -129,7 +129,7 @@ public class MyOrderAct extends AbsActivity{
                         loadMoreLv.setAdapter(myOrderListAdapter);
                         myOrderListAdapter.setOnPayClickListener(new MyOrderListAdapter.OnPayClickListener() {
                             @Override
-                            public void onPayClick(String order_name, String order_id, float total_price, float rest_to_pay) {
+                            public void onPayClick(String order_name, String order_id, int total_price, int rest_to_pay) {
                                 //进入支付界面
                                 inPayAct(order_name, order_id, total_price, rest_to_pay);
                             }
@@ -171,7 +171,7 @@ public class MyOrderAct extends AbsActivity{
         readyGoForResult(CommentAct.class,GO_COMMENT,bundle);
     }
 
-    private void inPayAct(String order_name,String order_id,float total_price,float rest_to_pay){
+    private void inPayAct(String order_name,String order_id,int total_price,int rest_to_pay){
         Bundle bundle = new Bundle();
         bundle.putString(OrderPayAct.ORDER_NAME,order_name);
         bundle.putString(OrderPayAct.ORDER_ID,order_id);

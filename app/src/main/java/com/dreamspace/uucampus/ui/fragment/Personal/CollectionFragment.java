@@ -147,8 +147,8 @@ public class CollectionFragment extends BaseFragment {
                 SwipeMenuItem openItem = new SwipeMenuItem(getActivity());
                 openItem.setBackground(R.color.price_text_color);
                 openItem.setWidth((int)(90*getResources().getDisplayMetrics().density));
-                openItem.setTitle("删除");
-                openItem.setTitleSize((int)(14*getResources().getDisplayMetrics().density));
+                openItem.setTitle(getString(R.string.delete));
+                openItem.setTitleSize((int)(8*getResources().getDisplayMetrics().density));
                 openItem.setTitleColor(getResources().getColor(R.color.white));
                 swipeMenu.addMenuItem(openItem);
             }

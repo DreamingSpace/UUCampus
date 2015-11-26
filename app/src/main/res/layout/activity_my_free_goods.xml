@@ -19,7 +19,6 @@
             <TextView
                 android:text="@string/on_sale"
                 android:textSize="16sp"
-                android:textStyle="bold"
                 android:textColor="@drawable/market_smart_tab_textcolor"
                 android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
@@ -47,7 +46,6 @@
             <TextView
                 android:text="@string/already_pull_off"
                 android:textSize="16sp"
-                android:textStyle="bold"
                 android:textColor="@drawable/market_smart_tab_textcolor"
                 android:layout_centerInParent="true"
                 android:layout_width="wrap_content"

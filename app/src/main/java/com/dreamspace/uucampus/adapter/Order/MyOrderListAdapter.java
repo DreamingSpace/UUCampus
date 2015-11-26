@@ -60,7 +60,7 @@ public class MyOrderListAdapter extends BasisAdapter<OrderItem,MyOrderListAdapte
                         //调用activity注册的回调
                         if(onPayClickListener != null){
                             onPayClickListener.onPayClick(entity.getGood().getName(),entity.get_id(),
-                                    entity.getQuantity() * ((float)entity.getGood().getOriginal_price() / 100),(float)entity.getTotal_price() / 100);
+                                    entity.getQuantity() * entity.getGood().getOriginal_price(),entity.getTotal_price());
                         }
                     }
                 });
@@ -127,7 +127,7 @@ public class MyOrderListAdapter extends BasisAdapter<OrderItem,MyOrderListAdapte
     }
 
     public interface  OnPayClickListener{
-        void onPayClick(String order_name,String order_id,float total_price,float rest_to_pay);
+        void onPayClick(String order_name,String order_id,int total_price,int rest_to_pay);
     }
 
     public interface OnCommentClickListener{

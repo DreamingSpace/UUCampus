@@ -3,6 +3,7 @@ package com.dreamspace.uucampus.ui.fragment.FreeGoods;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -75,6 +76,29 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
             @Override
             public void onLoadMore() {
                 onPullUp();
+            }
+        });
+
+        moreListView.setOnTouchListener(new View.OnTouchListener() {
+            float y = 0;
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        y = motionEvent.getY();
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+                        //向下滚动式隐藏btn，向上显示
+                        if(motionEvent.getY() - y > 0){
+                            ((FreeGoodsActivity)getActivity()).setFloatActionBtnVisible(true);
+                        }else{
+                            ((FreeGoodsActivity)getActivity()).setFloatActionBtnVisible(false);
+                        }
+                        y = motionEvent.getY();
+                        break;
+                }
+                return false;
             }
         });
 //        moreListView.onScroll();

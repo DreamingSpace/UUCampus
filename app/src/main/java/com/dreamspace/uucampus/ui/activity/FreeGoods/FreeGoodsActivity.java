@@ -51,6 +51,7 @@ public class FreeGoodsActivity extends AbsActivity {
     FreeGoodsSortPopupWindow popupWindow;
     private String order="view_number";
     private boolean bIdleAct=true;
+    private boolean haveGood = false;
 
     private FragmentStatePagerItemAdapter pagerAdpater;
     public static final String CATEGORY = "category";
@@ -121,8 +122,8 @@ public class FreeGoodsActivity extends AbsActivity {
             @Override
             public void onClick(View v) {
                 popupWindow.popupItemSetSelect(2);
-                order="price";
-                ((FreeGoodsLazyDataFragment)pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange(order);
+                order = "price";
+                ((FreeGoodsLazyDataFragment) pagerAdpater.getPage(mViewPager.getCurrentItem())).orderChange(order);
             }
         });
     }
@@ -149,6 +150,18 @@ public class FreeGoodsActivity extends AbsActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem sort = menu.findItem(R.id.free_goods_action_sort);
+        if(haveGood){
+            sort.setVisible(true);
+        }else{
+            //没有商品则不现实排序图标
+            sort.setVisible(false);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public void onBackPressed() {
         if(popupWindow != null && popupWindow.isShowing())
         {
@@ -165,12 +178,19 @@ public class FreeGoodsActivity extends AbsActivity {
             ApiManager.getService(getApplicationContext()).getAllIdleCategory(new Callback<AllCategoryRes>() {
                 @Override
                 public void success(AllCategoryRes allCategoryRes, Response response) {
-                    TLog.i("idle tabs:",response.getReason());
-                    for(CategoryItem categoryItem :allCategoryRes.getCategory()){
-                        items.add(categoryItem.getName());
+                    TLog.i("idle tabs:", response.getReason());
+                    if(allCategoryRes.getCategory().size() == 0){
+                        haveGood = false;
+                        invalidateOptionsMenu();
+                    }else{
+                        haveGood = true;
+                        invalidateOptionsMenu();
+                        for(CategoryItem categoryItem :allCategoryRes.getCategory()){
+                            items.add(categoryItem.getName());
+                        }
+                        initFragment(items);   //初始化viewpager与smartLayout
+                        toggleRestore();
                     }
-                    initFragment(items);   //初始化viewpager与smartLayout
-                    toggleRestore();
                 }
 
                 @Override
@@ -213,6 +233,16 @@ public class FreeGoodsActivity extends AbsActivity {
             initTabs();
         }
     };
+
+    public void setFloatActionBtnVisible(boolean visible){
+        if(mPublishBtn != null){
+            if(visible){
+                mPublishBtn.setVisibility(View.VISIBLE);
+            }else{
+                mPublishBtn.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
 
     public String getOrder(){
         return order;

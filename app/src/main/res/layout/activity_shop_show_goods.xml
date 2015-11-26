@@ -33,18 +33,11 @@
             app:stl_underlineThickness="0dp"
             app:stl_clickable="true"/>
         <View
-            android:id="@+id/divider_below_shop_sg_act_smarttab"
-            android:layout_below="@id/shop_show_goods_act_smarttablayout"
-            android:background="@color/divider_color"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"/>
-        <View
             android:id="@+id/divider_above_shop_sg_act_viewpager"
             android:layout_below="@id/shop_show_goods_act_smarttablayout"
             android:background="@color/divider_color"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"/>
+            android:layout_height="1px"/>
 
         <LinearLayout
             android:id="@+id/shop_bottom_bar"

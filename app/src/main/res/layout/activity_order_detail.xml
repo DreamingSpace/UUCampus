@@ -35,7 +35,6 @@
                         android:text="常州一日游*2"
                         android:textColor="@color/black_40"
                         android:textSize="16sp"
-                        android:textStyle="bold"
                         android:layout_toRightOf="@id/good_image_iv"
                         android:layout_marginTop="30dp"
                         android:layout_marginLeft="20dp"

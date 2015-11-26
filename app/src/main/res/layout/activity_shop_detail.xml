@@ -28,7 +28,6 @@
                 android:text="东大旅游吧"
                 android:textColor="@color/black_40"
                 android:textSize="16sp"
-                android:textStyle="bold"
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
