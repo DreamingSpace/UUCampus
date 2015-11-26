@@ -20,31 +20,45 @@
         android:layout_marginTop="5dp"
         android:singleLine="true"
         android:text="汤山温泉两天一夜游"
-        android:textColor="@color/good_name_text_color"
+        android:textColor="@color/search_text"
         android:textSize="16sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/search_idle_shop_name_tv"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/search_idle_name_tv"
         android:layout_below="@id/search_idle_name_tv"
         android:layout_marginTop="3dp"
-        android:singleLine="true"
-        android:text="康辉旅行社"
-        android:textColor="@color/app_theme_color2"
-        android:textSize="11sp" />
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/orderdetail_btn_chose_h" />
+
+        <TextView
+            android:id="@+id/search_idle_shop_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="康辉旅行社"
+            android:textColor="@color/search_text_little"
+            android:textSize="12sp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/search_idle_price_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_toLeftOf="@id/search_idle_name_tv"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@id/search_idle_name_tv"
         android:text="￥230"
-        android:textColor="@color/price_text_color"
+        android:textColor="@color/search_price"
         android:textSize="18sp" />
 </RelativeLayout>

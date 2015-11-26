@@ -20,7 +20,7 @@
         android:layout_marginTop="5dp"
         android:singleLine="true"
         android:text="船长的零食店"
-        android:textColor="@color/good_name_text_color"
+        android:textColor="@color/search_text"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -33,6 +33,6 @@
         android:layout_marginTop="3dp"
         android:singleLine="true"
         android:text="主营：卖零食啊卖零食"
-        android:textColor="@color/app_theme_color2"
+        android:textColor="@color/search_text_little"
         android:textSize="11sp" />
 </RelativeLayout>

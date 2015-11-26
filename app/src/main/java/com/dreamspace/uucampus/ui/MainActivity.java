@@ -15,6 +15,7 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.ui.activity.Search.SearchResultActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
+import com.umeng.update.UmengUpdateAgent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,7 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
     private TextView centerTitleTv;
     private LinearLayout locationLl;//校区地址
     private TextView locationTv;
+    private long lastBackPreeTime = 0;
     //当前所在的fragment标号
     private int currentIndex = 0;
     @Override
@@ -60,7 +62,8 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
 
     @Override
     protected void prepareDatas() {
-
+        UmengUpdateAgent.setDeltaUpdate(false);//关闭增量更新，增量更新会出现错误
+        UmengUpdateAgent.update(this);
     }
 
     @Override
@@ -247,5 +250,15 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
     private void personalPageIconSetAlpha(float alpha){
         personalSelectLl.setAlpha(alpha);
         personalUnselectLl.setAlpha(1 - alpha);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(System.currentTimeMillis() - lastBackPreeTime > 2000){
+            showToast(getString(R.string.press_again_to_exit));
+            lastBackPreeTime = System.currentTimeMillis();
+        }else{
+            super.onBackPressed();
+        }
     }
 }

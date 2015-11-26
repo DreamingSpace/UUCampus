@@ -182,8 +182,6 @@
             android:name="UMENG_APPKEY"
             android:value="5625eac167e58e4e1f001985" />
 
-         <!--umeng-->
-        <meta-data android:name="UMENG_APPKEY" android:value="5625eac167e58e4e1f001985"/>
         <activity
             android:name="com.umeng.socialize.view.ShareActivity"
             android:configChanges="orientation|keyboard"
@@ -191,6 +189,16 @@
             android:noHistory="true"
             android:theme="@style/Theme.UMDialog"
             android:windowSoftInputMode="stateVisible|adjustResize" />
+
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
 
         <!-- ############ QQ空间和QQ SSO授权的Activity注册 ############ -->
 

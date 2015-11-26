@@ -12,6 +12,11 @@ import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.model.api.DeleteAccessTokenRes;
 import com.dreamspace.uucampus.ui.activity.Login.LoginActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
+import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
+import com.umeng.update.UmengUpdateAgent;
+import com.umeng.update.UmengUpdateListener;
+import com.umeng.update.UpdateResponse;
+import com.umeng.update.UpdateStatus;
 
 import butterknife.Bind;
 import retrofit.Callback;
@@ -31,6 +36,7 @@ public class SettingAct extends AbsActivity {
 
     private boolean actDestroy = false;
     private static final int LOGIN = 1;
+    private ProgressDialog progressDialog;
 
     @Override
     protected int getContentView() {
@@ -63,10 +69,37 @@ public class SettingAct extends AbsActivity {
     }
 
     private void initListeners() {
+        UmengUpdateAgent.setUpdateAutoPopup(false);
+        UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
+            @Override
+            public void onUpdateReturned(int updateStatus, UpdateResponse updateResponse) {
+                progressDialog.dismiss();
+                switch (updateStatus) {
+                    case UpdateStatus.Yes: // has update
+                        UmengUpdateAgent.showUpdateDialog(SettingAct.this,updateResponse);
+                        break;
+                    case UpdateStatus.No: // has no update
+                        showToast(getString(R.string.newest_version));
+                        break;
+                    case UpdateStatus.NoneWifi: // none wifi
+//                        Toast.makeText(mContext, "没有wifi连接， 只在wifi下更新", Toast.LENGTH_SHORT).show();
+                        break;
+                    case UpdateStatus.Timeout: // time out
+                        showToast("超时");
+                        break;
+                }
+            }
+        });
         updateRl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(!NetUtils.isNetworkAvailable(SettingAct.this)){
+                    showNetWorkError();
+                    return;
+                }
+                initProgressDialog();
+                progressDialog.show();
+                UmengUpdateAgent.forceUpdate(SettingAct.this);
             }
         });
     }
@@ -133,6 +166,14 @@ public class SettingAct extends AbsActivity {
                 readyGo(FeedbackAct.class);
             }
         });
+    }
+
+    private void initProgressDialog(){
+        if(progressDialog != null){
+            return;
+        }
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setContent(getString(R.string.checking_update));
     }
 
     @Override
