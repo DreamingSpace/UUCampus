@@ -1,49 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:paddingBottom="10dp"
-    android:background="@drawable/personal_center_item_bg"
     android:layout_width="match_parent"
-    android:layout_height="54dp">
+    android:layout_height="54dp"
+    android:background="@drawable/personal_center_item_bg"
+    android:paddingBottom="10dp">
 
     <View
-    android:layout_width="match_parent"
-    android:layout_height="1dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:background="@color/divider_color" />
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/divider_color" />
 
     <TextView
-        android:text="汤山温泉两天一夜游"
         android:id="@+id/search_good_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
-        android:textSize="16sp"
-        android:textColor="@color/good_name_text_color"
-        android:textStyle="bold"
         android:singleLine="true"
+        android:text="汤山温泉两天一夜游"
+        android:textColor="@color/search_text"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:text="康辉旅行社"
-        android:id="@+id/search_good_shop_name_tv"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/search_good_name_tv"
         android:layout_below="@id/search_good_name_tv"
         android:layout_marginTop="3dp"
-        android:layout_alignLeft="@id/search_good_name_tv"
-        android:textColor="@color/app_theme_color2"
-        android:textSize="11sp"
-        android:singleLine="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/orderdetail_btn_chose_h" />
+
+        <TextView
+            android:id="@+id/search_good_shop_name_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:layout_marginLeft="3dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="康辉旅行社"
+            android:textColor="@color/search_text_little"
+            android:textSize="12sp" />
+    </LinearLayout>
 
     <TextView
-        android:text="￥230"
         android:id="@+id/search_good_price_tv"
-        android:layout_toLeftOf="@id/search_good_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
-        android:textColor="@color/price_text_color"
-        android:textSize="18sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_toLeftOf="@id/search_good_name_tv"
+        android:text="￥230"
+        android:textColor="@color/search_price"
+        android:textSize="18sp" />
 </RelativeLayout>

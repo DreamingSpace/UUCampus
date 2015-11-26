@@ -76,4 +76,9 @@
     <color name="new_title_text_color">#059181</color>
     <color name="new_pre_cata_edittext_bottom_color">#06c2ad</color>
     <color name="consult_shadow">#66000000</color>
+
+    <!--<search>-->
+    <color name="search_text">#000000</color>
+    <color name="search_text_little">#666666</color>
+    <color name="search_price">#f35453</color>
 </resources>
