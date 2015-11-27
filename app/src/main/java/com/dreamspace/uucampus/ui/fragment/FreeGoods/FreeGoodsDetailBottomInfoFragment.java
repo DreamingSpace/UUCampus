@@ -115,25 +115,15 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
                     //未登录
                     readyGo(LoginActivity.class);
                 }else{
-                    if(bCollect){
-                        mCollectIv.setImageResource(R.drawable.xiangqing_tab_bar_collect_n);
-                        mCollectTv.setTextColor(getResources().getColor(R.color.text_normal));
-                        bCollect = false;
                         updateCollect(bCollect);
-                    }else{
-                        mCollectIv.setImageResource(R.drawable.xiangqing_tab_bar_collect_p);
-                        mCollectTv.setTextColor(getResources().getColor(R.color.text_pressed));
-                        bCollect=true;
-                        updateCollect(bCollect);
-                    }
                 }
             }
         });
     }
 
-    private void updateCollect(boolean bCollect) {
+    private void updateCollect(final boolean bCollect) {
         if(NetUtils.isNetworkConnected(getActivity().getApplicationContext())){
-            if(bCollect) {
+            if(!bCollect) {   //添加收藏
 //                final ProgressDialog pd = new ProgressDialog(mContext);
 //                pd.setContent("正在收藏");
 //                pd.show();
@@ -142,6 +132,7 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
                     @Override
                     public void success(AddIdleCollectionRes addIdleCollectionRes, Response response) {
                         showToast("成功收藏");
+                        updateCollectUI(bCollect);
 //                        pd.dismiss();
                     }
 
@@ -152,7 +143,7 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
 //                        pd.dismiss();
                     }
                 });
-            }else{
+            }else{                  //取消收藏
 //                final ProgressDialog pd = new ProgressDialog(mContext);
 //                pd.setContent("取消收藏");
 //                pd.show();
@@ -161,6 +152,7 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
                     @Override
                     public void success(Response response, Response response2) {
                         showToast("取消收藏");
+                        updateCollectUI(bCollect);
 //                        pd.dismiss();
                     }
 
@@ -173,6 +165,18 @@ public class FreeGoodsDetailBottomInfoFragment extends BaseLazyFragment {
             }
         }else{
             showNetWorkError();
+        }
+    }
+
+    private void updateCollectUI(boolean bCollect) {
+        if(bCollect){   //取消收藏
+            this.bCollect = false;
+            mCollectIv.setImageResource(R.drawable.xiangqing_tab_bar_collect_n);
+            mCollectTv.setTextColor(getResources().getColor(R.color.text_normal));
+        }else{
+            this.bCollect=true;
+            mCollectIv.setImageResource(R.drawable.xiangqing_tab_bar_collect_p);
+            mCollectTv.setTextColor(getResources().getColor(R.color.text_pressed));
         }
     }
 
