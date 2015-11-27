@@ -103,7 +103,9 @@ public class MarketFragment extends BaseLazyFragment {
 
             @Override
             public void failure(RetrofitError error) {
-                showInnerError(error);
+                System.out.println(error.getMessage());
+                System.out.println(error.getResponse().getReason());
+//                showInnerError(error);
                 toggleShowError(true,null,getCategoryClickListener);
             }
         });
