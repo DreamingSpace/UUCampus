@@ -110,16 +110,8 @@ public class FreeGoodsDetailActivity extends AbsActivity {
                 if (!PreferenceUtils.hasKey(FreeGoodsDetailActivity.this, PreferenceUtils.Key.LOGIN) ||
                         !PreferenceUtils.getBoolean(FreeGoodsDetailActivity.this, PreferenceUtils.Key.LOGIN)) {
                     readyGo(LoginActivity.class);
-                }else{
-                    if (bLike) {
-                        mLikeIv.setImageResource(R.drawable.xiangqing_btn_dianzan_p);
-                        bLike = false;
-                        likeIdle(bLike);  //取消点赞
-                    } else {
-                        mLikeIv.setImageResource(R.drawable.xiangqing_btn_dianzan);
-                        bLike = true;
-                        likeIdle(bLike);  //点赞
-                    }
+                } else {
+                        likeIdle(bLike);
                 }
             }
         });
@@ -191,50 +183,41 @@ public class FreeGoodsDetailActivity extends AbsActivity {
         tabLayout.setViewPager(detailViewPager);
     }
 
-    private void likeIdle(boolean bLike) {
-//        final ProgressDialog pd =ProgressDialog.show(this, "", "正在点赞", true, false);
-//        final com.dreamspace.uucampus.ui.dialog.ProgressDialog pd = new com.dreamspace.uucampus.ui.dialog.ProgressDialog(this);
-//        pd.setContent("正在点赞");
-//        pd.show();
+    private void likeIdle(final boolean like) {
         if(NetUtils.isNetworkConnected(this.getApplicationContext())){
-            if(bLike) {
+            if(like) {     //取消点赞
+                ApiManager.getService(this.getApplicationContext()).unLikeIdle(idle_id, new Callback<Response>() {
+                    @Override
+                    public void success(Response response, Response response2) {
+                        showToast("取消点赞");
+                        updateUI(like);
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        showInnerError(error);
+                    }
+                });
+            }else{            //添加点赞
                 ApiManager.getService(this.getApplicationContext()).likeIdle(idle_id, new Callback<LikeIdleRes>() {
                     @Override
                     public void success(LikeIdleRes likeIdleRes, Response response) {
                         showToast("成功点赞");
-                        likeNum+=1;
-                        updateLikeNum(likeNum);
-//                        pd.dismiss();
+                        //更新UI
+                        updateUI(like);
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
                         showInnerError(error);
-//                        pd.dismiss();
-                    }
-                });
-            }else{
-                ApiManager.getService(this.getApplicationContext()).unLikeIdle(idle_id, new Callback<Response>() {
-                    @Override
-                    public void success(Response response, Response response2) {
-                        likeNum-=1;
-                        updateLikeNum(likeNum);
-                        showToast("取消点赞");
-//                        pd.dismiss();
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-                        showInnerError(error);
-//                        pd.dismiss();
                     }
                 });
             }
         }else{
             showNetWorkError();
-//            pd.dismiss();
         }
     }
+
 
 
     private Bundle getBundles(int index){
@@ -280,13 +263,25 @@ public class FreeGoodsDetailActivity extends AbsActivity {
         is_collection=getIdleInfoRes.getIs_collected();
         goodsName=getIdleInfoRes.getName();
         phoneNum=getIdleInfoRes.getPhone_num();
-//        TLog.i("闲置详情初始化：","image:"+getIdleInfoRes.getUser_image()+"  like_clicked:"+getIdleInfoRes.getLike_clicked()
-//                +"  is_collected:"+getIdleInfoRes.getIs_collected());
         initStl();  //必须在idle_id和content，is_collection都拿到后再传给fragment
     }
 
     private void updateLikeNum(int likeNum) {  //点赞实时更新点赞数，同时写入后台
-        mLikeTv.setText(String.valueOf(likeNum+getResources().getString(R.string.like)));
+
+    }
+
+
+    private void updateUI(boolean like) {   //后端传送成功后更新前端ui
+        if(like){  //取消点赞
+            bLike = false;
+            likeNum-=1;
+            mLikeIv.setImageResource(R.drawable.xiangqing_btn_dianzan_p);
+        }else {   //添加点赞
+            bLike = true;
+            mLikeIv.setImageResource(R.drawable.xiangqing_btn_dianzan);
+            likeNum+=1;
+        }
+       mLikeTv.setText(String.valueOf(likeNum + getResources().getString(R.string.like)));
     }
 
     @Override

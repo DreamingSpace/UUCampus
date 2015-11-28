@@ -232,9 +232,9 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
                 } else {
                     if (NetUtils.isNetworkConnected(getActivity().getApplicationContext())) {
                         if (useful_clicked) {  //评论有用 取消 转 评论无用
-                            final ProgressDialog pd = new ProgressDialog(mContext);
-                            pd.setContent("有用评取消");
-                            pd.show();
+//                            final ProgressDialog pd = new ProgressDialog(mContext);
+//                            pd.setContent("有用评取消");
+//                            pd.show();
                             ApiManager.getService(getActivity().getApplicationContext()).cancelIdleCommentUseful(idle_id, comment_id, new Callback<Response>() {
                                 @Override
                                 public void success(Response response, Response response2) {
@@ -246,20 +246,21 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
                                     entity.setUseful_number(entity.getUseful_number()-1);
                                     entity.setUseful_clicked(false);
 
-                                    pd.dismiss();
+                                    showToast("有用评论取消");
+//                                    pd.dismiss();
                                 }
 
                                 @Override
                                 public void failure(RetrofitError error) {
                                     showInnerError(error);
-                                    pd.dismiss();
+//                                    pd.dismiss();
                                 }
                             });
 
                         } else {  //评论无用 转 评论有用
                             final ProgressDialog pd = new ProgressDialog(mContext);
-                            pd.setContent("有用评论添加");
-                            pd.show();
+//                            pd.setContent("有用评论添加");
+//                            pd.show();
                             ApiManager.getService(getActivity().getApplicationContext()).addIdleCommentUseful(idle_id, comment_id, new Callback<Response>() {
                                 @Override
                                 public void success(Response response, Response response2) {
@@ -268,16 +269,17 @@ public class FreeGoodsDetailBottomCommentFragment extends BaseLazyFragment {
                                     mUsefulTv.setText(String.valueOf(entity.getUseful_number()+1));
                                     mUserIv.setImageResource(R.drawable.comment_like_icon_p);
                                     // 更新缓存
-                                    entity.setUseful_number(entity.getUseful_number()+1);
+                                    entity.setUseful_number(entity.getUseful_number() + 1);
                                     entity.setUseful_clicked(true);
 
-                                    pd.dismiss();
+//                                    pd.dismiss();
+                                    showToast("有用评论添加");
                                 }
 
                                 @Override
                                 public void failure(RetrofitError error) {
                                     showInnerError(error);
-                                    pd.dismiss();
+//                                    pd.dismiss();
                                 }
                             });
                         }
