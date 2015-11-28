@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bg_rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/bg_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <Button
+        android:id="@+id/start_btn"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/green_stroke_btn_bg"
+        android:text="@string/start_yoyo_travel"
+        android:textColor="@color/app_theme_color2"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+</RelativeLayout>

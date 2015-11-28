@@ -27,6 +27,7 @@ import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ConnectSellerDialog;
 import com.dreamspace.uucampus.ui.fragment.Market.ShopShowGoodsFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
 
@@ -57,6 +58,7 @@ public class ShopShowGoodsAct extends AbsActivity {
     private String shopId;//当前店铺的shopid
     private String shopName;//当前店铺的name
     private ConnectSellerDialog consultDialog;
+    private FragmentPagerItemAdapter adapter;
 
     private ShopAllGroupRes mShopGroup;//当前shop的group
     private ShopInfoRes mShopInfo;//当前shop的信息
@@ -153,7 +155,7 @@ public class ShopShowGoodsAct extends AbsActivity {
             bundle.putString(SHOP_ID,shopId);
             creator.add(group,ShopShowGoodsFragment.class,bundle);
         }
-        FragmentStatePagerItemAdapter adapter = new FragmentStatePagerItemAdapter(getSupportFragmentManager(),creator.create());
+        adapter = new FragmentPagerItemAdapter(getSupportFragmentManager(),creator.create());
         viewPager.setAdapter(adapter);
         smartTabLayout.setViewPager(viewPager);
         if(mShopInfo.getIs_collected() == 1){

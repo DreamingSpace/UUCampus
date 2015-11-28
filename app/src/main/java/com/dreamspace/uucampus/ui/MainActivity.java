@@ -55,6 +55,13 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
     private long lastBackPreeTime = 0;
     //当前所在的fragment标号
     private int currentIndex = 0;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initBottomBar(currentIndex);
+    }
+
     @Override
     protected int getContentView() {
         return R.layout.activity_main;
@@ -151,7 +158,7 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
         locationTv = (TextView) mToolBar.findViewById(R.id.location_tv);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        initBottomBar();
+        initBottomBar(currentIndex);
     }
 
     @Override
@@ -231,10 +238,35 @@ public class MainActivity extends AbsActivity implements View.OnClickListener {
         }
     }
 
-    private void initBottomBar(){
-        homeUnselectLl.setAlpha(0);
-        shopSelectLl.setAlpha(0);
-        personalSelectLl.setAlpha(0);
+    private void initBottomBar(int index){
+        switch (index){
+            case 0:
+                homeSelectLl.setAlpha(1);
+                homeUnselectLl.setAlpha(0);
+                shopSelectLl.setAlpha(0);
+                shopUnselectLl.setAlpha(1);
+                personalSelectLl.setAlpha(0);
+                personalUnselectLl.setAlpha(1);
+                break;
+
+            case 1:
+                homeSelectLl.setAlpha(0);
+                homeUnselectLl.setAlpha(1);
+                shopSelectLl.setAlpha(1);
+                shopUnselectLl.setAlpha(0);
+                personalSelectLl.setAlpha(0);
+                personalUnselectLl.setAlpha(1);
+                break;
+
+            case 2:
+                homeSelectLl.setAlpha(0);
+                homeUnselectLl.setAlpha(1);
+                shopSelectLl.setAlpha(0);
+                shopUnselectLl.setAlpha(1);
+                personalSelectLl.setAlpha(1);
+                personalUnselectLl.setAlpha(0);
+                break;
+        }
     }
 
     private void homePageIconSetAlpha(float alpha){

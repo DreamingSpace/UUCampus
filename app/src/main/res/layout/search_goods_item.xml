@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="54dp"
     android:background="@drawable/personal_center_item_bg"
-    android:paddingBottom="10dp">
+    android:paddingBottom="8dp">
 
     <View
         android:layout_width="match_parent"
@@ -21,21 +21,20 @@
         android:singleLine="true"
         android:text="汤山温泉两天一夜游"
         android:textColor="@color/search_text"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
+        android:textSize="14sp"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/search_good_name_tv"
         android:layout_below="@id/search_good_name_tv"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="6dp"
         android:orientation="horizontal">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_civ"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:layout_gravity="center"
-            android:src="@drawable/orderdetail_btn_chose_h" />
+            android:src="@color/no_image_color" />
 
         <TextView
             android:id="@+id/search_good_shop_name_tv"

@@ -3,7 +3,6 @@
     android:id="@+id/custom_text"
     android:layout_width="wrap_content"
     android:layout_height="35dp"
-    android:background="?attr/selectableItemBackground"
     android:gravity="center"
     android:textColor="@drawable/market_smart_tab_textcolor"
     android:paddingLeft="16dp"

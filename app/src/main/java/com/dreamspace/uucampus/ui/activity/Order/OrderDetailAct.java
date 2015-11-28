@@ -220,6 +220,17 @@ public class OrderDetailAct extends AbsActivity{
 
         RatingBar ratingBar = (RatingBar) commentLl.findViewById(R.id.comment_rating_bar);
         ratingBar.setmClickable(false);
+        CircleImageView civ = (CircleImageView) commentLl.findViewById(R.id.user_avatar_civ);
+        TextView userNameTv = (TextView) commentLl.findViewById(R.id.user_name_tv);
+        TextView timeTv = (TextView) commentLl.findViewById(R.id.publis_time_tv);
+        TextView contentTv = (TextView) commentLl.findViewById(R.id.comment_content_tv);
+        TextView userfulTv = (TextView) commentLl.findViewById(R.id.userful_tv);
+        CommonUtils.showImageWithGlideInCiv(this,civ,mOrderDetail.getComment().getUser().getImage());
+        userNameTv.setText(mOrderDetail.getComment().getUser().getName());
+        timeTv.setText(mOrderDetail.getComment().getDate());
+        contentTv.setText(mOrderDetail.getComment().getContent());
+        userfulTv.setText(getString(R.string.useful) + mOrderDetail.getComment().getUseful_number() + getString(R.string.useful2));
+        ratingBar.setStar(mOrderDetail.getComment().getScore());
     }
 
     //返回要添加的view的位置
@@ -301,7 +312,7 @@ public class OrderDetailAct extends AbsActivity{
 
             case 3://未评价
                 initUncommentViews();
-                initUnconsumeListeners();
+                initUncommentListeners();
                 break;
 
             case 4://已评价

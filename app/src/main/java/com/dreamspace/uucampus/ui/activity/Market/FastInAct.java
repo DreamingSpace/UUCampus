@@ -20,6 +20,7 @@ import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.fragment.Market.ShowGoodsFragment;
 import com.dreamspace.uucampus.ui.popupwindow.GoodsSortPopupWindow;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
 
@@ -52,7 +53,7 @@ public class FastInAct extends AbsActivity {
     private ArrayList<String> mLabels;
     private boolean haveGood = false;
 
-    private FragmentStatePagerItemAdapter pagerAdpater;
+    private FragmentPagerItemAdapter pagerAdpater;
     public static String LABEL = "label";
     public static String CATEGORY = "category";
     private String category;
@@ -177,7 +178,7 @@ public class FastInAct extends AbsActivity {
                 bundle.putString(CATEGORY, category);
                 creator.add(label, ShowGoodsFragment.class, bundle);
             }
-            pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(), creator.create());
+            pagerAdpater = new FragmentPagerItemAdapter(getSupportFragmentManager(), creator.create());
             smartTabLayout.setDistributeEvenly(false);
             pager.setAdapter(pagerAdpater);
             smartTabLayout.setViewPager(pager);

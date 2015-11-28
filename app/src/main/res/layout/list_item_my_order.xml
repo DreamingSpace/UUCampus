@@ -48,7 +48,7 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/order_image_iv"
-                android:background="@color/search_opaque"
+                android:background="@color/no_image_color"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
                 android:layout_width="87dp"

@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content" />
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/personal_info_avater"
-                android:src="@color/search_opaque"
+                android:src="@color/no_image_color"
                 android:layout_toLeftOf="@id/avater_right_arrow"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"

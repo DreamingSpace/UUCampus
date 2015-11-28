@@ -58,6 +58,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/edittext_rectangle_divider"
                     android:hint="@string/comment_hint"
+                    android:maxLength="150"
                     android:paddingLeft="8dp" />
 
                 <Button

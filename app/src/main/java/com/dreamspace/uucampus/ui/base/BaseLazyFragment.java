@@ -387,6 +387,10 @@ public abstract class BaseLazyFragment extends Fragment {
 
     protected void showInnerError(RetrofitError error) {
         if (error != null)
-            showToast(CommonUtils.getErrorInfo(error).getReason());
+            if(error.getBody() == null){
+                showToast(getString(R.string.request_time_out));
+            }else{
+                showToast(CommonUtils.getErrorInfo(error).getReason());
+            }
     }
 }

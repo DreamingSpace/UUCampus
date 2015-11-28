@@ -267,7 +267,7 @@ public interface UUService {
     void unLikeGoods(@Path("goods_id") String goods_id, Callback<Response> cb);
 
     //商品评论添加
-    @POST("/goods/{goods_id}/comment")
+    @POST("/goods/{goods_id}/comment/")
     void addGoodsComment(@Path("goods_id") String goods_id, @Body ContentReq req, Callback<AddGoodsCommentRes> cb);
 
     //商品所有评论查看
@@ -446,7 +446,7 @@ public interface UUService {
     void getOrderList(@Query("page")int page,Callback<GetOrderListRes> cb);
 
     @GET("/user/order/{order_id}/")
-    void getOrderDetail(@Path("order_id")String order_id,Callback<OrderDetail> cb);
+    void getOrderDetail(@ Path("order_id")String order_id,Callback<OrderDetail> cb);
 
     @DELETE("/user/order/{order_id}/")
     void cancelOrder(@Path("order_id")String order_id,Callback<CommonStatusRes>cb);

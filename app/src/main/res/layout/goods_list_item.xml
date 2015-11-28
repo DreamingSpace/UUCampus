@@ -8,6 +8,7 @@
         android:id="@+id/good_image_iv"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
+        android:src="@color/no_image_color"
         android:layout_width="87dp"
         android:layout_height="65dp" />
     <TextView

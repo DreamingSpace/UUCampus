@@ -27,7 +27,6 @@
             app:stl_indicatorAlwaysInCenter="false"
             app:stl_defaultTabTextColor="@drawable/market_smart_tab_textcolor"
             app:stl_defaultTabTextSize="16sp"
-            app:stl_distributeEvenly="true"
             app:stl_dividerThickness="0dp"
             app:stl_underlineColor="@color/white"
             app:stl_underlineThickness="0dp"

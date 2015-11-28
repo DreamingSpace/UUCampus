@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/good_detail_image_iv"
-        android:background="@drawable/default_error"
+        android:background="@color/no_image_color"
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:layout_marginTop="10dp"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/shop_image_civ"
-                android:src="@color/app_theme_color2"
+                android:src="@color/no_image_color"
                 android:layout_width="20dp"
                 android:layout_height="20dp" />
             <TextView

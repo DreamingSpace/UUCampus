@@ -76,7 +76,11 @@ public class HomeFragment extends BaseLazyFragment {
 
     @Override
     protected void onFirstUserVisible() {
-        getAd();
+        if(ads == null){
+            getAd();
+        }else{
+            initBanner();
+        }
     }
 
     @Override

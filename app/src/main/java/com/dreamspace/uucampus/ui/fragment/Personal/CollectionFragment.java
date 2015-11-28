@@ -257,8 +257,8 @@ public class CollectionFragment extends BaseFragment {
                         return;
                     }
 
+                    //没有更多
                     if (allGoodsCollectionRes.getCollection().size() == 0 && goodsPage != 1) {
-                        showToast("没有更多");
                         return;
                     }
 
