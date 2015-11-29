@@ -10,6 +10,7 @@ import com.dreamspace.uucampus.adapter.market.GoodsListAdapter;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
+import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.api.SearchGoodsRes;
 import com.dreamspace.uucampus.ui.activity.Market.FastInAct;
 import com.dreamspace.uucampus.ui.activity.Market.GoodDetailAct;
@@ -57,6 +58,7 @@ public class ShowGoodsFragment extends BaseLazyFragment {
         }else{
             if(adapter != null){
                 loadMoreListView.setAdapter(adapter);
+                TLog.i("mApdater:", adapter.getCount() + "");
             }else{
                 toggleShowEmpty(true,getString(R.string.no_such_shop),getGoodsClickListener);
             }

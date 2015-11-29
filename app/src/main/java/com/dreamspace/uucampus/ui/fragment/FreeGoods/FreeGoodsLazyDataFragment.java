@@ -127,6 +127,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
                 public void success(SearchIdleRes searchIdleRes, Response response) {
                     if (searchIdleRes != null) {
                         onRefreshListener.onFinish(searchIdleRes.getResult());
+                        alreadyGetData=true;
                     } else {
                         showToast(response.getReason());
                         onRefreshListener.onError();
@@ -137,6 +138,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
                 public void failure(RetrofitError error) {
                     onRefreshListener.onError();
                     showInnerError(error);
+                    alreadyGetData=false;
                 }
             });
         } else {
