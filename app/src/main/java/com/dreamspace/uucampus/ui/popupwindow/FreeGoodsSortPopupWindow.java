@@ -42,7 +42,7 @@ public class FreeGoodsSortPopupWindow {
 
         popupWindow = new PopupWindow(popupView,LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
         popupWindow.setAnimationStyle(R.style.popupwindow_anim);
-        popupItemSetSelect(0);
+        popupItemSetSelect(1);
 
         shadowView.setOnClickListener(new View.OnClickListener() {
             @Override

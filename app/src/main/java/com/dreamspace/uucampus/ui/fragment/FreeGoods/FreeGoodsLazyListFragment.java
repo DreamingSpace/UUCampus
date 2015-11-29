@@ -34,11 +34,20 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
     public static final int REQUEST_CODE=1;
     public static final int RESULT_CODE=200;
     public String order = null;   //popupWindow对应选中的order
+    private boolean alreadyGetData = false;//判断是否已经获取了数据
 
     @Override
     protected void onFirstUserVisible() {
-        order = ((FreeGoodsActivity)getActivity()).getOrder();
-        getInitData();
+        if(!alreadyGetData){      //若果为false，还在加载数据
+            order = ((FreeGoodsActivity)getActivity()).getOrder();
+            getInitData();
+        }else {
+            if(mAdapter != null){
+                moreListView.setAdapter(mAdapter);
+            }else{
+                toggleShowEmpty(true,getString(R.string.no_such_shop),getGoodsClickListener);
+            }
+        }
     }
 
     @Override
@@ -151,4 +160,12 @@ public abstract class FreeGoodsLazyListFragment<T> extends BaseLazyFragment {
         }
         mAdapter.notifyDataSetChanged();
     }
+
+
+    public View.OnClickListener getGoodsClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            getInitData();
+        }
+    };
 }

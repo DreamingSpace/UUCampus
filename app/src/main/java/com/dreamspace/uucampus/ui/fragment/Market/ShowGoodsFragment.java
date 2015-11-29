@@ -1,28 +1,20 @@
 package com.dreamspace.uucampus.ui.fragment.Market;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.market.GoodsListAdapter;
-import com.dreamspace.uucampus.adapter.market.ShopListAdapter;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
-import com.dreamspace.uucampus.model.GoodsItem;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.model.api.SearchGoodsRes;
-import com.dreamspace.uucampus.ui.MarketFragment;
 import com.dreamspace.uucampus.ui.activity.Market.FastInAct;
 import com.dreamspace.uucampus.ui.activity.Market.GoodDetailAct;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.widget.LoadMoreListView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import retrofit.Callback;
@@ -43,6 +35,7 @@ public class ShowGoodsFragment extends BaseLazyFragment {
     private String category;
     private int goodPage = 1;//当前good的page
     private boolean fragmentDestory = false;
+    private boolean alreadyGetData = false;//判断是否已经获取了数据
     private boolean firstGetGoods = true;//判断是不是第一次获取数据，第一次获取数据需要显示“加载中”界面
     private GoodsListAdapter adapter;
     private String order;
@@ -57,8 +50,17 @@ public class ShowGoodsFragment extends BaseLazyFragment {
     @Override
     protected void onFirstUserVisible() {
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.app_theme_color));
-        order = ((FastInAct)getActivity()).getOrder();
-        getGoods();
+        //避免有数据重新加载数据
+        if(!alreadyGetData){
+            order = ((FastInAct)getActivity()).getOrder();
+            getGoods();
+        }else{
+            if(adapter != null){
+                loadMoreListView.setAdapter(adapter);
+            }else{
+                toggleShowEmpty(true,getString(R.string.no_such_shop),getGoodsClickListener);
+            }
+        }
     }
 
     @Override
@@ -132,48 +134,50 @@ public class ShowGoodsFragment extends BaseLazyFragment {
             return;
         }
 
-        ApiManager.getService(mContext).searchGoods(null, order, category, label, null, null, goodPage,"东南大学九龙湖校区",
-                new Callback<SearchGoodsRes>() {
-            @Override
-            public void success(SearchGoodsRes searchGoodsRes, Response response) {
-                if(searchGoodsRes != null && !fragmentDestory){
-                    loadMoreListView.setLoading(false);
-                    swipeRefreshLayout.setRefreshing(false);
-                    if(goodPage == 1 && searchGoodsRes.getResult().size() == 0){
-                        toggleShowEmpty(true,getString(R.string.no_such_good),null);
-                        return;
+        ApiManager.getService(mContext).searchGoods(null, order, category, label, null, null, goodPage,
+                PreferenceUtils.getString(getActivity(),PreferenceUtils.Key.LOCATION), new Callback<SearchGoodsRes>() {
+                    @Override
+                    public void success(SearchGoodsRes searchGoodsRes, Response response) {
+                        if(searchGoodsRes != null && !fragmentDestory){
+                            alreadyGetData = true;
+                            loadMoreListView.setLoading(false);
+                            swipeRefreshLayout.setRefreshing(false);
+                            if(goodPage == 1 && searchGoodsRes.getResult().size() == 0){
+                                toggleShowEmpty(true,getString(R.string.no_such_good),null);
+                                return;
+                            }
+
+                            if(goodPage != 1 && searchGoodsRes.getResult().size() == 0){
+                                //没有更多
+                                return;
+                            }
+
+                            if(firstGetGoods){
+                                adapter = new GoodsListAdapter(mContext,searchGoodsRes.getResult(),GoodsListAdapter.ViewHolder.class);
+                                loadMoreListView.setAdapter(adapter);
+                                toggleRestore();
+                            }else{
+                                adapter.addEntities(searchGoodsRes.getResult());
+                                adapter.notifyDataSetChanged();
+                            }
+                            firstGetGoods = false;
+                        }
                     }
 
-                    if(goodPage != 1 && searchGoodsRes.getResult().size() == 0){
-                        showToast(getString(R.string.no_more));
-                        return;
+                    @Override
+                    public void failure(RetrofitError error) {
+                        if(!fragmentDestory){
+                            alreadyGetData = false;
+                            if(goodPage == 1){
+                                toggleShowEmpty(true, null, getGoodsClickListener);
+                            }else{
+                                showInnerError(error);
+                            }
+                            loadMoreListView.setLoading(false);
+                            swipeRefreshLayout.setRefreshing(false);
+                        }
                     }
-
-                    if(firstGetGoods){
-                        adapter = new GoodsListAdapter(mContext,searchGoodsRes.getResult(),GoodsListAdapter.ViewHolder.class);
-                        loadMoreListView.setAdapter(adapter);
-                        toggleRestore();
-                    }else{
-                        adapter.addEntities(searchGoodsRes.getResult());
-                        adapter.notifyDataSetChanged();
-                    }
-                    firstGetGoods = false;
-                }
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                if(!fragmentDestory){
-                    if(goodPage == 1){
-                        toggleShowEmpty(true, null, getGoodsClickListener);
-                    }else{
-                        showInnerError(error);
-                    }
-                    loadMoreListView.setLoading(false);
-                    swipeRefreshLayout.setRefreshing(false);
-                }
-            }
-        });
+                });
     }
 
     //当更换排序方式时，activity对调用此方法
