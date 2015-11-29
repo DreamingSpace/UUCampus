@@ -17,7 +17,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/personal_avatar_civ"
                 android:layout_marginTop="25dp"
-                android:src="@color/search_opaque"
+                android:src="@color/no_image_color"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="80dp"
                 android:layout_height="80dp" />

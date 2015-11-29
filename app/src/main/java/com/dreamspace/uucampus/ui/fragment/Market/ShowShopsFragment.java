@@ -10,6 +10,7 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.market.ShopListAdapter;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.model.CategoryItem;
 import com.dreamspace.uucampus.model.ShopItem;
 import com.dreamspace.uucampus.model.api.SearchShopRes;
@@ -38,6 +39,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
     private int shopPage = 1;
     private boolean fragmentDestroy = false;
     private boolean firstGetData = true;
+    private boolean alreadyGetData = false;
     private ShopListAdapter adapter;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -48,13 +50,19 @@ public class ShowShopsFragment extends BaseLazyFragment {
     @Override
     protected void onFirstUserVisible() {
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.app_theme_color));
-        toggleShowLoading(true, null);
-        getShops();
+        if(!alreadyGetData){
+            getShops();
+        }else{
+            if(adapter != null){
+                loadMoreListView.setAdapter(adapter);
+            }else{
+                toggleShowEmpty(true,getString(R.string.no_such_shop),getShopsClickListener);
+            }
+        }
     }
 
     @Override
     protected void onUserVisible() {
-
     }
 
     @Override
@@ -69,6 +77,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
 
     @Override
     protected void initViewsAndEvents() {
+//        System.out.println(categoryItem + "ie");
         loadMoreListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -108,6 +117,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
     }
 
     private void getShops(){
+        toggleShowLoading(true, null);
         if(!NetUtils.isNetworkConnected(mContext)){
             showNetWorkError();
             //若还没有取得数据则显示网络错误界面
@@ -119,10 +129,12 @@ public class ShowShopsFragment extends BaseLazyFragment {
             return;
         }
 
-        ApiManager.getService(mContext).searchShop("", "", categoryItem.getName(), shopPage, "东南大学九龙湖校区",new Callback<SearchShopRes>() {
+        ApiManager.getService(mContext).searchShop("", "", categoryItem.getName(), shopPage,
+                PreferenceUtils.getString(getActivity(),PreferenceUtils.Key.LOCATION),new Callback<SearchShopRes>() {
             @Override
             public void success(SearchShopRes searchShopRes, Response response) {
                 if(searchShopRes != null && !fragmentDestroy){
+                    alreadyGetData = true;
                     loadMoreListView.setLoading(false);
                     swipeRefreshLayout.setRefreshing(false);
                     //没有数据
@@ -133,7 +145,6 @@ public class ShowShopsFragment extends BaseLazyFragment {
 
                     //没有更多
                     if(shopPage != 1 && searchShopRes.getResult().size() == 0){
-                        showToast(getString(R.string.no_more));
                         return;
                     }
 
@@ -154,6 +165,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
             @Override
             public void failure(RetrofitError error) {
                 if(!fragmentDestroy){
+                    alreadyGetData = false;
                     if(shopPage == 1){
                         toggleShowEmpty(true, null, getShopsClickListener);
                     }else{

@@ -7,15 +7,14 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/user_avatar_civ"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:src="@color/search_opaque"
+        android:layout_marginLeft="20dp"
+        android:src="@color/no_image_color"
         android:layout_width="35dp"
         android:layout_height="35dp"/>
     <TextView
         android:text="大板儿"
         android:textSize="16sp"
         android:id="@+id/user_name_tv"
-        android:textStyle="bold"
         android:layout_alignTop="@id/user_avatar_civ"
         android:layout_toRightOf="@id/user_avatar_civ"
         android:layout_marginLeft="10dp"

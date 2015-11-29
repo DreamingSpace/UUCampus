@@ -10,6 +10,7 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.market.GoodsListAdapter;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
+import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.model.api.SearchGoodsRes;
 import com.dreamspace.uucampus.ui.activity.Market.GoodDetailAct;
 import com.dreamspace.uucampus.ui.activity.Market.ShopShowGoodsAct;
@@ -37,6 +38,7 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
     private String group;//当前group的名称
     private int goodPage = 1;//当前good的page
     private boolean fragmentDestory = false;
+    private boolean alreadyGetData = false;
     private boolean firstGetGoods = true;//判断是不是第一次获取数据，第一次获取数据需要显示“加载中”界面
     private GoodsListAdapter adapter;
 
@@ -50,7 +52,15 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
     @Override
     protected void onFirstUserVisible() {
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.app_theme_color));
-        getGoods();
+        if(!alreadyGetData){
+            getGoods();
+        }else{
+            if(adapter != null){
+                loadMoreListView.setAdapter(adapter);
+            }else{
+                toggleShowEmpty(true,getString(R.string.no_such_shop),getGoodsClickListener);
+            }
+        }
     }
 
     @Override
@@ -74,8 +84,8 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
-                bundle.putString(GoodDetailAct.GOOD_ID,adapter.getItem(position).getGoods_id());
-                readyGo(GoodDetailAct.class,bundle);
+                bundle.putString(GoodDetailAct.GOOD_ID, adapter.getItem(position).getGoods_id());
+                readyGo(GoodDetailAct.class, bundle);
             }
         });
 
@@ -118,11 +128,12 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
             return;
         }
 
-        ApiManager.getService(mContext).searchGoods(null, null, null, null, group, shopId, goodPage,"东南大学九龙湖校区",
-                new Callback<SearchGoodsRes>() {
+        ApiManager.getService(mContext).searchGoods(null, null, null, null, group, shopId, goodPage
+                , PreferenceUtils.getString(getActivity(),PreferenceUtils.Key.LOCATION), new Callback<SearchGoodsRes>() {
                     @Override
                     public void success(SearchGoodsRes searchGoodsRes, Response response) {
                         if(searchGoodsRes != null && !fragmentDestory){
+                            alreadyGetData = true;
                             loadMoreListView.setLoading(false);
                             swipeRefreshLayout.setRefreshing(false);
                             if(goodPage == 1 && searchGoodsRes.getResult().size() == 0){
@@ -131,7 +142,7 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
                             }
 
                             if(goodPage != 1 && searchGoodsRes.getResult().size() == 0){
-                                showToast(getString(R.string.no_more));
+                                //没有更多
                                 return;
                             }
 
@@ -150,6 +161,7 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
                     @Override
                     public void failure(RetrofitError error) {
                         if(!fragmentDestory){
+                            alreadyGetData = false;
                             if(goodPage == 1){
                                 toggleShowEmpty(true, null, getGoodsClickListener);
                             }else{

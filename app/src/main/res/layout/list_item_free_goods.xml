@@ -23,7 +23,7 @@
                 android:id="@+id/free_goods_item_image_iv"
                 android:layout_width="87dp"
                 android:layout_height="65dp"
-                android:background="@color/white" />
+                android:background="@color/no_image_color" />
 
             <LinearLayout
                 android:layout_width="match_parent"

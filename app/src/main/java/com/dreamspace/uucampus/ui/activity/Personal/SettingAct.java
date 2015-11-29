@@ -115,7 +115,7 @@ public class SettingAct extends AbsActivity {
             public void success(DeleteAccessTokenRes deleteAccessTokenRes, Response response) {
                 if (deleteAccessTokenRes != null && !actDestroy) {
                     //登出，修改preference
-                    PreferenceUtils.putString(SettingAct.this, PreferenceUtils.Key.ACCESS, "");
+                    PreferenceUtils.putString(SettingAct.this, PreferenceUtils.Key.ACCESS, "guest");
                     PreferenceUtils.putBoolean(SettingAct.this, PreferenceUtils.Key.LOGIN, false);
                     setResult(RESULT_OK);
                     finish();

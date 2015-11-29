@@ -43,7 +43,7 @@
             android:id="@+id/search_history_delete_linear"
             android:layout_width="wrap_content"
             android:layout_gravity="center"
-            android:layout_height="26dp"
+            android:layout_height="38dp"
             android:background="@color/white"
             android:orientation="horizontal">
 

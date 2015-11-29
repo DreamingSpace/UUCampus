@@ -15,6 +15,7 @@
     <color name="blue">#2196F3</color>
     <color name="grey">#E0E0E0</color>
     <color name="transparent">#00000000</color>
+    <color name="no_image_color">#f0f0f0</color>
 
     <color name="t">#ff555555</color>
     <!-- defined color-->

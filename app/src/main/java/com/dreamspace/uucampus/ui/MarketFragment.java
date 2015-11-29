@@ -12,6 +12,7 @@ import com.dreamspace.uucampus.model.api.AllCategoryRes;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.ui.fragment.Market.ShowShopsFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
 
@@ -35,7 +36,8 @@ public class MarketFragment extends BaseLazyFragment {
     SmartTabLayout smartTabLayout;
 
     private boolean fragmentDestory = false;
-    private FragmentStatePagerItemAdapter pagerAdpater;
+//    private FragmentStatePagerItemAdapter pagerAdpater
+    private FragmentPagerItemAdapter pagerAdpater;
     private ArrayList<CategoryItem> categories;
 
     public static final String CATEGORY = "category";
@@ -77,7 +79,8 @@ public class MarketFragment extends BaseLazyFragment {
             bundle.putParcelable(CATEGORY,categoryItem);
             pagerItems.add(categoryItem.getName(),ShowShopsFragment.class,bundle);
         }
-        pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(),pagerItems.create());
+//        pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(),pagerItems.create());
+        pagerAdpater = new FragmentPagerItemAdapter(getSupportFragmentManager(),pagerItems.create());
         smartTabLayout.setCustomTabView(R.layout.market_smart_tab_title_tab,R.id.title_tv);
         pager.setAdapter(pagerAdpater);
         smartTabLayout.setViewPager(pager);
@@ -103,9 +106,7 @@ public class MarketFragment extends BaseLazyFragment {
 
             @Override
             public void failure(RetrofitError error) {
-                System.out.println(error.getMessage());
-                System.out.println(error.getResponse().getReason());
-//                showInnerError(error);
+                showInnerError(error);
                 toggleShowError(true,null,getCategoryClickListener);
             }
         });

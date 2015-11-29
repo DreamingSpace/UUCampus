@@ -18,6 +18,7 @@ package com.dreamspace.uucampus.common.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.ColorDrawable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
@@ -197,7 +198,7 @@ public class CommonUtils {
     public static void showImageWithGlide(Context context, final CircleImageView imageView,String url){
         Glide.with(context)
                 .load(url)
-                .placeholder(R.drawable.login_pho)
+                .placeholder(new ColorDrawable(context.getResources().getColor(R.color.no_image_color)))
                 .centerCrop()
                 .into(new SimpleTarget<GlideDrawable>() {
                     @Override
@@ -210,7 +211,7 @@ public class CommonUtils {
     public static void showImageWithGlide(Context context,ImageView imageView,String url){
         Glide.with(context)
                 .load(url)
-                .placeholder(R.drawable.default_error)
+                .placeholder(new ColorDrawable(context.getResources().getColor(R.color.no_image_color)))
                 .centerCrop()
                 .into(imageView);
     }
@@ -218,7 +219,7 @@ public class CommonUtils {
     public static void showImageWithGlideInCiv(Context context,CircleImageView circleImageView,String url){
         Glide.with(context)
                 .load(url)
-                .error(R.drawable.default_error)
+                .error(new ColorDrawable(context.getResources().getColor(R.color.no_image_color)))
                 .centerCrop()
                 .into(circleImageView);
     }

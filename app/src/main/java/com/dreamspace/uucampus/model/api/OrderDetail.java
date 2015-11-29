@@ -15,6 +15,7 @@ public class OrderDetail {
     private String time;
     private String _id;
     private int quantity;
+    private OrderComment comment;
 
     public int getStatus() {
         return status;
@@ -102,5 +103,13 @@ public class OrderDetail {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public OrderComment getComment() {
+        return comment;
+    }
+
+    public void setComment(OrderComment comment) {
+        this.comment = comment;
     }
 }

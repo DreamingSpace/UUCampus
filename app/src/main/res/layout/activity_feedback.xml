@@ -21,6 +21,7 @@
             android:id="@+id/feedback_et"
             android:hint="@string/feedback_hint"
             android:textSize="14sp"
+            android:maxLength="150"
             android:background="@drawable/feedback_edittext_bg"
             android:gravity="start"
             android:paddingTop="12dp"

@@ -198,8 +198,8 @@ public class MyFreeGoodsFragment extends BaseFragment {
                         return;
                     }
 
+                    //没有更多
                     if (idleInfoRes.getIdle().size() == 0 && page != 1) {
-                        showToast("没有更多");
                         return;
                     }
 
