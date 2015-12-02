@@ -270,10 +270,15 @@ public class GoodDetailAct extends AbsActivity {
             @Override
             public void success(GoodsInfoRes goodsInfoRes, Response response) {
                 if (goodsInfoRes != null && !actDestory) {
-                    toggleRestore();
-                    goodInfo = goodsInfoRes;
-                    setInfoIntoViews(goodsInfoRes);
-                    initStl();
+                    if(goodsInfoRes.getIs_active() == 0){
+                        //货物已下架，无法查看
+                        toggleShowEmpty(true,getString(R.string.good_is_not_active),null);
+                    }else{
+                        toggleRestore();
+                        goodInfo = goodsInfoRes;
+                        setInfoIntoViews(goodsInfoRes);
+                        initStl();
+                    }
                 }
             }
 

@@ -140,6 +140,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
                     //没有数据
                     if(shopPage == 1 && searchShopRes.getResult().size() == 0){
                         toggleShowEmpty(true,getString(R.string.no_such_shop),null);
+                        adapter = null;
                         return;
                     }
 

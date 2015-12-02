@@ -56,6 +56,7 @@ dependencies {
     compile 'net.glxn.qrgen:android:2.0'
     compile 'com.pnikosis:materialish-progress:1.7'
     compile 'com.google.code.gson:gson:2.4'
+    compile 'com.soundcloud.android:android-crop:1.0.1@aar'
     //compile files('src/main/libs/GetuiExt-2.0.3.jar')
     //compile files('src/main/libs/GetuiSDK2.6.1.0.jar')
     //compile files('src/main/libs/android-support-v4.jar')

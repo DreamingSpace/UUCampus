@@ -120,7 +120,6 @@ public class MyOrderAct extends AbsActivity{
                     }
 
                     if (orderPage != 1 && getOrderListRes.getOrders().size() == 0) {
-                        showToast(getString(R.string.no_more));
                         return;
                     }
 

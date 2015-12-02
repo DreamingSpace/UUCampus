@@ -153,6 +153,7 @@ public class ShowGoodsFragment extends BaseLazyFragment {
                     swipeRefreshLayout.setRefreshing(false);
                     if(goodPage == 1 && searchGoodsRes.getResult().size() == 0){
                         toggleShowEmpty(true,getString(R.string.no_such_good),null);
+                        adapter = null;
                         return;
                     }
 

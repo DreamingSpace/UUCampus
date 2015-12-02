@@ -13,6 +13,7 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.UploadImage;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
+import com.dreamspace.uucampus.common.utils.FileUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.model.ErrorRes;
@@ -31,9 +32,11 @@ import com.dreamspace.uucampus.ui.dialog.WheelViewDialog;
 import com.dreamspace.uucampus.widget.photopicker.SelectPhotoActivity;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
+import com.soundcloud.android.crop.Crop;
 
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -150,10 +153,18 @@ public class PersonalInfoAct extends AbsActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == AVATER && resultCode == RESULT_OK){
             String path = data.getStringExtra(SelectPhotoActivity.PHOTO_PATH);
+            Crop.of(Uri.fromFile(new File(path)),Uri.fromFile(FileUtils.createTmpFile(this))).asSquare().start(this);
+        }else if(requestCode == Crop.REQUEST_CROP){
+            handleCrop(resultCode,data);
+        }
+    }
+
+    private void handleCrop(int resultCode,Intent result){
+        if(resultCode == RESULT_OK){
             initProgressDilaog();
             progressDialog.setContent(getString(R.string.uploading_image));
             progressDialog.show();
-            upLoadImage(path);
+            upLoadImage(Crop.getOutput(result).getPath());
         }
     }
 
