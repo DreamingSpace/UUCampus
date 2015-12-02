@@ -11,6 +11,7 @@ import com.dreamspace.uucampus.adapter.market.ShopListAdapter;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
+import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.CategoryItem;
 import com.dreamspace.uucampus.model.ShopItem;
 import com.dreamspace.uucampus.model.api.SearchShopRes;
@@ -55,6 +56,7 @@ public class ShowShopsFragment extends BaseLazyFragment {
         }else{
             if(adapter != null){
                 loadMoreListView.setAdapter(adapter);
+                TLog.i("mApdater:", adapter.getCount() + "");
             }else{
                 toggleShowEmpty(true,getString(R.string.no_such_shop),getShopsClickListener);
             }

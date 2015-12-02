@@ -1,29 +1,21 @@
 package com.dreamspace.uucampus.ui.fragment.Market;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.adapter.market.GoodsListAdapter;
-import com.dreamspace.uucampus.adapter.market.ShopListAdapter;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
-import com.dreamspace.uucampus.model.GoodsItem;
+import com.dreamspace.uucampus.common.utils.TLog;
 import com.dreamspace.uucampus.model.api.SearchGoodsRes;
-import com.dreamspace.uucampus.ui.MarketFragment;
 import com.dreamspace.uucampus.ui.activity.Market.FastInAct;
 import com.dreamspace.uucampus.ui.activity.Market.GoodDetailAct;
 import com.dreamspace.uucampus.ui.base.BaseLazyFragment;
 import com.dreamspace.uucampus.widget.LoadMoreListView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import retrofit.Callback;
@@ -147,30 +139,29 @@ public class ShowGoodsFragment extends BaseLazyFragment {
                 PreferenceUtils.getString(getActivity(),PreferenceUtils.Key.LOCATION), new Callback<SearchGoodsRes>() {
             @Override
             public void success(SearchGoodsRes searchGoodsRes, Response response) {
-                if(searchGoodsRes != null && !fragmentDestory){
+                if (searchGoodsRes != null && !fragmentDestory) {
                     alreadyGetData = true;
                     loadMoreListView.setLoading(false);
                     swipeRefreshLayout.setRefreshing(false);
-                    if(goodPage == 1 && searchGoodsRes.getResult().size() == 0){
-                        toggleShowEmpty(true,getString(R.string.no_such_good),null);
+                    if (goodPage == 1 && searchGoodsRes.getResult().size() == 0) {
+                        toggleShowEmpty(true, getString(R.string.no_such_good), null);
                         adapter = null;
                         return;
                     }
 
-                    if(goodPage != 1 && searchGoodsRes.getResult().size() == 0){
+                    if (goodPage != 1 && searchGoodsRes.getResult().size() == 0) {
                         //没有更多
                         return;
                     }
 
-                    if(firstGetGoods){
-                        adapter = new GoodsListAdapter(mContext,searchGoodsRes.getResult(),GoodsListAdapter.ViewHolder.class);
+                    if (firstGetGoods) {
+                        adapter = new GoodsListAdapter(mContext, searchGoodsRes.getResult(), GoodsListAdapter.ViewHolder.class);
                         loadMoreListView.setAdapter(adapter);
                         toggleRestore();
-                    }else{
+                    } else {
                         adapter.addEntities(searchGoodsRes.getResult());
                         adapter.notifyDataSetChanged();
                     }
-                    firstGetGoods = false;
                 }
             }
 

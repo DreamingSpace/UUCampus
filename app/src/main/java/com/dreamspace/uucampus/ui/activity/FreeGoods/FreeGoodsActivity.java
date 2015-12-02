@@ -21,8 +21,8 @@ import com.dreamspace.uucampus.ui.fragment.FreeGoods.FreeGoodsLazyDataFragment;
 import com.dreamspace.uucampus.ui.popupwindow.FreeGoodsSortPopupWindow;
 import com.dreamspace.uucampus.widget.smartlayout.SmartTabLayout;
 import com.melnykov.fab.FloatingActionButton;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,11 +49,11 @@ public class FreeGoodsActivity extends AbsActivity {
     RelativeLayout contentRl;
 
     FreeGoodsSortPopupWindow popupWindow;
-    private String order="view_number";
+    private String order="last_update";
     private boolean bIdleAct=true;
     private boolean haveGood = false;
 
-    private FragmentStatePagerItemAdapter pagerAdpater;
+    private FragmentPagerItemAdapter pagerAdpater;
     public static final String CATEGORY = "category";
     public static final String EXTRA_ORDER="order";
     public static final String EXTRA_IDLE_ACT="idle_activity";
@@ -214,7 +214,7 @@ public class FreeGoodsActivity extends AbsActivity {
             bundle.putBoolean(EXTRA_IDLE_ACT,bIdleAct);
             creator.add(titleTab, FreeGoodsLazyDataFragment.class, bundle);
         }
-        pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(), creator.create());
+        pagerAdpater = new FragmentPagerItemAdapter(getSupportFragmentManager(), creator.create());
 //        items = Arrays.asList(ShareData.freeGoodsCategorys);
 //        pagerAdpater = new FragmentStatePagerItemAdapter(getSupportFragmentManager(),
 //                FragmentPagerItems.with(this)

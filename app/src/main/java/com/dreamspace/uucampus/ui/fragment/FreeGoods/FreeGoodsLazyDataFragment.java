@@ -32,7 +32,6 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     private boolean isFragDestroy = false;
     private String location = null;
     private boolean isDetailBack= false;
-    private boolean firstGetGoods = true;//判断是不是第一次获取数据，第一次获取数据需要显示“加载中”界面
     private boolean bIdleAct = false;
 
     public FreeGoodsLazyDataFragment() {
@@ -93,20 +92,17 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     }
 
     public void loadingInitData() {
-        if(firstGetGoods) {
             toggleShowLoading(true, getString(R.string.common_loading_message));
-        }
         page = 1;
         loadingDataByPage(page, new OnRefreshListener<IdleItem>() {
             @Override
             public void onFinish(List<IdleItem> mEntities) {
                 if (!isFragDestroy) {
                     if (mEntities != null && mEntities.size() == 0) {
-                        toggleShowEmpty(true, getString(R.string.common_empty_msg), null);
+                        toggleShowEmpty(true, getString(R.string.common_empty_msg), getGoodsClickListener);
                     } else {
                         toggleShowLoading(false, null);
                         refreshDate(mEntities, FreeGoodsLazyListFragment.LOAD);
-                        firstGetGoods=false;
                         TLog.i("获取的闲置列表：", mEntities.get(0).getIdle_id() + " useName:" + mEntities.get(0).getUser_name());
                     }
                 }
@@ -131,6 +127,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
                 public void success(SearchIdleRes searchIdleRes, Response response) {
                     if (searchIdleRes != null) {
                         onRefreshListener.onFinish(searchIdleRes.getResult());
+                        alreadyGetData=true;
                     } else {
                         showToast(response.getReason());
                         onRefreshListener.onError();
@@ -141,6 +138,7 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
                 public void failure(RetrofitError error) {
                     onRefreshListener.onError();
                     showInnerError(error);
+                    alreadyGetData=false;
                 }
             });
         } else {
@@ -168,10 +166,12 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
     @Override
     public void onResume() {
         super.onResume();
-        if(!bIdleAct && !isDetailBack){      //当从其他页面回来时(不是直接从detail界面回来)重新加载
+        TLog.i("闲置：",bIdleAct+" "+isDetailBack);
+        if(!bIdleAct && !isDetailBack){      //当从其他页面回来时(不是直接从detail界面回来或主页进来时)重新加载
             location = PreferenceUtils.getString(getActivity().getApplicationContext(), PreferenceUtils.Key.LOCATION);
             loadingInitData();
         }
+        bIdleAct=false;   //第一次从主页加载后变为false
     }
 
     @Override
@@ -181,7 +181,6 @@ public class FreeGoodsLazyDataFragment extends FreeGoodsLazyListFragment<IdleIte
             if(resultCode==RESULT_CODE) {
                 //直接进入detail界面，不需要刷新
                 isDetailBack =true;
-                bIdleAct=false;
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
