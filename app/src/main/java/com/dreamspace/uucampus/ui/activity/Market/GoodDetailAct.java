@@ -86,7 +86,6 @@ public class GoodDetailAct extends AbsActivity {
     @Bind(R.id.content_rl)
     RelativeLayout contentRl;
 
-    private Share share;
     private String goodId;
     private boolean actDestory = false;
     private GoodsInfoRes goodInfo;//当前商品的信息
@@ -98,22 +97,6 @@ public class GoodDetailAct extends AbsActivity {
     public static final String GOOD_CURRENT_COLLCET_STATE = "CURRENT_COLLECT_STATE";
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.good_detial_act_menu,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if(id == R.id.good_detail_action_share){
-            share.getController().openShare(this,false);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     protected int getContentView() {
         return R.layout.activity_good_detail;
     }
@@ -123,17 +106,7 @@ public class GoodDetailAct extends AbsActivity {
         Bundle bundle = getIntent().getExtras();
         goodId = bundle.getString(GOOD_ID);
 
-        TLog.i("good_id:",goodId);
-
         getGoodInfo();
-
-        //初始化分享内容
-        share = new Share(this);
-        share.ShareInQQ("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
-        share.ShareInWechat("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
-        share.ShareInQZone("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
-        share.ShareInWechatCircle("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
-        share.ShareInSina("good内容", R.drawable.banner1);
     }
 
     @Override
@@ -246,15 +219,6 @@ public class GoodDetailAct extends AbsActivity {
         tabLayout.setCustomTabView(R.layout.good_detail_stl_title_tab, R.id.detail_stl_title_tv);
         detailViewPager.setAdapter(pagerAdapter);
         tabLayout.setViewPager(detailViewPager);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        /**使用SSO授权必须添加如下代码 */
-        UMSsoHandler ssoHandler = share.getController().getConfig().getSsoHandler(requestCode) ;
-        if(ssoHandler != null){
-            ssoHandler.authorizeCallBack(requestCode, resultCode, data);
-        }
     }
 
     //获取商品详细信息

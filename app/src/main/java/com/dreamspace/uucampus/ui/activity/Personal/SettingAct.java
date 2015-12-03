@@ -31,8 +31,8 @@ public class SettingAct extends AbsActivity {
     RelativeLayout updateRl;
     @Bind(R.id.logout_btn)
     Button logoutBtn;
-    @Bind(R.id.feedback_rl)
-    RelativeLayout feedBackRl;
+    @Bind(R.id.about_rl)
+    RelativeLayout aboutRl;
 
     private boolean actDestroy = false;
     private static final int LOGIN = 1;
@@ -51,6 +51,13 @@ public class SettingAct extends AbsActivity {
     @Override
     protected void initViews() {
         getSupportActionBar().setTitle(getResources().getString(R.string.setting));
+
+        aboutRl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                readyGo(AboutAct.class);
+            }
+        });
 
         if (!PreferenceUtils.hasKey(this, PreferenceUtils.Key.LOGIN)
                 || !PreferenceUtils.getBoolean(this, PreferenceUtils.Key.LOGIN)) {
@@ -73,7 +80,9 @@ public class SettingAct extends AbsActivity {
         UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
             @Override
             public void onUpdateReturned(int updateStatus, UpdateResponse updateResponse) {
-                progressDialog.dismiss();
+                if(progressDialog != null){
+                    progressDialog.dismiss();
+                }
                 switch (updateStatus) {
                     case UpdateStatus.Yes: // has update
                         UmengUpdateAgent.showUpdateDialog(SettingAct.this,updateResponse);
@@ -139,13 +148,6 @@ public class SettingAct extends AbsActivity {
 
     //未登录
     private void initNoLoginViewsAndEvent() {
-        feedBackRl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                readyGoForResult(LoginActivity.class, LOGIN);
-            }
-        });
-
         logoutBtn.setVisibility(View.INVISIBLE);
     }
 
@@ -157,13 +159,6 @@ public class SettingAct extends AbsActivity {
             @Override
             public void onClick(View view) {
                 logout();
-            }
-        });
-
-        feedBackRl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                readyGo(FeedbackAct.class);
             }
         });
     }

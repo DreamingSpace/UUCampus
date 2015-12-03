@@ -3,6 +3,7 @@ package com.dreamspace.uucampus.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -50,12 +51,14 @@ public class PersonCenterFragment extends BaseFragment {
     LinearLayout couponCardLl;
     @Bind(R.id.setting_ll)
     LinearLayout settingLl;
-    @Bind(R.id.about_ll)
-    LinearLayout aboutLl;
+    @Bind(R.id.feedback_ll)
+    LinearLayout feedbackLl;
     @Bind(R.id.personal_nickname_tv)
     TextView nickNameTv;
     @Bind(R.id.personal_center_content_ll)
     LinearLayout contentLl;
+    @Bind(R.id.login_register_btn)
+    Button loginRegisterBtn;
 
     private static final int AVATAR_OR_NAME_CHANGE = 1;
     private static final int SETTING = 2;
@@ -96,14 +99,7 @@ public class PersonCenterFragment extends BaseFragment {
         settingLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGoForResult(SettingAct.class,SETTING);
-            }
-        });
-
-        aboutLl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readyGo(AboutAct.class);
+                readyGoForResult(SettingAct.class, SETTING);
             }
         });
 
@@ -151,7 +147,9 @@ public class PersonCenterFragment extends BaseFragment {
 
     //初始化登录过的视图和事件
     private void initLoginViewsAndEvents(){
-        if(PreferenceUtils.hasKey(getActivity(),PreferenceUtils.Key.AVATAR)){
+        loginRegisterBtn.setVisibility(View.GONE);
+        nickNameTv.setVisibility(View.VISIBLE);
+        if(PreferenceUtils.hasKey(getActivity(),PreferenceUtils.Key.AVATAR) && avatarCiv != null){
             CommonUtils.showImageWithGlideInCiv(getActivity(), avatarCiv,
                     PreferenceUtils.getString(getActivity(),PreferenceUtils.Key.AVATAR));
         }
@@ -165,6 +163,13 @@ public class PersonCenterFragment extends BaseFragment {
             public void onClick(View v) {
                 //若用户改变头像则返回时也要将此页面头像改变
                 readyGoForResult(PersonalInfoAct.class, AVATAR_OR_NAME_CHANGE);
+            }
+        });
+
+        feedbackLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                readyGo(FeedbackAct.class);
             }
         });
 
@@ -200,12 +205,20 @@ public class PersonCenterFragment extends BaseFragment {
     //初始化未登录过的视图和事件
     private void initNoLoginViewsAndEvents(){
         avatarCiv.setImageDrawable(getResources().getDrawable(R.drawable.register_icon_just_a_sign));
-        nickNameTv.setText(getString(R.string.no_login));
+        nickNameTv.setVisibility(View.GONE);
+        loginRegisterBtn.setVisibility(View.VISIBLE);
 
         avatarCiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                readyGoForResult(LoginActivity.class,LOGIN);
+                readyGoForResult(LoginActivity.class, LOGIN);
+            }
+        });
+
+        loginRegisterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                readyGoForResult(LoginActivity.class, LOGIN);
             }
         });
 
@@ -233,6 +246,13 @@ public class PersonCenterFragment extends BaseFragment {
         couponCardLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                readyGoForResult(LoginActivity.class, LOGIN);
+            }
+        });
+
+        feedbackLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 readyGoForResult(LoginActivity.class, LOGIN);
             }
         });

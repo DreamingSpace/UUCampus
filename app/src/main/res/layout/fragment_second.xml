@@ -22,6 +22,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp" />
             <TextView
+                android:visibility="gone"
                 android:id="@+id/personal_nickname_tv"
                 android:text="麦伊"
                 android:textColor="@color/black_40"
@@ -30,6 +31,16 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/login_register_btn"
+                android:layout_marginTop="18dp"
+                android:text="@string/login_register"
+                android:textColor="@color/app_theme_color2"
+                android:background="@drawable/green_stroke_btn_bg"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="90dp"
+                android:layout_height="30dp" />
 
             <View
                 android:layout_marginTop="10dp"
@@ -223,25 +234,30 @@
                 android:layout_height="1px"/>
 
             <LinearLayout
-                android:id="@+id/about_ll"
+                android:id="@+id/feedback_ll"
                 android:background="@drawable/personal_center_item_bg"
-                android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="38dp">
                 <ImageView
-                    android:src="@drawable/my_center_button_about"
+                    android:id="@+id/suggestion_icon"
+                    android:src="@drawable/setting_icon_suggestion"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
-                    android:text="@string/about"
+                    android:text="@string/feedback"
                     android:textSize="16sp"
                     android:textColor="@color/black_40"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/suggestion_icon"
                     android:layout_marginLeft="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+
             <View
                 android:background="@color/divider_color"
                 android:layout_width="match_parent"

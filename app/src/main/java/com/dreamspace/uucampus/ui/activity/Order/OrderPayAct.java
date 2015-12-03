@@ -165,7 +165,6 @@ public class OrderPayAct extends AbsActivity{
             public void failure(RetrofitError error) {
                 progressDialog.dismiss();
                 showInnerError(error);
-//                System.out.println(error.getMessage());
             }
 
         });
@@ -189,15 +188,18 @@ public class OrderPayAct extends AbsActivity{
              */
                 if(result.equals("success")){
                     setResult(RESULT_OK);
-                    finish();
+                    //进入订单详情页面
+                    Bundle bundle = new Bundle();
+                    bundle.putString(OrderDetailAct.ORDER_ID,orderId);
+                    readyGoThenKill(OrderDetailAct.class,bundle);
                 }else if(result.equals("fail")){
                     showToast(getString(R.string.pay_fail));
                 }
-                String errorMsg = data.getExtras().getString("error_msg"); // 错误信息
-                String extraMsg = data.getExtras().getString("extra_msg"); // 错误信息
-                System.out.println(result);
-                System.out.println(errorMsg);
-                System.out.println(extraMsg);
+//                String errorMsg = data.getExtras().getString("error_msg"); // 错误信息
+//                String extraMsg = data.getExtras().getString("extra_msg"); // 错误信息
+//                System.out.println(result);
+//                System.out.println(errorMsg);
+//                System.out.println(extraMsg);
             }
         }
     }

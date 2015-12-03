@@ -151,11 +151,11 @@ public class ShopShowGoodsFragment extends BaseLazyFragment{
                                 adapter = new GoodsListAdapter(mContext,searchGoodsRes.getResult(),GoodsListAdapter.ViewHolder.class);
                                 loadMoreListView.setAdapter(adapter);
                                 toggleRestore();
+                                firstGetGoods = false;
                             }else{
                                 adapter.addEntities(searchGoodsRes.getResult());
                                 adapter.notifyDataSetChanged();
                             }
-                            firstGetGoods = false;
                         }
                     }
 

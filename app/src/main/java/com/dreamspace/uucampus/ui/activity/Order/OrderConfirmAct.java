@@ -100,7 +100,7 @@ public class OrderConfirmAct extends AbsActivity{
         getSupportActionBar().setTitle(getString(R.string.order_confirm));
         priceBeforeReduceTv.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         phoneTv.setText(PreferenceUtils.getString(this, PreferenceUtils.Key.PHONE));
-        campusTv.setText("东大九龙湖校区");//之后直接从preference里调用
+        campusTv.setText(PreferenceUtils.getString(this,PreferenceUtils.Key.LOCATION));//之后直接从preference里调用
         goodNumTv.setText(quantity + "");
         goodNameTv.setText(goodName);
         singlePriceTv.setText(getString(R.string.RMB) + price / 100);
@@ -159,22 +159,6 @@ public class OrderConfirmAct extends AbsActivity{
         priceBeforeReduceTv.setText(getString(R.string.RMB) + price / 100 * quantity);
         totalPriceTv.setText(getString(R.string.RMB) + (price - discount) / 100 * quantity);
         getCouponBtn.setVisibility(View.INVISIBLE);
-//        couponUseRl.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(useCard){
-//                    couponUseIv.setImageDrawable(getResources().getDrawable(R.drawable.orderdetail_btn_chose_n));
-//                    useCard = false;
-//                    priceBeforeReduceTv.setVisibility(View.INVISIBLE);
-//                    totalPriceTv.setText(getString(R.string.RMB) + price * quantity);
-//                }else{
-//                    couponUseIv.setImageDrawable(getResources().getDrawable(R.drawable.orderdetail_btn_chose_h));
-//                    useCard = true;
-//                    priceBeforeReduceTv.setVisibility(View.VISIBLE);
-//                    totalPriceTv.setText(getString(R.string.RMB) + (price - discount) * quantity);
-//                }
-//            }
-//        });
     }
 
     private void initNoCardViews(){

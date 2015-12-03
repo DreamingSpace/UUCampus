@@ -74,7 +74,6 @@ public class FreeGoodsDetailActivity extends AbsActivity {
     private String phoneNum=null;
     private boolean bLike=false;
     private int likeNum=0;
-    private Share share;
     private boolean isActDestroy=false;
 
     @Override
@@ -86,14 +85,6 @@ public class FreeGoodsDetailActivity extends AbsActivity {
     protected void prepareDatas() {
         Bundle bundle = getIntent().getExtras();
         idle_id = bundle.getString(EXTRA_IDLE_ID);
-
-        //初始化分享内容
-        share = new Share(this);
-        share.ShareInQQ("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
-        share.ShareInWechat("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
-        share.ShareInQZone("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
-        share.ShareInWechatCircle("good标题", "good内容", "http://www.baidu.com", R.drawable.banner1);
-        share.ShareInSina("good内容", R.drawable.banner1);
 
         loadingInitData();  //初始化界面数据
     }
@@ -143,31 +134,6 @@ public class FreeGoodsDetailActivity extends AbsActivity {
         }else{
             showNetWorkError();
             toggleNetworkError(true,clickGetDetailListener);
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.good_detial_act_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if(id == R.id.good_detail_action_share){
-            share.getController().openShare(this, false);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        /**使用SSO授权必须添加如下代码 */
-        UMSsoHandler ssoHandler = share.getController().getConfig().getSsoHandler(requestCode) ;
-        if(ssoHandler != null){
-            ssoHandler.authorizeCallBack(requestCode, resultCode, data);
         }
     }
 

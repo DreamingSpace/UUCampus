@@ -52,25 +52,24 @@
             android:layout_width="match_parent"
             android:layout_height="1px"/>
         <RelativeLayout
-            android:id="@+id/feedback_rl"
+            android:id="@+id/about_rl"
             android:background="@drawable/personal_center_item_bg"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="40dp">
             <ImageView
-                android:id="@+id/suggestion_icon"
-                android:src="@drawable/setting_icon_suggestion"
-                android:layout_centerVertical="true"
+                android:id="@+id/about_us_icon"
+                android:src="@drawable/my_center_button_about"
                 android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:text="@string/feedback"
+                android:text="@string/about"
                 android:textSize="16sp"
                 android:textColor="@color/black_40"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/suggestion_icon"
+                android:layout_toRightOf="@id/about_us_icon"
                 android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
@@ -81,7 +80,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
-
         <View
             android:background="@color/divider_color"
             android:layout_width="match_parent"

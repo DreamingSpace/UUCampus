@@ -37,6 +37,7 @@ import retrofit.client.Response;
 
 /**
  * Created by Lx on 2015/10/22.
+ * 订单详情界面，进入需要传入order_id
  */
 public class OrderDetailAct extends AbsActivity{
     @Bind(R.id.good_ll)
