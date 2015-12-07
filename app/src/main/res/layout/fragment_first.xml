@@ -384,14 +384,14 @@
                             android:orientation="vertical">
 
                             <ImageView
+                                android:id="@+id/home_personal_shop_one_img"
                                 android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:src="@drawable/homepage_personal_shop_advertisement1" />
+                                android:layout_height="60dp"/>
 
                             <TextView
+                                android:id="@+id/home_personal_shop_one_text"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="小绿多肉" />
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -403,14 +403,14 @@
                             android:orientation="vertical">
 
                             <ImageView
+                                android:id="@+id/home_personal_shop_two_img"
                                 android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:src="@drawable/homepage_personal_shop_advertisement2" />
+                                android:layout_height="60dp" />
 
                             <TextView
+                                android:id="@+id/home_personal_shop_two_text"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="汉服社" />
+                                android:layout_height="wrap_content"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -422,14 +422,14 @@
                             android:orientation="vertical">
 
                             <ImageView
+                                android:id="@+id/home_personal_shop_three_img"
                                 android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:src="@drawable/homepage_personal_shop_advertisement3" />
+                                android:layout_height="60dp"/>
 
                             <TextView
+                                android:id="@+id/home_personal_shop_three_text"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="手工小店" />
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -441,14 +441,14 @@
                             android:orientation="vertical">
 
                             <ImageView
+                                android:id="@+id/home_personal_shop_four_img"
                                 android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:src="@drawable/homepage_personal_shop_advertisement4" />
+                                android:layout_height="60dp" />
 
                             <TextView
+                                android:id="@+id/home_personal_shop_four_text"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="吉他店" />
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -692,14 +692,14 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/homepage_driving_school_advertisement1" />
+                                android:id="@+id/home_driver_school_one_img"
+                                android:layout_width="90dp"
+                                android:layout_height="70dp" />
 
                             <TextView
+                                android:id="@+id/home_driver_school_one_text"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="恒通驾校" />
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -711,14 +711,14 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/homepage_driving_school_advertisement2" />
+                                android:id="@+id/home_driver_school_two_img"
+                                android:layout_width="90dp"
+                                android:layout_height="70dp" />
 
                             <TextView
+                                android:id="@+id/home_driver_school_two_text"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="永高驾校" />
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -730,14 +730,14 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/homepage_driving_school_advertisement3" />
+                                android:id="@+id/home_driver_school_three_img"
+                                android:layout_width="90dp"
+                                android:layout_height="70dp" />
 
                             <TextView
+                                android:id="@+id/home_driver_school_three_text"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="保通驾校" />
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

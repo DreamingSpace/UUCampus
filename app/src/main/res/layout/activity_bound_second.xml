@@ -47,7 +47,6 @@
             android:layout_marginRight="37dp"
             android:background="@drawable/inputview"
             android:hint="请输入密码"
-            android:inputType="number"
             android:paddingLeft="40dp"
             android:textSize="16sp" />
 
