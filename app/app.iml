@@ -102,8 +102,8 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 22 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="happy-dns-0.2.1" level="project" />
     <orderEntry type="library" exported="" name="butterknife-7.0.1" level="project" />
+    <orderEntry type="library" exported="" name="happy-dns-0.2.1" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="SocialSDK_Sina" level="project" />
@@ -117,30 +117,25 @@
     <orderEntry type="library" exported="" name="core-2.0" level="project" />
     <orderEntry type="library" exported="" name="UPPayAssistEx" level="project" />
     <orderEntry type="library" exported="" name="library-1.4.1" level="project" />
+    <orderEntry type="library" exported="" name="android-crop-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="core-3.1.0" level="project" />
     <orderEntry type="library" exported="" name="android-2.0" level="project" />
     <orderEntry type="library" exported="" name="UPPayPluginEx" level="project" />
-<<<<<<< HEAD
-    <orderEntry type="library" exported="" name="android-crop-1.0.1" level="project" />
-    <orderEntry type="library" exported="" name="utils-v4-1.4.1" level="project" />
-    <orderEntry type="library" exported="" name="qiniu-android-sdk-7.0.7.1" level="project" />
-    <orderEntry type="library" exported="" name="appcompat-v7-22.2.0" level="project" />
-    <orderEntry type="library" exported="" name="gson-2.4" level="project" />
-    <orderEntry type="library" exported="" name="core-2.0" level="project" />
-=======
     <orderEntry type="library" exported="" name="SocialSDK_WeiXin_1" level="project" />
     <orderEntry type="library" exported="" name="SocialSDK_QQZone_1" level="project" />
-    <orderEntry type="library" exported="" name="SocialSDK_WeiXin_2" level="project" />
     <orderEntry type="library" exported="" name="SocialSDK_QQZone_2" level="project" />
+    <orderEntry type="library" exported="" name="SocialSDK_WeiXin_2" level="project" />
     <orderEntry type="library" exported="" name="SocialSDK_QQZone_3" level="project" />
     <orderEntry type="library" exported="" name="library-1.3.0" level="project" />
-    <orderEntry type="library" exported="" name="glide-3.6.0" level="project" />
     <orderEntry type="library" exported="" name="qiniu-android-sdk-7.0.7.1" level="project" />
+    <orderEntry type="library" exported="" name="glide-3.6.0" level="project" />
     <orderEntry type="library" exported="" name="convenientbanner-1.1.4" level="project" />
     <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="gson-2.4" level="project" />
     <orderEntry type="library" exported="" name="httpmime-4.1.3" level="project" />
+    <orderEntry type="library" exported="" name="GetuiExt-2.0.3" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.2.0" level="project" />
+    <orderEntry type="library" exported="" name="GetuiSDK2.7.0.0" level="project" />
     <orderEntry type="library" exported="" name="umeng-update-v2.6.0.1" level="project" />
     <orderEntry type="library" exported="" name="circleimageview-1.3.0" level="project" />
     <orderEntry type="library" exported="" name="materialish-progress-1.7" level="project" />
@@ -148,6 +143,5 @@
     <orderEntry type="library" exported="" name="utils-v4-1.4.1" level="project" />
     <orderEntry type="library" exported="" name="design-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="cardview-v7-22.2.0" level="project" />
->>>>>>> origin/master
   </component>
 </module>
