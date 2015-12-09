@@ -94,5 +94,6 @@ public class PhotoPreviewActivity extends AbsActivity {
                 .override(showWidth,showHeight)
                 .centerCrop()
                 .into(previewIv);
+        imageFile.delete();
     }
 }

@@ -153,6 +153,7 @@ public class PersonalInfoAct extends AbsActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == AVATER && resultCode == RESULT_OK){
             String path = data.getStringExtra(SelectPhotoActivity.PHOTO_PATH);
+            System.out.println("path" + path);
             Crop.of(Uri.fromFile(new File(path)),Uri.fromFile(FileUtils.createTmpFile(this))).asSquare().start(this);
         }else if(requestCode == Crop.REQUEST_CROP){
             handleCrop(resultCode,data);

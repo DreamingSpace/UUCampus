@@ -12,6 +12,7 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
+import com.igexin.sdk.PushManager;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -24,6 +25,7 @@ public class SplashActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        PushManager.getInstance().initialize(this.getApplicationContext());
         int enter;
         if(!PreferenceUtils.hasKey(this, PreferenceUtils.Key.FIRST_USE) || PreferenceUtils.getBoolean(this,PreferenceUtils.Key.FIRST_USE)){
             enter = 0;

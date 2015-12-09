@@ -15,6 +15,7 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.ui.activity.Search.SearchResultActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
+import com.igexin.sdk.PushManager;
 import com.umeng.update.UmengUpdateAgent;
 
 import java.util.ArrayList;

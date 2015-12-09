@@ -36,6 +36,8 @@ dependencies {
     compile files('src/main/libs/UPPayAssistEx.jar')
     compile files('src/main/libs/UPPayPluginEx.jar')
     compile files('src/main/libs/umeng-update-v2.6.0.1.jar')
+    compile files('src/main/libs/GetuiSDK2.7.0.0.jar')
+    compile files('src/main/libs/GetuiExt-2.0.3.jar')
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.android.support:design:22.2.0'
     compile 'com.android.support:cardview-v7:22.2.0'
@@ -57,7 +59,4 @@ dependencies {
     compile 'com.pnikosis:materialish-progress:1.7'
     compile 'com.google.code.gson:gson:2.4'
     compile 'com.soundcloud.android:android-crop:1.0.1@aar'
-    //compile files('src/main/libs/GetuiExt-2.0.3.jar')
-    //compile files('src/main/libs/GetuiSDK2.6.1.0.jar')
-    //compile files('src/main/libs/android-support-v4.jar')
 }
