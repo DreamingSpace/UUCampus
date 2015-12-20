@@ -2,6 +2,7 @@
 <items version="2" >
 
     <item
+<<<<<<< HEAD
         jar="G:\projects\Android\UUCampus\app\src\main\libs\GetuiExt-2.0.3.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -14,6 +15,300 @@
         revision="23.0.1"
         sha1="01f2d7d09e2d69798bed5cded920398061c6d77f">
         <dex dex="G:\projects\Android\UUCampus\app\build\intermediates\pre-dexed\release\GetuiSDK2.7.0.0-bdab08aae7aa6a9d2ee07ec58578cd50fa5e138c.jar" />
+=======
+        jar="C:\Users\money\.gradle\caches\modules-2\files-2.1\net.glxn.qrgen\android\2.0\e193fae1a38d614a6cd2a2cc6d5cc4fb63ca6732\android-2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e193fae1a38d614a6cd2a2cc6d5cc4fb63ca6732">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\android-2.0-c0af3c9e5dcc5ef266eefafb7c3323acce69faef.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\SocialSDK_QQZone_3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="931ab461b91c2a2fd5c697e7f622cdca8c2b3ac5">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\SocialSDK_QQZone_3-8bed5d2bae17424599ec73bff07eee23a165ca65.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\.gradle\caches\modules-2\files-2.1\net.glxn.qrgen\core\2.0\a4768205c0fa814b35374bb26586900d0ef8d4fe\core-2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a4768205c0fa814b35374bb26586900d0ef8d4fe">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\core-2.0-3852e97f5f3cdc2beaf1313eb21a9c1964395f7c.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-1bef8afd5fae4c871d3604e652d421f302dbb498.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-d4eabf5ad83d36b58a369d8c8013407afcdb464e.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\UPPayPluginEx.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2adb7d37c28757220e1a455dbd5722988aa6c73d">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\UPPayPluginEx-9d39de477b12eeeee90849313d2b134185d9c5a4.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\SocialSDK_WeiXin_1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="47f4993168154fa73377d7470b9f6887d48a8023">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\SocialSDK_WeiXin_1-4bdd14837ef3374b64eac38b45fe465662f7255e.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\1.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-981b7927f4c8c3120ad006e736d5c05751922585.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\butterknife-7.0.1-1833a30ebfa3e9af051f3cc5afab2c0e7be8cb55.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.7\cd78109020f9ec803ef4e652c17ee4615b03e20a\android-async-http-1.4.7.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="cd78109020f9ec803ef4e652c17ee4615b03e20a">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.7-890825dba8b633a0eed295dbad06e7c979c01ea5.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\.gradle\caches\modules-2\files-2.1\com.qiniu\qiniu-android-sdk\7.0.7.1\58abe32c29dc47db951ac5227f683cda0df75f83\qiniu-android-sdk-7.0.7.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="58abe32c29dc47db951ac5227f683cda0df75f83">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\qiniu-android-sdk-7.0.7.1-1562a24b4e5e7c8949004158c30f03c69514fe14.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\GetuiExt-2.0.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="7825bfa9135d693e2046eab96fd94e724e0f9eda">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\GetuiExt-2.0.3-4b7fea1ce1f7e31cc6bcb9a32867d1319a5957ec.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\umeng-update-v2.6.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e76510af0986842b672c59d29502f3d29866320a">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\umeng-update-v2.6.0.1-ee5d3f95cf02f26f2d4a3e4d83ece939f3f962bc.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="97f7e239e86ef994de894818fdd8a71d2e89d6aa">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-885b21d0ffcf121d29c55a83f37d0c4365d2a832.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-269a5a624c70a6d066060864a09ba2379f4fc363.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\.gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.1.0\908e18674f895e3e1fa8f4a954b8c637a23d2801\core-3.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="908e18674f895e3e1fa8f4a954b8c637a23d2801">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\core-3.1.0-8110a850bc7deba204c474c02e6bcfe23304352d.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\com.bigkoo\convenientbanner\1.1.4\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c4e5766aee236cdf50ea20f51b6cd23e33087c2c">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-3e9017ec2bc139b86bb45fb3e8d9e6bb1dc3abdd.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\com.melnykov\floatingactionbutton\1.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8c6ebb7d087d1a30bf84356bd2aecf85309fc024">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-4c728d384e142c8d488a392da06653ca1920d67d.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-35b500eb5be4617b1abc49528af4787d514d5f0e.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-5a42c8472912e782cad7f8d6c8861e3686b286ae.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.4\695b63d702f505b9b916e02272e3b6381bade7f\gson-2.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="0695b63d702f505b9b916e02272e3b6381bade7f">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\gson-2.4-24150a73af29219ff6459af90a9eed2cf9c9eda0.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\SocialSDK_Sina.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a6eee0ece63ba5e74411057d09eda1a5a01ca940">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\SocialSDK_Sina-6923e059dd8c227974bf547deb5a106a8f0022e9.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\httpmime-4.1.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e70d34d98f7f7f3b2b92105b9f2fe2a7a7184461">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\httpmime-4.1.3-975197195fe9ba43fce0796d0851895c0a7e1293.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\1.9.0\a681c044244d9fc375198588297a39ba78028423\retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\retrofit-1.9.0-0c3058a663b0eb7408fa4e76ad9a5b1b999501ad.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\com.pnikosis\materialish-progress\1.7\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="41a4edf3c43fdbce6eba27da50b17ff9933987f1">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-a4f5c6c57bc3943516420460eee20fae742d5329.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\libpingpp-2.0.6.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1706efc4c9e1f28f9527ce1873d388a82f2d2a1c">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\libpingpp-2.0.6-36a88a2b9c1068776a90cf8b69d2a8f4e123b606.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\com.baoyz.swipemenulistview\library\1.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8ec8378e8d7aa3104f60823e6350f2728d3609ba">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-607f36f4aa881f6303ae93dd11900b7b222b0aeb.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\GetuiSDK2.7.0.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="01f2d7d09e2d69798bed5cded920398061c6d77f">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\GetuiSDK2.7.0.0-2da64d99d51bac56d026ae1b92b21f059fa5c213.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\umeng_social_sdk.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4688dc44ccef22b7f057301ee6abbe187a8d35ea">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\umeng_social_sdk-8bf055fa4cac865c9349658d9c7f98b1184036c3.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\com.ogaclejapan.smarttablayout\utils-v4\1.4.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9c84d62598d02dc93751480fd070f625167ac1ad">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-a95c355e7bdaa76d78bb7cd426dce03f14ea5cd6.jar" />
+    </item>
+    <item
+        jar="D:\android-sdks\android-sdk-windows\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-72d3a7ecda3e568ef796d93b549023d28add1aef.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\SocialSDK_WeiXin_2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b651be701cb256e3972e7c5a07119f26bb7b44a4">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\SocialSDK_WeiXin_2-74e6693e66ffc0dd557e365ff72db4acb24d70cc.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\alipaySDK-20150818.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6dde19fc34adb03c637b17fdaa754e0c02cf75a0">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\alipaySDK-20150818-b9815fc3c2ca1b80badcac8c53bfa8061d530db0.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\library-2.4.0-12677f6b8817e9edc68ccecc536d0c9dda6fcfa3.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\SocialSDK_QQZone_2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4a69b33758dcba3ef519cbd4b6c8af5f41603c4f">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\SocialSDK_QQZone_2-9276b92dd958a9771575f38f1bf6af522b4e7bc3.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\UPPayAssistEx.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d63c415d9b8c8d48677fe2253b21180ccc1afa0f">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\UPPayAssistEx-edf281307cba33eadc14e498de5a385a0644a06d.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\src\main\libs\SocialSDK_QQZone_1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c184c69f43b1fe46390f7123717c65bd844bccb6">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\SocialSDK_QQZone_1-6b64564e9c4c21e255c6b0aa992f2a89c6692961.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\com.soundcloud.android\android-crop\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="11a65cf2b30c192b38a881d626fa771a78a2293d">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-0f43b95021f8c4d609786b95c5a47af40beb9bd6.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\com.ogaclejapan.smarttablayout\library\1.4.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1ccc48d671038e7f5ab1c79092ec33bca77c2311">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-096e32c4745a7966a76d61745d787a31590f8e35.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\.gradle\caches\modules-2\files-2.1\com.qiniu\happy-dns\0.2.1\b9a617ab7630ca6cf841becd35e3a74ffbfeb56f\happy-dns-0.2.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b9a617ab7630ca6cf841becd35e3a74ffbfeb56f">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\happy-dns-0.2.1-b5f575a9b15c1bf31c4e3c94fcb0eb9d076b85df.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.6.0\a7537446a030da8eb0da4c71424d16c2589f6c4a\glide-3.6.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a7537446a030da8eb0da4c71424d16c2589f6c4a">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\glide-3.6.0-f9878ce92eb93f5a483d0dc94960b85db1fd44a2.jar" />
+    </item>
+    <item
+        jar="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\exploded-aar\me.iwf.photopicker\PhotoPicker\0.2.7\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="0b38e8f65399bc4c33b38219eef6200ac38aa500">
+        <dex dex="C:\Users\money\Documents\GitHub\UUCampus\app\build\intermediates\pre-dexed\debug\classes-4f6c0c8c97121330c3b7944b5e298857cad473f5.jar" />
+>>>>>>> origin/master
     </item>
 
 </items>
