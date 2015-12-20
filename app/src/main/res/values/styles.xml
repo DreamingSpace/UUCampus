@@ -17,7 +17,7 @@
     </style>
 
     <style name="welcome_style" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_bg_1</item>
+        <item name="android:windowBackground">@drawable/splash_image</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
@@ -32,6 +32,15 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <!-- photo picker theme-->
+    <style name="myTheme.actionBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">#ffffff</item>
+    </style>
+
+    <style name="photoPickerTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="actionBarTheme">@style/myTheme.actionBar</item>
+        <item name="colorPrimary">@color/app_theme_color</item>
+    </style>
     <!-- market style used-->
     <style name="major_sale_text_style">
         <item name="android:textSize">10sp</item>

@@ -16,6 +16,7 @@ import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.model.Labels;
+import com.dreamspace.uucampus.ui.activity.Search.SearchResultActivity;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.fragment.Market.ShowGoodsFragment;
 import com.dreamspace.uucampus.ui.popupwindow.GoodsSortPopupWindow;
@@ -56,13 +57,16 @@ public class FastInAct extends AbsActivity {
     private FragmentPagerItemAdapter pagerAdpater;
     public static String LABEL = "label";
     public static String CATEGORY = "category";
+    public static String LABEL_NAME = "label_name";
     private String category;
+    private String labelName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         category = bundle.getString(CATEGORY);
+        labelName = bundle.getString(LABEL_NAME);
         order = getString(R.string.order_view_number);//默认排列方式
         super.onCreate(savedInstanceState);
     }
@@ -84,6 +88,8 @@ public class FastInAct extends AbsActivity {
                     popupWindow.showAsDropDown(mToolBar);
                 }
             }
+        }else if(id == R.id.action_search){
+            readyGo(SearchResultActivity.class);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -171,17 +177,22 @@ public class FastInAct extends AbsActivity {
 
     private void initSTL() {
         if (mLabels != null) {
+            int pagerIndex = 0;
             FragmentPagerItems.Creator creator = FragmentPagerItems.with(this);
             for (String label : mLabels) {
                 Bundle bundle = new Bundle();
                 bundle.putString(LABEL, label);
                 bundle.putString(CATEGORY, category);
                 creator.add(label, ShowGoodsFragment.class, bundle);
+                if(label.equals(labelName)){
+                    pagerIndex = mLabels.indexOf(label);
+                }
             }
             pagerAdpater = new FragmentPagerItemAdapter(getSupportFragmentManager(), creator.create());
             smartTabLayout.setDistributeEvenly(false);
             pager.setAdapter(pagerAdpater);
             smartTabLayout.setViewPager(pager);
+            pager.setCurrentItem(pagerIndex);
         }
     }
 

@@ -57,8 +57,11 @@ public class PreferenceUtils {
     }
 
     public static boolean hasKey(Context context, final String key) {
-        return PreferenceManager.getDefaultSharedPreferences(context).contains(
-                key);
+        if(context != null){
+            return PreferenceManager.getDefaultSharedPreferences(context).contains(
+                    key);
+        }
+        return false;
     }
 
     public static void putBoolean(Context context, final String key,

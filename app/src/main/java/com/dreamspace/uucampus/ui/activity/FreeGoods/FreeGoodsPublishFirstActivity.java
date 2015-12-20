@@ -4,21 +4,20 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.dreamspace.uucampus.R;
+import com.dreamspace.uucampus.common.ImageCaptureManager;
+import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
-import com.dreamspace.uucampus.widget.photopicker.SelectPhotoActivity;
-
-import java.util.ArrayList;
+import com.dreamspace.uucampus.ui.dialog.SelectPhotoDialog;
 
 import butterknife.Bind;
-import me.iwf.photopicker.PhotoPickerActivity;
 
 /**
  * Created by wufan on 2015/9/22.
@@ -32,8 +31,10 @@ public class FreeGoodsPublishFirstActivity extends AbsActivity {
 
     public static final String TOAST_TEXT = "请先点击加号图标选择商品照片";
     private String mLocalImagePath = null;
-
-    public static int PHOTO_REQUEST_CODE = 1;
+    private SelectPhotoDialog selectPhotoDialog;
+    private ImageCaptureManager captureManager;
+    public static final int SELECT_AVATER = 1;
+    public static final int TAKE_AVATER = 2;
 
     @Override
     protected int getContentView() {
@@ -42,7 +43,7 @@ public class FreeGoodsPublishFirstActivity extends AbsActivity {
 
     @Override
     protected void prepareDatas() {
-
+        captureManager = new ImageCaptureManager(this);
     }
 
     @Override
@@ -50,9 +51,11 @@ public class FreeGoodsPublishFirstActivity extends AbsActivity {
         mPhotoIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGoForResult(SelectPhotoActivity.class,PHOTO_REQUEST_CODE);
+                initSelectPhotoDialog();
+                selectPhotoDialog.show();
             }
         });
+
         mNextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,16 +81,31 @@ public class FreeGoodsPublishFirstActivity extends AbsActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == PHOTO_REQUEST_CODE && resultCode == RESULT_OK){
-            if(data != null){
-               mLocalImagePath = data.getStringExtra(SelectPhotoActivity.PHOTO_PATH);
-                ArrayList<String> photo = data.getStringArrayListExtra(PhotoPickerActivity.KEY_SELECTED_PHOTOS);
-                Glide.with(FreeGoodsPublishFirstActivity.this)
-                        .load(mLocalImagePath)
-                        .centerCrop()
-                        .into(mPhotoIv);
+        if(selectPhotoDialog != null){
+            selectPhotoDialog.dismiss();
+        }
+        if(requestCode == SELECT_AVATER && resultCode == RESULT_OK){
+            Uri uri = data.getData();
+            mLocalImagePath = CommonUtils.getRealPathFromURI(this, uri);
+            CommonUtils.showImageWithGlide(this, mPhotoIv, mLocalImagePath);
+        }else if(requestCode == TAKE_AVATER && resultCode == RESULT_OK){
+            if(captureManager.getCurrentPhotoPath() != null){
+                mLocalImagePath = captureManager.getCurrentPhotoPath();
+                CommonUtils.showImageWithGlide(this,mPhotoIv,mLocalImagePath);
             }
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        captureManager.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        captureManager.onRestoreInstanceState(savedInstanceState);
     }
 
     public boolean isPhotoReady() {
@@ -96,6 +114,13 @@ public class FreeGoodsPublishFirstActivity extends AbsActivity {
             photoReady = true;
         }
         return photoReady;
+    }
+
+    private void initSelectPhotoDialog(){
+        if(selectPhotoDialog != null){
+            return;
+        }
+        selectPhotoDialog = new SelectPhotoDialog(this,captureManager,SELECT_AVATER,TAKE_AVATER);
     }
 
     BroadcastReceiver broadcastReceiver =new BroadcastReceiver(){

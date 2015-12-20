@@ -171,6 +171,8 @@
     <string name="plz_select_photo">请选择一张图片~</string>
     <string name="preview_photo">图片预览</string>
     <string name="finish">完成</string>
+    <string name="select_from_gallery">从相册选择</string>
+    <string name="take_a_photo">拍摄照片</string>
     
     <!-- good detail strings used-->
     <string name="collect">收藏</string>
@@ -243,6 +245,10 @@
     <string name="newest_version">已是最新版本~</string>
     <string name="checking_update">检查更新中</string>
     <string name="login_register">登录/注册</string>
+    <string name="good_name_valid">商品名称应在1~10个字之间</string>
+    <string name="good_price_to_large">商品价格过高</string>
+    <string name="good_description_valid">详情应在10~150个字之间</string>
+    <string name="good_category_cant_be_null">商品分类不能为空</string>
 
     <!-- login strings used-->
     <string name="login_username_hint">请输入您的手机号</string>

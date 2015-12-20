@@ -7,13 +7,12 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dreamspace.uucampus.R;
 
 import com.dreamspace.uucampus.api.ApiManager;
+import com.dreamspace.uucampus.common.ImageCaptureManager;
 import com.dreamspace.uucampus.common.UploadImage;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
-import com.dreamspace.uucampus.common.utils.FileUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.common.utils.PreferenceUtils;
 import com.dreamspace.uucampus.model.ErrorRes;
@@ -22,25 +21,19 @@ import com.dreamspace.uucampus.model.api.LocationAllRes;
 import com.dreamspace.uucampus.model.api.QnRes;
 import com.dreamspace.uucampus.model.api.UpdateUserInfoReq;
 import com.dreamspace.uucampus.model.api.UserInfoRes;
-import com.dreamspace.uucampus.ui.PersonCenterFragment;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.ChangNameDialog;
 import com.dreamspace.uucampus.ui.dialog.MsgDialog;
 import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
+import com.dreamspace.uucampus.ui.dialog.SelectPhotoDialog;
 import com.dreamspace.uucampus.ui.dialog.WheelDialog;
-import com.dreamspace.uucampus.ui.dialog.WheelViewDialog;
-import com.dreamspace.uucampus.widget.photopicker.SelectPhotoActivity;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
-import com.soundcloud.android.crop.Crop;
 
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 import butterknife.Bind;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -71,7 +64,8 @@ public class PersonalInfoAct extends AbsActivity {
     @Bind(R.id.loaction_tv)
     TextView loactionTv;
 
-    public static final int AVATER = 1;
+    public static final int SELECT_AVATER = 1;
+    public static final int TAKE_AVATER = 2;
     private ChangNameDialog changNameDialog;
     private ProgressDialog progressDialog;
     private MsgDialog msgDialog;
@@ -79,6 +73,22 @@ public class PersonalInfoAct extends AbsActivity {
     private WheelDialog yearDialog;
     private WheelDialog loactionDialog;
     private boolean actDestory = false;
+    private SelectPhotoDialog selectPhotoDialog;
+    private ImageCaptureManager captureManager;
+
+    private static final String TEMP_FILE = "temp_file";
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        captureManager.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        captureManager.onRestoreInstanceState(savedInstanceState);
+    }
 
     @Override
     protected int getContentView() {
@@ -88,6 +98,7 @@ public class PersonalInfoAct extends AbsActivity {
     @Override
     protected void prepareDatas() {
         //获取所有校区
+        captureManager = new ImageCaptureManager(PersonalInfoAct.this);
         getLoactions();
     }
 
@@ -99,7 +110,7 @@ public class PersonalInfoAct extends AbsActivity {
         CommonUtils.showImageWithGlideInCiv(this, avaterCiv, PreferenceUtils.getString(this,PreferenceUtils.Key.AVATAR));
         nickNameTv.setText(PreferenceUtils.getString(this,PreferenceUtils.Key.NAME));
         phoneTv.setText(PreferenceUtils.getString(this, PreferenceUtils.Key.PHONE));
-        loactionTv.setText(PreferenceUtils.getString(this,PreferenceUtils.Key.LOCATION));
+        loactionTv.setText(PreferenceUtils.getString(this, PreferenceUtils.Key.LOCATION));
         yearTv.setText(PreferenceUtils.getString(this,PreferenceUtils.Key.ENROLL_YEAR));
 
         initListeners();
@@ -114,7 +125,8 @@ public class PersonalInfoAct extends AbsActivity {
         avaterRl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGoForResult(SelectPhotoActivity.class, AVATER);
+                initSelectPhotoDialog();
+                selectPhotoDialog.show();
             }
         });
 
@@ -151,21 +163,16 @@ public class PersonalInfoAct extends AbsActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == AVATER && resultCode == RESULT_OK){
-            String path = data.getStringExtra(SelectPhotoActivity.PHOTO_PATH);
-            System.out.println("path" + path);
-            Crop.of(Uri.fromFile(new File(path)),Uri.fromFile(FileUtils.createTmpFile(this))).asSquare().start(this);
-        }else if(requestCode == Crop.REQUEST_CROP){
-            handleCrop(resultCode,data);
+        if(selectPhotoDialog != null){
+            selectPhotoDialog.dismiss();
         }
-    }
-
-    private void handleCrop(int resultCode,Intent result){
-        if(resultCode == RESULT_OK){
-            initProgressDilaog();
-            progressDialog.setContent(getString(R.string.uploading_image));
-            progressDialog.show();
-            upLoadImage(Crop.getOutput(result).getPath());
+        if(requestCode == SELECT_AVATER && resultCode == RESULT_OK){
+            Uri uri = data.getData();
+            upLoadImage(CommonUtils.getRealPathFromURI(this, uri));
+        }else if(requestCode == TAKE_AVATER && resultCode == RESULT_OK){
+            if(captureManager.getCurrentPhotoPath() != null){
+                upLoadImage(captureManager.getCurrentPhotoPath());
+            }
         }
     }
 
@@ -223,7 +230,7 @@ public class PersonalInfoAct extends AbsActivity {
                     PreferenceUtils.putString(PersonalInfoAct.this, PreferenceUtils.Key.NAME, userInfoRes.getName());
                     PreferenceUtils.putString(PersonalInfoAct.this, PreferenceUtils.Key.ENROLL_YEAR, userInfoRes.getEnroll_year());
                     PreferenceUtils.putString(PersonalInfoAct.this, PreferenceUtils.Key.PHONE, userInfoRes.getPhone_num());
-                    PreferenceUtils.putString(PersonalInfoAct.this,PreferenceUtils.Key.LOCATION,userInfoRes.getLocation());
+                    PreferenceUtils.putString(PersonalInfoAct.this, PreferenceUtils.Key.LOCATION, userInfoRes.getLocation());
                     progressDialog.dismiss();
                     showToast(getString(R.string.modify_success));
                 }
@@ -379,8 +386,17 @@ public class PersonalInfoAct extends AbsActivity {
         });
     }
 
+    private void initSelectPhotoDialog(){
+        if(selectPhotoDialog != null){
+            return;
+        }
+        selectPhotoDialog = new SelectPhotoDialog(this,captureManager,SELECT_AVATER,TAKE_AVATER);
+    }
+
     //上传图片
     private void upLoadImage(final String path){
+        initProgressDilaog();
+        progressDialog.show();
         if(!NetUtils.isNetworkConnected(this)){
             showToast(getString(R.string.network_error_tips));
         }

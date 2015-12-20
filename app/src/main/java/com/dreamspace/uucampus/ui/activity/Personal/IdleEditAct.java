@@ -1,6 +1,8 @@
 package com.dreamspace.uucampus.ui.activity.Personal;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.ScrollView;
 
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
+import com.dreamspace.uucampus.common.ImageCaptureManager;
 import com.dreamspace.uucampus.common.UploadImage;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
@@ -23,8 +26,8 @@ import com.dreamspace.uucampus.model.api.UpdateIdleReq;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
 import com.dreamspace.uucampus.ui.dialog.MsgDialog;
 import com.dreamspace.uucampus.ui.dialog.ProgressDialog;
+import com.dreamspace.uucampus.ui.dialog.SelectPhotoDialog;
 import com.dreamspace.uucampus.ui.dialog.WheelDialog;
-import com.dreamspace.uucampus.widget.photopicker.SelectPhotoActivity;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
 
@@ -64,8 +67,11 @@ public class IdleEditAct extends AbsActivity{
     private String imagePath;
     private boolean actDestory = false;
     private int is_active;
+    private SelectPhotoDialog selectPhotoDialog;
+    private ImageCaptureManager captureManager;
 
-    private static final int IMAGE = 1;
+    public static final int SELECT_AVATER = 1;
+    public static final int TAKE_AVATER = 2;
 
     public static final String IDLE_ID = "IDLE_ID";
     public static final String IS_ACTIVE = "IS_ACTIVE";
@@ -79,6 +85,7 @@ public class IdleEditAct extends AbsActivity{
     protected void prepareDatas() {
         idleId = getIntent().getExtras().getString(IDLE_ID);
         is_active = getIntent().getExtras().getInt(IS_ACTIVE);
+        captureManager = new ImageCaptureManager(this);
         getIdleDetail();
     }
 
@@ -105,12 +112,14 @@ public class IdleEditAct extends AbsActivity{
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                initProgressDialog();
-                progressDialog.show();
-                if(imagePath != null){
-                    uploadImage();
-                }else{
-                    updateIdleInfo(null);
+                if(checkValid()){
+                    initProgressDialog();
+                    progressDialog.show();
+                    if(imagePath != null){
+                        upLoadImage();
+                    }else{
+                        updateIdleInfo(null);
+                    }
                 }
             }
         });
@@ -118,7 +127,8 @@ public class IdleEditAct extends AbsActivity{
         imageIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                readyGoForResult(SelectPhotoActivity.class,IMAGE);
+                initSelectPhotoDialog();
+                selectPhotoDialog.show();
             }
         });
 
@@ -166,6 +176,22 @@ public class IdleEditAct extends AbsActivity{
         return scrollView;
     }
 
+    private boolean checkValid(){
+        if(nameEt.getText().toString().length() < 1 || nameEt.getText().toString().length() > 10){
+            showToast(getString(R.string.good_name_valid));
+            return false;
+        }else if(Float.parseFloat(priceEt.getText().toString()) > 99999){
+            showToast(getString(R.string.good_price_to_large));
+            return false;
+        }else if(CommonUtils.isEmpty(categoryEt.getText().toString())){
+            showToast(getString(R.string.good_category_cant_be_null));
+            return false;
+        }else if(detailEt.getText().toString().length() < 10 || detailEt.getText().toString().length() > 150){
+            showToast(getString(R.string.good_description_valid));
+            return false;
+        }
+        return true;
+    }
     private void getIdleCategory(){
         if(!NetUtils.isNetworkConnected(this)){
             showNetWorkError();
@@ -200,7 +226,7 @@ public class IdleEditAct extends AbsActivity{
                 if (getIdleInfoRes != null && !actDestory) {
                     getIdleCategory();
                     toggleRestore();
-                    priceEt.setText(getIdleInfoRes.getPrice() / 100+ "");
+                    priceEt.setText(getIdleInfoRes.getPrice() / 100 + "");
                     nameEt.setText(getIdleInfoRes.getName());
                     categoryEt.setText(getIdleInfoRes.getCategory());
                     detailEt.setText(getIdleInfoRes.getDescription());
@@ -213,6 +239,18 @@ public class IdleEditAct extends AbsActivity{
                 toggleShowEmpty(true, null, getIdleInfoClickListener);
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        captureManager.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        captureManager.onRestoreInstanceState(savedInstanceState);
     }
 
     private void updateIdleInfo(String image){
@@ -232,7 +270,7 @@ public class IdleEditAct extends AbsActivity{
         ApiManager.getService(this).updateIdleInfo(idleId, idleReq, new Callback<CommonStatusRes>() {
             @Override
             public void success(CommonStatusRes commonStatusRes, Response response) {
-                if(commonStatusRes != null && !actDestory){
+                if (commonStatusRes != null && !actDestory) {
                     progressDialog.dismiss();
                     showToast(getString(R.string.modify_success));
                     setResult(RESULT_OK);
@@ -248,7 +286,7 @@ public class IdleEditAct extends AbsActivity{
         });
     }
 
-    private void uploadImage(){
+    private void upLoadImage(){
         if(!NetUtils.isNetworkConnected(this)){
             progressDialog.dismiss();
             showNetWorkError();
@@ -258,16 +296,16 @@ public class IdleEditAct extends AbsActivity{
         ApiManager.getService(this).createQiNiuToken(new Callback<QnRes>() {
             @Override
             public void success(QnRes qnRes, Response response) {
-                if(qnRes != null && !actDestory){
+                if (qnRes != null && !actDestory) {
                     UploadImage.upLoadImage(imagePath, qnRes.getKey(), qnRes.getToken(), new UpCompletionHandler() {
                         @Override
                         public void complete(String key, ResponseInfo info, JSONObject response) {
-                            if(info.isOK()){
+                            if (info.isOK()) {
                                 //图片上传成功，接着更新商品信息
                                 updateIdleInfo(key);
                             }
                         }
-                    },null);
+                    }, null);
                 }
             }
 
@@ -342,11 +380,27 @@ public class IdleEditAct extends AbsActivity{
         progressDialog.setContent(getString(R.string.modifing));
     }
 
+    private void initSelectPhotoDialog(){
+        if(selectPhotoDialog != null){
+            return;
+        }
+        selectPhotoDialog = new SelectPhotoDialog(this,captureManager,SELECT_AVATER,TAKE_AVATER);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == IMAGE && resultCode == RESULT_OK){
-            imagePath = data.getStringExtra(SelectPhotoActivity.PHOTO_PATH);
-            CommonUtils.showImageWithGlide(this,imageIv,imagePath);
+        if(selectPhotoDialog != null){
+            selectPhotoDialog.dismiss();
+        }
+        if(requestCode == SELECT_AVATER && resultCode == RESULT_OK){
+            Uri uri = data.getData();
+            imagePath = CommonUtils.getRealPathFromURI(this,uri);
+            CommonUtils.showImageWithGlide(this, imageIv, imagePath);
+        }else if(requestCode == TAKE_AVATER && resultCode == RESULT_OK){
+            if(captureManager.getCurrentPhotoPath() != null){
+                imagePath = captureManager.getCurrentPhotoPath();
+                CommonUtils.showImageWithGlide(this,imageIv,imagePath);
+            }
         }
     }
 

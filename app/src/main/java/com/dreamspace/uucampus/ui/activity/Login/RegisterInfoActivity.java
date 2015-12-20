@@ -2,22 +2,24 @@ package com.dreamspace.uucampus.ui.activity.Login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dreamspace.uucampus.R;
 import com.dreamspace.uucampus.api.ApiManager;
+import com.dreamspace.uucampus.common.ImageCaptureManager;
 import com.dreamspace.uucampus.common.utils.CommonUtils;
 import com.dreamspace.uucampus.common.utils.NetUtils;
 import com.dreamspace.uucampus.model.api.CommonStatusRes;
 import com.dreamspace.uucampus.model.api.LocationAllRes;
 import com.dreamspace.uucampus.model.api.UpdateUserInfoReq;
 import com.dreamspace.uucampus.ui.base.AbsActivity;
+import com.dreamspace.uucampus.ui.dialog.SelectPhotoDialog;
 import com.dreamspace.uucampus.ui.dialog.WheelViewDialog;
-import com.dreamspace.uucampus.widget.photopicker.SelectPhotoActivity;
 
 import java.util.ArrayList;
 
@@ -51,6 +53,11 @@ public class RegisterInfoActivity extends AbsActivity {
     public static final int AVATER = 1;
     ProgressDialog progressDialog;
     private ArrayList<String> locations;
+    private SelectPhotoDialog selectPhotoDialog;
+    private ImageCaptureManager captureManager;
+
+    public static final int SELECT_AVATER = 1;
+    public static final int TAKE_AVATER = 2;
 
     @Override
     protected int getContentView() {
@@ -60,6 +67,7 @@ public class RegisterInfoActivity extends AbsActivity {
     @Override
     protected void prepareDatas() {
         ButterKnife.bind(this);
+        captureManager = new ImageCaptureManager(this);
     }
 
     @Override
@@ -69,21 +77,39 @@ public class RegisterInfoActivity extends AbsActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == AVATER && resultCode == RESULT_OK){
-            path = data.getStringExtra(SelectPhotoActivity.PHOTO_PATH);
-            Glide.with(RegisterInfoActivity.this)
-                    .load(path)
-                    .error(R.drawable.default_error)
-                    .centerCrop()
-                    .into(ivUserIcon);
+        if(selectPhotoDialog != null){
+            selectPhotoDialog.dismiss();
         }
+        if(requestCode == SELECT_AVATER && resultCode == RESULT_OK){
+            Uri uri = data.getData();
+            path = CommonUtils.getRealPathFromURI(this,uri);
+            CommonUtils.showImageWithGlideInCiv(this, ivUserIcon, path);
+        }else if(requestCode == TAKE_AVATER && resultCode == RESULT_OK){
+            if(captureManager.getCurrentPhotoPath() != null){
+                path = captureManager.getCurrentPhotoPath();
+                CommonUtils.showImageWithGlideInCiv(this, ivUserIcon, path);
+            }
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        captureManager.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        captureManager.onRestoreInstanceState(savedInstanceState);
     }
 
     private void initListeners(){
         ivUserIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                readyGoForResult(SelectPhotoActivity.class,AVATER);
+                initSelectPhotoDialog();
+                selectPhotoDialog.show();
             }
         });
         personInfoButton.setOnClickListener(new View.OnClickListener() {
@@ -224,5 +250,12 @@ public class RegisterInfoActivity extends AbsActivity {
     @Override
     protected View getLoadingTargetView() {
         return null;
+    }
+
+    private void initSelectPhotoDialog(){
+        if(selectPhotoDialog != null){
+            return;
+        }
+        selectPhotoDialog = new SelectPhotoDialog(this,captureManager,SELECT_AVATER,TAKE_AVATER);
     }
 }

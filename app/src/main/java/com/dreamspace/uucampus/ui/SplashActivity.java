@@ -25,6 +25,7 @@ public class SplashActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //初始化个推SDK
         PushManager.getInstance().initialize(this.getApplicationContext());
         int enter;
         if(!PreferenceUtils.hasKey(this, PreferenceUtils.Key.FIRST_USE) || PreferenceUtils.getBoolean(this,PreferenceUtils.Key.FIRST_USE)){

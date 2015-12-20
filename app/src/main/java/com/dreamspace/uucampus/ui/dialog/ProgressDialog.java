@@ -20,12 +20,11 @@ public class ProgressDialog {
     public ProgressDialog(Context context){
         View dialogView = LayoutInflater.from(context).inflate(R.layout.progress_dialog_view, null);
         contentTv = (TextView) dialogView.findViewById(R.id.dialog_title_tv);
+        dialog = new AlertDialog.Builder(context).setView(dialogView).create();
 
-        dialog = new AlertDialog.Builder(context).create();
         dialog.getWindow().getAttributes().alpha = 0.5f;
         dialog.getWindow().setBackgroundDrawableResource(R.drawable.progress_dialog_bg);
         dialog.getWindow().setLayout(DensityUtils.dip2px(context, 260),WindowManager.LayoutParams.WRAP_CONTENT);
-        dialog.setView(dialogView);
         dialog.setCanceledOnTouchOutside(false);
     }
 
